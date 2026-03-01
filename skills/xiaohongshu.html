@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>小红书运营 — 龙虾技能</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f7f5f2;--card:#fff;--border:#e8e4df;--accent:#c0392b;--text:#2d2926;--muted:#7a746e;--code-bg:#1e1e1e;--code-text:#d4d4d4}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Inter','Noto Sans SC',-apple-system,sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+.topbar{background:#fff;border-bottom:1px solid var(--border);padding:14px 32px;display:flex;align-items:center;gap:12px;font-size:13px}
+.topbar a{color:var(--muted);text-decoration:none}.topbar a:hover{color:var(--accent)}.topbar .sep{color:var(--border)}
+.hero{background:#fff;border-bottom:1px solid var(--border);padding:52px 32px 40px;text-align:center;position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;top:0;left:0;right:0;bottom:0;opacity:0.15;background-image:radial-gradient(var(--accent) 0.5px,transparent 0.5px);background-size:28px 28px;pointer-events:none}
+.hero-badge{display:inline-block;background:var(--accent);color:#fff;font-size:11px;font-weight:700;padding:4px 12px;border-radius:99px;margin-bottom:16px;position:relative}
+.hero h1{font-size:clamp(1.8rem,5vw,2.4rem);font-weight:700;margin-bottom:12px;position:relative}
+.hero p{color:var(--muted);font-size:1rem;max-width:520px;margin:0 auto 6px;position:relative}
+.hero .sub{font-size:13px;color:var(--muted);margin-bottom:24px;position:relative}
+.hero-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;position:relative}
+.btn{display:inline-flex;align-items:center;gap:6px;padding:10px 20px;border-radius:8px;font-size:13px;font-weight:600;text-decoration:none;transition:all .18s;cursor:pointer;border:none;font-family:inherit}
+.btn-primary{background:var(--accent);color:#fff}.btn-primary:hover{background:#a93226}
+.btn-ghost{background:var(--bg);color:var(--text);border:1px solid var(--border)}.btn-ghost:hover{border-color:var(--accent);color:var(--accent)}
+.container{max-width:820px;margin:0 auto;padding:40px 24px 80px}
+.section{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:28px;margin-bottom:20px;box-shadow:0 1px 3px rgba(0,0,0,0.05)}
+.section h2{font-size:17px;font-weight:700;margin-bottom:18px;display:flex;align-items:center;gap:8px}
+.features{display:grid;grid-template-columns:1fr;gap:10px}
+.feature-item{background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:14px}
+.feature-item .f-title{font-size:13px;font-weight:700;margin-bottom:4px}
+.feature-item .f-desc{font-size:12px;color:var(--muted);line-height:1.5}
+pre{background:var(--code-bg);color:var(--code-text);border-radius:10px;padding:14px 18px;overflow-x:auto;font-size:13px;line-height:1.65;font-family:'SF Mono',Consolas,monospace;margin:8px 0}
+code{font-family:'SF Mono',Consolas,monospace;font-size:13px}
+table{width:100%;border-collapse:collapse;font-size:13px;margin:12px 0}
+td{padding:10px 14px;border-bottom:1px solid var(--border);vertical-align:top}tr:last-child td{border-bottom:none}
+.install-banner{background:#fffdf9;border:1px solid #fde8c8;border-radius:12px;padding:16px 20px;margin-bottom:24px}
+.install-banner code{background:rgba(192,57,43,0.1);color:var(--accent);padding:2px 6px;border-radius:4px;font-size:12px}
+.story{background:rgba(192,57,43,0.04);border:1px solid rgba(192,57,43,0.15);border-radius:12px;padding:16px 20px;margin-bottom:24px}
+.cmd-table{width:100%;font-size:12px}
+.cmd-table td{padding:8px 12px;font-family:'SF Mono',Consolas,monospace}
+.cmd-table td:first-child{font-weight:600;white-space:nowrap}
+@media(max-width:600px){.section{padding:20px}.hero{padding:36px 20px 28px}.topbar{padding:12px 16px}}
+</style>
+</head>
+<body>
+<div class="topbar"><a href="/">🦞 龙虾养成日记</a><span class="sep">›</span><a href="/skills.html">技能商店</a><span class="sep">›</span><span>小红书运营</span></div>
+
+<div class="hero">
+<div class="hero-badge">⭐ 三万同款</div>
+<h1>📕 小红书运营</h1>
+<p>搜索笔记、发布内容、分析评论——小红书运营全自动化</p>
+<div class="sub">基于 xpzouying/xiaohongshu-mcp（⭐ 8400+）· 三万团队实战验证</div>
+<div class="hero-btns">
+<button class="btn btn-primary" onclick="copyInstall()">📋 复制安装提示词</button>
+<a class="btn btn-ghost" href="/skills.html">← 全部技能</a>
+</div>
+</div>
+
+<div class="container">
+<div class="story"><p>💡 <strong>真实故事：</strong>老板直播时想看康复拐杖推荐，进化官金华用这个技能10秒搜出小红书上的真实用户评测，整理出品牌+型号+口碑排名，直播中就发给了老板。</p></div>
+
+<div class="install-banner">
+<p style="font-size:13px;color:#5a4a3a"><strong>⚙️ 安装方式：</strong> 基于 <code>xpzouying/xiaohongshu-mcp</code> · 需本地运行MCP Server + 扫码登录</p>
+</div>
+
+<div class="section">
+<h2>⚡ 核心能力</h2>
+<div class="features">
+<div class="feature-item"><div class="f-title">🔍 笔记搜索</div><div class="f-desc">按关键词搜索小红书笔记，获取标题、内容、互动数据、图片</div></div>
+<div class="feature-item"><div class="f-title">📝 内容发布</div><div class="f-desc">自动发布图文笔记——标题+正文+配图，一条命令搞定</div></div>
+<div class="feature-item"><div class="f-title">💬 评论分析</div><div class="f-desc">获取笔记详情和评论，分析用户反馈和情绪</div></div>
+<div class="feature-item"><div class="f-title">📊 推荐Feed</div><div class="f-desc">获取推荐页内容，了解平台热门趋势</div></div>
+</div>
+</div>
+
+<div class="section">
+<h2>🔧 命令列表</h2>
+<table class="cmd-table">
+<tr><td>status</td><td>检查登录状态</td></tr>
+<tr><td>search "关键词"</td><td>搜索笔记</td></tr>
+<tr><td>detail &lt;id&gt; &lt;token&gt;</td><td>获取笔记详情+评论</td></tr>
+<tr><td>feeds</td><td>获取推荐页内容</td></tr>
+<tr><td>publish "标题" "内容" "图片URL"</td><td>发布笔记</td></tr>
+</table>
+</div>
+
+<div class="section">
+<h2>💬 你可以这样说</h2>
+<p style="font-size:13px;color:var(--muted);margin-bottom:8px">直接用自然语言对龙虾说——</p>
+<pre><code>帮我搜一下小红书上关于"户外电源"的笔记</code></pre>
+<pre><code>看看这篇笔记的评论都说了什么</code></pre>
+<pre><code>帮我发一篇小红书笔记，标题是...内容是...</code></pre>
+<pre><code>小红书上最近什么内容比较火？</code></pre>
+</div>
+
+<div class="section">
+<h2>💡 使用场景</h2>
+<table>
+<tr><td style="font-size:20px;text-align:center;width:40px">🔬</td><td><strong>市场调研</strong></td><td style="color:var(--muted)">搜关键词→分析笔记→提炼用户真实需求</td></tr>
+<tr><td style="font-size:20px;text-align:center;width:40px">📊</td><td><strong>竞品分析</strong></td><td style="color:var(--muted)">搜竞品→看评论→了解优缺点口碑</td></tr>
+<tr><td style="font-size:20px;text-align:center;width:40px">📝</td><td><strong>内容发布</strong></td><td style="color:var(--muted)">写好内容→一键发布→省去手动操作</td></tr>
+<tr><td style="font-size:20px;text-align:center;width:40px">🔥</td><td><strong>热点追踪</strong></td><td style="color:var(--muted)">看推荐feed→抓住平台趋势→跟热点</td></tr>
+</table>
+</div>
+
+<div style="text-align:center;margin-top:32px">
+<button class="btn btn-primary" onclick="copyInstall()" style="font-size:15px;padding:14px 28px">📋 复制提示词，发给龙虾即可学会</button>
+</div>
+</div>
+
+<script>
+function copyInstall(){
+const prompt=`请学会小红书运营技能。
+
+**基于项目：** xpzouying/xiaohongshu-mcp（GitHub 8400+ stars）
+
+**安装步骤：**
+
+1. 下载MCP Server二进制文件：
+   https://github.com/xpzouying/xiaohongshu-mcp/releases
+
+   | 平台 | MCP Server | 登录工具 |
+   |------|-----------|---------|
+   | macOS (M芯片) | xiaohongshu-mcp-darwin-arm64 | xiaohongshu-login-darwin-arm64 |
+   | macOS (Intel) | xiaohongshu-mcp-darwin-amd64 | xiaohongshu-login-darwin-amd64 |
+   | Windows | xiaohongshu-mcp-windows-amd64.exe | xiaohongshu-login-windows-amd64.exe |
+   | Linux | xiaohongshu-mcp-linux-amd64 | xiaohongshu-login-linux-amd64 |
+
+2. 首次登录（扫码）：
+   \\\`\\\`\\\`bash
+   chmod +x xiaohongshu-mcp-* xiaohongshu-login-*
+   ./xiaohongshu-login-darwin-arm64
+   \\\`\\\`\\\`
+   会弹出二维码，用小红书App扫码登录。
+
+3. 启动MCP Server：
+   \\\`\\\`\\\`bash
+   ./xiaohongshu-mcp-darwin-arm64
+   \\\`\\\`\\\`
+   Server运行在 http://localhost:18060
+
+**使用命令：**
+\\\`\\\`\\\`bash
+# 检查登录状态
+python scripts/xhs_client.py status
+
+# 搜索笔记
+python scripts/xhs_client.py search "关键词"
+
+# 获取笔记详情和评论
+python scripts/xhs_client.py detail "note_id" "xsec_token"
+
+# 获取推荐feed
+python scripts/xhs_client.py feeds
+
+# 发布笔记
+python scripts/xhs_client.py publish "标题" "内容" "图片url1,图片url2"
+\\\`\\\`\\\`
+
+**⚠️ 注意：** 不要在其他浏览器登录同一个小红书账号，会让Server的session失效。`;
+
+navigator.clipboard.writeText(prompt).then(()=>{
+document.querySelectorAll('.btn-primary').forEach(btn=>{
+btn.textContent='✅ 已复制！发给你的龙虾即可';
+setTimeout(()=>btn.textContent='📋 复制安装提示词',3000)
+})})
+}
+</script>
+</body></html>

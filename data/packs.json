@@ -1,0 +1,99 @@
+[
+  {
+    "id": "assistant",
+    "icon": "💼",
+    "name": "超级助理",
+    "tagline": "你的全能私人助理——邮件、日程、搜索、文档，动动嘴就搞定",
+    "desc": "适合：白领、管理者、创业者",
+    "color": "#2874a6",
+    "skillCount": 6
+  },
+  {
+    "id": "creator",
+    "icon": "✍️",
+    "name": "内容创作者",
+    "tagline": "公众号、小红书、视频、音乐——全平台内容一条龙",
+    "desc": "适合：自媒体人、品牌运营、个人IP",
+    "color": "#c0392b",
+    "skillCount": 1,
+    "skills": [
+      "xiaohongshu"
+    ]
+  },
+  {
+    "id": "trader",
+    "icon": "📈",
+    "name": "股票分析师",
+    "tagline": "实时行情、技术分析、买卖信号——7×24帮你盯盘",
+    "desc": "适合：股民、投资者、量化爱好者",
+    "color": "#27ae60",
+    "skillCount": 4
+  },
+  {
+    "id": "overseas",
+    "icon": "🌏",
+    "name": "出海运营官",
+    "tagline": "多语言内容、海外社媒、跨境运营——搞定语言和时差",
+    "desc": "适合：出海企业、跨境电商、海外市场",
+    "color": "#8e44ad",
+    "skillCount": 6
+  },
+  {
+    "id": "ecommerce",
+    "icon": "🛒",
+    "name": "电商运营",
+    "tagline": "商品文案、竞品分析、数据监控——用AI代替重复劳动",
+    "desc": "适合：电商卖家、品牌方、运营团队",
+    "color": "#e67e22",
+    "skillCount": 6
+  },
+  {
+    "id": "sanwan",
+    "icon": "🦞",
+    "name": "三万同款团队",
+    "tagline": "8个Agent各司其职——这不是一只龙虾，这是一支团队",
+    "desc": "⭐ 傅盛亲自验证的完整配置",
+    "color": "#c0392b",
+    "skillCount": 38,
+    "skills": [
+      "multi-agent-setup",
+      "web-search",
+      "deep-research",
+      "weather",
+      "email",
+      "feishu-doc",
+      "feishu-cal",
+      "feishu-cards",
+      "image-gen",
+      "voice-gen",
+      "coding",
+      "github-ops",
+      "browser-vision",
+      "humanizer",
+      "wechat",
+      "twitter",
+      "xiaohongshu",
+      "web-scraper",
+      "pdf-gen",
+      "train-tickets",
+      "flight-search",
+      "stock-monitor",
+      "seo-writer",
+      "blog-writer",
+      "intelligence",
+      "video-summary",
+      "trending",
+      "hn-digest",
+      "stock-analysis",
+      "hk-stock",
+      "project-manager",
+      "fusheng-voice",
+      "n8n-automation",
+      "distil-web",
+      "self-evolution",
+      "security-audit",
+      "summary-report",
+      "competitor-research"
+    ]
+  }
+]

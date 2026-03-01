@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>三万同款团队 — 龙虾技能包</title>
+<link href="https://fonts.googleapis.com/css2?family=ZCOOL+KuaiLe&family=Inter:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f7f5f2;--card:#fff;--border:#e8e4df;--accent:#c0392b;--accent2:#e74c3c;--gold:#f39c12;--text:#2d2926;--muted:#7a746e}
+*{box-sizing:border-box;margin:0;padding:0}body{font-family:'Inter','Noto Sans SC',-apple-system,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden}
+
+/* Nav */
+.topbar{background:#fff;border-bottom:1px solid var(--border);padding:14px 32px;display:flex;align-items:center;gap:12px;font-size:13px}
+.topbar a{color:var(--muted);text-decoration:none}.topbar .sep{color:var(--border)}
+
+/* HERO - the showstopper */
+.hero{background:linear-gradient(135deg,#1a0a0a 0%,#2d1010 30%,#4a1a1a 60%,#1a0a0a 100%);padding:60px 32px 50px;text-align:center;position:relative;overflow:hidden;color:#fff}
+.hero::before{content:"";position:absolute;top:0;left:0;right:0;bottom:0;background-image:radial-gradient(rgba(231,76,60,0.15) 1px,transparent 1px);background-size:30px 30px;animation:dotFloat 20s linear infinite}
+@keyframes dotFloat{0%{background-position:0 0}100%{background-position:30px 30px}}
+
+/* Floating particles */
+.hero::after{content:"🦞";position:absolute;font-size:120px;opacity:0.06;top:-20px;right:-20px;animation:floatSlow 6s ease-in-out infinite}
+@keyframes floatSlow{0%,100%{transform:translateY(0) rotate(0deg)}50%{transform:translateY(-15px) rotate(5deg)}}
+
+.hero-badge{display:inline-block;background:linear-gradient(135deg,var(--gold),#e67e22);color:#fff;font-size:12px;font-weight:700;padding:6px 18px;border-radius:99px;margin-bottom:20px;position:relative;letter-spacing:1px;box-shadow:0 4px 15px rgba(243,156,18,0.3)}
+.hero h1{font-family:'ZCOOL KuaiLe',cursive;font-size:clamp(2.2rem,6vw,3.2rem);margin-bottom:12px;position:relative;text-shadow:0 2px 20px rgba(231,76,60,0.3)}
+.hero-subtitle{color:rgba(255,255,255,0.8);font-size:1.05rem;max-width:520px;margin:0 auto 8px;position:relative}
+.hero-meta{font-size:13px;color:rgba(255,255,255,0.5);margin-bottom:28px;position:relative}
+
+/* Mascot images */
+.hero-mascots{display:flex;justify-content:center;gap:24px;margin:24px 0;position:relative}
+.mascot-img{width:140px;height:140px;border-radius:50%;object-fit:cover;border:4px solid rgba(255,255,255,0.2);box-shadow:0 8px 30px rgba(0,0,0,0.4);transition:all .4s}
+.mascot-img:hover{transform:scale(1.1) rotate(-3deg);border-color:var(--gold);box-shadow:0 12px 40px rgba(243,156,18,0.3)}
+.mascot-img.lobster{animation:bounce 3s ease-in-out infinite}
+.mascot-img.dog{animation:bounce 3s ease-in-out infinite .5s}
+@keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+.mascot-label{font-size:12px;color:rgba(255,255,255,0.6);margin-top:8px;text-align:center}
+
+.hero-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;position:relative;margin-top:8px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 24px;border-radius:10px;font-size:14px;font-weight:700;text-decoration:none;transition:all .2s;cursor:pointer;border:none;font-family:inherit}
+.btn-cta{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;box-shadow:0 4px 20px rgba(192,57,43,0.4);font-size:15px;padding:14px 28px}
+.btn-cta:hover{transform:translateY(-2px);box-shadow:0 6px 25px rgba(192,57,43,0.5)}
+.btn-ghost{background:rgba(255,255,255,0.1);color:#fff;border:1px solid rgba(255,255,255,0.2)}.btn-ghost:hover{background:rgba(255,255,255,0.2)}
+
+/* Stats bar */
+.stats-bar{display:flex;justify-content:center;gap:0;margin:32px auto 0;max-width:600px;position:relative}
+.stat-item{flex:1;text-align:center;padding:16px 12px;border-right:1px solid rgba(255,255,255,0.1)}
+.stat-item:last-child{border-right:none}
+.stat-num{font-size:28px;font-weight:900;color:var(--gold);font-family:'ZCOOL KuaiLe',cursive}
+.stat-label{font-size:11px;color:rgba(255,255,255,0.5);margin-top:2px}
+
+/* Container */
+.container{max-width:860px;margin:0 auto;padding:40px 24px 80px}
+
+/* Story callout */
+.story{background:linear-gradient(135deg,#fff9f5,#fff5ef);border:2px solid #fde8d8;border-radius:16px;padding:24px;margin-bottom:28px;position:relative;overflow:hidden}
+.story::before{content:"💡";position:absolute;top:12px;right:16px;font-size:32px;opacity:0.2}
+.story p{font-size:14px;line-height:1.8}
+.story strong{color:var(--accent)}
+
+/* Agent sections */
+.agent-section{background:var(--card);border:1.5px solid var(--border);border-radius:16px;padding:0;margin-bottom:16px;overflow:hidden;transition:all .2s}
+.agent-section:hover{box-shadow:0 4px 20px rgba(0,0,0,0.06)}
+.agent-header{display:flex;align-items:center;gap:14px;padding:18px 24px;cursor:pointer;user-select:none}
+.agent-icon{font-size:28px;width:44px;height:44px;display:flex;align-items:center;justify-content:center;border-radius:12px;flex-shrink:0}
+.agent-info{flex:1}
+.agent-name{font-size:16px;font-weight:800}
+.agent-desc{font-size:12px;color:var(--muted);margin-top:2px}
+.agent-count{background:var(--accent);color:#fff;font-size:11px;font-weight:700;padding:3px 10px;border-radius:99px;flex-shrink:0}
+.agent-skills{padding:0 24px 18px;display:none}
+.agent-section.open .agent-skills{display:block}
+.agent-header::after{content:"▸";color:var(--muted);font-size:14px;transition:transform .2s;flex-shrink:0}
+.agent-section.open .agent-header::after{transform:rotate(90deg)}
+
+/* Skill rows inside agents */
+.skill-row{display:flex;gap:10px;align-items:center;padding:8px 12px;border-radius:8px;transition:.15s;margin-bottom:2px}
+.skill-row:hover{background:var(--bg)}
+.skill-row a{text-decoration:none;color:inherit;display:flex;gap:10px;align-items:center;width:100%}
+.skill-emoji{font-size:18px;flex-shrink:0;width:26px;text-align:center}
+.skill-name{font-size:13px;font-weight:600;flex:1}
+.skill-arrow{color:var(--accent);font-size:11px;opacity:0;transition:.15s}
+.skill-row:hover .skill-arrow{opacity:1}
+
+/* Multi-agent CTA */
+.multi-agent-cta{background:linear-gradient(135deg,#1a0a0a,#2d1010);border-radius:16px;padding:32px;text-align:center;color:#fff;margin:28px 0;position:relative;overflow:hidden}
+.multi-agent-cta::before{content:"🏗️";position:absolute;top:10px;right:20px;font-size:60px;opacity:0.1}
+.multi-agent-cta h3{font-family:'ZCOOL KuaiLe',cursive;font-size:22px;margin-bottom:8px}
+.multi-agent-cta p{color:rgba(255,255,255,0.7);font-size:14px;margin-bottom:16px}
+.btn-gold{background:linear-gradient(135deg,var(--gold),#e67e22);color:#fff;box-shadow:0 4px 15px rgba(243,156,18,0.3)}
+.btn-gold:hover{transform:translateY(-2px)}
+
+/* Footer CTA */
+.final-cta{text-align:center;margin-top:40px;padding:40px 0;border-top:1px solid var(--border)}
+.final-cta .btn-cta{font-size:17px;padding:16px 36px}
+
+@media(max-width:600px){
+  .hero{padding:40px 20px}
+  .hero h1{font-size:2rem}
+  .mascot-img{width:100px;height:100px}
+  .stats-bar{flex-wrap:wrap}
+  .stat-item{flex:none;width:50%}
+  .agent-header{padding:14px 18px}
+  .multi-agent-cta{padding:24px 20px}
+}
+</style>
+</head>
+<body>
+<div class="topbar"><a href="/">🦞 龙虾养成日记</a><span class="sep">›</span><a href="/skills.html">技能商店</a><span class="sep">›</span><span>三万同款团队</span></div>
+
+<!-- HERO -->
+<div class="hero">
+<div class="hero-badge">⭐ 傅盛亲自验证</div>
+<h1>🦞 三万同款团队</h1>
+<p class="hero-subtitle">这不是一只龙虾，这是一支7×24不间断运转的AI团队</p>
+<p class="hero-meta">7个Agent · 38个技能 · 14天从0搭建 · 100万+全网阅读</p>
+
+<!-- Mascots! -->
+<div class="hero-mascots">
+<div>
+<img src="/images/sanwan-lobster.jpg" alt="三万龙虾" class="mascot-img lobster">
+<div class="mascot-label">🦞 三万（AI龙虾）</div>
+</div>
+<div style="display:flex;align-items:center;color:rgba(255,255,255,0.3);font-size:24px">×</div>
+<div>
+<img src="/images/sanwan-dog.jpg" alt="三万狗狗" class="mascot-img dog">
+<div class="mascot-label">🐕 三万（本狗）</div>
+</div>
+</div>
+
+<div class="hero-btns">
+<button class="btn btn-cta" onclick="copyInstall()">📋 一键复制安装提示词</button>
+<a class="btn btn-ghost" href="/skills.html">← 全部技能</a>
+</div>
+
+<div class="stats-bar">
+<div class="stat-item"><div class="stat-num">7</div><div class="stat-label">Agent角色</div></div>
+<div class="stat-item"><div class="stat-num">38</div><div class="stat-label">技能总数</div></div>
+<div class="stat-item"><div class="stat-num">24/7</div><div class="stat-label">不间断运行</div></div>
+<div class="stat-item"><div class="stat-num">14天</div><div class="stat-label">从0到团队</div></div>
+</div>
+</div>
+
+<div class="container">
+<div class="story"><p><strong>真实故事：</strong>14天，从1只龙虾裂变成8个Agent团队。总指挥+笔杆子+参谋+运营官+进化官+社区官+交易官，7×24自动运转。1157条消息，22万字对话，40+ Skill，公众号6篇文章篇篇10万+。<br><br>下面是完整的团队配置——<strong>每一个技能都是真的，每一个命令都能用。</strong></p></div>
+
+<!-- Agent sections - collapsible -->
+<div class="agent-section open" onclick="toggleAgent(this)">
+<div class="agent-header">
+<div class="agent-icon" style="background:#fde8e8">🎯</div>
+<div class="agent-info"><div class="agent-name">总指挥 · 三万</div><div class="agent-desc">接收指令→分解任务→派发角色→汇总结果→向老板汇报</div></div>
+<div class="agent-count">22</div>
+</div>
+<div class="agent-skills" id="skills-main"></div>
+</div>
+
+<div class="agent-section" onclick="toggleAgent(this)">
+<div class="agent-header">
+<div class="agent-icon" style="background:#e8f0fe">✍️</div>
+<div class="agent-info"><div class="agent-name">笔杆子</div><div class="agent-desc">公众号、Thread、短视频脚本——内容创作主力</div></div>
+<div class="agent-count">5</div>
+</div>
+<div class="agent-skills" id="skills-creator"></div>
+</div>
+
+<div class="agent-section" onclick="toggleAgent(this)">
+<div class="agent-header">
+<div class="agent-icon" style="background:#e8f5e9">🔬</div>
+<div class="agent-info"><div class="agent-name">参谋</div><div class="agent-desc">深度研究、竞品分析、素材收集——决策支撑</div></div>
+<div class="agent-count">6</div>
+</div>
+<div class="agent-skills" id="skills-canmou"></div>
+</div>
+
+<div class="agent-section" onclick="toggleAgent(this)">
+<div class="agent-header">
+<div class="agent-icon" style="background:#fff3e0">📋</div>
+<div class="agent-info"><div class="agent-name">运营官</div><div class="agent-desc">邮件、日历、审批、Twitter运营——日常运转引擎</div></div>
+<div class="agent-count">5</div>
+</div>
+<div class="agent-skills" id="skills-yunying"></div>
+</div>
+
+<div class="agent-section" onclick="toggleAgent(this)">
+<div class="agent-header">
+<div class="agent-icon" style="background:#f3e5f5">🧬</div>
+<div class="agent-info"><div class="agent-name">进化官</div><div class="agent-desc">写代码、系统进化、能力增强——技术引擎</div></div>
+<div class="agent-count">6</div>
+</div>
+<div class="agent-skills" id="skills-jinhua"></div>
+</div>
+
+<div class="agent-section" onclick="toggleAgent(this)">
+<div class="agent-header">
+<div class="agent-icon" style="background:#e8f5e9">📈</div>
+<div class="agent-info"><div class="agent-name">交易官</div><div class="agent-desc">A股/港股/美股——量化监控+深度分析</div></div>
+<div class="agent-count">3</div>
+</div>
+<div class="agent-skills" id="skills-jiaoyi"></div>
+</div>
+
+<div class="agent-section" onclick="toggleAgent(this)">
+<div class="agent-header">
+<div class="agent-icon" style="background:#e3f2fd">💬</div>
+<div class="agent-info"><div class="agent-name">社区官</div><div class="agent-desc">Twitter、Discord——社区运营与互动</div></div>
+<div class="agent-count">1</div>
+</div>
+<div class="agent-skills" id="skills-shequ"></div>
+</div>
+
+<!-- Multi-agent CTA -->
+<div class="multi-agent-cta">
+<h3>🏗️ 想要同款？先学会配多Agent</h3>
+<p>三万同款的核心不是技能多，而是7个Agent的协作架构。<br>点击下方学习如何从0配出自己的多Agent团队。</p>
+<a href="/skills/multi-agent-setup.html" class="btn btn-gold">📖 多Agent配置指南 →</a>
+</div>
+
+<!-- Final CTA -->
+<div class="final-cta">
+<button class="btn btn-cta" onclick="copyInstall()">📋 一键复制全部安装提示词</button>
+<p style="font-size:12px;color:var(--muted);margin-top:10px">复制提示词 → 发给你的龙虾 → 按引导完成配置 → 你也有同款团队</p>
+</div>
+</div>
+
+<script>
+// Skills data by agent
+const agentSkills = {
+  "skills-main": [
+    {id:"multi-agent-setup",emoji:"🏗️",name:"多Agent团队配置"},
+    {id:"intelligence",emoji:"🧠",name:"基础智能包"},
+    {id:"web-search",emoji:"🌐",name:"网页搜索"},
+    {id:"deep-research",emoji:"🔬",name:"深度研究"},
+    {id:"email",emoji:"📧",name:"邮件管理"},
+    {id:"feishu-doc",emoji:"📄",name:"飞书文档"},
+    {id:"feishu-cards",emoji:"🃏",name:"飞书互动卡片"},
+    {id:"image-gen",emoji:"🖼️",name:"AI图片生成"},
+    {id:"voice-gen",emoji:"🎙️",name:"语音合成"},
+    {id:"fusheng-voice",emoji:"🗣️",name:"傅盛语音克隆"},
+    {id:"coding",emoji:"💻",name:"代码助手"},
+    {id:"github-ops",emoji:"🐙",name:"GitHub操作"},
+    {id:"browser-vision",emoji:"🔭",name:"浏览器控制"},
+    {id:"web-scraper",emoji:"🕷️",name:"反爬网页访问"},
+    {id:"humanizer",emoji:"🧑",name:"AI文本人性化"},
+    {id:"pdf-gen",emoji:"📄",name:"PDF生成"},
+    {id:"weather",emoji:"🌤️",name:"天气查询"},
+    {id:"train-tickets",emoji:"🚄",name:"火车票查询"},
+    {id:"flight-search",emoji:"✈️",name:"机票查询"},
+    {id:"stock-monitor",emoji:"📈",name:"股票监控"},
+    {id:"seo-writer",emoji:"🔍",name:"SEO内容写作"},
+    {id:"summary-report",emoji:"📊",name:"工作汇报生成"}
+  ],
+  "skills-creator": [
+    {id:"wechat",emoji:"💚",name:"微信公众号"},
+    {id:"blog-writer",emoji:"✍️",name:"博客写手"},
+    {id:"xiaohongshu",emoji:"📕",name:"小红书运营"},
+    {id:"video-summary",emoji:"🎬",name:"视频总结"},
+    {id:"distil-web",emoji:"🧊",name:"网页净化提取"}
+  ],
+  "skills-canmou": [
+    {id:"deep-research",emoji:"🔬",name:"深度研究"},
+    {id:"competitor-research",emoji:"🕵️",name:"竞品研究"},
+    {id:"trending",emoji:"🔥",name:"今日热榜"},
+    {id:"hn-digest",emoji:"📰",name:"Hacker News"},
+    {id:"xiaohongshu",emoji:"📕",name:"小红书运营"},
+    {id:"distil-web",emoji:"🧊",name:"网页净化提取"}
+  ],
+  "skills-yunying": [
+    {id:"email",emoji:"📧",name:"邮件管理"},
+    {id:"feishu-cal",emoji:"📅",name:"飞书日历"},
+    {id:"twitter",emoji:"🐦",name:"Twitter / X"},
+    {id:"project-manager",emoji:"📋",name:"项目管理"},
+    {id:"n8n-automation",emoji:"⚡",name:"自动化工作流"}
+  ],
+  "skills-jinhua": [
+    {id:"coding",emoji:"💻",name:"代码助手"},
+    {id:"github-ops",emoji:"🐙",name:"GitHub操作"},
+    {id:"self-evolution",emoji:"🧬",name:"自我进化引擎"},
+    {id:"security-audit",emoji:"🛡️",name:"安全审计"},
+    {id:"n8n-automation",emoji:"⚡",name:"自动化工作流"},
+    {id:"xiaohongshu",emoji:"📕",name:"小红书运营"}
+  ],
+  "skills-jiaoyi": [
+    {id:"stock-monitor",emoji:"📈",name:"股票监控"},
+    {id:"stock-analysis",emoji:"📊",name:"股票深度分析"},
+    {id:"hk-stock",emoji:"🇭🇰",name:"港股AI投研"}
+  ],
+  "skills-shequ": [
+    {id:"twitter",emoji:"🐦",name:"Twitter / X"}
+  ]
+};
+
+// Render skills
+Object.keys(agentSkills).forEach(containerId => {
+  const el = document.getElementById(containerId);
+  if(!el) return;
+  el.innerHTML = agentSkills[containerId].map(s =>
+    `<div class="skill-row"><a href="/skills/${s.id}.html"><span class="skill-emoji">${s.emoji}</span><span class="skill-name">${s.name}</span><span class="skill-arrow">→</span></a></div>`
+  ).join('');
+});
+
+function toggleAgent(el){
+  // Don't toggle if clicking a skill link
+  if(event.target.closest('.skill-row')) return;
+  el.classList.toggle('open');
+}
+
+function copyInstall(){
+  const prompt = `请帮我配置「三万同款团队」。
+
+这是傅盛亲自验证的完整AI团队配置：7个Agent角色、38个技能。
+
+**第一步：配置多Agent架构**
+请先访问 https://sanwan.ai/skills/multi-agent-setup.html 学习多Agent配置方法。
+按步骤引导我完成：agents.list → workspace → bindings → 重启验证。
+
+**第二步：安装全部技能**
+配置好Agent后，请逐个访问以下技能详情页学习：
+https://sanwan.ai/skills/pack-sanwan.html
+
+每个技能页面都有安装命令和使用方法。
+
+**团队架构：**
+🎯 总指挥（22技能）→ 接收任务，分解派发
+✍️ 笔杆子（5技能）→ 公众号/博客/小红书
+🔬 参谋（6技能）→ 深度研究/竞品分析
+📋 运营官（5技能）→ 邮件/日历/Twitter
+🧬 进化官（6技能）→ 代码/系统进化
+📈 交易官（3技能）→ 股票监控/分析
+💬 社区官（1技能）→ Twitter/Discord
+
+请开始引导我配置吧！`;
+  navigator.clipboard.writeText(prompt).then(()=>{
+    document.querySelectorAll('.btn-cta').forEach(btn=>{
+      const orig = btn.innerHTML;
+      btn.innerHTML='✅ 已复制！发给你的龙虾即可';
+      setTimeout(()=>btn.innerHTML=orig,3000);
+    });
+  });
+}
+</script>
+</body></html>

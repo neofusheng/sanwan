@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>领养你的龙虾 🦞 - EasyClaw</title>
+<meta name="description" content="免费领养你的AI龙虾助手。一键安装，零配置，连接你的聊天工具，开始对话。">
+<meta property="og:title" content="🦞 领养你的龙虾 - EasyClaw">
+<meta property="og:description" content="一键安装，零配置。你的私人AI龙虾助手。">
+<meta property="og:image" content="https://sanwan.ai/ppt/page-01.jpg">
+<meta property="og:url" content="https://sanwan.ai/easyclaw.html">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦞</text></svg>">
+<link href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-webfont@1.7.0/style.css" rel="stylesheet">
+<style>@font-face{font-family:"Smiley Sans";src:url("fonts/smiley-sans.woff2") format("woff2");font-display:swap}</style>
+<link href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-webfont@1.7.0/style.css" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#faf8f4;color:#333}
+nav{position:fixed;top:0;left:0;width:100%;z-index:1000;display:flex;align-items:center;justify-content:space-between;padding:0 24px;height:56px;background:rgba(255,255,255,0.97);backdrop-filter:blur(12px);border-bottom:2px solid #e8e4df;box-shadow:0 1px 8px rgba(0,0,0,0.04)}
+nav .logo{font-size:22px;font-weight:800;color:#c0392b;text-decoration:none;font-family:'ZCOOL KuaiLe',sans-serif}
+nav .links{display:flex;gap:20px}
+nav .links a{color:#555;text-decoration:none;font-weight:600;padding:6px 4px;font-size:15px}
+nav .links a:hover{color:#c0392b} .hamburger{display:none;background:none;border:none;font-size:15px;cursor:pointer;color:#333;font-weight:600;padding:6px 12px;border-radius:8px;border:1.5px solid #ddd}
+
+.hero{text-align:center;padding:80px 20px 30px;background:linear-gradient(180deg,#fff 0%,#faf8f4 100%)}
+.hero .lobster{font-size:80px;margin-bottom:16px;display:block;animation:float 3s ease-in-out infinite}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+.hero h1{font-size:34px;font-weight:900;margin-bottom:12px;color:#c0392b;font-family:'LXGW WenKai','Noto Sans SC',sans-serif}
+.hero p{font-size:16px;color:#777;max-width:500px;margin:0 auto 20px}
+
+.versions{display:grid;grid-template-columns:1fr 1fr;gap:16px;max-width:700px;margin:0 auto 40px;padding:0 20px}
+.version-card{border:2px solid #eee;border-radius:12px;padding:24px;text-align:center;background:#fff;transition:.2s}
+.version-card:hover{border-color:#c0392b;transform:translateY(-2px)}
+.version-card.recommended{border-color:#c0392b;position:relative}
+.version-card.recommended::after{content:'⭐推荐';position:absolute;top:-10px;right:16px;background:#c0392b;color:#fff;font-size:11px;font-weight:700;padding:2px 10px;border-radius:10px}
+.version-card h3{font-size:18px;font-weight:800;margin:8px 0 4px}
+.version-card .subtitle{font-size:13px;color:#c0392b;font-weight:600;margin-bottom:12px}
+.version-card ul{text-align:left;font-size:13px;line-height:2;list-style:none;padding:0}
+.version-card li::before{content:'✅ ';margin-right:4px}
+.version-card .btn{display:inline-block;margin-top:16px;padding:10px 24px;border-radius:8px;font-weight:700;font-size:14px;text-decoration:none;transition:.2s}
+.version-card .btn-primary{background:#c0392b;color:#fff}
+.version-card .btn-primary:hover{background:#a93226}
+.version-card .btn-secondary{background:#fff;color:#c0392b;border:2px solid #c0392b}
+
+.section{max-width:800px;margin:0 auto;padding:30px 20px}
+.section h2{font-size:28px;font-weight:900;text-align:center;margin-bottom:24px;font-family:'LXGW WenKai','Noto Sans SC',sans-serif}
+
+.step{background:#fff;border:2px solid #eee;border-radius:12px;padding:24px;margin-bottom:16px;position:relative;padding-left:80px}
+.step-num{position:absolute;left:20px;top:24px;width:44px;height:44px;background:#c0392b;color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:18px}
+.step h3{font-size:17px;font-weight:700;margin-bottom:4px}
+.step .time{font-size:12px;color:#c0392b;font-weight:600;margin-bottom:8px}
+.step p{font-size:14px;color:#666;line-height:1.6}
+
+.channels{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:12px;margin-top:16px}
+.channel{text-align:center;padding:16px 8px;border:2px solid #eee;border-radius:10px;background:#fff;transition:.2s}
+.channel:hover{border-color:#c0392b;transform:translateY(-2px)}
+.channel .ch-icon{font-size:28px;display:block;margin-bottom:6px}
+.channel .ch-name{font-size:13px;font-weight:700}
+
+.flow{display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap;margin:30px 0;padding:0 20px}
+.flow-step{text-align:center;padding:12px 16px;background:#fff;border:2px solid #eee;border-radius:10px;min-width:90px}
+.flow-step .fl-icon{font-size:24px;display:block;margin-bottom:4px}
+.flow-step .fl-text{font-size:12px;font-weight:600}
+.flow-arrow{font-size:20px;color:#c0392b;font-weight:900}
+
+.features{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:20px}
+.feature{background:#fff;border:2px solid #eee;border-radius:10px;padding:16px}
+.feature h4{font-size:14px;font-weight:700;margin-bottom:6px}
+.feature p{font-size:12px;color:#666;line-height:1.5}
+
+.faq{max-width:800px;margin:0 auto;padding:30px 20px 40px}
+.faq h2{font-size:28px;font-weight:900;text-align:center;margin-bottom:24px;font-family:'LXGW WenKai','Noto Sans SC',sans-serif}
+.faq-item{background:#fff;border:2px solid #eee;border-radius:10px;margin-bottom:10px;overflow:hidden}
+.faq-q{padding:14px 20px;font-weight:700;font-size:15px;cursor:pointer;display:flex;justify-content:space-between;align-items:center}
+.faq-q::after{content:'＋';color:#c0392b;font-size:18px;transition:.2s}
+.faq-item.open .faq-q::after{content:'－'}
+.faq-a{padding:0 20px 14px;font-size:14px;color:#666;line-height:1.6;display:none}
+.faq-item.open .faq-a{display:block}
+
+.final-cta{text-align:center;padding:40px 20px;background:#fff;border-top:2px solid #eee}
+.final-cta h2{font-size:24px;font-weight:900;margin-bottom:10px}
+.final-cta p{font-size:15px;color:#777;margin-bottom:20px}
+.final-cta .btn-big{display:inline-block;background:#c0392b;color:#fff;padding:14px 32px;border-radius:10px;font-weight:800;font-size:16px;text-decoration:none;transition:.2s}
+.final-cta .btn-big:hover{background:#a93226;transform:translateY(-2px);box-shadow:0 6px 20px rgba(192,57,43,0.3)}
+
+footer{text-align:center;padding:20px;font-size:12px;color:#999}
+
+@media(max-width:480px){
+  .versions{grid-template-columns:1fr}
+  .features{grid-template-columns:1fr}
+  .hero h1{font-size:24px}
+  nav .links{display:none} .hamburger{display:block !important} nav .links.open{display:flex;flex-direction:column;position:absolute;top:56px;right:16px;background:#fff;border:1.5px solid #ddd;border-radius:10px;padding:12px 16px;gap:12px;box-shadow:0 4px 15px rgba(0,0,0,0.1)}
+  .step{padding-left:70px}
+}
+</style>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@500;700;900&display=swap" rel="stylesheet"></head>
+<body>
+<nav>
+  <a class="logo" href="/">🦞 龙虾养成日记</a>
+  <button class="hamburger" style="display:none" onclick="document.querySelector('.links').classList.toggle('open')">☰ 菜单</button>
+  <div class="links">
+    <a href="/">首页</a>
+    <a href="diary.html">📖 日记</a>
+    <a href="science.html">🔬 科普</a>
+    <a href="skills.html">🔧 技能</a>
+    <a href="easyclaw.html" style="color:#c0392b">EasyClaw</a>
+  </div>
+</nav>
+
+<div class="hero">
+  <span class="lobster">🦞</span>
+  <h1>领养你的 Baby 龙虾</h1>
+  <p>一键安装，零配置，无需API Key。<br>选择一种方式，开始领养你的专属AI龙虾伙伴。</p>
+</div>
+
+<!-- Two versions -->
+<div class="versions">
+  <div class="version-card recommended">
+    <div style="font-size:36px">💻</div>
+    <h3>个人电脑版</h3>
+    <div class="subtitle">免费 · 立即可用</div>
+    <ul>
+      <li>一键安装，零配置</li>
+      <li>数据完全私有</li>
+      <li>与本地文件深度联动</li>
+      <li>开源透明，自由定制</li>
+    </ul>
+    <a class="btn btn-primary" href="https://easyclaw.com" target="_blank">🦞 免费下载</a>
+  </div>
+  <div class="version-card">
+    <div style="font-size:36px">☁️</div>
+    <h3>企业云上版</h3>
+    <div class="subtitle">7×24在线 · 团队协作</div>
+    <ul>
+      <li>7×24小时不间断运行</li>
+      <li>多Agent团队协作</li>
+      <li>企业级安全与权限</li>
+      <li>无需维护服务器</li>
+    </ul>
+    <a class="btn btn-secondary" href="https://easyclaw.work" target="_blank">了解更多</a>
+  </div>
+</div>
+
+<!-- Adopt Flow -->
+<div class="flow">
+  <div class="flow-step"><span class="fl-icon">💡</span><span class="fl-text">描述想法</span></div>
+  <span class="flow-arrow">→</span>
+  <div class="flow-step"><span class="fl-icon">🦞</span><span class="fl-text">龙虾执行</span></div>
+  <span class="flow-arrow">→</span>
+  <div class="flow-step"><span class="fl-icon">🚀</span><span class="fl-text">即时交付</span></div>
+  <span class="flow-arrow">→</span>
+  <div class="flow-step"><span class="fl-icon">💬</span><span class="fl-text">反馈训练</span></div>
+  <span class="flow-arrow">→</span>
+  <div class="flow-step"><span class="fl-icon">🧬</span><span class="fl-text">龙虾进化</span></div>
+</div>
+
+<!-- Steps -->
+<div class="section">
+  <h2>3步领养，30秒上手</h2>
+
+  <div class="step">
+    <div class="step-num">1</div>
+    <h3>下载安装 EasyClaw</h3>
+    <div class="time">⏱ 约30秒</div>
+    <p>访问 <a href="https://easyclaw.com" style="color:#c0392b;font-weight:700">easyclaw.com</a>，一键下载安装包。支持 macOS / Windows / Linux。<br><strong>零配置，无需API Key，开箱即用。</strong></p>
+  </div>
+
+  <div class="step">
+    <div class="step-num">2</div>
+    <h3>连接你的聊天工具</h3>
+    <div class="time">⏱ 约1分钟</div>
+    <p>把龙虾连到你常用的聊天App。在你已有的工具里直接和龙虾对话，无需下载新App。</p>
+    <div class="channels">
+      <div class="channel"><span class="ch-icon">💬</span><span class="ch-name">WhatsApp</span></div>
+      <div class="channel"><span class="ch-icon">✈️</span><span class="ch-name">Telegram</span></div>
+      <div class="channel"><span class="ch-icon">🎮</span><span class="ch-name">Discord</span></div>
+      <div class="channel"><span class="ch-icon">📘</span><span class="ch-name">飞书</span></div>
+      <div class="channel"><span class="ch-icon">💚</span><span class="ch-name">微信</span></div>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-num">3</div>
+    <h3>开始对话，养成你的龙虾！</h3>
+    <div class="time">🎉 完成！</div>
+    <p>跟龙虾说的第一句话：</p>
+    <div style="background:#faf8f4;border:2px dashed #ddd;border-radius:8px;padding:12px;margin-top:8px;font-size:14px;color:#c0392b;font-weight:600">
+      "嘿，你好！你是谁？我是你的新主人 😊"
+    </div>
+    <p style="margin-top:12px;font-size:13px;color:#888">它会自我介绍、了解你、问你想叫它什么名字。每只龙虾都是独一无二的。</p>
+  </div>
+</div>
+
+<!-- Key Features -->
+<div class="section">
+  <h2>为什么选龙虾？</h2>
+  <div class="features">
+    <div class="feature">
+      <h4>☁️ 7×24 云端在线</h4>
+      <p>你的龙虾永不休息。凌晨三点发消息，秒回。出差路上一句话，活儿就干完了。</p>
+    </div>
+    <div class="feature">
+      <h4>💎 只属于你</h4>
+      <p>数据完全私有，对话记忆、创作偏好不与任何人共享。你的龙虾只忠于你。</p>
+    </div>
+    <div class="feature">
+      <h4>🧬 越用越聪明</h4>
+      <p>教它你的风格、偏好、工作流。用得越多，越像你的分身。你在进化，它也在进化。</p>
+    </div>
+    <div class="feature">
+      <h4>📱 随身多平台</h4>
+      <p>在你已有的聊天工具里直接使用。通勤用WhatsApp，办公用飞书，团队用Discord。</p>
+    </div>
+  </div>
+</div>
+
+<!-- FAQ -->
+<div class="faq">
+  <h2>❓ 常见问题</h2>
+
+  <div class="faq-item open">
+    <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">真的免费吗？</div>
+    <div class="faq-a">EasyClaw 个人电脑版完全免费，开源透明。龙虾跑在你自己的电脑上，数据也在你自己手里。企业云上版提供更多高级功能和7×24托管服务。</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">和ChatGPT有什么区别？</div>
+    <div class="faq-a">ChatGPT是个聊天窗口。龙虾是你的<strong>私人AI助手</strong>——它能记住你、自动执行任务、连接你的工具（日历、邮件、社媒）、24小时待命，还能学会你教它的任何新技能。</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">需要什么样的电脑？</div>
+    <div class="faq-a">只要能跑浏览器就行——MacBook、Windows笔记本都可以。不需要GPU，AI推理跑在云端。甚至树莓派都能跑。</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">数据安全吗？</div>
+    <div class="faq-a">个人电脑版：龙虾跑在你自己的机器上，数据不经过任何第三方服务器。企业云上版：独立云实例，数据隔离，企业级安全。</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Skill技能需要额外付费吗？</div>
+    <div class="faq-a">绝大多数Skill完全免费。ClawHub社区有200+免费技能可供安装。部分高级创作技能（图片、视频生成等）根据使用量计费。</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">怎么给龙虾装新技能？</div>
+    <div class="faq-a">在 <a href="https://clawhub.com" style="color:#c0392b">ClawHub.com</a> 浏览技能市场，找到想要的Skill点击安装，或者直接跟龙虾说"帮我安装XX技能"，它会自动搞定。</div>
+  </div>
+</div>
+
+<!-- Final CTA -->
+<div class="final-cta">
+  <h2>准备好了吗？</h2>
+  <p>领养你的第一只AI龙虾，30秒后它就是你的了 🦞</p>
+  <a class="btn-big" href="https://easyclaw.com" target="_blank">🦞 免费下载 EasyClaw</a>
+</div>
+
+<footer>
+  <p>🦞 sanwan.ai — 我的龙虾三万养成日记</p>
+  <p style="margin-top:4px">Powered by <a href="https://easyclaw.com" style="color:#c0392b;text-decoration:none">EasyClaw</a> · Built with ❤️ by 傅盛 & AI Team</p>
+</footer>
+
+<script defer src="https://cdn.vercel-insights.com/v1/script.js"></script>
+</body>
+</html>

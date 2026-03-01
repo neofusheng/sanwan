@@ -1,0 +1,200 @@
+[
+  {
+    "id": "all-in-one",
+    "name": "全能创作包",
+    "emoji": "🎨",
+    "category": "create",
+    "desc": "图片+视频+音乐，一个技能搞定全链路创作。集成多模型，覆盖完整创作管线。",
+    "tags": ["official", "featured"],
+    "models": ["Nano Banana", "Midjourney", "SeeDream", "Wan", "Kling", "Sora", "Suno"]
+  },
+  {
+    "id": "intelligence",
+    "name": "基础智能包",
+    "emoji": "🧠",
+    "category": "brain",
+    "desc": "龙虾出厂标配。记忆系统、上下文管理、任务追踪、深度调研——开箱即智能。",
+    "tags": ["official", "essential"],
+    "models": ["记忆系统", "项目记忆", "任务追踪", "深度调研", "上下文管理"]
+  },
+  {
+    "id": "image-gen",
+    "name": "AI 图片生成",
+    "emoji": "🖼️",
+    "category": "create",
+    "desc": "10+ 模型，文生图、图生图，一句话出图。支持风格迁移、局部重绘。",
+    "tags": ["official"],
+    "models": ["Nano Banana Pro", "Midjourney", "DALL-E", "Imagen"]
+  },
+  {
+    "id": "video-gen",
+    "name": "AI 视频制作",
+    "emoji": "🎬",
+    "category": "create",
+    "desc": "20+ 模型，广告片、短剧、MV，分钟级交付。支持文生视频、图生视频。",
+    "tags": ["official"],
+    "models": ["Wan", "Kling", "Sora", "Veo"]
+  },
+  {
+    "id": "music-gen",
+    "name": "AI 音乐创作",
+    "emoji": "🎵",
+    "category": "create",
+    "desc": "歌曲、BGM、音效，自定义风格和人声。输入一段描述，秒出音乐。",
+    "tags": ["official"],
+    "models": ["Suno", "DouBao"]
+  },
+  {
+    "id": "wechat",
+    "name": "微信公众号",
+    "emoji": "💚",
+    "category": "social",
+    "desc": "Markdown一键发公众号草稿箱。排版、配图、发布全自动。",
+    "tags": ["official"],
+    "models": []
+  },
+  {
+    "id": "twitter",
+    "name": "Twitter / X",
+    "emoji": "🐦",
+    "category": "social",
+    "desc": "搜索+发布+互动分析。Thread编排、定时发布、数据追踪一站式。",
+    "tags": ["official"],
+    "models": []
+  },
+  {
+    "id": "xiaohongshu",
+    "name": "小红书创作",
+    "emoji": "📕",
+    "category": "social",
+    "desc": "笔记撰写+封面生成+一键发布。自动追热点、生成爆款文案。",
+    "tags": ["official", "hot"],
+    "models": []
+  },
+  {
+    "id": "xhs-analytics",
+    "name": "小红书分析",
+    "emoji": "📊",
+    "category": "social",
+    "desc": "热点追踪、舆情分析、竞品监控。数据驱动内容策略。",
+    "tags": ["official"],
+    "models": []
+  },
+  {
+    "id": "social-engine",
+    "name": "社媒内容引擎",
+    "emoji": "📱",
+    "category": "social",
+    "desc": "策略+内容+排期+分析，全平台社媒自动化管理。",
+    "tags": ["community"],
+    "models": []
+  },
+  {
+    "id": "blog-writer",
+    "name": "博客写手",
+    "emoji": "✍️",
+    "category": "write",
+    "desc": "个人风格博客，从调研到发布全流程。SEO优化，自动配图。",
+    "tags": ["community"],
+    "models": []
+  },
+  {
+    "id": "humanizer",
+    "name": "AI 文本人性化",
+    "emoji": "🧑",
+    "category": "write",
+    "desc": "去除AI痕迹，让文字更自然。6种风格变换，16种检测模式。",
+    "tags": ["community", "hot"],
+    "models": []
+  },
+  {
+    "id": "deep-research",
+    "name": "深度研究",
+    "emoji": "🔍",
+    "category": "brain",
+    "desc": "AI Researcher + 多引擎搜索，结构化分析报告。竞品分析、行业报告。",
+    "tags": ["official"],
+    "models": []
+  },
+  {
+    "id": "web-search",
+    "name": "网页搜索 & 分析",
+    "emoji": "🌐",
+    "category": "brain",
+    "desc": "实时联网搜索，深度研究，竞品分析。Brave + DuckDuckGo 多引擎。",
+    "tags": ["community"],
+    "models": []
+  },
+  {
+    "id": "weather",
+    "name": "天气查询",
+    "emoji": "🌤️",
+    "category": "tools",
+    "desc": "实时天气和预报，免API Key。支持全球城市。",
+    "tags": ["community"],
+    "models": []
+  },
+  {
+    "id": "feishu-cal",
+    "name": "飞书日历",
+    "emoji": "📅",
+    "category": "tools",
+    "desc": "查询、创建、修改日历事件。与飞书深度集成。",
+    "tags": ["official"],
+    "models": []
+  },
+  {
+    "id": "feishu-doc",
+    "name": "飞书文档",
+    "emoji": "📄",
+    "category": "tools",
+    "desc": "读写飞书云文档、知识库。自动化文档管理。",
+    "tags": ["official"],
+    "models": []
+  },
+  {
+    "id": "email",
+    "name": "邮件管理",
+    "emoji": "📧",
+    "category": "tools",
+    "desc": "邮件监控、智能摘要、自动回复。支持飞书邮箱和IMAP。",
+    "tags": ["official"],
+    "models": []
+  },
+  {
+    "id": "coding",
+    "name": "代码助手",
+    "emoji": "💻",
+    "category": "brain",
+    "desc": "通过Claude Code执行复杂编程任务。新建项目、重构代码、自动测试。",
+    "tags": ["official"],
+    "models": ["Claude Code"]
+  },
+  {
+    "id": "seo-writer",
+    "name": "SEO Writer",
+    "emoji": "🔍",
+    "category": "write",
+    "desc": "搜索引擎+读者双优化长文。关键词分析、结构化内容。",
+    "tags": ["community"],
+    "models": []
+  },
+  {
+    "id": "linkedin",
+    "name": "LinkedIn Writer",
+    "emoji": "💼",
+    "category": "social",
+    "desc": "写出像真人的LinkedIn帖子。专业+有温度。",
+    "tags": ["community"],
+    "models": []
+  },
+  {
+    "id": "clawhub",
+    "name": "200+ 扩展 Skill",
+    "emoji": "🧩",
+    "category": "tools",
+    "desc": "ClawHub 技能市场，一键安装新能力。社区共建，持续增长。",
+    "tags": ["community", "hot"],
+    "models": []
+  }
+]

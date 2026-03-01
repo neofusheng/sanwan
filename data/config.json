@@ -1,0 +1,19 @@
+{
+  "site": {
+    "title": "龙虾养成日记",
+    "subtitle": "我的龙虾三万养成日记",
+    "author": "傅盛",
+    "description": "一个CEO骨折在家14天，从零养了一只AI龙虾的真实故事",
+    "url": "https://sanwan.ai"
+  },
+  "stats": {
+    "messages": 1157,
+    "words": "22万",
+    "agents": 8,
+    "skills": 33
+  },
+  "homepage": {
+    "featuredDiaries": ["day15", "day1", "day6", "day14"],
+    "heroImage": "ppt/page-01.jpg"
+  }
+}

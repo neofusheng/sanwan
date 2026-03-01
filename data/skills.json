@@ -1,0 +1,489 @@
+[
+  {
+    "id": "multi-agent-setup",
+    "emoji": "🏗️",
+    "name": "多Agent团队配置",
+    "desc": "一只龙虾变一支团队——配置多个AI角色协作，总指挥+笔杆子+参谋+运营官。",
+    "category": "dev",
+    "tags": [
+      "official",
+      "essential",
+      "hot"
+    ],
+    "models": []
+  },
+  {
+    "id": "web-search",
+    "emoji": "🌐",
+    "name": "网页搜索",
+    "desc": "Brave搜索+DuckDuckGo多引擎搜索，实时获取网络信息。",
+    "category": "research",
+    "tags": [
+      "official",
+      "essential"
+    ],
+    "models": []
+  },
+  {
+    "id": "deep-research",
+    "emoji": "🔬",
+    "name": "深度研究",
+    "desc": "多引擎搜索+网页提取+结构化分析报告。",
+    "category": "research",
+    "tags": [
+      "official"
+    ],
+    "models": []
+  },
+  {
+    "id": "weather",
+    "emoji": "🌤️",
+    "name": "天气查询",
+    "desc": "全球天气实时查询，wttr.in + Open-Meteo双源。",
+    "category": "life",
+    "tags": [
+      "official",
+      "essential"
+    ],
+    "models": []
+  },
+  {
+    "id": "email",
+    "emoji": "📧",
+    "name": "邮件管理",
+    "desc": "飞书邮件监控+ClawPost邮箱，自动检查+智能回复。",
+    "category": "office",
+    "tags": [
+      "official"
+    ],
+    "models": []
+  },
+  {
+    "id": "feishu-doc",
+    "emoji": "📄",
+    "name": "飞书文档",
+    "desc": "飞书文档读写、知识库管理、多维表格操作。",
+    "category": "office",
+    "tags": [
+      "official"
+    ],
+    "models": []
+  },
+  {
+    "id": "feishu-cal",
+    "emoji": "📅",
+    "name": "飞书日历",
+    "desc": "日程读取、会议安排、日程提醒。",
+    "category": "office",
+    "tags": [
+      "official"
+    ],
+    "models": []
+  },
+  {
+    "id": "feishu-cards",
+    "emoji": "🃏",
+    "name": "飞书互动卡片",
+    "desc": "发送按钮、表单、投票、链接卡片。",
+    "category": "office",
+    "tags": [
+      "official",
+      "essential"
+    ],
+    "models": []
+  },
+  {
+    "id": "image-gen",
+    "emoji": "🖼️",
+    "name": "AI图片生成",
+    "desc": "Nano Banana Pro(Gemini 3)文生图、图生图、风格迁移。",
+    "category": "creation",
+    "tags": [
+      "official",
+      "essential"
+    ],
+    "models": []
+  },
+  {
+    "id": "voice-gen",
+    "emoji": "🎙️",
+    "name": "语音合成",
+    "desc": "中文多音色TTS，飞书原生语音条发送。edge-tts+ffmpeg。",
+    "category": "creation",
+    "tags": [
+      "official",
+      "essential"
+    ],
+    "models": []
+  },
+  {
+    "id": "coding",
+    "emoji": "💻",
+    "name": "代码助手",
+    "desc": "Claude Code/Codex写代码、改Bug、部署。PTY模式自动应答。",
+    "category": "dev",
+    "tags": [
+      "official"
+    ],
+    "models": []
+  },
+  {
+    "id": "github-ops",
+    "emoji": "🐙",
+    "name": "GitHub操作",
+    "desc": "仓库/Issues/PR/代码搜索/Actions，不开网页管GitHub。",
+    "category": "dev",
+    "tags": [
+      "official"
+    ],
+    "models": []
+  },
+  {
+    "id": "browser-vision",
+    "emoji": "🔭",
+    "name": "浏览器控制",
+    "desc": "无头Chrome截图、网页自动化、视觉调试。",
+    "category": "dev",
+    "tags": [
+      "official",
+      "essential"
+    ],
+    "models": []
+  },
+  {
+    "id": "humanizer",
+    "emoji": "🧑",
+    "name": "AI文本人性化",
+    "desc": "16种检测模式+6种风格转换，去除AI味。支持小红书/知乎/学术风格。",
+    "category": "creation",
+    "tags": [
+      "official",
+      "essential"
+    ],
+    "models": []
+  },
+  {
+    "id": "wechat",
+    "emoji": "💚",
+    "name": "微信公众号",
+    "desc": "傅盛写作风格+标题策略+排版规范，完整公众号创作流程。",
+    "category": "creation",
+    "tags": [
+      "official"
+    ],
+    "models": []
+  },
+  {
+    "id": "twitter",
+    "emoji": "🐦",
+    "name": "Twitter / X",
+    "desc": "发推/Thread/转推/删除，@FuSheng_0306账号运营。",
+    "category": "social",
+    "tags": [
+      "official"
+    ],
+    "models": []
+  },
+  {
+    "id": "xiaohongshu",
+    "emoji": "📕",
+    "name": "小红书运营",
+    "desc": "搜索笔记、发布内容、分析评论。基于xiaohongshu-mcp(8400+⭐)。",
+    "category": "social",
+    "tags": [
+      "official",
+      "hot"
+    ],
+    "models": []
+  },
+  {
+    "id": "web-scraper",
+    "emoji": "🕷️",
+    "name": "反爬网页访问",
+    "desc": "微信公众号/Twitter/Reddit等反爬网站，三种方法自动切换。",
+    "category": "research",
+    "tags": [
+      "official",
+      "essential"
+    ],
+    "models": []
+  },
+  {
+    "id": "pdf-gen",
+    "emoji": "📄",
+    "name": "PDF生成",
+    "desc": "Markdown转精美PDF，中文+代码高亮。Pandoc+Chrome。",
+    "category": "office",
+    "tags": [
+      "official",
+      "essential"
+    ],
+    "models": []
+  },
+  {
+    "id": "train-tickets",
+    "emoji": "🚄",
+    "name": "火车票查询",
+    "desc": "12306余票、车次时刻表、票价查询。",
+    "category": "life",
+    "tags": [
+      "official",
+      "essential"
+    ],
+    "models": []
+  },
+  {
+    "id": "flight-search",
+    "emoji": "✈️",
+    "name": "机票查询",
+    "desc": "国内外机票价格、多日比价、最低价日历。",
+    "category": "life",
+    "tags": [
+      "official",
+      "essential"
+    ],
+    "models": []
+  },
+  {
+    "id": "stock-monitor",
+    "emoji": "📈",
+    "name": "股票监控",
+    "desc": "A股/港股/美股实时监控，RSI/MACD/布林带多指标买卖信号。",
+    "category": "research",
+    "tags": [
+      "official",
+      "hot"
+    ],
+    "models": []
+  },
+  {
+    "id": "seo-writer",
+    "emoji": "🔍",
+    "name": "SEO内容写作",
+    "desc": "SEO优化的长文写作，关键词策略+结构化内容。",
+    "category": "creation",
+    "tags": [
+      "official",
+      "essential"
+    ],
+    "models": []
+  },
+  {
+    "id": "blog-writer",
+    "emoji": "✍️",
+    "name": "博客写手",
+    "desc": "长文写作+排版+发布，支持多平台格式适配。",
+    "category": "creation",
+    "tags": [
+      "official"
+    ],
+    "models": []
+  },
+  {
+    "id": "intelligence",
+    "emoji": "🧠",
+    "name": "基础智能包",
+    "desc": "记忆系统、上下文管理、任务追踪。龙虾出厂标配。",
+    "category": "office",
+    "tags": [
+      "official"
+    ],
+    "models": []
+  },
+  {
+    "id": "video-summary",
+    "emoji": "🎬",
+    "name": "视频总结",
+    "desc": "YouTube/Bilibili视频自动获取字幕并AI总结，输出md格式。",
+    "category": "research",
+    "tags": [
+      "official",
+      "hot"
+    ],
+    "models": []
+  },
+  {
+    "id": "trending",
+    "emoji": "🔥",
+    "name": "今日热榜",
+    "desc": "微博/知乎/抖音/百度等各平台热搜榜单，一键获取全网热点。",
+    "category": "research",
+    "tags": [
+      "official",
+      "hot"
+    ],
+    "models": []
+  },
+  {
+    "id": "hn-digest",
+    "emoji": "📰",
+    "name": "Hacker News",
+    "desc": "HN前页热帖抓取，支持按主题过滤(tech/health/AI)。",
+    "category": "research",
+    "tags": [
+      "official"
+    ],
+    "models": []
+  },
+  {
+    "id": "stock-analysis",
+    "emoji": "📊",
+    "name": "股票深度分析",
+    "desc": "Yahoo Finance数据+8维评分+持仓管理+热门扫描+传闻捕捉。",
+    "category": "research",
+    "tags": [
+      "official"
+    ],
+    "models": []
+  },
+  {
+    "id": "hk-stock",
+    "emoji": "🇭🇰",
+    "name": "港股AI投研",
+    "desc": "港股AI概念板块专属投研，南向资金博弈+产业基本面分析。",
+    "category": "research",
+    "tags": [
+      "official"
+    ],
+    "models": []
+  },
+  {
+    "id": "project-manager",
+    "emoji": "📋",
+    "name": "项目管理",
+    "desc": "飞书多维表格驱动的项目管理，任务创建/更新/日报/通知。",
+    "category": "office",
+    "tags": [
+      "official"
+    ],
+    "models": []
+  },
+  {
+    "id": "fusheng-voice",
+    "emoji": "🗣️",
+    "name": "傅盛语音克隆",
+    "desc": "用傅盛老板的声音进行语音合成，发送到飞书。",
+    "category": "creation",
+    "tags": [
+      "official",
+      "essential"
+    ],
+    "models": []
+  },
+  {
+    "id": "n8n-automation",
+    "emoji": "⚡",
+    "name": "自动化工作流",
+    "desc": "设计n8n工作流JSON，含触发器/重试/错误处理/人工审核。",
+    "category": "dev",
+    "tags": [
+      "official"
+    ],
+    "models": []
+  },
+  {
+    "id": "distil-web",
+    "emoji": "🧊",
+    "name": "网页净化提取",
+    "desc": "通过distil.net代理获取干净Markdown，绕过复杂网页。",
+    "category": "research",
+    "tags": [
+      "official"
+    ],
+    "models": []
+  },
+  {
+    "id": "self-evolution",
+    "emoji": "🧬",
+    "name": "自我进化引擎",
+    "desc": "分析运行历史自动识别改进点，协议约束下的能力进化。",
+    "category": "dev",
+    "tags": [
+      "official"
+    ],
+    "models": []
+  },
+  {
+    "id": "security-audit",
+    "emoji": "🛡️",
+    "name": "安全审计",
+    "desc": "Skill安全扫描+系统安全加固+风险评估。",
+    "category": "dev",
+    "tags": [
+      "official"
+    ],
+    "models": []
+  },
+  {
+    "id": "summary-report",
+    "emoji": "📊",
+    "name": "工作汇报生成",
+    "desc": "从Session历史自动生成工作总结PDF，支持日报/周报。",
+    "category": "office",
+    "tags": [
+      "official",
+      "essential"
+    ],
+    "models": []
+  },
+  {
+    "id": "competitor-research",
+    "emoji": "🕵️",
+    "name": "竞品研究",
+    "desc": "竞品信息收集、对比分析、市场定位研究。",
+    "category": "research",
+    "tags": [
+      "official"
+    ],
+    "models": []
+  },
+  {
+    "id": "clawhub",
+    "emoji": "🧩",
+    "name": "5000+ 更多技能",
+    "desc": "在 Claw123.ai 浏览 5000+ 社区技能，一行命令安装。→ claw123.ai",
+    "category": "dev",
+    "tags": [
+      "hot"
+    ],
+    "models": []
+  },
+  {
+    "id": "video-gen",
+    "emoji": "🎬",
+    "name": "AI 视频制作",
+    "desc": "Sora/Kling/Seedance/Veo 3等37个模型，文生视频、图生视频，一个API搞定。",
+    "category": "creation",
+    "tags": [
+      "community",
+      "hot"
+    ],
+    "models": [
+      "Sora",
+      "Seedance",
+      "Kling"
+    ]
+  },
+  {
+    "id": "music-gen",
+    "emoji": "🎵",
+    "name": "AI 音乐生成",
+    "desc": "从结构化作曲计划生成高质量音频。AI作曲+质量验证+失败重试。",
+    "category": "creation",
+    "tags": [
+      "community"
+    ],
+    "models": []
+  },
+  {
+    "id": "linkedin",
+    "emoji": "💼",
+    "name": "LinkedIn 运营",
+    "desc": "LinkedIn内容体系搭建、思想领导力建设、收件箱管理。",
+    "category": "social",
+    "tags": [
+      "community"
+    ],
+    "models": []
+  }
+]

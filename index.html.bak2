@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦞</text></svg>">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta property="og:title" content="三万 sanwan.ai — 领养你的AI龙虾">
+<meta property="og:description" content="几百万人围观了傅盛养龙虾。现在，你也可以领一只回去。">
+<meta property="og:image" content="https://sanwan.ai/ppt/page-01.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="三万 sanwan.ai — 领养你的AI龙虾">
+<meta name="twitter:description" content="几百万人围观了傅盛养龙虾。现在，你也可以领一只回去。">
+<meta name="twitter:image" content="https://sanwan.ai/ppt/page-01.jpg">
+<title>sanwan.ai — 领养你的AI龙虾</title>
+<link href="https://fonts.googleapis.com/css2?family=ZCOOL+KuaiLe&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Noto Sans SC',sans-serif;background:#f5f3ee;color:#222;overflow-x:hidden}
+:root{--accent:#c0392b;--accent2:#e74c3c;--gold:#f39c12;--bg:#f5f3ee;--card:#fff;--border:#e8e4df;--muted:#7a746e}
+
+/* Nav */
+nav{position:fixed;top:0;left:0;width:100%;z-index:1000;background:rgba(255,255,255,0.97);backdrop-filter:blur(12px);border-bottom:2px solid var(--border);padding:0 32px;height:56px;display:flex;align-items:center;justify-content:space-between;box-shadow:0 1px 8px rgba(0,0,0,0.04)}
+.nav-logo{font-family:'ZCOOL KuaiLe',sans-serif;font-size:22px;color:var(--accent);display:flex;align-items:center;gap:6px;font-weight:700;text-decoration:none}
+.nav-links{display:flex;gap:20px}
+.nav-links a{text-decoration:none;color:#333;font-size:15px;font-weight:600;opacity:.7;transition:.2s;padding:6px 4px}
+.nav-links a:hover{opacity:1;color:var(--accent)}
+.hamburger{display:none;background:none;border:none;font-size:15px;cursor:pointer;color:#333;font-weight:600;padding:6px 12px;border-radius:8px;border:1.5px solid #ddd}
+
+/* HERO - 领养核心 */
+.hero{padding:80px 32px 40px;max-width:960px;margin:0 auto;text-align:center}
+.hero-badge{display:inline-block;background:linear-gradient(135deg,var(--gold),#e67e22);color:#fff;font-size:12px;font-weight:700;padding:6px 18px;border-radius:99px;margin-bottom:16px;letter-spacing:1px}
+.hero h1{font-family:'ZCOOL KuaiLe',sans-serif;font-size:clamp(2.4rem,6vw,3.4rem);line-height:1.3;margin-bottom:14px}
+.hero h1 .red{color:var(--accent)}
+.hero-sub{font-size:1.1rem;color:#555;line-height:1.8;max-width:600px;margin:0 auto 24px}
+.hero-mascot{width:180px;height:180px;border-radius:50%;object-fit:cover;border:4px solid var(--border);box-shadow:0 8px 30px rgba(0,0,0,0.1);margin:0 auto 20px;display:block;animation:float 3s ease-in-out infinite}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+
+.hero-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-bottom:28px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;border-radius:12px;font-size:16px;font-weight:700;text-decoration:none;transition:all .2s;border:none;font-family:inherit;cursor:pointer}
+.btn-cta{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;box-shadow:0 4px 20px rgba(192,57,43,0.3)}
+.btn-cta:hover{transform:translateY(-2px);box-shadow:0 6px 25px rgba(192,57,43,0.4)}
+.btn-outline{background:#fff;color:var(--accent);border:2px solid var(--accent)}
+.btn-outline:hover{background:#fef5f4}
+
+/* Social proof numbers */
+.proof{display:flex;justify-content:center;gap:0;max-width:700px;margin:0 auto;background:var(--card);border-radius:16px;border:1.5px solid var(--border);overflow:hidden}
+.proof-item{flex:1;text-align:center;padding:20px 12px;border-right:1px solid var(--border)}
+.proof-item:last-child{border-right:none}
+.proof-num{font-family:'ZCOOL KuaiLe',sans-serif;font-size:28px;color:var(--accent);line-height:1}
+.proof-label{font-size:11px;color:var(--muted);margin-top:4px}
+
+/* Container */
+.container{max-width:960px;margin:0 auto;padding:0 24px}
+
+/* Section */
+.section{padding:40px 0}
+.section-head{text-align:center;margin-bottom:24px}
+.section-tag{font-size:13px;color:var(--accent);font-weight:700;margin-bottom:4px}
+.section-title{font-family:'ZCOOL KuaiLe',sans-serif;font-size:28px;margin-bottom:6px}
+.section-desc{font-size:14px;color:var(--muted)}
+
+/* Roles grid */
+.roles{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.role-card{background:var(--card);border:1.5px solid var(--border);border-radius:14px;padding:22px;text-decoration:none;color:inherit;transition:all .2s;display:block}
+.role-card:hover{box-shadow:0 4px 20px rgba(0,0,0,0.06);transform:translateY(-2px)}
+.role-emoji{font-size:28px;margin-bottom:8px}
+.role-name{font-size:17px;font-weight:800;margin-bottom:4px}
+.role-desc{font-size:13px;color:#666;line-height:1.6}
+.role-count{font-size:11px;color:var(--accent);font-weight:700;margin-top:8px}
+.role-card.featured{border-color:#f0c0b0;position:relative}
+.role-card.featured::after{content:"⭐ 三万同款";position:absolute;top:10px;right:12px;background:var(--accent);color:#fff;font-size:10px;font-weight:700;padding:2px 8px;border-radius:10px}
+
+/* Diary mini section */
+.diary-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:16px}
+.diary-card{background:var(--card);border:1.5px solid var(--border);border-radius:12px;overflow:hidden;text-decoration:none;color:inherit;transition:all .2s}
+.diary-card:hover{box-shadow:0 4px 15px rgba(0,0,0,0.06)}
+.diary-card img{width:100%;height:120px;object-fit:cover}
+.diary-card .caption{padding:10px 12px;font-size:12px;font-weight:600;line-height:1.4}
+
+/* How it works */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.step{background:var(--card);border:1.5px solid var(--border);border-radius:14px;padding:24px;text-align:center}
+.step-num{font-family:'ZCOOL KuaiLe',sans-serif;font-size:32px;color:var(--accent);margin-bottom:8px}
+.step h4{font-size:16px;font-weight:800;margin-bottom:6px}
+.step p{font-size:13px;color:#666;line-height:1.6}
+
+/* Final CTA */
+.final-cta{text-align:center;padding:48px 24px;background:linear-gradient(180deg,var(--bg),#ece8e0);margin-top:20px}
+.final-cta h2{font-family:'ZCOOL KuaiLe',sans-serif;font-size:28px;margin-bottom:12px}
+
+/* Footer */
+footer{text-align:center;padding:20px;font-size:11px;color:#999;border-top:1px solid var(--border);background:var(--card)}
+footer a{color:#888;text-decoration:none;margin:0 8px}
+
+/* Floating mascot */
+.float-mascot{position:fixed;bottom:24px;right:20px;z-index:99;display:flex;flex-direction:column;align-items:center;animation:float 3s ease-in-out infinite;cursor:pointer;text-decoration:none}
+.float-mascot img{width:70px;height:70px;filter:drop-shadow(0 4px 8px rgba(0,0,0,0.15))}
+.float-mascot .bubble{background:var(--accent);color:#fff;font-size:11px;font-weight:700;padding:4px 10px;border-radius:10px;margin-bottom:6px;white-space:nowrap;box-shadow:0 2px 8px rgba(192,57,43,0.3)}
+
+/* Mobile */
+@media(max-width:768px){
+  nav{padding:0 16px}.nav-links{display:none}.hamburger{display:block}
+  .nav-links.open{display:flex;flex-direction:column;position:absolute;top:56px;right:16px;background:#fff;border:1.5px solid #ddd;border-radius:10px;padding:12px 16px;gap:12px;box-shadow:0 4px 15px rgba(0,0,0,0.1)}
+  .hero{padding:70px 20px 30px}
+  .hero h1{font-size:2rem}
+  .hero-mascot{width:140px;height:140px}
+  .proof{flex-wrap:wrap}.proof-item{flex:none;width:50%}
+  .roles{grid-template-columns:1fr 1fr}
+  .diary-strip{grid-template-columns:1fr 1fr}
+  .steps{grid-template-columns:1fr}
+  .float-mascot{bottom:16px;right:12px}
+  .float-mascot img{width:56px;height:56px}
+}
+@media(max-width:480px){
+  .roles{grid-template-columns:1fr}
+  .proof-item{padding:14px 8px}.proof-num{font-size:22px}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+<a class="nav-logo" href="/">🦞 三万 sanwan.ai</a>
+<a href="en/" style="font-size:12px;color:#888;text-decoration:none;border:1px solid #ddd;padding:2px 8px;border-radius:10px">EN</a>
+<button class="hamburger" onclick="document.querySelector('.nav-links').classList.toggle('open')">☰ 菜单</button>
+<div class="nav-links">
+<a href="diary.html">📖 日记</a>
+<a href="science.html">🔰 科普</a>
+<a href="skills.html">🛒 技能</a>
+<a href="easyclaw.html">🦞 EasyClaw</a>
+</div>
+</nav>
+
+<!-- HERO: 领养核心 -->
+<div class="hero">
+<div class="hero-badge">🔥 几百万人围观了傅盛养龙虾</div>
+<img src="images/sanwan-lobster.jpg" alt="三万" class="hero-mascot">
+<h1>领养一只你的<span class="red">AI龙虾</span></h1>
+<p class="hero-sub">
+会聊天，就会用。WhatsApp、微信、飞书、钉钉……<br>
+你常用哪个聊天软件，它就住在哪里。越养越强，技能只增不减。
+</p>
+<div class="hero-btns">
+<a href="https://easyclaw.com" target="_blank" class="btn btn-cta">🦞 免费领养</a>
+<a href="https://easyclaw.work" target="_blank" class="btn btn-outline">☁️ 云端体验</a>
+</div>
+
+<!-- Social proof -->
+<div class="proof">
+<div class="proof-item"><div class="proof-num">100万+</div><div class="proof-label">公众号阅读</div></div>
+<div class="proof-item"><div class="proof-num">100万+</div><div class="proof-label">Twitter浏览</div></div>
+<div class="proof-item"><div class="proof-num">100万+</div><div class="proof-label">直播/短视频观看</div></div>
+<div class="proof-item"><div class="proof-num">14天</div><div class="proof-label">从0到8人AI团队</div></div>
+</div>
+</div>
+
+<!-- SECTION: 你的龙虾能干什么 -->
+<div class="container">
+<div class="section">
+<div class="section-head">
+<div class="section-tag">🧩 装上技能，变身数字员工</div>
+<div class="section-title">你想要什么样的龙虾？</div>
+<div class="section-desc">装什么技能，就变成什么样的员工——你的龙虾，由你定义。</div>
+</div>
+
+<div class="roles">
+<a href="skills/pack-assistant.html" class="role-card">
+<div class="role-emoji">💼</div>
+<div class="role-name">超级助理</div>
+<div class="role-desc">邮件、会议、订酒店、日程提醒——白领最需要的全能助手。</div>
+<div class="role-count">6个技能 →</div>
+</a>
+<a href="skills/pack-creator.html" class="role-card">
+<div class="role-emoji">✍️</div>
+<div class="role-name">内容创作者</div>
+<div class="role-desc">公众号、小红书、X——AI写文、生图、做视频，全平台一条龙。</div>
+<div class="role-count">8个技能 →</div>
+</a>
+<a href="skills/pack-trader.html" class="role-card">
+<div class="role-emoji">📈</div>
+<div class="role-name">股票分析师</div>
+<div class="role-desc">实时盯盘、技术分析、买卖信号——7×24不用熬夜了。</div>
+<div class="role-count">7个技能 →</div>
+</a>
+<a href="skills/pack-overseas.html" class="role-card">
+<div class="role-emoji">🌏</div>
+<div class="role-name">出海运营官</div>
+<div class="role-desc">多语言翻译、海外社媒、跨境运营——搞定语言和时差。</div>
+<div class="role-count">6个技能 →</div>
+</a>
+<a href="skills/pack-ecommerce.html" class="role-card">
+<div class="role-emoji">💻</div>
+<div class="role-name">开发助手</div>
+<div class="role-desc">写代码、管GitHub、控制浏览器——技术活全包。</div>
+<div class="role-count">5个技能 →</div>
+</a>
+<a href="skills/pack-sanwan.html" class="role-card featured">
+<div class="role-emoji">🦞</div>
+<div class="role-name">一人团队</div>
+<div class="role-desc">7个Agent+38个技能——复制提示词，一键配出傅盛同款团队。</div>
+<div class="role-count">38个技能 →</div>
+</a>
+</div>
+<div style="text-align:center;margin-top:16px">
+<a href="skills.html" style="color:var(--accent);font-weight:700;font-size:14px">浏览全部精选技能 →</a>
+<span style="margin:0 8px;color:#ccc">·</span>
+<a href="https://claw123.ai" target="_blank" style="color:var(--muted);font-weight:600;font-size:13px">5000+ 社区技能 →</a>
+</div>
+</div>
+
+<!-- SECTION: 怎么领养 -->
+<div class="section" style="padding-top:0">
+<div class="section-head">
+<div class="section-tag">🐣 三步领养</div>
+<div class="section-title">会聊天，就会用龙虾</div>
+<div class="section-desc">养龙虾就像带新员工——聊着聊着就上手了。</div>
+</div>
+<div class="steps">
+<div class="step">
+<div class="step-num">1</div>
+<h4>下载安装</h4>
+<p>Mac/Windows 一键安装 EasyClaw，或直接用云端版。免费，不要钱。</p>
+</div>
+<div class="step">
+<div class="step-num">2</div>
+<h4>连接聊天软件</h4>
+<p>WhatsApp、微信、飞书、钉钉……扫码绑定，龙虾就住进你的对话框。</p>
+</div>
+<div class="step">
+<div class="step-num">3</div>
+<h4>装技能，开始养</h4>
+<p>从技能商店挑技能安装。复制提示词，发给龙虾，它就学会了。越养越强。</p>
+</div>
+</div>
+<div style="text-align:center;margin-top:20px">
+<a href="https://easyclaw.com" target="_blank" class="btn btn-cta" style="font-size:15px">🦞 免费领养，现在开始</a>
+</div>
+</div>
+
+<!-- SECTION: 龙虾日记（配角） -->
+<div class="section" style="border-top:1px solid var(--border);padding-top:36px">
+<div class="section-head">
+<div class="section-tag">📖 龙虾养成日记</div>
+<div class="section-title">几百万人在追的连载</div>
+<div class="section-desc">骨折CEO凌晨4点养龙虾，14天从0到8人AI团队。<a href="diary.html" style="color:var(--accent);font-weight:600;margin-left:8px">查看全部日记 →</a></div>
+</div>
+<div class="diary-strip" id="diary-strip">
+<!-- Rendered by JS from diaries.json -->
+</div>
+</div>
+</div>
+
+<!-- FINAL CTA -->
+<div class="final-cta">
+<h2>想养一只自己的<span style="color:var(--accent)">AI龙虾</span>？</h2>
+<p style="color:var(--muted);margin-bottom:16px;font-size:14px">免费下载 · 不要钱 · 不需要技术背景</p>
+<a href="https://easyclaw.com" target="_blank" class="btn btn-cta" style="font-size:17px;padding:16px 36px">🦞 免费领养</a>
+</div>
+
+<!-- FOOTER -->
+<footer>
+<div>
+<a href="diary.html">📖 日记</a>
+<a href="science.html">🔰 科普</a>
+<a href="skills.html">🛒 技能</a>
+<a href="easyclaw.html">🦞 EasyClaw</a>
+<a href="en/">🌐 English</a>
+</div>
+<p style="margin-top:8px">© 2026 sanwan.ai · Built with 🦞 by <a href="https://github.com/nicepkg/openclaw" target="_blank">OpenClaw</a></p>
+</footer>
+
+<!-- FLOATING MASCOT -->
+<a href="https://easyclaw.com" target="_blank" class="float-mascot">
+<div class="bubble">领养龙虾 →</div>
+<img src="mascot-float.png" alt="三万">
+</a>
+
+<script>
+// Load featured diaries
+fetch('data/diaries.json').then(r=>r.json()).then(data=>{
+  const featured = ['day15','day1','day6','day14'];
+  const strip = document.getElementById('diary-strip');
+  if(!strip) return;
+  featured.forEach(id=>{
+    const d = data[id];
+    if(!d) return;
+    strip.innerHTML += `
+    <a href="diary.html?id=${id}" class="diary-card">
+      <img src="${d.image}" alt="${d.title}" loading="lazy">
+      <div class="caption">${d.title}</div>
+    </a>`;
+  });
+});
+</script>
+
+<!-- Vercel Analytics -->
+<script defer src="/_vercel/insights/script.js"></script>
+</body>
+</html>

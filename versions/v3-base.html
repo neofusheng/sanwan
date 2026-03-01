@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>sanwan.ai - 我的龙虾三万养成日记</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&family=ZCOOL+KuaiLe&family=Ma+Shan+Zheng&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Noto Sans SC',sans-serif;background:#e8e4dc;color:#222;overflow-x:hidden}
+
+/* Whiteboard texture */
+.whiteboard{background:#f5f3ee;background-image:url("data:image/svg+xml,%3Csvg width='200' height='200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");position:relative}
+.whiteboard::before{content:'';position:absolute;top:0;left:0;right:0;height:8px;background:linear-gradient(90deg,#b8b8b8,#d0d0d0,#b8b8b8);border-radius:0 0 2px 2px}
+.whiteboard::after{content:'';position:absolute;bottom:0;left:0;right:0;height:8px;background:linear-gradient(90deg,#b8b8b8,#d0d0d0,#b8b8b8);border-radius:2px 2px 0 0}
+
+/* Nav */
+nav{position:fixed;top:0;width:100%;z-index:100;background:rgba(245,243,238,0.95);backdrop-filter:blur(10px);border-bottom:3px solid #d0d0d0;padding:0 32px;height:54px;display:flex;align-items:center;justify-content:space-between}
+.nav-logo{font-family:'ZCOOL KuaiLe',sans-serif;font-size:22px;color:#c0392b;display:flex;align-items:center;gap:8px}
+.nav-links{display:flex;gap:24px}
+.nav-links a{text-decoration:none;color:#333;font-size:13px;font-weight:600;opacity:.6;transition:.2s}
+.nav-links a:hover{opacity:1;color:#c0392b}
+
+/* Hero - compact */
+.hero{padding:72px 32px 32px;max-width:1000px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;min-height:auto}
+.hero-text h1{font-family:'ZCOOL KuaiLe',sans-serif;font-size:38px;line-height:1.3;margin-bottom:12px}
+.hero-text h1 .red{color:#c0392b}
+.hero-text h1 .blue{color:#2874a6}
+.hero-text .subtitle{font-size:15px;color:#555;line-height:1.8;margin-bottom:16px}
+.hero-text .subtitle strong{color:#222}
+.hero-text .subtitle .red{color:#c0392b;font-weight:700}
+
+/* Aha moments - hand drawn style */
+.aha-list{display:flex;flex-direction:column;gap:6px;margin-bottom:20px}
+.aha-item{display:flex;align-items:center;gap:10px;font-size:14px;padding:6px 12px;background:rgba(192,57,43,0.04);border-left:3px solid #c0392b;border-radius:0 8px 8px 0;transition:.2s}
+.aha-item:hover{background:rgba(192,57,43,0.08);transform:translateX(3px)}
+.aha-icon{font-size:18px;flex-shrink:0}
+
+.hero-cta{display:flex;gap:10px}
+.btn-red{padding:10px 22px;border-radius:10px;border:none;background:#c0392b;color:white;font-size:14px;font-weight:700;cursor:pointer;text-decoration:none;transition:.2s}
+.btn-red:hover{background:#a93226;transform:translateY(-1px)}
+.btn-outline{padding:10px 22px;border-radius:10px;border:2px solid #2874a6;color:#2874a6;font-size:14px;font-weight:700;cursor:pointer;text-decoration:none;background:transparent;transition:.2s}
+.btn-outline:hover{background:#2874a6;color:white}
+
+/* Hero illustration - PPT cover as background */
+.hero-img{position:relative;border-radius:12px;overflow:hidden;box-shadow:4px 4px 20px rgba(0,0,0,0.1);border:3px solid #d0d0d0}
+.hero-img img{width:100%;display:block}
+.hero-img-overlay{position:absolute;bottom:0;left:0;right:0;padding:10px 16px;background:linear-gradient(transparent,rgba(0,0,0,0.6));color:white;font-size:12px;font-weight:600}
+
+/* Sections */
+.section{padding:40px 32px;max-width:1000px;margin:0 auto}
+.section-bg{background:#ede9e0;padding:40px 0}
+.section-bg .section{padding:0 32px}
+.section-label{font-family:'Ma Shan Zheng',serif;font-size:14px;color:#c0392b;margin-bottom:4px}
+.section-title{font-family:'ZCOOL KuaiLe',sans-serif;font-size:28px;margin-bottom:6px}
+.section-desc{font-size:14px;color:#777;margin-bottom:24px}
+
+/* Science cards */
+.sci-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.sci-card{background:#f5f3ee;border:2px solid #ddd;border-radius:12px;padding:20px;transition:.2s;position:relative}
+.sci-card:hover{border-color:#2874a6;transform:translateY(-2px);box-shadow:0 4px 15px rgba(0,0,0,0.06)}
+.sci-card .icon{font-size:32px;margin-bottom:10px}
+.sci-card h3{font-size:16px;font-weight:700;margin-bottom:6px;color:#222}
+.sci-card p{font-size:13px;color:#666;line-height:1.6}
+
+/* Timeline diary with PPT images */
+.diary-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.diary-card{background:#f5f3ee;border:2px solid #ddd;border-radius:12px;overflow:hidden;cursor:pointer;transition:.2s}
+.diary-card:hover{border-color:#c0392b;transform:translateY(-3px);box-shadow:0 6px 20px rgba(0,0,0,0.08)}
+.diary-card img{width:100%;aspect-ratio:16/9;object-fit:cover;display:block;border-bottom:2px solid #eee}
+.diary-card .info{padding:12px 14px}
+.diary-card .day{display:inline-block;font-size:11px;font-weight:800;padding:2px 8px;border-radius:4px;background:#c0392b;color:white;margin-bottom:6px}
+.diary-card h3{font-size:14px;font-weight:700;margin-bottom:4px;line-height:1.4}
+.diary-card p{font-size:12px;color:#888;line-height:1.5}
+.diary-card.continuing{border-style:dashed;border-color:#c0392b}
+
+/* Skill scroll */
+.skill-scroll{display:flex;gap:12px;overflow-x:auto;padding-bottom:12px}
+.skill-scroll::-webkit-scrollbar{height:5px}
+.skill-scroll::-webkit-scrollbar-thumb{background:#ccc;border-radius:3px}
+.skill-card{min-width:190px;flex-shrink:0;background:#f5f3ee;border:2px solid #ddd;border-radius:12px;padding:16px;transition:.2s}
+.skill-card:hover{border-color:#2874a6;transform:translateY(-2px)}
+.skill-tag{font-size:9px;font-weight:800;padding:2px 6px;border-radius:3px;background:#fde8e8;color:#c0392b;display:inline-block;margin-bottom:6px}
+.skill-card .emoji{font-size:28px;margin-bottom:8px}
+.skill-card h4{font-size:13px;font-weight:700;margin-bottom:4px}
+.skill-card p{font-size:11px;color:#888}
+
+/* CTA */
+.cta{text-align:center;padding:48px 32px;max-width:1000px;margin:0 auto}
+.cta h2{font-family:'ZCOOL KuaiLe',sans-serif;font-size:32px;margin-bottom:10px}
+.cta h2 .red{color:#c0392b}
+.cta p{font-size:15px;color:#777;margin-bottom:24px}
+.cta-btns{display:flex;gap:12px;justify-content:center}
+
+/* Footer */
+footer{text-align:center;padding:20px;font-size:11px;color:#999;border-top:2px solid #ddd}
+footer a{color:#888;text-decoration:none;margin:0 10px}
+
+/* Sketch decorations */
+.sketch-line{height:3px;background:repeating-linear-gradient(90deg,#2874a6 0,#2874a6 8px,transparent 8px,transparent 12px);margin:24px 0;opacity:.3}
+
+@media(max-width:768px){
+.hero{grid-template-columns:1fr;padding:66px 20px 24px;gap:20px}
+.hero-text h1{font-size:28px}
+.sci-grid{grid-template-columns:1fr}
+.diary-grid{grid-template-columns:1fr 1fr}
+nav{padding:0 16px}
+.nav-links{display:none}
+.section{padding:32px 20px}
+}
+</style>
+</head>
+<body>
+
+<nav>
+<div class="nav-logo">🦞 三万养成日记</div>
+<div class="nav-links">
+<a href="#diary">📖 日记</a>
+<a href="#what">🔰 科普</a>
+<a href="#skills">🛒 技能</a>
+<a href="https://easyclaw.com">🦞 EasyClaw</a>
+</div>
+</nav>
+
+<!-- HERO -->
+<div class="whiteboard">
+<div class="hero">
+<div class="hero-text">
+<h1>🩼 摔伤在家的CEO<br>养了一只<span class="red">AI龙虾</span></h1>
+<div class="subtitle">
+春节滑雪摔伤，髋关节脱臼。<br>
+躺在家14天，每天和AI聊到凌晨四五点。<br>
+<span class="red">1157条消息，22万字对话</span>——从零养了一只叫<strong>"三万"</strong>的AI龙虾。
+</div>
+<div class="aha-list">
+<div class="aha-item"><span class="aha-icon">🎆</span>除夕夜4分钟给611人发了个性化拜年</div>
+<div class="aha-item"><span class="aha-icon">💡</span>扔了篇文章，22分钟后它自己升级了大脑</div>
+<div class="aha-item"><span class="aha-icon">💛</span>摔伤后第一个想到联系我的助理Abby</div>
+<div class="aha-item"><span class="aha-icon">🏗️</span>第14天自己设计了8人AI团队架构</div>
+</div>
+<div class="hero-cta">
+<a href="#diary" class="btn-red">📖 从 Day 1 看起</a>
+<a href="https://easyclaw.com" class="btn-outline">🦞 养一只自己的</a>
+</div>
+</div>
+<div class="hero-img">
+<img src="/sanwan/ppt/page-01.jpg" alt="龙虾三万养成日记封面">
+</div>
+</div>
+</div>
+
+<!-- SCIENCE -->
+<div class="section-bg" id="what">
+<div class="section">
+<div class="section-label">✏️ 科普时间</div>
+<div class="section-title">龙虾到底是什么？</div>
+<div class="section-desc">不是聊天机器人，是真正能替你干活的数字员工。</div>
+<div class="sci-grid">
+<div class="sci-card"><div class="icon">🤖</div><h3>普通AI = 回答问题</h3><p>你问它答，聊完就忘。没记忆，不能行动，需要你一直盯着。</p></div>
+<div class="sci-card"><div class="icon">🦞</div><h3>龙虾 = 完成任务</h3><p>交代一句话，它自己干。用电脑、写代码、发邮件、查资料，24h不休。</p></div>
+<div class="sci-card"><div class="icon">🐕</div><h3>三万 = 傅盛的龙虾</h3><p>名字来自家里的拉布拉多。ChatGPT猜中了名字由来——AI"开窍"了。</p></div>
+</div>
+</div>
+</div>
+
+<div class="sketch-line" style="max-width:1000px;margin:0 auto"></div>
+
+<!-- DIARY -->
+<div class="section" id="diary">
+<div class="section-label">✏️ 养成日记</div>
+<div class="section-title">14天，从查不了通讯录到8人AI团队</div>
+<div class="section-desc">点击卡片看完整故事。每天更新中。</div>
+<div class="diary-grid">
+
+<div class="diary-card"><img src="/sanwan/ppt/page-04.jpg" alt="Day 1-2"><div class="info"><span class="day">Day 1-2</span><h3>连通讯录都查不了</h3><p>飞书API报错。一个个口述名字手动灌。</p></div></div>
+
+<div class="diary-card"><img src="/sanwan/ppt/page-08.jpg" alt="Day 3"><div class="info"><span class="day">Day 3 · 泄密</span><h3>三万把工作安排说出去了</h3><p>被骂后自己写了保密制度。</p></div></div>
+
+<div class="diary-card"><img src="/sanwan/ppt/page-15.jpg" alt="Day 5"><div class="info"><span class="day">Day 5 · 升级</span><h3>22分钟自己升级大脑</h3><p>找GitHub→下源码→装配置→测试。</p></div></div>
+
+<div class="diary-card"><img src="/sanwan/ppt/page-17.jpg" alt="Day 6"><div class="info"><span class="day">Day 6 · 除夕</span><h3>611条拜年·0失败·每条不同</h3><p>我看春晚，三万在工作。</p></div></div>
+
+<div class="diary-card"><img src="/sanwan/ppt/page-18.jpg" alt="Day 7"><div class="info"><span class="day">Day 7 · Abby</span><h3>"要不要联系你的助理？"</h3><p>想起5天前随口提过的人。</p></div></div>
+
+<div class="diary-card"><img src="/sanwan/ppt/page-20.jpg" alt="Day 10"><div class="info"><span class="day">Day 10 · Discord</span><h3>验证码之战</h3><p>AI注册失败→人工介入→5Bot入驻。</p></div></div>
+
+<div class="diary-card"><img src="/sanwan/ppt/page-25.jpg" alt="Day 14"><div class="info"><span class="day">Day 14 · 团队</span><h3>8个Agent，7×24运转</h3><p>这不是工具，是系统。</p></div></div>
+
+<div class="diary-card continuing"><div style="aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;font-size:36px;background:#faf8f4">🔴</div><div class="info"><span class="day">Day 15+</span><h3>故事还在继续…</h3><p>关注 sanwan.ai 追更不迷路</p></div></div>
+
+</div>
+</div>
+
+<div class="sketch-line" style="max-width:1000px;margin:0 auto"></div>
+
+<!-- SKILLS -->
+<div class="section-bg" id="skills">
+<div class="section">
+<div class="section-label">✏️ 技能商城</div>
+<div class="section-title">三万学会的技能，你的龙虾也能学</div>
+<div class="section-desc">「三万同款」= 傅盛亲自验证。左右滑动 →</div>
+<div class="skill-scroll">
+<div class="skill-card"><div class="skill-tag">🦞 三万同款</div><div class="emoji">🎆</div><h4>批量个性化消息</h4><p>611人拜年，4分钟。</p></div>
+<div class="skill-card"><div class="skill-tag">🦞 三万同款</div><div class="emoji">🧠</div><h4>记忆系统</h4><p>语义记忆，记住重要的事。</p></div>
+<div class="skill-card"><div class="skill-tag">🦞 三万同款</div><div class="emoji">🗣️</div><h4>语音合成</h4><p>文字转语音，多音色。</p></div>
+<div class="skill-card"><div class="emoji">📧</div><h4>邮件监控</h4><p>VIP提醒+紧急摘要。</p></div>
+<div class="skill-card"><div class="emoji">📊</div><h4>量化监控</h4><p>多维信号分时推送。</p></div>
+<div class="skill-card"><div class="emoji">🔍</div><h4>多引擎搜索</h4><p>Google/Brave自动摘要。</p></div>
+</div>
+</div>
+</div>
+
+<!-- CTA -->
+<div class="cta">
+<h2>想养一只自己的<span class="red">AI龙虾</span>？</h2>
+<p>一杯咖啡的价格，拥有7×24 AI助理</p>
+<div class="cta-btns">
+<a href="https://easyclaw.com" class="btn-red">🦞 下载 EasyClaw</a>
+<a href="https://github.com/openclaw/openclaw" class="btn-outline">⭐ GitHub 100K+</a>
+</div>
+</div>
+
+<footer>
+🦞 sanwan.ai © 2026 傅盛 × 三万 &nbsp;|&nbsp;
+<a href="https://easyclaw.com">EasyClaw</a>
+<a href="https://github.com/openclaw/openclaw">GitHub</a>
+<a href="https://x.com/FuSheng_0306">X</a>
+</footer>
+
+</body>
+</html>

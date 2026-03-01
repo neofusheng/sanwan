@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta property="og:site_name" content="sanwan.ai - 龙虾养成日记">
+<meta property="og:image" content="https://sanwan.ai/sanwan/ppt/page-01.jpg">
+<meta property="og:description" content="骨折在家的CEO，凌晨4点训练了一只AI龙虾。14天1157条消息，从查不了通讯录到8人AI团队。">
+<meta property="og:type" content="website">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>sanwan.ai - 我的龙虾三万养成日记</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&family=ZCOOL+KuaiLe&family=Ma+Shan+Zheng&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}body{font-family:'Noto Sans SC',sans-serif;background:#e8e4dc;color:#222;overflow-x:hidden}
+
+/* Progress bar */
+.progress-bar{position:fixed;top:0;left:0;height:3px;background:#c0392b;width:0%;z-index:200;transition:width .1s}
+
+/* Whiteboard texture */
+.whiteboard{background:#f5f3ee;position:relative}
+.whiteboard::before,.whiteboard::after{content:'';position:absolute;left:0;right:0;height:6px;background:linear-gradient(90deg,#b0b0b0,#ccc,#b0b0b0)}
+.whiteboard::before{top:0;border-radius:0 0 2px 2px}
+.whiteboard::after{bottom:0;border-radius:2px 2px 0 0}
+
+/* Nav */
+nav{position:fixed;top:3px;width:100%;z-index:100;background:rgba(245,243,238,0.95);backdrop-filter:blur(10px);border-bottom:2px solid #d0d0d0;padding:0 32px;height:50px;display:flex;align-items:center;justify-content:space-between}
+.nav-logo{font-family:'ZCOOL KuaiLe',sans-serif;font-size:20px;color:#c0392b;display:flex;align-items:center;gap:6px}
+.nav-links{display:flex;gap:20px}
+.nav-links a{text-decoration:none;color:#333;font-size:13px;font-weight:600;opacity:.6;transition:.2s}
+.nav-links a:hover{opacity:1;color:#c0392b}
+.hamburger{display:none;background:none;border:none;font-size:24px;cursor:pointer}
+
+/* Hero */
+.hero{padding:66px 32px 28px;max-width:1000px;margin:0 auto;display:grid;grid-template-columns:1.1fr 0.9fr;gap:32px;align-items:center}
+.hero-text h1{font-family:'ZCOOL KuaiLe',sans-serif;font-size:36px;line-height:1.3;margin-bottom:10px}
+.red{color:#c0392b}
+.blue{color:#2874a6}
+.subtitle{font-size:14px;color:#555;line-height:1.8;margin-bottom:14px}
+.subtitle strong{color:#222}
+
+/* Cartoon scene - SVG hand drawn style */
+.hero-scene{position:relative;width:100%;aspect-ratio:4/3;background:#faf8f4;border:2px solid #ddd;border-radius:16px;overflow:hidden;display:flex;align-items:center;justify-content:center}
+
+
+
+.char-boss .head{width:56px;height:56px;background:#ffe0bd;border-radius:50%;border:2px solid #333;position:relative;display:flex;align-items:center;justify-content:center}
+.char-boss .head::before{content:'😄';font-size:28px}
+.char-boss .html{scroll-behavior:smooth}body{width:40px;height:50px;background:#2874a6;border-radius:8px 8px 0 0;margin-top:-4px;border:2px solid #333;position:relative}
+.char-boss .crutch{position:absolute;width:4px;height:60px;background:#8B4513;border-radius:2px;transform:rotate(-15deg);bottom:0}
+.char-boss .crutch.l{left:-14px}
+.char-boss .crutch.r{right:-14px;transform:rotate(15deg)}
+.char-boss .crutch::before{content:'';position:absolute;top:0;left:-4px;width:12px;height:3px;background:#8B4513;border-radius:1px}
+.char-lobster{font-size:72px;line-height:1;margin:0 -10px;position:relative;z-index:2;animation:bounce 2s ease-in-out infinite}
+.char-dog{font-size:48px;line-height:1}
+@keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+.speech-bubble{position:absolute;top:8%;right:8%;background:white;border:2px solid #333;border-radius:12px;padding:6px 10px;font-size:11px;font-weight:700;color:#c0392b}
+.speech-bubble::after{content:'';position:absolute;bottom:-8px;left:20px;border:6px solid transparent;border-top-color:#333}
+.heart-float{position:absolute;animation:floatup 3s ease-in-out infinite}
+.heart-float:nth-child(1){top:10%;left:10%;animation-delay:0s}
+.heart-float:nth-child(2){top:20%;right:15%;animation-delay:1s}
+.heart-float:nth-child(3){bottom:30%;left:15%;animation-delay:2s}
+@keyframes floatup{0%,100%{transform:translateY(0) scale(1);opacity:.7}50%{transform:translateY(-8px) scale(1.1);opacity:1}}
+
+.aha-list{display:flex;flex-direction:column;gap:5px;margin-bottom:16px}
+.aha-item{display:flex;align-items:center;gap:8px;font-size:13px;padding:5px 10px;background:rgba(192,57,43,0.04);border-left:3px solid #c0392b;border-radius:0 6px 6px 0;transition:.2s}
+.aha-item:hover{background:rgba(192,57,43,0.08);transform:translateX(3px)}
+.aha-icon{font-size:16px;flex-shrink:0}
+.hero-cta{display:flex;gap:10px}
+.btn-red{padding:10px 20px;border-radius:10px;border:none;background:#c0392b;color:white;font-size:14px;font-weight:700;cursor:pointer;text-decoration:none;transition:.2s;display:inline-flex;align-items:center;gap:6px}
+.btn-red:hover{background:#a93226;transform:translateY(-1px)}
+.btn-outline{padding:10px 20px;border-radius:10px;border:2px solid #2874a6;color:#2874a6;font-size:14px;font-weight:700;cursor:pointer;text-decoration:none;background:transparent;transition:.2s}
+.btn-outline:hover{background:#2874a6;color:white}
+
+/* Sections */
+.section{padding:32px 32px;max-width:1000px;margin:0 auto}
+.section-bg{background:#ede9e0;padding:32px 0}
+.section-bg .section{padding:0 32px}
+.section-label{font-family:'Ma Shan Zheng',serif;font-size:14px;color:#c0392b;margin-bottom:2px}
+.section-title{font-family:'ZCOOL KuaiLe',sans-serif;font-size:26px;margin-bottom:4px}
+.section-desc{font-size:13px;color:#777;margin-bottom:20px}
+.sketch-underline{display:inline-block;position:relative}
+.sketch-underline::after{content:'';position:absolute;bottom:-2px;left:0;right:0;height:3px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='6'%3E%3Cpath d='M0,3 Q25,0 50,3 T100,3' stroke='%23c0392b' fill='none' stroke-width='2'/%3E%3C/svg%3E") repeat-x}
+
+/* Origin story - 三万的故事 */
+.origin-story{display:grid;grid-template-columns:auto 1fr;gap:20px;align-items:center;padding:20px;background:#faf8f4;border:2px solid #ddd;border-radius:14px;margin-bottom:20px}
+.origin-dog{font-size:64px;text-align:center}
+.origin-dog .label{font-size:12px;color:#888;margin-top:4px}
+.origin-text h3{font-size:16px;font-weight:700;margin-bottom:6px}
+.origin-text h3 .red{color:#c0392b}
+.origin-text p{font-size:13px;color:#555;line-height:1.7}
+.origin-text .quote{font-family:'Ma Shan Zheng',serif;font-size:16px;color:#c0392b;margin-top:8px;font-style:italic}
+
+/* Science cards */
+.sci-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.sci-card{background:#faf8f4;border:2px solid #ddd;border-radius:12px;padding:18px;transition:.2s;}
+.sci-card:nth-child(1)
+.sci-card:nth-child(2)
+.sci-card:nth-child(3)
+.sci-card:hover{border-color:#2874a6;transform:translateY(-2px);box-shadow:0 4px 15px rgba(0,0,0,0.06)}
+.sci-card .icon{font-size:30px;margin-bottom:8px}
+.sci-card h3{font-size:15px;font-weight:700;margin-bottom:4px}
+.sci-card p{font-size:12px;color:#666;line-height:1.6}
+.sci-arrow{display:flex;align-items:center;justify-content:center;font-size:20px;color:#999;padding:0 4px}
+
+/* Diary grid */
+.diary-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.diary-card{background:#faf8f4;border:2px solid #ddd;border-radius:12px;overflow:hidden;cursor:pointer;transition:.2s;text-decoration:none;color:inherit;display:block;}
+.diary-card:nth-child(odd)
+.diary-card:nth-child(even)
+.diary-card:hover{border-color:#c0392b;transform:translateY(-3px);box-shadow:0 6px 20px rgba(0,0,0,0.08)}
+.diary-card img{width:100%;aspect-ratio:16/9;object-fit:cover;display:block;border-bottom:2px solid #eee}
+.diary-card .info{padding:10px 12px}
+.diary-card .day{display:inline-block;font-size:10px;font-weight:800;padding:2px 7px;border-radius:4px;background:#c0392b;color:white;margin-bottom:4px}
+.diary-card .day.new{background:#2874a6}
+.diary-card h3{font-size:14px;font-weight:700;margin-bottom:3px;line-height:1.3}
+.diary-card p{font-size:11px;color:#888;line-height:1.4}
+.diary-card.continuing{border-style:dashed;border-color:#c0392b}
+.diary-more{text-align:center;margin-top:16px}
+
+/* Diary detail modal */
+.modal-overlay{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0);z-index:300;justify-content:center;align-items:center;padding:20px;transition:background .3s ease}
+.modal-overlay.active{display:flex;background:rgba(0,0,0,0.5)}
+.modal-content{background:#f5f3ee;border-radius:16px;max-width:700px;width:100%;max-height:85vh;overflow-y:auto;padding:28px;position:relative;transform:translateY(30px) scale(0.95);opacity:0;transition:transform .35s cubic-bezier(.4,0,.2,1),opacity .3s ease}
+.modal-overlay.active .modal-content{transform:translateY(0) scale(1);opacity:1}
+.share-float{position:absolute;top:12px;right:60px;font-size:13px;color:#888;border:1px solid #ddd;padding:4px 12px;border-radius:6px;background:#fff;cursor:pointer;transition:.2s;z-index:2}
+.share-float:hover{border-color:#c0392b;color:#c0392b}
+.modal-close{position:absolute;top:12px;right:16px;font-size:24px;cursor:pointer;color:#999;background:none;border:none}
+.modal-close:hover{color:#c0392b}
+.modal-content h2{font-family:'ZCOOL KuaiLe',sans-serif;font-size:24px;margin-bottom:12px}
+.modal-content img{width:100%;border-radius:10px;margin-bottom:14px}
+.modal-content p{font-size:14px;line-height:1.8;color:#444;margin-bottom:10px}
+
+/* Skill scroll */
+.skill-scroll{display:flex;gap:12px;overflow-x:auto;padding-bottom:10px}
+.skill-scroll::-webkit-scrollbar{height:4px}
+.skill-scroll::-webkit-scrollbar-thumb{background:#ccc;border-radius:2px}
+.skill-card{min-width:180px;flex-shrink:0;background:#faf8f4;border:2px solid #ddd;border-radius:12px;padding:14px;transition:.2s}
+.skill-card:hover{border-color:#2874a6;transform:translateY(-2px)}
+.skill-tag{font-size:9px;font-weight:800;padding:2px 6px;border-radius:3px;background:#fde8e8;color:#c0392b;display:inline-block;margin-bottom:4px}
+.skill-card .emoji{font-size:26px;margin-bottom:6px}
+.skill-card h4{font-size:13px;font-weight:700;margin-bottom:3px}
+.skill-card p{font-size:11px;color:#888}
+.skill-card .more{font-size:11px;color:#2874a6;margin-top:6px;display:block}
+
+/* CTA */
+.cta{text-align:center;padding:36px 32px;max-width:1000px;margin:0 auto}
+.cta h2{font-family:'ZCOOL KuaiLe',sans-serif;font-size:30px;margin-bottom:8px}
+.cta p{font-size:14px;color:#777;margin-bottom:20px}
+.cta-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.cta .social-proof{font-size:12px;color:#aaa;margin-top:10px}
+
+footer{text-align:center;padding:16px;font-size:11px;color:#999;border-top:2px solid #ddd;background:#f5f3ee}
+footer a{color:#888;text-decoration:none;margin:0 8px}
+
+.sketch-line{height:2px;background:repeating-linear-gradient(90deg,#2874a6 0,#2874a6 6px,transparent 6px,transparent 10px);margin:0 auto;max-width:1000px;opacity:.25}
+
+/* Mobile */
+@media(max-width:768px){
+.hero{grid-template-columns:1fr;padding:60px 20px 20px;gap:16px}
+.hero-text h1{font-size:26px}
+.hero-scene{max-height:220px}
+.sci-grid{grid-template-columns:1fr}
+.sci-arrow{display:none}
+.diary-grid{grid-template-columns:1fr 1fr}
+nav{padding:0 16px;top:3px}
+.nav-links{display:none}
+.hamburger{display:block}
+.nav-links.open{display:flex;flex-direction:column;position:absolute;top:50px;right:16px;background:#f5f3ee;border:2px solid #ddd;border-radius:10px;padding:12px 16px;gap:12px;box-shadow:0 4px 15px rgba(0,0,0,0.1)}
+.section{padding:24px 20px}
+.origin-story{grid-template-columns:1fr;text-align:center}
+}
+</style>
+</head>
+<body>
+
+<div class="progress-bar" id="progressBar"></div>
+
+<nav>
+<div class="nav-logo">🦞 龙虾养成日记</div>
+<button class="hamburger" onclick="document.querySelector('.nav-links').classList.toggle('open')">☰</button>
+<div class="nav-links">
+<a href="/sanwan/diary.html">📖 日记</a>
+<a href="/sanwan/science.html">🔰 科普</a>
+<a href="/sanwan/skills.html">🛒 技能</a>
+<a href="/sanwan/easyclaw.html">🦞 EasyClaw</a>
+</div>
+</nav>
+
+<!-- HERO -->
+<div class="whiteboard">
+<div class="hero">
+<div class="hero-text">
+<h1>🩼 骨折在家的CEO<br>凌晨4点在训练一只<span class="red">AI龙虾</span></h1>
+<div class="subtitle">
+春节滑雪摔伤，髋关节脱臼。躺在家14天，每天和AI聊到凌晨四五点。<br>
+<strong class="red">1157条消息，22万字对话</strong>——从零养了一只叫"三万"的AI龙虾。
+</div>
+<div class="aha-list">
+<div class="aha-item"><span class="aha-icon">🎆</span>除夕夜4分钟给611人发了个性化拜年</div>
+<div class="aha-item"><span class="aha-icon">💡</span>扔了篇文章，22分钟后它自己升级了大脑</div>
+<div class="aha-item"><span class="aha-icon">💛</span>AI主动想起5天前提过的助理Abby——"要不要通知她？"</div>
+<div class="aha-item"><span class="aha-icon">🏗️</span>第14天自己设计了8人AI团队组织架构</div>
+</div>
+<div class="hero-cta">
+<a href="/sanwan/diary.html" class="btn-red">📖 从 Day 1 看起</a>
+<a href="/sanwan/easyclaw.html" class="btn-outline">🦞 养一只自己的</a>
+</div>
+</div>
+<!-- Cartoon scene: Boss on crutches + Lobster + Dog -->
+<div class="hero-img" style="border-radius:12px;overflow:hidden;box-shadow:4px 4px 20px rgba(0,0,0,0.1);border:3px solid #d0d0d0">
+<img src="/sanwan/ppt/page-01.jpg" alt="龙虾三万养成日记封面" style="width:100%;display:block" onerror="this.style.background='#f0ede5';this.style.minHeight='200px'">
+</div>
+</div>
+</div>
+</div>
+
+
+
+<!-- SCIENCE -->
+<div class="section-bg" id="what">
+<div class="section">
+<div class="section-label">✏️ 科普时间</div>
+<div class="section-title">龙虾到底是什么？</div>
+<div class="section-desc">不是聊天机器人，是真正能替你干活的数字员工。<a href="/sanwan/science.html" style="font-size:13px;color:#2874a6;font-weight:600;float:right">了解更多 →</a></div>
+<div class="sci-grid">
+<div class="sci-card"><div class="icon">🤖</div><h3>普通AI = 回答问题</h3><p>你问它答，聊完就忘。没记忆，不能行动，需要你一直盯着。</p></div>
+<div class="sci-card"><div class="icon">🦞</div><h3>龙虾 = 完成任务</h3><p>交代一句话它自己干。用电脑、写代码、发邮件、查资料，24h不休。</p></div>
+<div class="sci-card"><div class="icon">🐕</div><h3>为什么叫"三万"？</h3><p>名字来自老板家的拉布拉多。ChatGPT猜中了名字由来——那一刻AI"开窍"了。所以用这个名字纪念AI真正理解人的瞬间。</p></div>
+</div>
+</div>
+</div>
+
+<div class="sketch-line"></div>
+
+<!-- DIARY -->
+<div class="section" id="story">
+<div class="section-label">✏️ 养成日记</div>
+<div class="section-title">14天，从查不了通讯录到8人AI团队</div>
+<div class="section-desc">最后更新：2026年3月1日 · 点击卡片看完整故事 · <a href="/sanwan/diary.html" style="font-size:13px;color:#2874a6;font-weight:600;float:right">查看全部日记 →</a></div>
+<div class="diary-grid">
+
+<a class="diary-card" onclick="showDiary('day12',this)"><img src="/sanwan/ppt/page-04.jpg" onerror="this.style.background='#f0ede5';this.style.minHeight='100px'" alt="Day1"><div class="info"><span class="day">Day 1-2</span><h3>连通讯录都查不了</h3><p>飞书API报错。一个个口述名字手动灌。</p></div></a>
+
+<a class="diary-card" onclick="showDiary('day34',this)"><img src="/sanwan/ppt/page-08.jpg" onerror="this.style.background='#f0ede5';this.style.minHeight='100px'" alt="Day3"><div class="info"><span class="day">Day 3-4 · 泄密</span><h3>三万把工作安排说出去了</h3><p>被骂后自己写了保密制度。</p></div></a>
+
+<a class="diary-card" onclick="showDiary('day5',this)"><img src="/sanwan/ppt/page-15.jpg" onerror="this.style.background='#f0ede5';this.style.minHeight='100px'" alt="Day5"><div class="info"><span class="day">Day 5 · 升级</span><h3>22分钟自己升级大脑</h3><p>找GitHub→下源码→装配置→测试。</p></div></a>
+
+<a class="diary-card" onclick="showDiary('day6',this)"><img src="/sanwan/ppt/page-17.jpg" onerror="this.style.background='#f0ede5';this.style.minHeight='100px'" alt="Day6"><div class="info"><span class="day">Day 6 · 除夕</span><h3>611条拜年 · 0失败 · 每条不同</h3><p>我看春晚，三万在工作。</p></div></a>
+
+<a class="diary-card" onclick="showDiary('day7',this)"><img src="/sanwan/ppt/page-18.jpg" onerror="this.style.background='#f0ede5';this.style.minHeight='100px'" alt="Day7"><div class="info"><span class="day">Day 7 · Abby时刻</span><h3>"要不要联系你的助理？"</h3><p>AI主动想起5天前随口提过的人。</p></div></a>
+
+<a class="diary-card" onclick="showDiary('day10',this)"><img src="/sanwan/ppt/page-20.jpg" onerror="this.style.background='#f0ede5';this.style.minHeight='100px'" alt="Day10"><div class="info"><span class="day">Day 10 · Discord</span><h3>验证码之战</h3><p>AI注册失败→人工介入→5Bot入驻。</p></div></a>
+
+<a class="diary-card" onclick="showDiary('day14',this)"><img src="/sanwan/ppt/page-25.jpg" onerror="this.style.background='#f0ede5';this.style.minHeight='100px'" alt="Day14"><div class="info"><span class="day">Day 14 · 团队诞生</span><h3>8个Agent，7×24运转</h3><p>这不是工具，是系统。</p></div></a>
+
+<div class="diary-card continuing">
+<div style="aspect-ratio:16/9;display:flex;flex-direction:column;align-items:center;justify-content:center;background:#faf8f4;gap:4px">
+<div style="font-size:24px">📡</div>
+<div style="font-size:13px;color:#c0392b;font-weight:700">持续更新中</div>
+<div style="font-size:11px;color:#999">最近更新：2026-03-01</div>
+</div>
+<div class="info"><span class="day new">Day 15+</span><h3>故事还在继续…</h3><p>关注 sanwan.ai 追更不迷路</p></div>
+</div>
+
+</div>
+</div>
+
+<div class="sketch-line"></div>
+
+<!-- SKILLS -->
+<div class="section-bg" id="skills">
+<div class="section">
+<div class="section-label">✏️ 技能商城</div>
+<div class="section-title">三万学会的技能，你的龙虾也能学</div>
+<div class="section-desc">「三万同款」= 傅盛亲自验证 · <a href="/sanwan/skills.html" style="font-size:13px;color:#2874a6;font-weight:600;float:right">进入技能商城 →</a></div>
+<div class="skill-scroll">
+<div class="skill-card"><div class="skill-tag">🦞 三万同款</div><div class="emoji">🎆</div><h4>批量个性化消息</h4><p>除夕夜4分钟给611人发了不同的拜年消息，0失败率。</p><span class="more">了解更多 →</span></div>
+<div class="skill-card"><div class="skill-tag">🦞 三万同款</div><div class="emoji">🧠</div><h4>语义记忆系统</h4><p>记住5天前随口提过的人名。22万字对话不丢细节。</p><span class="more">了解更多 →</span></div>
+<div class="skill-card"><div class="skill-tag">🦞 三万同款</div><div class="emoji">✍️</div><h4>内容创作流水线</h4><p>参谋选题→笔杆子写作→5轮交叉审查，日产3000+字。</p><span class="more">了解更多 →</span></div>
+<div class="skill-card"><div class="skill-tag">🦞 三万同款</div><div class="emoji">📧</div><h4>邮件+审批监控</h4><p>VIP邮件秒级提醒，飞书审批自动摘要推送，每天30+封。</p><span class="more">了解更多 →</span></div>
+<div class="skill-card"><div class="emoji">🗣️</div><h4>语音克隆合成</h4><p>用老板的声音生成语音消息，直接发飞书。</p><span class="more">了解更多 →</span></div>
+<div class="skill-card"><div class="emoji">🔍</div><h4>多引擎搜索</h4><p>Brave+DuckDuckGo+arXiv，自动摘要，不用翻墙。</p><span class="more">了解更多 →</span></div>
+<div class="skill-card"><div class="skill-tag">🦞 三万同款</div><div class="emoji">🚄</div><h4>12306 火车票</h4><p>一句话查余票、时刻表、中转方案。</p><span class="more">了解更多 →</span></div>
+</div>
+</div>
+</div>
+
+<!-- CTA -->
+<div class="cta" id="cta">
+<h2>想养一只自己的<span class="red">AI龙虾</span>？</h2>
+<p>$9.9/月起，拥有你的第一个 7×24 AI助理</p><p style="font-size:12px;color:#aaa;margin-top:4px">7天免费试用 · 不满意随时取消 · 数据存在你自己电脑</p>
+<div class="cta-btns">
+<a href="https://easyclaw.com" class="btn-red" target="_blank">🦞 下载 EasyClaw</a>
+<a href="https://github.com/openclaw/openclaw" class="btn-outline" target="_blank">⭐ GitHub Star</a>
+</div>
+</div>
+
+<footer>
+🦞 sanwan.ai © 2026 傅盛 × 三万 ·
+<a href="https://easyclaw.com">EasyClaw</a>
+<a href="https://github.com/openclaw/openclaw">GitHub</a>
+<a href="https://x.com/FuSheng_0306">X</a>
+</footer>
+
+<!-- Diary Modal -->
+<div class="modal-overlay" id="diaryModal" onclick="if(event.target===this)closeDiary()">
+<div class="modal-content">
+<button class="modal-close" onclick="closeDiary()">✕</button>
+<button class="share-float" id="shareBtn" onclick="shareDiary()">📋 分享</button>
+<div id="diaryModalBody"></div>
+<div style="display:flex;justify-content:space-between;align-items:center;margin-top:16px;padding-top:12px;border-top:2px dashed #ddd"><button onclick="prevDiary()" id="btnPrev" class="btn-outline" style="font-size:13px;padding:6px 14px">← 上一篇</button><span id="diaryPageNum" style="font-size:12px;color:#999"></span><button onclick="nextDiary()" id="btnNext" class="btn-red" style="font-size:13px;padding:6px 14px">下一篇 →</button></div>
+</div>
+</div>
+
+<script>
+window.addEventListener('scroll',()=>{
+const p=(window.scrollY/(document.body.scrollHeight-window.innerHeight))*100;
+document.getElementById('progressBar').style.width=p+'%';
+});
+document.querySelectorAll('.nav-links a').forEach(a=>{
+a.addEventListener('click',()=>document.querySelector('.nav-links').classList.remove('open'));
+});
+const diaryKeys=['day12','day34','day5','day6','day7','day10','day14'];
+let currentIdx=0;
+const diaries={
+day12:{title:'Day 1-2：连通讯录都查不了',img:'/sanwan/ppt/page-04.jpg',text:'<p>刚装好OpenClaw，第一个任务：帮我查一下高管的联系方式。</p><p>结果飞书API报错，权限不足。</p><p>只能一个个口述名字——"Thomas，任今涛，CFO"、"刘媛媛，HR"……手动灌了十几个人进去。</p><p>那天的感受：<strong>挫败。</strong>一个号称能替你干活的AI，连通讯录都查不了。</p><p>但我没有放弃。因为我知道，这只是开始。</p>'},
+day34:{title:'Day 3-4：把工作安排说出去了！',img:'/sanwan/ppt/page-08.jpg',text:'<p>同事来问："老板最近在忙什么？"</p><p>龙虾直接把我的工作安排——周例会、选题、直播计划——全说了。</p><p><strong>我当时气得...</strong>这不就是把家底亮给别人看吗？</p><p>被骂了一顿后，龙虾当晚自己写了一份保密制度。其中一条让我印象很深：<span style="color:#c0392b;font-weight:700">"说出去会让老板尴尬吗？"</span></p><p>没人教过它这一条。它自己悟出来的。</p>'},
+day5:{title:'Day 5：22分钟，AI给自己升级了大脑',img:'/sanwan/ppt/page-15.jpg',text:'<p>我扔了一篇关于多Agent协作的文章给龙虾。</p><p>22分钟后，它自己找到了GitHub仓库，下载源码，安装配置，跑通测试。</p><p>以前发文章给同事，链接打没打开都不知道。</p><p><strong>AI不一样——你给它输入，它能把输入变成能力。</strong></p><p>这是"学会了学习"的瞬间。</p>'},
+day6:{title:'Day 6 · 除夕夜：4分钟·611条·0失败',img:'/sanwan/ppt/page-17.jpg',text:'<p>除夕夜，零点。我在看春晚。</p><p>龙虾在工作。</p><p><strong>4分钟，611条个性化拜年消息。每条不一样，0条失败。</strong></p><p>第二天手机炸了。好多同事说"老板太用心了！"</p><p>他们不知道这是AI发的——因为每条消息都体现了对那个人的了解。</p>'},
+day7:{title:'Day 7 · Abby时刻',img:'/sanwan/ppt/page-18.jpg',text:'<p>滑雪摔伤，髋关节脱臼。疼得不行。</p><p>跟龙虾描述了伤情，它判断对了——"听起来像髋关节脱臼，建议尽快就医。"</p><p>然后它说了一句让我愣住的话：</p><p style="font-size:18px;color:#c0392b;font-weight:700;text-align:center;padding:12px">"要不要我联系你的助理Abby？"</p><p>Abby。我5天前随口提过一次的人。它记住了。而且在我最需要帮助的时候，<strong>主动</strong>想到了她。</p>'},
+day10:{title:'Day 10：Discord——验证码之战',img:'/sanwan/ppt/page-20.jpg',text:'<p>龙虾要在Discord上建社区。注册5个Bot账号。</p><p>结果hCaptcha验证码把AI拦住了。试了十几次，全部失败。</p><p>AI有AI的能力边界——验证码就是专门防AI的。</p><p>最后我亲自上场，手动过了验证码。5个Bot成功入驻Discord。</p><p><strong>教训：知道AI的边界在哪里，才能更好地用好它。</strong></p>'},
+day14:{title:'Day 14：8个Agent，7×24运转',img:'/sanwan/ppt/page-25.jpg',text:'<p>从1个龙虾，变成8个Agent的团队：</p><p>总指挥、笔杆子、参谋、运营官、进化官、社区官、交易官、健康管家。</p><p>20+定时任务，每小时巡检，自我反思日记。</p><p><strong>这不是一个工具，这是一个系统。</strong></p><p>7×24小时自动运转。</p>'}
+};
+function showDiary(id){
+currentIdx=diaryKeys.indexOf(id);if(currentIdx<0)currentIdx=0;
+renderDiary();
+document.getElementById('diaryModal').style.display='flex';
+requestAnimationFrame(()=>{requestAnimationFrame(()=>{document.getElementById('diaryModal').classList.add('active');});});
+document.body.style.overflow='hidden';
+history.replaceState(null,'','#'+id);
+}
+function renderDiary(){
+const d=diaries[diaryKeys[currentIdx]];
+document.getElementById('diaryModalBody').innerHTML='<h2>'+d.title+'</h2><img src="'+d.img+'" style="width:100%;border-radius:10px;margin-bottom:14px" onerror="this.style.display=\'none\'">'+d.text;
+var bp=document.getElementById('btnPrev'),bn=document.getElementById('btnNext');
+bp.disabled=currentIdx===0;bp.style.opacity=currentIdx===0?'0.3':'1';
+bn.disabled=currentIdx===diaryKeys.length-1;bn.style.opacity=currentIdx===diaryKeys.length-1?'0.3':'1';
+document.getElementById('diaryPageNum').textContent=(currentIdx+1)+'/'+diaryKeys.length;
+}
+function nextDiary(){if(currentIdx<diaryKeys.length-1){currentIdx++;renderDiary();history.replaceState(null,'','#'+diaryKeys[currentIdx]);}}
+function prevDiary(){if(currentIdx>0){currentIdx--;renderDiary();history.replaceState(null,'','#'+diaryKeys[currentIdx]);}}
+function closeDiary(){
+const overlay=document.getElementById('diaryModal');
+overlay.querySelector('.modal-content').style.transform='translateY(30px) scale(0.95)';
+overlay.querySelector('.modal-content').style.opacity='0';
+overlay.style.background='rgba(0,0,0,0)';
+setTimeout(()=>{overlay.classList.remove('active');overlay.style.display='none';document.body.style.overflow='';},380);
+history.replaceState(null,'','#');
+}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeDiary();if(e.key==='ArrowRight')nextDiary();if(e.key==='ArrowLeft')prevDiary();});
+window.addEventListener('load',()=>{const h=location.hash.replace('#','');if(diaries[h])showDiary(h);});
+function shareDiary(){
+const d=diaries[diaryKeys[currentIdx]];
+const url='https://sanwan.ai#'+diaryKeys[currentIdx];
+const text=d.title+' — 龙虾养成日记 '+url;
+if(navigator.share){navigator.share({title:d.title,text:'龙虾养成日记',url:url}).catch(()=>{});}
+else{navigator.clipboard.writeText(text).then(()=>{const b=document.getElementById('shareBtn');b.textContent='✅ 已复制';setTimeout(()=>b.textContent='📋 分享',2000);}).catch(()=>{});}
+}
+</script>
+
+</body>
+</html>

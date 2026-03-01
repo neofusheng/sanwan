@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Twitter / X — 龙虾技能</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root { --bg:#f7f5f2; --card:#fff; --border:#e8e4df; --accent:#c0392b; --text:#2d2926; --muted:#7a746e; --code-bg:#1e1e1e; --code-text:#d4d4d4; }
+    * { box-sizing:border-box; margin:0; padding:0; }
+    body { font-family:'Inter','Noto Sans SC',-apple-system,sans-serif; background:var(--bg); color:var(--text); line-height:1.6; }
+    .topbar { background:#fff; border-bottom:1px solid var(--border); padding:14px 32px; display:flex; align-items:center; gap:12px; font-size:13px; }
+    .topbar a { color:var(--muted); text-decoration:none; } .topbar a:hover { color:var(--accent); }
+    .topbar .sep { color:var(--border); }
+    .hero { background:#fff; border-bottom:1px solid var(--border); padding:52px 32px 40px; text-align:center; position:relative; overflow:hidden; }
+    .hero::before { content:""; position:absolute; top:0; left:0; right:0; bottom:0; opacity:0.15; background-image:radial-gradient(var(--accent) 0.5px,transparent 0.5px); background-size:28px 28px; pointer-events:none; }
+    .hero-badge { display:inline-block; background:var(--accent); color:#fff; font-size:11px; font-weight:700; letter-spacing:1px; padding:4px 12px; border-radius:99px; margin-bottom:16px; position:relative; }
+    .hero h1 { font-size:clamp(1.8rem,5vw,2.4rem); font-weight:700; margin-bottom:12px; position:relative; }
+    .hero p { color:var(--muted); font-size:1rem; max-width:520px; margin:0 auto 24px; position:relative; }
+    .hero-btns { display:flex; gap:12px; justify-content:center; flex-wrap:wrap; position:relative; }
+    .btn { display:inline-flex; align-items:center; gap:6px; padding:10px 20px; border-radius:8px; font-size:13px; font-weight:600; text-decoration:none; transition:all .18s; cursor:pointer; border:none; font-family:inherit; }
+    .btn-primary { background:var(--accent); color:#fff; } .btn-primary:hover { background:#a93226; }
+    .btn-ghost { background:var(--bg); color:var(--text); border:1px solid var(--border); } .btn-ghost:hover { border-color:var(--accent); color:var(--accent); }
+    .container { max-width:820px; margin:0 auto; padding:40px 24px 80px; }
+    .section { background:var(--card); border:1px solid var(--border); border-radius:14px; padding:28px; margin-bottom:20px; box-shadow:0 1px 3px rgba(0,0,0,0.05); }
+    .section h2 { font-size:17px; font-weight:700; margin-bottom:18px; display:flex; align-items:center; gap:8px; }
+    .sec-icon { font-size:18px; }
+    .features { display:grid; grid-template-columns:1fr; gap:10px; }
+    pre { background:var(--code-bg); color:var(--code-text); border-radius:10px; padding:14px 18px; overflow-x:auto; font-size:13px; line-height:1.65; margin:8px 0; font-family:'SF Mono',Consolas,monospace; }
+    code { font-family:'SF Mono',Consolas,monospace; font-size:13px; }
+    table { width:100%; border-collapse:collapse; font-size:13px; margin:12px 0; }
+    td { padding:10px 14px; border-bottom:1px solid var(--border); vertical-align:top; }
+    tr:last-child td { border-bottom:none; }
+    .install-banner { background:#fffdf9; border:1px solid #fde8c8; border-radius:12px; padding:16px 20px; margin-bottom:24px; display:flex; gap:14px; align-items:flex-start; }
+    .install-banner .icon { font-size:20px; flex-shrink:0; }
+    .install-banner code { background:rgba(192,57,43,0.1); color:var(--accent); padding:2px 6px; border-radius:4px; font-size:12px; }
+    @media(max-width:600px) { .section { padding:20px; } .hero { padding:36px 20px 28px; } .topbar { padding:12px 16px; } }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <a href="/">🦞 龙虾养成日记</a><span class="sep">›</span>
+    <a href="/skills.html">技能商店</a><span class="sep">›</span>
+    <span>Twitter / X</span>
+  </div>
+
+  <div class="hero">
+    <div class="hero-badge">社媒运营</div>
+    <h1>🐦 Twitter / X</h1>
+    <p>X/Twitter 运营 — Thread、互动分析、定时发布，粉丝增长不停</p>
+    <div class="hero-btns">
+      <button class="btn btn-primary" onclick="copyInstall()">📋 复制安装提示词</button>
+      <a class="btn btn-ghost" href="/skills.html">← 全部技能</a>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="install-banner">
+      <div class="icon">⚙️</div>
+      <div>
+        <p style="font-size:13px;color:#5a4a3a;line-height:1.65"><strong>安装方式：</strong> <code>需要 X API Keys</code></p>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2><span class="sec-icon">⚡</span> 核心能力</h2>
+      <div class="features">
+      <div style="background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:14px"><div style="font-size:13px;color:var(--text);line-height:1.6">✅ 一行命令发推/Thread/删除</div></div>
+      <div style="background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:14px"><div style="font-size:13px;color:var(--text);line-height:1.6">✅ 长文自动拆Thread，每条有hook</div></div>
+      <div style="background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:14px"><div style="font-size:13px;color:var(--text);line-height:1.6">✅ 数据追踪：浏览、点赞、转发分析</div></div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2><span class="sec-icon">💬</span> 你可以这样说</h2>
+      <p style="font-size:13px;color:var(--muted);margin-bottom:8px">直接用自然语言对龙虾说——</p>
+      <pre><code>把公众号文章转Twitter Thread</code></pre>
+      <pre><code>分析最近推文数据</code></pre>
+      <pre><code>写5条AI主题推文</code></pre>
+    </div>
+
+    <div class="section">
+      <h2><span class="sec-icon">💡</span> 使用场景</h2>
+      <table>
+      <tr><td style="font-size:20px;text-align:center;width:40px">🌍</td><td><strong>出海获客</strong></td><td style="color:var(--muted)">英文内容触达全球</td></tr>
+      <tr><td style="font-size:20px;text-align:center;width:40px">📈</td><td><strong>涨粉</strong></td><td style="color:var(--muted)">分析KOL学习爆款</td></tr>
+      <tr><td style="font-size:20px;text-align:center;width:40px">🔥</td><td><strong>热点追踪</strong></td><td style="color:var(--muted)">趋势话题第一时间跟进</td></tr>
+      </table>
+    </div>
+
+    <div style="text-align:center;margin-top:32px">
+      <button class="btn btn-primary" onclick="copyInstall()" style="font-size:15px;padding:14px 28px">📋 复制提示词，发给龙虾即可学会</button>
+    </div>
+  </div>
+
+  <script>
+    function copyInstall() {
+      const prompt = `请学会 Twitter/X 运营技能。
+
+**发推命令：**
+\`\`\`bash
+python3 ~/clawd/scripts/x_post.py post "你的推文内容"
+\`\`\`
+
+**发 Thread：**
+\`\`\`bash
+python3 ~/clawd/scripts/x_post.py thread "第1条||第2条||第3条"
+\`\`\`
+
+**删除推文：**
+\`\`\`bash
+python3 ~/clawd/scripts/x_post.py delete <tweet_id>
+\`\`\`
+
+**配置文件：** Keys 在 \`~/clawd/scripts/data/x_fusheng_keys.json\`
+
+**注意：** 发推前必须经老板确认！`;
+      navigator.clipboard.writeText(prompt).then(() => {
+        document.querySelectorAll('.btn-primary').forEach(btn => {
+          btn.textContent = '✅ 已复制！发给你的龙虾即可';
+          setTimeout(() => btn.textContent = '📋 复制安装提示词', 3000);
+        });
+      });
+    }
+  </script>
+</body>
+</html>

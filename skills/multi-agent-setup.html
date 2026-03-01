@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>多Agent团队配置 — 龙虾技能</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f7f5f2;--card:#fff;--border:#e8e4df;--accent:#c0392b;--text:#2d2926;--muted:#7a746e;--code-bg:#1e1e1e;--code-text:#d4d4d4}
+*{box-sizing:border-box;margin:0;padding:0}body{font-family:'Inter','Noto Sans SC',-apple-system,sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+.topbar{background:#fff;border-bottom:1px solid var(--border);padding:14px 32px;display:flex;align-items:center;gap:12px;font-size:13px}.topbar a{color:var(--muted);text-decoration:none}.topbar .sep{color:var(--border)}
+.hero{background:#fff;border-bottom:1px solid var(--border);padding:52px 32px 40px;text-align:center;position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;top:0;left:0;right:0;bottom:0;opacity:0.15;background-image:radial-gradient(var(--accent) 0.5px,transparent 0.5px);background-size:28px 28px;pointer-events:none}
+.hero-badge{display:inline-block;background:var(--accent);color:#fff;font-size:11px;font-weight:700;padding:4px 12px;border-radius:99px;margin-bottom:16px;position:relative}
+.hero h1{font-size:clamp(1.8rem,5vw,2.4rem);font-weight:700;margin-bottom:12px;position:relative}
+.hero p{color:var(--muted);font-size:1rem;max-width:560px;margin:0 auto 24px;position:relative}
+.hero-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;position:relative}
+.btn{display:inline-flex;align-items:center;gap:6px;padding:10px 20px;border-radius:8px;font-size:13px;font-weight:600;text-decoration:none;transition:all .18s;cursor:pointer;border:none;font-family:inherit}
+.btn-primary{background:var(--accent);color:#fff}.btn-primary:hover{background:#a93226}
+.btn-ghost{background:var(--bg);color:var(--text);border:1px solid var(--border)}.btn-ghost:hover{border-color:var(--accent);color:var(--accent)}
+.container{max-width:860px;margin:0 auto;padding:40px 24px 80px}
+.section{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:28px;margin-bottom:20px;box-shadow:0 1px 3px rgba(0,0,0,0.05)}
+.section h2{font-size:17px;font-weight:700;margin-bottom:18px;display:flex;align-items:center;gap:8px}
+pre{background:var(--code-bg);color:var(--code-text);border-radius:10px;padding:16px 20px;overflow-x:auto;font-size:12px;line-height:1.7;font-family:'SF Mono',Consolas,monospace;margin:12px 0}
+code{font-family:'SF Mono',Consolas,monospace;font-size:12px}
+.inline-code{background:rgba(192,57,43,0.08);color:var(--accent);padding:2px 6px;border-radius:4px}
+.step{display:flex;gap:16px;margin-bottom:20px;align-items:flex-start}
+.step-num{background:var(--accent);color:#fff;width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0;margin-top:2px}
+.step-body{flex:1}
+.step-title{font-size:15px;font-weight:700;margin-bottom:6px}
+.step-desc{font-size:13px;color:var(--muted);line-height:1.6}
+.story{background:rgba(192,57,43,0.04);border:1px solid rgba(192,57,43,0.15);border-radius:12px;padding:16px 20px;margin-bottom:24px}
+.arch-diagram{background:var(--bg);border:1px solid var(--border);border-radius:12px;padding:20px;margin:16px 0;text-align:center;font-size:13px;line-height:2}
+.arch-node{display:inline-block;background:var(--card);border:2px solid var(--accent);border-radius:8px;padding:6px 14px;margin:4px;font-weight:600;font-size:12px}
+.arch-sub{display:inline-block;background:var(--card);border:1.5px solid var(--border);border-radius:8px;padding:4px 12px;margin:4px;font-size:12px}
+.arch-arrow{color:var(--accent);font-weight:700;margin:0 4px}
+table{width:100%;border-collapse:collapse;font-size:13px;margin:12px 0}
+th{text-align:left;padding:10px 14px;background:var(--bg);border-bottom:2px solid var(--border);font-weight:700}
+td{padding:10px 14px;border-bottom:1px solid var(--border);vertical-align:top}
+.tip{background:#fffdf5;border:1px solid #fde8c8;border-radius:10px;padding:12px 16px;margin:12px 0;font-size:13px;color:#5a4a3a}
+.warn{background:#fff5f5;border:1px solid #f5c6cb;border-radius:10px;padding:12px 16px;margin:12px 0;font-size:13px;color:#721c24}
+@media(max-width:600px){.section{padding:20px}.hero{padding:36px 20px 28px}.topbar{padding:12px 16px}pre{font-size:11px;padding:12px 14px}}
+</style>
+</head>
+<body>
+<div class="topbar"><a href="/">🦞 龙虾养成日记</a><span class="sep">›</span><a href="/skills.html">技能商店</a><span class="sep">›</span><span>多Agent团队配置</span></div>
+
+<div class="hero">
+<div class="hero-badge">⭐ 三万同款核心</div>
+<h1>🏗️ 多Agent团队配置</h1>
+<p>一只龙虾变一支团队——让你的Bot学会配置和管理多个AI角色协作</p>
+<div class="hero-btns">
+<button class="btn btn-primary" onclick="copyInstall()">📋 复制配置提示词</button>
+<a class="btn btn-ghost" href="/skills/pack-sanwan.html">← 三万同款</a>
+</div>
+</div>
+
+<div class="container">
+<div class="story"><p>💡 <strong>真实故事：</strong>傅盛的龙虾三万，14天从1只裂变成8个Agent团队：总指挥接收任务→笔杆子写文章→参谋做研究→运营官管日常→进化官写代码→社区官管Discord→交易官盯股票。7×24小时自动协作，老板只需要在飞书说一句话。</p></div>
+
+<!-- Architecture -->
+<div class="section">
+<h2>🏛️ 架构概览</h2>
+<p style="font-size:13px;color:var(--muted);margin-bottom:12px">多Agent = 一个OpenClaw实例 + 多个独立角色，各有人设、记忆、技能</p>
+<div class="arch-diagram">
+<div><span class="arch-node">🎯 总指挥（主Agent）</span></div>
+<div style="margin:8px 0">
+<span class="arch-arrow">↙</span>
+<span class="arch-arrow">↓</span>
+<span class="arch-arrow">↘</span>
+</div>
+<div>
+<span class="arch-sub">✍️ 笔杆子</span>
+<span class="arch-sub">🔬 参谋</span>
+<span class="arch-sub">📋 运营官</span>
+<span class="arch-sub">🧬 进化官</span>
+<span class="arch-sub">💬 社区官</span>
+</div>
+<div style="margin-top:8px;font-size:11px;color:var(--muted)">
+sessions_spawn 派任务 · 共享文件协作 · sessions_send 持续对话
+</div>
+</div>
+</div>
+
+<!-- Step by step -->
+<div class="section">
+<h2>📋 配置步骤</h2>
+
+<div class="step">
+<div class="step-num">1</div>
+<div class="step-body">
+<div class="step-title">定义Agent列表（agents.list）</div>
+<div class="step-desc">在 <code class="inline-code">~/.openclaw/openclaw.json</code> 的 agents 字段中定义所有角色：</div>
+<pre><code>{
+  "agents": {
+    "defaults": {
+      "model": { "primary": "amazon-bedrock/us.anthropic.claude-sonnet-4-6" }
+    },
+    "list": [
+      {
+        "id": "main",
+        "default": true,
+        "name": "总指挥",
+        "workspace": "/home/user/.openclaw/workspace",
+        "subagents": {
+          "allowAgents": ["creator", "canmou", "yunying"]
+        }
+      },
+      {
+        "id": "creator",
+        "name": "笔杆子",
+        "workspace": "/home/user/.openclaw/workspace-creator"
+      },
+      {
+        "id": "canmou",
+        "name": "参谋",
+        "workspace": "/home/user/.openclaw/workspace-canmou"
+      },
+      {
+        "id": "yunying",
+        "name": "运营官",
+        "workspace": "/home/user/.openclaw/workspace-yunying"
+      }
+    ]
+  }
+}</code></pre>
+</div>
+</div>
+
+<div class="step">
+<div class="step-num">2</div>
+<div class="step-body">
+<div class="step-title">创建每个Agent的Workspace</div>
+<div class="step-desc">每个Agent需要独立的工作目录和人设文件：</div>
+<pre><code># 创建目录
+mkdir -p ~/.openclaw/workspace-creator
+mkdir -p ~/.openclaw/workspace-canmou
+mkdir -p ~/.openclaw/workspace-yunying
+
+# 每个目录下创建 SOUL.md（人设文件）
+# 例：笔杆子的 SOUL.md
+cat > ~/.openclaw/workspace-creator/SOUL.md << 'EOF'
+# 笔杆子
+
+## 我是谁
+我是笔杆子，专职内容创作者。
+
+## 职责
+- 写公众号文章、Twitter Thread
+- 内容风格把控
+- 配合总指挥的任务安排
+
+## 写作风格
+- 口语化、有故事感
+- 数据支撑但不堆砌
+- 有态度有观点
+EOF</code></pre>
+</div>
+</div>
+
+<div class="step">
+<div class="step-num">3</div>
+<div class="step-body">
+<div class="step-title">绑定飞书/Discord渠道（可选）</div>
+<div class="step-desc">如果要每个Agent独立的聊天入口：</div>
+<pre><code>// 方案A：共享一个飞书Bot（推荐新手）
+// 所有消息发给主Agent，主Agent内部派发
+"bindings": [
+  { "agentId": "main", "match": { "channel": "feishu", "accountId": "my-app" } }
+]
+
+// 方案B：每个Agent一个飞书Bot
+// 用户可以直接和特定角色对话
+"bindings": [
+  { "agentId": "main", "match": { "channel": "feishu", "accountId": "app-main" } },
+  { "agentId": "creator", "match": { "channel": "feishu", "accountId": "app-creator" } }
+]</code></pre>
+<div class="tip">💡 方案A最简单：只需一个飞书Bot，主Agent自动分工。方案B更强但需要额外创建飞书应用。</div>
+</div>
+</div>
+
+<div class="step">
+<div class="step-num">4</div>
+<div class="step-body">
+<div class="step-title">重启Gateway生效</div>
+<pre><code># 修改完 openclaw.json 后重启
+openclaw gateway restart
+
+# 验证Agent列表
+openclaw status</code></pre>
+</div>
+</div>
+
+<div class="step">
+<div class="step-num">5</div>
+<div class="step-body">
+<div class="step-title">主Agent调度子Agent</div>
+<div class="step-desc">三种协作方式：</div>
+<pre><code>// 方式1：派发一次性任务（最常用）
+sessions_spawn(
+  task="写一篇关于AI未来趋势的文章，800字",
+  agentId="creator"
+)
+// 子Agent完成后自动回传结果
+
+// 方式2：给已有session发消息（持续对话）
+sessions_send(
+  agentId="canmou",
+  message="帮我分析一下这份竞品报告"
+)
+
+// 方式3：共享文件（异步协作）
+write("/home/user/.openclaw/workspace/tasks/today.md", "今日待办：...")</code></pre>
+</div>
+</div>
+</div>
+
+<!-- Comparison table -->
+<div class="section">
+<h2>📊 三种典型方案</h2>
+<table>
+<tr><th>方案</th><th>架构</th><th>适合</th><th>复杂度</th></tr>
+<tr><td><strong>🟢 A：单Bot+多Agent</strong></td><td>一个飞书Bot入口，内部多角色</td><td>个人用户</td><td>⭐</td></tr>
+<tr><td><strong>🔵 B：多Bot+多Agent</strong></td><td>每个Agent独立飞书Bot</td><td>企业内部</td><td>⭐⭐⭐</td></tr>
+<tr><td><strong>🟣 C：混合渠道</strong></td><td>飞书+Discord+Telegram混合</td><td>全球团队</td><td>⭐⭐⭐⭐</td></tr>
+</table>
+</div>
+
+<!-- Tips -->
+<div class="section">
+<h2>⚠️ 重要提醒</h2>
+<div class="warn">
+<strong>配置前必须想清楚：</strong><br>
+• 你需要几个角色？每个负责什么？<br>
+• 哪个是主Agent（总指挥）？<br>
+• 是否需要独立飞书Bot？（推荐先方案A）<br>
+• 模型选择：重要角色用Opus/Sonnet，轻量角色用Haiku省钱
+</div>
+<div class="tip">
+<strong>💡 最佳实践（三万14天踩坑总结）：</strong><br>
+• 先跑通2个Agent再加更多，不要一口气配7个<br>
+• 每个Agent的SOUL.md要写清楚职责边界<br>
+• 主Agent的AGENTS.md里写清楚派发规则<br>
+• 子Agent没有主Agent的记忆，spawn时要给完整上下文<br>
+• 定期巡检子Agent（别让他们偷懒！）
+</div>
+</div>
+
+<div style="text-align:center;margin-top:32px">
+<button class="btn btn-primary" onclick="copyInstall()" style="font-size:15px;padding:14px 28px">📋 复制配置提示词，发给龙虾即可开始</button>
+<p style="font-size:12px;color:var(--muted);margin-top:8px">龙虾会一步步引导你完成多Agent配置</p>
+</div>
+</div>
+
+<script>
+function copyInstall(){
+const prompt = `请帮我配置多Agent团队。
+
+**参考文档：**
+- 完整配置指南：https://cmcm.bot/multi-agent.html
+- 三万同款架构：https://sanwan.ai/skills/multi-agent-setup.html
+
+**请按以下步骤引导我：**
+
+1. 先问我：想要几个Agent角色？每个负责什么？
+2. 根据我的回答，生成 agents.list 配置（写入 ~/.openclaw/openclaw.json）
+3. 为每个Agent创建workspace目录和SOUL.md人设文件
+4. 配置飞书/Discord渠道绑定
+5. 重启Gateway并验证
+6. 教我如何用 sessions_spawn 派发任务
+
+**三种方案供我选择：**
+- 🟢 方案A：单飞书Bot+多Agent（最简单，推荐新手）
+- 🔵 方案B：多飞书Bot+多Agent（企业版）
+- 🟣 方案C：多渠道混合（飞书+Discord+Telegram）
+
+**⚠️ 重要：**
+- 不要直接套用示例配置！先问清楚我的实际需求
+- 每步都要确认后再执行
+- 修改openclaw.json前先备份
+
+请开始引导我吧！`;
+
+navigator.clipboard.writeText(prompt).then(()=>{
+document.querySelectorAll('.btn-primary').forEach(btn=>{
+const orig = btn.textContent;
+btn.textContent='✅ 已复制！发给你的龙虾即可';
+setTimeout(()=>btn.textContent=orig,3000)
+})
+})
+}
+</script>
+</body></html>
