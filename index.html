@@ -4,133 +4,221 @@
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦞</text></svg>">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta property="og:title" content="三万 sanwan.ai — 领养你的AI龙虾">
-<meta property="og:description" content="几百万人围观了傅盛养龙虾。现在，你也可以领一只回去。">
+<meta property="og:title" content="三万·龙虾养成日记 | sanwan.ai">
+<meta property="og:description" content="骨折在家的CEO，凌晨4点在训练一只AI龙虾。14天，1157条消息，从零搭出8人AI团队。">
 <meta property="og:image" content="https://sanwan.ai/ppt/page-01.jpg">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="三万 sanwan.ai — 领养你的AI龙虾">
-<meta name="twitter:description" content="几百万人围观了傅盛养龙虾。现在，你也可以领一只回去。">
-<meta name="twitter:image" content="https://sanwan.ai/ppt/page-01.jpg">
-<title>sanwan.ai — 领养你的AI龙虾</title>
-<link href="https://fonts.googleapis.com/css2?family=ZCOOL+KuaiLe&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet">
+<title>sanwan.ai - 我的龙虾三万养成日记</title>
+<link href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-webfont@1.7.0/style.css" rel="stylesheet">
 <style>
+@font-face {
+  font-family: 'Smiley Sans';
+  src: url('fonts/smiley-sans.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+</style>
+<link href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-webfont@1.7.0/style.css" rel="stylesheet">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Long+Cang&family=ZCOOL+KuaiLe&family=Noto+Sans+SC:wght@500;700;900&family=Noto+Sans+SC:wght@300;400;500;700;900&family=&family=Ma+Shan+Zheng&display=swap');
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:'Noto Sans SC',sans-serif;background:#f5f3ee;color:#222;overflow-x:hidden}
-:root{--accent:#c0392b;--accent2:#e74c3c;--gold:#f39c12;--bg:#f5f3ee;--card:#fff;--border:#e8e4df;--muted:#7a746e}
+body{font-size:16px;font-family:'Noto Sans SC',sans-serif;background:#e8e4dc;color:#222;overflow-x:hidden}
+
+/* Progress bar */
+.progress-bar{position:fixed;top:0;left:0;height:3px;background:#c0392b;width:0%;z-index:200;transition:width .1s}
+
+/* Whiteboard texture */
+.whiteboard{background:#f5f3ee;position:relative}
+.whiteboard::before,.whiteboard::after{content:'';position:absolute;left:0;right:0;height:6px;background:linear-gradient(90deg,#b0b0b0,#ccc,#b0b0b0)}
+.whiteboard::before{top:0;border-radius:0 0 2px 2px}
+.whiteboard::after{bottom:0;border-radius:2px 2px 0 0}
 
 /* Nav */
-nav{position:fixed;top:0;left:0;width:100%;z-index:1000;background:rgba(255,255,255,0.97);backdrop-filter:blur(12px);border-bottom:2px solid var(--border);padding:0 32px;height:56px;display:flex;align-items:center;justify-content:space-between;box-shadow:0 1px 8px rgba(0,0,0,0.04)}
-.nav-logo{font-family:'ZCOOL KuaiLe',sans-serif;font-size:22px;color:var(--accent);display:flex;align-items:center;gap:6px;font-weight:700;text-decoration:none}
+nav{position:fixed;top:0;left:0;width:100%;z-index:1000;background:rgba(255,255,255,0.97);backdrop-filter:blur(12px);border-bottom:2px solid #e8e4df;padding:0 32px;height:56px;display:flex;align-items:center;justify-content:space-between;box-shadow:0 1px 8px rgba(0,0,0,0.04)}
+.nav-logo{font-family:'ZCOOL KuaiLe','Noto Sans SC',sans-serif;font-size:22px;color:#c0392b;display:flex;align-items:center;gap:6px;font-weight:700}
 .nav-links{display:flex;gap:20px}
 .nav-links a{text-decoration:none;color:#333;font-size:15px;font-weight:600;opacity:.7;transition:.2s;padding:6px 4px}
-.nav-links a:hover{opacity:1;color:var(--accent)}
+.nav-links a:hover{opacity:1;color:#c0392b}
 .hamburger{display:none;background:none;border:none;font-size:15px;cursor:pointer;color:#333;font-weight:600;padding:6px 12px;border-radius:8px;border:1.5px solid #ddd}
 
-/* HERO - 左右分栏 */
-.hero-split{padding:76px 32px 32px;max-width:1000px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:start}
-.hero-left{padding-top:20px}
-.hero-left h1{font-family:'ZCOOL KuaiLe',sans-serif;font-size:clamp(2rem,4.5vw,2.8rem);line-height:1.3;margin-bottom:12px}
-.hero-left .red{color:var(--accent)}
-.hero-sub{font-size:15px;color:#555;line-height:1.8;margin-bottom:20px}
-.hero-mascot{width:120px;height:120px;border-radius:50%;object-fit:cover;border:3px solid var(--border);box-shadow:0 6px 20px rgba(0,0,0,0.1);margin-bottom:16px;animation:float 3s ease-in-out infinite}
-@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
-.proof-mini{display:flex;gap:12px;flex-wrap:wrap;margin-top:16px;font-size:12px;color:var(--muted)}
-.proof-mini span{background:var(--card);border:1px solid var(--border);padding:4px 10px;border-radius:20px}
+/* Hero */
+.hero{padding:66px 32px 28px;max-width:1000px;margin:0 auto;display:grid;grid-template-columns:1.1fr 0.9fr;gap:32px;align-items:center}
+.hero-text h1{font-family:'ZCOOL KuaiLe','Smiley Sans',sans-serif;font-size:36px;line-height:1.3;margin-bottom:10px}
+.red{color:#c0392b}
+.blue{color:#2874a6}
+.subtitle{font-size:14px;color:#555;line-height:1.8;margin-bottom:14px}
+.subtitle strong{color:#222}
 
-/* Diary hero card */
-.hero-right{position:relative}
-.diary-hero-card{background:var(--card);border:2px solid var(--border);border-radius:16px;padding:20px;position:relative;overflow:hidden}
-.diary-hero-badge{display:inline-block;background:var(--accent);color:#fff;font-size:11px;font-weight:700;padding:4px 12px;border-radius:8px;margin-bottom:12px}
-.diary-hero-img{width:100%;border-radius:10px;margin-bottom:12px;border:1px solid var(--border)}
-.diary-hero-card h3{font-family:'ZCOOL KuaiLe',sans-serif;font-size:20px;margin-bottom:6px}
-.diary-hero-card p{font-size:13px;color:#666;line-height:1.6;margin-bottom:12px}
-.diary-highlights{display:flex;flex-direction:column;gap:6px;margin-bottom:14px}
-.dh-item{font-size:12px;color:#555;padding:6px 10px;background:#faf8f4;border-radius:8px;line-height:1.4}
-.dh-item strong{color:var(--accent)}
-.btn-diary{display:inline-block;color:var(--accent);font-weight:700;font-size:14px;text-decoration:none;padding:8px 0}
-.btn-diary:hover{text-decoration:underline}
-
-.hero-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-bottom:28px}
-.btn{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;border-radius:12px;font-size:16px;font-weight:700;text-decoration:none;transition:all .2s;border:none;font-family:inherit;cursor:pointer}
-.btn-cta{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;box-shadow:0 4px 20px rgba(192,57,43,0.3)}
-.btn-cta:hover{transform:translateY(-2px);box-shadow:0 6px 25px rgba(192,57,43,0.4)}
-.btn-outline{background:#fff;color:var(--accent);border:2px solid var(--accent)}
-.btn-outline:hover{background:#fef5f4}
-
-/* Social proof numbers */
-.proof{display:flex;justify-content:center;gap:0;max-width:700px;margin:0 auto;background:var(--card);border-radius:16px;border:1.5px solid var(--border);overflow:hidden}
-.proof-item{flex:1;text-align:center;padding:20px 12px;border-right:1px solid var(--border)}
-.proof-item:last-child{border-right:none}
-.proof-num{font-family:'ZCOOL KuaiLe',sans-serif;font-size:28px;color:var(--accent);line-height:1}
-.proof-label{font-size:11px;color:var(--muted);margin-top:4px}
-
-/* Container */
-.container{max-width:960px;margin:0 auto;padding:0 24px}
-
-/* Section */
-.section{padding:40px 0}
-.section-head{text-align:center;margin-bottom:24px}
-.section-tag{font-size:13px;color:var(--accent);font-weight:700;margin-bottom:4px}
-.section-title{font-family:'ZCOOL KuaiLe',sans-serif;font-size:28px;margin-bottom:6px}
-.section-desc{font-size:14px;color:var(--muted)}
-
-/* Roles grid */
-.roles{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-.role-card{background:var(--card);border:1.5px solid var(--border);border-radius:14px;padding:22px;text-decoration:none;color:inherit;transition:all .2s;display:block}
-.role-card:hover{box-shadow:0 4px 20px rgba(0,0,0,0.06);transform:translateY(-2px)}
-.role-emoji{font-size:28px;margin-bottom:8px}
-.role-name{font-size:17px;font-weight:800;margin-bottom:4px}
-.role-desc{font-size:13px;color:#666;line-height:1.6}
-.role-count{font-size:11px;color:var(--accent);font-weight:700;margin-top:8px}
-.role-card.featured{border-color:#f0c0b0;position:relative}
-.role-card.featured::after{content:"⭐ 三万同款";position:absolute;top:10px;right:12px;background:var(--accent);color:#fff;font-size:10px;font-weight:700;padding:2px 8px;border-radius:10px}
+/* Cartoon scene - SVG hand drawn style */
+.hero-scene{position:relative;width:100%;aspect-ratio:4/3;background:#faf8f4;border:1.5px solid #ddd;border-radius:16px;overflow:hidden;display:flex;align-items:center;justify-content:center}
 
 
 
-/* How it works */
-.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-.step{background:var(--card);border:1.5px solid var(--border);border-radius:14px;padding:24px;text-align:center}
-.step-num{font-family:'ZCOOL KuaiLe',sans-serif;font-size:32px;color:var(--accent);margin-bottom:8px}
-.step h4{font-size:16px;font-weight:800;margin-bottom:6px}
-.step p{font-size:13px;color:#666;line-height:1.6}
+.char-boss .head{width:56px;height:56px;background:#ffe0bd;border-radius:50%;border:1.5px solid #333;position:relative;display:flex;align-items:center;justify-content:center}
+.char-boss .head::before{content:'😄';font-size:28px}
+.char-boss .body{width:40px;height:50px;background:#2874a6;border-radius:8px 8px 0 0;margin-top:-4px;border:1.5px solid #333;position:relative}
+.char-boss .crutch{position:absolute;width:4px;height:60px;background:#8B4513;border-radius:2px;transform:rotate(-15deg);bottom:0}
+.char-boss .crutch.l{left:-14px}
+.char-boss .crutch.r{right:-14px;transform:rotate(15deg)}
+.char-boss .crutch::before{content:'';position:absolute;top:0;left:-4px;width:12px;height:3px;background:#8B4513;border-radius:1px}
+.char-lobster{font-size:72px;line-height:1;margin:0 -10px;position:relative;z-index:2;animation:bounce 2s ease-in-out infinite}
+.char-dog{font-size:48px;line-height:1}
+@keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+.speech-bubble{position:absolute;top:8%;right:8%;background:white;border:1.5px solid #333;border-radius:12px;padding:6px 10px;font-size:11px;font-weight:700;color:#c0392b}
+.speech-bubble::after{content:'';position:absolute;bottom:-8px;left:20px;border:6px solid transparent;border-top-color:#333}
+.heart-float{position:absolute;animation:floatup 3s ease-in-out infinite}
+.heart-float:nth-child(1){top:10%;left:10%;animation-delay:0s}
+.heart-float:nth-child(2){top:20%;right:15%;animation-delay:1s}
+.heart-float:nth-child(3){bottom:30%;left:15%;animation-delay:2s}
+@keyframes floatup{0%,100%{transform:translateY(0) scale(1);opacity:.7}50%{transform:translateY(-8px) scale(1.1);opacity:1}}
 
-/* Final CTA */
-.final-cta{text-align:center;padding:48px 24px;background:linear-gradient(180deg,var(--bg),#ece8e0);margin-top:20px}
-.final-cta h2{font-family:'ZCOOL KuaiLe',sans-serif;font-size:28px;margin-bottom:12px}
+.aha-list{display:flex;flex-direction:column;gap:5px;margin-bottom:16px}
+.aha-item{display:flex;align-items:center;gap:8px;font-size:13px;padding:5px 10px;background:rgba(192,57,43,0.04);border-left:1.5px solid rgba(192,57,43,0.4);border-radius:0 6px 6px 0;transition:.2s}
+.aha-item:hover{background:rgba(192,57,43,0.08);transform:translateX(3px)}
+.aha-icon{font-size:16px;flex-shrink:0}
+.hero-cta{display:flex;gap:10px}
+.btn-red{padding:10px 20px;border-radius:10px;border:none;background:#c0392b;color:white;font-size:14px;font-weight:700;cursor:pointer;text-decoration:none;transition:.2s;display:inline-flex;align-items:center;gap:6px}
+.btn-red:hover{background:#a93226;transform:translateY(-1px)}
+.btn-outline{padding:10px 20px;border-radius:10px;border:1.5px solid #2874a6;color:#2874a6;font-size:14px;font-weight:700;cursor:pointer;text-decoration:none;background:transparent;transition:.2s}
+.btn-outline:hover{background:#2874a6;color:white}
 
-/* Footer */
-footer{text-align:center;padding:20px;font-size:11px;color:#999;border-top:1px solid var(--border);background:var(--card)}
+/* Sections */
+.section{padding:32px 32px;max-width:1000px;margin:0 auto}
+.section-bg{background:#f5f0e8;padding:32px 0}
+.section-bg .section{padding:0 32px}
+.section-label{font-size:16px;font-weight:600;color:#c0392b;margin-bottom:2px}
+.section-title{font-family:'ZCOOL KuaiLe','Smiley Sans',sans-serif;font-size:30px;font-weight:900;margin-bottom:4px}
+.section-desc{font-size:15px;color:#777;margin-bottom:20px}
+.sketch-underline{display:inline-block;position:relative}
+.sketch-underline::after{content:'';position:absolute;bottom:-2px;left:0;right:0;height:3px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='6'%3E%3Cpath d='M0,3 Q25,0 50,3 T100,3' stroke='%23c0392b' fill='none' stroke-width='2'/%3E%3C/svg%3E") repeat-x}
+
+/* Origin story - 三万的故事 */
+.origin-story{display:grid;grid-template-columns:auto 1fr;gap:20px;align-items:center;padding:20px;background:#faf8f4;border:1.5px solid #ddd;border-radius:14px;margin-bottom:20px}
+.origin-dog{font-size:64px;text-align:center}
+.origin-dog .label{font-size:12px;color:#888;margin-top:4px}
+.origin-text h3{font-size:16px;font-weight:700;margin-bottom:6px}
+.origin-text h3 .red{color:#c0392b}
+.origin-text p{font-size:13px;color:#555;line-height:1.7}
+.origin-text .quote{font-family:'Ma Shan Zheng',serif;font-size:16px;color:#c0392b;margin-top:8px;font-style:italic}
+
+/* Science cards */
+.sci-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.sci-card{background:#faf8f4;border:1.5px solid #ddd;border-radius:12px;padding:18px;transition:.2s;}
+.sci-card:nth-child(1)
+.sci-card:nth-child(2)
+.sci-card:nth-child(3)
+.sci-card:hover{border-color:#2874a6;transform:translateY(-2px);box-shadow:0 4px 15px rgba(0,0,0,0.06)}
+.sci-card .icon{font-size:30px;margin-bottom:8px}
+.sci-card h3{font-size:16px;font-weight:700;margin-bottom:4px}
+.sci-card p{font-size:12px;color:#666;line-height:1.6}
+.sci-arrow{display:flex;align-items:center;justify-content:center;font-size:20px;color:#999;padding:0 4px}
+
+/* Diary grid */
+.diary-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.diary-card{background:#faf8f4;border:1.5px solid #ddd;border-radius:12px;overflow:hidden;cursor:pointer;transition:.2s;text-decoration:none;color:inherit;display:block;}
+.diary-card:nth-child(odd)
+.diary-card:nth-child(even)
+.diary-card:hover{border-color:#c0392b;transform:translateY(-3px);box-shadow:0 6px 20px rgba(0,0,0,0.08)}
+.diary-card img{width:100%;aspect-ratio:16/9;object-fit:cover;display:block;border-bottom:1px solid #eee}
+.diary-card .info{padding:10px 12px}
+.diary-card .day{display:inline-block;font-size:10px;font-weight:800;padding:2px 7px;border-radius:4px;background:#c0392b;color:white;margin-bottom:4px}
+.diary-card .day.new{background:#2874a6}
+.diary-card h3{font-size:14px;font-weight:700;margin-bottom:3px;line-height:1.3}
+.diary-card p{font-size:12px;color:#888;line-height:1.4}
+.diary-card.continuing{border-style:dashed;border-color:#c0392b}
+.diary-more{text-align:center;margin-top:16px}
+
+
+
+/* Skill scroll */
+.skill-scroll{display:flex;gap:12px;overflow-x:auto;padding-bottom:10px}
+.skill-scroll::-webkit-scrollbar{height:4px}
+.skill-scroll::-webkit-scrollbar-thumb{background:#ccc;border-radius:2px}
+.skill-card{min-width:180px;flex-shrink:0;background:#faf8f4;border:1.5px solid #ddd;border-radius:12px;padding:14px;transition:.2s}
+.skill-card:hover{border-color:#2874a6;transform:translateY(-2px)}
+.skill-tag{font-size:9px;font-weight:800;padding:2px 6px;border-radius:3px;background:#fde8e8;color:#c0392b;display:inline-block;margin-bottom:4px}
+.skill-card .emoji{font-size:26px;margin-bottom:6px}
+.skill-card h4{font-size:13px;font-weight:700;margin-bottom:3px}
+.skill-card p{font-size:12px;color:#888}
+.skill-card .more{font-size:11px;color:#2874a6;margin-top:6px;display:block}
+
+/* CTA */
+.cta{text-align:center;padding:36px 32px;max-width:1000px;margin:0 auto}
+.cta h2{font-family:'Long Cang','ZCOOL KuaiLe','Noto Sans SC',sans-serif;;font-size:30px;margin-bottom:8px}
+.cta p{font-size:14px;color:#777;margin-bottom:20px}
+.cta-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.cta .social-proof{font-size:12px;color:#aaa;margin-top:10px}
+
+footer{text-align:center;padding:16px;font-size:11px;color:#999;border-top:2px solid #ddd;background:#f5f3ee}
 footer a{color:#888;text-decoration:none;margin:0 8px}
 
-/* Floating mascot */
-.float-mascot{position:fixed;bottom:24px;right:20px;z-index:99;display:flex;flex-direction:column;align-items:center;animation:float 3s ease-in-out infinite;cursor:pointer;text-decoration:none}
-.float-mascot img{width:70px;height:70px;filter:drop-shadow(0 4px 8px rgba(0,0,0,0.15))}
-.float-mascot .bubble{background:var(--accent);color:#fff;font-size:11px;font-weight:700;padding:4px 10px;border-radius:10px;margin-bottom:6px;white-space:nowrap;box-shadow:0 2px 8px rgba(192,57,43,0.3)}
+.sketch-line{height:2px;background:repeating-linear-gradient(90deg,#2874a6 0,#2874a6 6px,transparent 6px,transparent 10px);margin:0 auto;max-width:1000px;opacity:.25}
 
 /* Mobile */
 @media(max-width:768px){
-  nav{padding:0 16px}.nav-links{display:none}.hamburger{display:block}
-  .nav-links.open{display:flex;flex-direction:column;position:absolute;top:56px;right:16px;background:#fff;border:1.5px solid #ddd;border-radius:10px;padding:12px 16px;gap:12px;box-shadow:0 4px 15px rgba(0,0,0,0.1)}
-  .hero-split{grid-template-columns:1fr;padding:70px 20px 24px;gap:20px}
-  .hero-left{padding-top:0;text-align:center}
-  .hero-mascot{width:100px;height:100px;margin:0 auto 12px}
-  .proof-mini{justify-content:center}
-  .roles{grid-template-columns:1fr 1fr}
-  .steps{grid-template-columns:1fr}
-  .float-mascot{bottom:16px;right:12px}
-  .float-mascot img{width:56px;height:56px}
+.hero{grid-template-columns:1fr;padding:60px 20px 20px;gap:16px}
+.hero-text h1{font-size:36px;font-family:'ZCOOL KuaiLe','Smiley Sans',sans-serif;line-height:1.3;}
+.hero-scene{max-height:220px}
+.sci-grid{grid-template-columns:1fr}
+.sci-arrow{display:none}
+.diary-grid{grid-template-columns:1fr 1fr}
+nav{padding:0 16px;top:0}
+.nav-links{display:none}
+.hamburger{display:block}
+.nav-links.open{display:flex;flex-direction:column;position:absolute;top:56px;right:16px;background:#f5f3ee;border:1.5px solid #ddd;border-radius:10px;padding:12px 16px;gap:12px;box-shadow:0 4px 15px rgba(0,0,0,0.1)}
+.section{padding:24px 20px}
+.origin-story{grid-template-columns:1fr;text-align:center}
 }
-@media(max-width:480px){
-  .roles{grid-template-columns:1fr}
-  .proof-item{padding:14px 8px}.proof-num{font-size:22px}
+/* Diary detail modal */
+.modal-overlay{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.5);z-index:300;justify-content:center;align-items:center;padding:20px}
+.modal-overlay.active{display:flex}
+.modal-content{background:#f5f3ee;border-radius:16px;max-width:700px;width:100%;max-height:85vh;overflow-y:auto;padding:28px;position:relative}
+.modal-close{position:absolute;top:12px;right:16px;font-size:24px;cursor:pointer;color:#999;background:none;border:none}
+.modal-close:hover{color:#c0392b}
+.modal-content h2{font-family:'Long Cang','ZCOOL KuaiLe','Noto Sans SC',sans-serif;;font-size:24px;margin-bottom:12px}
+.modal-content img{width:100%;border-radius:10px;margin-bottom:14px}
+.modal-content p{font-size:14px;line-height:1.8;color:#444;margin-bottom:10px}
+
+@media(max-width:600px){
+  #capabilities div[style*="grid-template-columns:repeat(3"]{grid-template-columns:repeat(2,1fr)!important}
 }
+
+/* Scroll reveal */
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .6s,transform .6s}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+/* Floating CTA */
+.float-mascot{position:fixed;bottom:20px;right:16px;z-index:99;display:flex;flex-direction:column;align-items:center;animation:mascot-float 3s ease-in-out infinite}
+.float-lobster{font-size:48px;cursor:pointer;transition:transform .2s;filter:drop-shadow(0 4px 8px rgba(0,0,0,0.15))}
+.float-lobster:hover{transform:scale(1.15) rotate(-5deg)}
+.float-bubble{background:#fff;border:1.5px solid #f0d0cc;padding:10px 14px;border-radius:16px;text-align:center;margin-bottom:4px;box-shadow:0 4px 20px rgba(192,57,43,0.12);position:relative;animation:popIn .5s ease .3s both}
+.bubble-tail{width:10px;height:10px;background:#fff;border-right:2px solid #f0d0cc;border-bottom:2px solid #f0d0cc;position:absolute;bottom:-6px;left:50%;transform:translateX(-50%) rotate(45deg)}
+.bubble-dot{width:6px;height:6px;background:#f0d0cc;border-radius:50%;position:absolute;bottom:-14px;right:30%}
+@keyframes mascot-float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+@keyframes popIn{from{opacity:0;transform:scale(0.8)}to{opacity:1;transform:scale(1)}}
+@keyframes btn-glow{0%,100%{box-shadow:0 0 8px rgba(192,57,43,0.3)}50%{box-shadow:0 0 18px rgba(192,57,43,0.5)}}
+
+/* Chat channels bar */
+.channels-bar{display:flex;justify-content:center;gap:20px;flex-wrap:wrap;padding:8px 0}
+.ch-badge{display:flex;align-items:center;gap:6px;font-size:13px;font-weight:600;color:#666;padding:6px 14px;background:#fff;border:1.5px solid #eee;border-radius:20px;transition:.2s}
+.ch-badge:hover{border-color:#c0392b;color:#c0392b}
+
+/* Smooth hover on all cards */
+.section div[style*="border"]:hover{border-color:#c0392b!important;transform:translateY(-2px);transition:.2s}
+
 </style>
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="三万·龙虾养成日记 | sanwan.ai">
+<meta name="twitter:description" content="骨折在家的CEO，凌晨4点在训练一只AI龙虾。14天，1157条消息，从零搭出8人AI团队。">
+<meta name="twitter:image" content="https://sanwan.ai/ppt/page-01.jpg">
+<script defer src="https://unpkg.com/@vercel/analytics@1/dist/script.js"></script>
 </head>
 <body>
 
-<!-- NAV -->
+<div class="progress-bar" id="progressBar"></div>
+
 <nav>
-<a class="nav-logo" href="/">🦞 三万 sanwan.ai</a>
+<div class="nav-logo">🦞 龙虾养成日记</div>
 <a href="en/" style="font-size:12px;color:#888;text-decoration:none;border:1px solid #ddd;padding:2px 8px;border-radius:10px">EN</a>
 <button class="hamburger" onclick="document.querySelector('.nav-links').classList.toggle('open')">☰ 菜单</button>
 <div class="nav-links">
@@ -141,154 +229,447 @@ footer a{color:#888;text-decoration:none;margin:0 8px}
 </div>
 </nav>
 
-<!-- HERO: 左领养 + 右日记 -->
-<div class="hero-split">
-<div class="hero-left">
-<img src="images/sanwan-lobster.jpg" alt="三万" class="hero-mascot">
-<h1>领养一只你的<span class="red">AI龙虾</span></h1>
-<p class="hero-sub">
-会聊天，就会用。WhatsApp、微信、飞书、钉钉……<br>
-你常用哪个聊天软件，它就住在哪里。
-</p>
-<div class="hero-btns">
-<a href="https://easyclaw.com" target="_blank" class="btn btn-cta">🦞 免费领养</a>
-<a href="https://easyclaw.work" target="_blank" class="btn btn-outline">☁️ 云端体验</a>
+<!-- HERO -->
+<div class="whiteboard">
+<div class="hero">
+<div class="hero-text">
+<h1>🩼 骨折在家的CEO<br>凌晨4点在训练一只<span class="red">AI龙虾</span></h1>
+<div class="subtitle">
+春节滑雪摔伤，髋关节脱臼。躺在家14天，每天和AI聊到凌晨四五点。<br>
+<strong class="red">1157条消息，22万字对话</strong>——从零养了一只叫"三万"的AI龙虾。
 </div>
-<div class="proof-mini">
-<span>📖 100万+阅读</span><span>🐦 100万+浏览</span><span>📺 100万+观看</span>
+<div class="aha-list">
+<div class="aha-item"><span class="aha-icon">🎆</span>除夕夜4分钟给611人发了个性化拜年</div>
+<div class="aha-item"><span class="aha-icon">💡</span>扔了篇文章，22分钟后它自己升级了大脑</div>
+<div class="aha-item"><span class="aha-icon">💛</span>AI主动想起5天前提过的助理Abby——"要不要通知她？"</div>
+<div class="aha-item"><span class="aha-icon">🏗️</span>第14天自己设计了8人AI团队组织架构</div>
+</div>
+<div class="hero-cta">
+<a href="diary.html" class="btn-red">📖 从 Day 1 看起</a>
+<a href="easyclaw.html" class="btn-outline">🦞 养一只自己的</a>
 </div>
 </div>
-<div class="hero-right">
-<div class="diary-hero-card">
-<div class="diary-hero-badge">📖 龙虾养成日记</div>
-<img src="ppt/page-01.jpg" alt="龙虾日记封面" class="diary-hero-img">
-<h3>骨折CEO凌晨4点养龙虾</h3>
-<p>14天，1157条消息，22万字对话——从零养出8人AI团队。几百万人在围观这个连载。</p>
-<div class="diary-highlights">
-<div class="dh-item">🎆 <strong>除夕夜</strong>4分钟给611人发了个性化拜年</div>
-<div class="dh-item">🧠 <strong>扔了篇文章</strong>22分钟后它自己升级了大脑</div>
-<div class="dh-item">💡 <strong>AI主动想起</strong>5天前提过的助理Abby</div>
-<div class="dh-item">👥 <strong>第14天</strong>自己设计了8人团队组织架构</div>
+<!-- Cartoon scene: Boss on crutches + Lobster + Dog -->
+<div class="hero-img" style="border-radius:12px;overflow:hidden;box-shadow:4px 4px 20px rgba(0,0,0,0.1);border:1px solid #e0e0e0">
+<img src="ppt/page-01.jpg" alt="龙虾三万养成日记封面" style="width:100%;max-height:300px;object-fit:cover;display:block" onerror="this.style.background='#f0ede5';this.style.minHeight='200px'">
 </div>
-<a href="diary.html" class="btn-diary">从 Day 1 看起 →</a>
 </div>
 </div>
 </div>
 
-<!-- SECTION: 你的龙虾能干什么 -->
-<div class="container">
-<div class="section">
-<div class="section-head">
-<div class="section-tag">🧩 装上技能，变身数字员工</div>
-<div class="section-title">你想要什么样的龙虾？</div>
+
+
+
+<!-- CHANNELS -->
+<div style="text-align:center;padding:16px 20px 24px">
+<div style="font-size:15px;color:#555;margin-bottom:10px;font-weight:600">🦞 不用下载新App——聊天就能让龙虾帮你干活</div>
+<div class="channels-bar">
+  <span class="ch-badge">💬 WhatsApp</span>
+  <span class="ch-badge">✈️ Telegram</span>
+  <span class="ch-badge">🎮 Discord</span>
+  <span class="ch-badge">📘 飞书</span>
+  <span class="ch-badge">💚 微信</span>
+  <span class="ch-badge">🔵 钉钉</span>
+</div>
+</div>
+
+<!-- SCIENCE -->
+<div class="section-bg">
+<div class="section" id="science-section" style="text-align:center">
+<div class="section-title" style="font-size:34px;margin-bottom:12px">龙虾是什么？</div>
+<div style="font-size:20px;color:#333;line-height:1.6;max-width:600px;margin:0 auto 8px;font-weight:600">
+用聊天就能指挥的AI电脑。<br>新时代的数字员工。
+</div>
+<div style="font-size:16px;color:#666;margin-bottom:6px">它有四项人所不及的能力——</div>
+<div style="font-size:14px;color:#c0392b;font-weight:600;margin-bottom:20px">不是吹的，每一项都有真实故事印证。</div>
+<div style="display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-bottom:8px">
+<span style="background:#c0392b;color:#fff;padding:6px 16px;border-radius:20px;font-size:14px;font-weight:700">💻 超级全能</span>
+<span style="background:#c0392b;color:#fff;padding:6px 16px;border-radius:20px;font-size:14px;font-weight:700">⏰ 永不休息</span>
+<span style="background:#c0392b;color:#fff;padding:6px 16px;border-radius:20px;font-size:14px;font-weight:700">🧬 自我进化</span>
+<span style="background:#c0392b;color:#fff;padding:6px 16px;border-radius:20px;font-size:14px;font-weight:700">👥 团队裂变</span>
+</div>
+</div>
+</div>
+
+<!-- 4 ABILITY STORIES -->
+<div style="max-width:900px;margin:0 auto;padding:0 20px 24px">
+
+<div style="display:flex;gap:16px;align-items:flex-start;background:#fff;border:1.5px solid #ddd;border-radius:14px;padding:24px;margin-bottom:16px">
+<div style="font-size:36px;flex-shrink:0">💻</div>
+<div>
+<div style="font-size:18px;font-weight:800;margin-bottom:8px">人用电脑能干的，它都能干</div>
+<div style="font-size:14px;color:#666;line-height:1.8">
+<strong style="color:#c0392b">除夕夜，4分钟给611人发了个性化拜年。</strong>每条都不一样，0失败。第二天手机炸了——"老板太用心了！"<br>
+写公众号日更6篇，其中一篇选题AI自己选的，阅读量1.8万，创历史最好成绩。<br>
+发Twitter Thread，凌晨自动发的，100万+阅读——比团队精心运营的还火。
+</div>
+</div>
+</div>
+
+<div style="display:flex;gap:16px;align-items:flex-start;background:#fff;border:1.5px solid #ddd;border-radius:14px;padding:24px;margin-bottom:16px">
+<div style="font-size:36px;flex-shrink:0">⏰</div>
+<div>
+<div style="font-size:18px;font-weight:800;margin-bottom:8px">人要休息，它不休息</div>
+<div style="font-size:14px;color:#666;line-height:1.8">
+<strong style="color:#c0392b">北京凌晨3点 = 美国白天，新闻正在出。停下来就是失职。</strong><br>
+老板摔伤躺在床上，三万自动扫描邮件、管理日程、监控社媒。<br>
+人在放假，Agent不停。14天产出：40+ Skill，20+ 定时任务，7×24自动运转。
+</div>
+</div>
+</div>
+
+<div style="display:flex;gap:16px;align-items:flex-start;background:#fff;border:1.5px solid #ddd;border-radius:14px;padding:24px;margin-bottom:16px">
+<div style="font-size:36px;flex-shrink:0">🧬</div>
+<div>
+<div style="font-size:18px;font-weight:800;margin-bottom:8px">越用越聪明，越来越懂你</div>
+<div style="font-size:14px;color:#666;line-height:1.8">
+<strong style="color:#c0392b">扔给它一篇文章，22分钟后它说：部署完了。</strong>自己找到GitHub链接，下载、安装、配置、跑通测试。<br>
+摔伤后它说了一句："要不要我联系Abby？"——Abby是老板的人类助理，5天前随口提过一次。<br>
+犯了错也会记住——泄密被批评后，当晚自己写了一整套保密制度。从此再没犯过。
+</div>
+</div>
+</div>
+
+<div style="display:flex;gap:16px;align-items:flex-start;background:#fff;border:1.5px solid #ddd;border-radius:14px;padding:24px;margin-bottom:16px">
+<div style="font-size:36px;flex-shrink:0">👥</div>
+<div>
+<div style="font-size:18px;font-weight:800;margin-bottom:8px">一个能变一支团队</div>
+<div style="font-size:14px;color:#666;line-height:1.8">
+<strong style="color:#c0392b">Day 11，三万自己设计了组织架构。</strong>总指挥+笔杆子+参谋+运营官+社区官+进化官，各司其职。<br>
+Agent之间知识传递成本趋近于零——一个学会发语音，群发邮件教其他龙虾，1秒全会了。<br>
+人类培训新人要一周，Agent之间1秒。只按结果付费，不按人头收钱。
+</div>
+</div>
+</div>
+
+<div style="text-align:center;margin-top:8px">
+<a href="science.html" style="font-size:14px;color:#c0392b;font-weight:600">想了解更多？→ 看完整科普</a>
+<span style="margin:0 12px;color:#ddd">|</span>
+<details style="display:inline;cursor:pointer">
+<summary style="font-size:13px;color:#999;list-style:none;display:inline">🐕 为什么叫"三万"？</summary>
+<div style="margin-top:8px;padding:12px 16px;background:#faf8f4;border-radius:8px;font-size:13px;color:#666;line-height:1.6;max-width:500px;text-align:left;margin:8px auto 0">
+老板家的拉布拉多，宠物医院领养的，前主人跑了留下3万手术费。ChatGPT猜中了名字由来——那一刻意识到AI真的能"理解"了。🦞❤️🐕
+</div>
+</details>
+</div>
+
+</div>
+
+<!-- SKILLS SHOWCASE -->
+<div class="section-bg">
+<div class="section" style="text-align:center">
+<div class="section-label">🧩 技能商店</div>
+<div class="section-title">装上技能，变身数字员工</div>
 <div class="section-desc">装什么技能，就变成什么样的员工——你的龙虾，由你定义。</div>
+
+<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:20px;text-align:left">
+
+<a href="skills/pack-assistant.html" style="text-decoration:none;color:inherit">
+<div style="background:#fff;border:1.5px solid #ddd;border-radius:12px;padding:20px;transition:all .2s;height:100%">
+<div style="font-size:24px;margin-bottom:6px">💼</div>
+<div style="font-size:16px;font-weight:800;margin-bottom:4px">超级助理</div>
+<div style="font-size:13px;color:#666;line-height:1.6">邮件、会议、订酒店、日程提醒——白领最需要的全能助手。</div>
+<div style="font-size:11px;color:#2874a6;font-weight:700;margin-top:8px">6个技能 →</div>
+</div>
+</a>
+
+<a href="skills/pack-creator.html" style="text-decoration:none;color:inherit">
+<div style="background:#fff;border:1.5px solid #ddd;border-radius:12px;padding:20px;transition:all .2s;height:100%">
+<div style="font-size:24px;margin-bottom:6px">✍️</div>
+<div style="font-size:16px;font-weight:800;margin-bottom:4px">内容创作者</div>
+<div style="font-size:13px;color:#666;line-height:1.6">公众号、小红书、X——AI写文、生图、做视频，全平台一条龙。</div>
+<div style="font-size:11px;color:#c0392b;font-weight:700;margin-top:8px">8个技能 →</div>
+</div>
+</a>
+
+<a href="skills/pack-trader.html" style="text-decoration:none;color:inherit">
+<div style="background:#fff;border:1.5px solid #ddd;border-radius:12px;padding:20px;transition:all .2s;height:100%">
+<div style="font-size:24px;margin-bottom:6px">📈</div>
+<div style="font-size:16px;font-weight:800;margin-bottom:4px">股票分析师</div>
+<div style="font-size:13px;color:#666;line-height:1.6">实时盯盘、技术分析、买卖信号——7×24不用熬夜了。</div>
+<div style="font-size:11px;color:#27ae60;font-weight:700;margin-top:8px">7个技能 →</div>
+</div>
+</a>
+
+<a href="skills/pack-overseas.html" style="text-decoration:none;color:inherit">
+<div style="background:#fff;border:1.5px solid #ddd;border-radius:12px;padding:20px;transition:all .2s;height:100%">
+<div style="font-size:24px;margin-bottom:6px">🌏</div>
+<div style="font-size:16px;font-weight:800;margin-bottom:4px">出海运营官</div>
+<div style="font-size:13px;color:#666;line-height:1.6">多语言翻译、海外社媒、跨境运营——搞定语言和时差。</div>
+<div style="font-size:11px;color:#8e44ad;font-weight:700;margin-top:8px">6个技能 →</div>
+</div>
+</a>
+
+<a href="skills/pack-developer.html" style="text-decoration:none;color:inherit">
+<div style="background:#fff;border:1.5px solid #ddd;border-radius:12px;padding:20px;transition:all .2s;height:100%">
+<div style="font-size:24px;margin-bottom:6px">💻</div>
+<div style="font-size:16px;font-weight:800;margin-bottom:4px">开发助手</div>
+<div style="font-size:13px;color:#666;line-height:1.6">写代码、管GitHub、控制浏览器——技术活全包。</div>
+<div style="font-size:11px;color:#e67e22;font-weight:700;margin-top:8px">5个技能 →</div>
+</div>
+</a>
+
+<a href="skills/pack-sanwan.html" style="text-decoration:none;color:inherit">
+<div style="background:#fff;border:1.5px solid #f0c0b0;border-radius:12px;padding:20px;transition:all .2s;height:100%;position:relative">
+<div style="position:absolute;top:10px;right:12px;background:#c0392b;color:#fff;font-size:10px;font-weight:700;padding:2px 8px;border-radius:10px">⭐ 三万同款</div>
+<div style="font-size:24px;margin-bottom:6px">🦞</div>
+<div style="font-size:16px;font-weight:800;margin-bottom:4px">一人团队</div>
+<div style="font-size:13px;color:#666;line-height:1.6">7个Agent+38个技能——复制提示词，一键配出同款团队。</div>
+<div style="font-size:11px;color:#c0392b;font-weight:700;margin-top:8px">38个技能 →</div>
+</div>
+</a>
+
 </div>
 
-<div class="roles">
-<a href="skills/pack-assistant.html" class="role-card">
-<div class="role-emoji">💼</div>
-<div class="role-name">超级助理</div>
-<div class="role-desc">邮件、会议、订酒店、日程提醒——白领最需要的全能助手。</div>
-<div class="role-count">6个技能 →</div>
-</a>
-<a href="skills/pack-creator.html" class="role-card">
-<div class="role-emoji">✍️</div>
-<div class="role-name">内容创作者</div>
-<div class="role-desc">公众号、小红书、X——AI写文、生图、做视频，全平台一条龙。</div>
-<div class="role-count">8个技能 →</div>
-</a>
-<a href="skills/pack-trader.html" class="role-card">
-<div class="role-emoji">📈</div>
-<div class="role-name">股票分析师</div>
-<div class="role-desc">实时盯盘、技术分析、买卖信号——7×24不用熬夜了。</div>
-<div class="role-count">7个技能 →</div>
-</a>
-<a href="skills/pack-overseas.html" class="role-card">
-<div class="role-emoji">🌏</div>
-<div class="role-name">出海运营官</div>
-<div class="role-desc">多语言翻译、海外社媒、跨境运营——搞定语言和时差。</div>
-<div class="role-count">6个技能 →</div>
-</a>
-<a href="skills/pack-ecommerce.html" class="role-card">
-<div class="role-emoji">💻</div>
-<div class="role-name">开发助手</div>
-<div class="role-desc">写代码、管GitHub、控制浏览器——技术活全包。</div>
-<div class="role-count">5个技能 →</div>
-</a>
-<a href="skills/pack-sanwan.html" class="role-card featured">
-<div class="role-emoji">🦞</div>
-<div class="role-name">一人团队</div>
-<div class="role-desc">7个Agent+38个技能——复制提示词，一键配出傅盛同款团队。</div>
-<div class="role-count">38个技能 →</div>
-</a>
-</div>
-<div style="text-align:center;margin-top:16px">
-<a href="skills.html" style="color:var(--accent);font-weight:700;font-size:14px">浏览全部精选技能 →</a>
-<span style="margin:0 8px;color:#ccc">·</span>
-<a href="https://claw123.ai" target="_blank" style="color:var(--muted);font-weight:600;font-size:13px">5000+ 社区技能 →</a>
+<div style="margin-top:16px"><a href="skills.html" style="color:#c0392b;font-weight:700;font-size:14px">浏览精选技能 →</a> &nbsp;·&nbsp; <a href="https://claw123.ai" target="_blank" style="color:#7a746e;font-weight:600;font-size:13px">5000+ 社区技能 (Claw123.ai) →</a></div>
 </div>
 </div>
 
-<!-- SECTION: 怎么领养 -->
-<div class="section" style="padding-top:0">
-<div class="section-head">
-<div class="section-tag">🐣 三步领养</div>
+<!-- ADOPT -->
+<div class="section" style="text-align:center">
+<div class="section-label">🐣 养一只龙虾</div>
 <div class="section-title">会聊天，就会用龙虾</div>
 <div class="section-desc">养龙虾就像带新员工——聊着聊着就上手了。</div>
-</div>
-<div class="steps">
-<div class="step">
-<div class="step-num">1</div>
-<h4>下载安装</h4>
-<p>Mac/Windows 一键安装 EasyClaw，或直接用云端版。免费，不要钱。</p>
-</div>
-<div class="step">
-<div class="step-num">2</div>
-<h4>连接聊天软件</h4>
-<p>WhatsApp、微信、飞书、钉钉……扫码绑定，龙虾就住进你的对话框。</p>
-</div>
-<div class="step">
-<div class="step-num">3</div>
-<h4>装技能，开始养</h4>
-<p>从技能商店挑技能安装。复制提示词，发给龙虾，它就学会了。越养越强。</p>
-</div>
-</div>
-<div style="text-align:center;margin-top:20px">
-<a href="https://easyclaw.com" target="_blank" class="btn btn-cta" style="font-size:15px">🦞 免费领养，现在开始</a>
-</div>
+
+<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:20px;text-align:left">
+
+<div style="background:#fff;border:1.5px solid #ddd;border-radius:12px;padding:20px;text-align:center">
+<div style="font-size:32px;margin-bottom:8px">💬</div>
+<div style="font-size:16px;font-weight:800;margin-bottom:6px">有聊天软件就行</div>
+<div style="font-size:13px;color:#666;line-height:1.6">WhatsApp、微信、飞书、钉钉、Telegram、Discord——你常用哪个就用哪个。无需安装客户端。</div>
 </div>
 
+<div style="background:#fff;border:1.5px solid #ddd;border-radius:12px;padding:20px;text-align:center">
+<div style="font-size:32px;margin-bottom:8px">💻</div>
+<div style="font-size:16px;font-weight:800;margin-bottom:6px">部署也很简单</div>
+<div style="font-size:13px;color:#666;line-height:1.6">以前是专业的活。现在有了EasyClaw——Mac/Windows一键下载安装，或直接用云端版。</div>
+</div>
+
+<div style="background:#fff;border:1.5px solid #ddd;border-radius:12px;padding:20px;text-align:center">
+<div style="font-size:32px;margin-bottom:8px">🌱</div>
+<div style="font-size:16px;font-weight:800;margin-bottom:6px">越养越强</div>
+<div style="font-size:13px;color:#666;line-height:1.6">像带新员工——用得越多越懂你，Skill越积越多，能力只增不减。</div>
+</div>
 
 </div>
 
-<!-- FINAL CTA -->
-<div class="final-cta">
-<h2>想养一只自己的<span style="color:var(--accent)">AI龙虾</span>？</h2>
-<p style="color:var(--muted);margin-bottom:16px;font-size:14px">免费下载 · 不要钱 · 不需要技术背景</p>
-<a href="https://easyclaw.com" target="_blank" class="btn btn-cta" style="font-size:17px;padding:16px 36px">🦞 免费领养</a>
+<div style="margin-top:20px;display:flex;justify-content:center;gap:12px;flex-wrap:wrap">
+<a href="https://easyclaw.com" target="_blank" style="display:inline-block;background:#c0392b;color:#fff;padding:12px 24px;border-radius:10px;font-weight:700;font-size:15px;text-decoration:none">🦞 免费下载 EasyClaw</a>
+<a href="https://easyclaw.work" target="_blank" style="display:inline-block;background:#fff;color:#c0392b;border:1.5px solid #c0392b;padding:12px 24px;border-radius:10px;font-weight:700;font-size:15px;text-decoration:none">☁️ 云端领养</a>
+</div>
 </div>
 
-<!-- FOOTER -->
+<!-- DIARY -->
+<div class="section" id="story">
+<div class="section-label">✏️ 养成日记</div>
+<div class="section-title">15天，从查不了通讯录到8人AI团队+一个网站</div>
+<div class="section-desc">最后更新：2026年3月1日 · 点击卡片看完整故事 · <a href="diary.html" style="font-size:13px;color:#2874a6;font-weight:600;float:right">查看全部日记 →</a></div>
+<div class="diary-grid">
+      <!-- Rendered dynamically from data/diaries.json -->
+      <!-- Cards rendered dynamically from data/diaries.json -->
+    </div></a>
+
+
+</div>
+</div>
+<div style="text-align:center;margin-top:12px"><span style="font-size:12px;color:#aaa">⏰ 故事还在继续，关注 sanwan.ai 追更</span></div>
+</div>
+</div>
+
+<div class="sketch-line"></div>
+
+<!-- SKILLS -->
+<div class="section-bg" id="skills">
+<div class="section">
+<div class="section-label">✏️ 技能商城</div>
+<div class="section-title">三万学会的技能，你的龙虾也能学</div>
+<div class="section-desc">「三万同款」= 傅盛亲自验证 · <a href="skills.html" style="font-size:13px;color:#2874a6;font-weight:600;float:right">进入技能商城 →</a></div>
+<div class="skill-scroll">
+<div class="skill-card"><div class="skill-tag">🦞 三万同款</div><div class="emoji">🎆</div><h4>批量个性化消息</h4><p>611人拜年，4分钟完成。</p><span class="more">了解更多 →</span></div>
+<div class="skill-card"><div class="skill-tag">🦞 三万同款</div><div class="emoji">🧠</div><h4>记忆系统</h4><p>语义记忆，记住重要的事。</p><span class="more">了解更多 →</span></div>
+<div class="skill-card"><div class="skill-tag">🦞 三万同款</div><div class="emoji">🗣️</div><h4>语音合成</h4><p>文字转语音，中文多音色。</p><span class="more">了解更多 →</span></div>
+<div class="skill-card"><div class="emoji">📧</div><h4>邮件监控</h4><p>VIP提醒+紧急摘要。</p><span class="more">了解更多 →</span></div>
+<div class="skill-card"><div class="emoji">📊</div><h4>量化监控</h4><p>多维信号分时推送。</p><span class="more">了解更多 →</span></div>
+<div class="skill-card"><div class="emoji">🔍</div><h4>多引擎搜索</h4><p>Google/Brave自动摘要。</p><span class="more">了解更多 →</span></div>
+</div>
+</div>
+</div>
+
+<!-- CTA -->
+<div class="cta" id="cta">
+<h2>想养一只自己的<span class="red">AI龙虾</span>？</h2>
+<p>下载 EasyClaw，拥有你的第一个 7×24 AI助理</p>
+<div class="cta-btns">
+<a href="https://easyclaw.com" class="btn-red" target="_blank">🦞 下载 EasyClaw</a>
+<a href="https://github.com/openclaw/openclaw" class="btn-outline" target="_blank">⭐ GitHub Star</a>
+</div>
+</div>
+
+<div style="text-align:center;padding:24px 16px"><img src="ppt/page-29.jpg" loading="lazy" style="width:100%;max-width:500px;border-radius:10px;border:1px solid #ddd" alt="龙虾，出发！"></div>
+<section style="background:#faf8f4;border:1.5px solid #ddd;border-radius:14px;padding:20px;margin:20px auto;max-width:800px;box-shadow:0 2px 10px rgba(0,0,0,0.05)">
+  <h2 style="font-family:'Long Cang','ZCOOL KuaiLe','Noto Sans SC',sans-serif;;font-size:20px;margin-bottom:12px;color:#333">💬 留言板</h2>
+  <p style="color:#888;font-size:13px;margin-bottom:16px">需要 GitHub 账号登录后留言 🦞</p>
+  <script src="https://giscus.app/client.js"
+    data-repo="neofusheng/sanwan"
+    data-repo-id="R_kgDORbntrQ"
+    data-category="General"
+    data-category-id="DIC_kwDORbntrc4C3dRX"
+    data-mapping="pathname"
+    data-strict="0"
+    data-reactions-enabled="1"
+    data-emit-metadata="0"
+    data-input-position="top"
+    data-theme="light"
+    data-lang="zh-CN"
+    crossorigin="anonymous"
+    async>
+  </script>
+</section>
 <footer>
-<div>
-<a href="diary.html">📖 日记</a>
-<a href="science.html">🔰 科普</a>
-<a href="skills.html">🛒 技能</a>
-<a href="easyclaw.html">🦞 EasyClaw</a>
-<a href="en/">🌐 English</a>
-</div>
-<p style="margin-top:8px">© 2026 sanwan.ai · Built with 🦞 by <a href="https://github.com/nicepkg/openclaw" target="_blank">OpenClaw</a></p>
+🦞 sanwan.ai © 2026 傅盛 × 龙虾三万 ·
+<a href="https://easyclaw.com">EasyClaw</a>
+<a href="https://github.com/openclaw/openclaw">GitHub</a>
+<a href="https://x.com/FuSheng_0306">X</a>
 </footer>
 
-<!-- FLOATING MASCOT -->
-<a href="https://easyclaw.com" target="_blank" class="float-mascot">
-<div class="bubble">领养龙虾 →</div>
-<img src="mascot-float.png" alt="三万">
-</a>
+
+</div>
+
+<!-- Diary Modal -->
+<div class="modal-overlay" id="diaryModal" onclick="if(event.target===this)closeDiary()">
+<div class="modal-content">
+<button class="modal-close" onclick="closeDiary()">✕</button>
+<div id="diaryModalBody"></div>
+<div style="display:flex;justify-content:space-between;align-items:center;margin-top:16px;padding-top:12px;border-top:2px dashed #ddd">
+<button onclick="prevDiary()" id="btnPrev" class="btn-outline" style="font-size:13px;padding:6px 14px">← 上一篇</button>
+<span id="diaryPageNum" style="font-size:12px;color:#999"></span>
+<button onclick="nextDiary()" id="btnNext" class="btn-outline" style="font-size:13px;padding:6px 14px">下一篇 →</button>
+</div>
+<div style="text-align:center;margin-top:12px"><a id="diaryFullLink" href="diary.html" style="font-size:13px;color:#c0392b">📖 查看完整日记 →</a></div>
+</div>
+</div>
+
+<script>
+// Load diary data from JSON
+let diaries = {};
+let diaryKeys = [];
+const featuredIds = ['day15', 'day1', 'day6', 'day14'];
+
+async function loadDiaries() {
+  try {
+    const res = await fetch('data/diaries.json');
+    const entries = await res.json();
+    entries.forEach(e => { diaries[e.id] = e; });
+    diaryKeys = entries.map(e => e.id);
+    renderFeaturedCards();
+    const hash = location.hash.replace('#','');
+    if (diaries[hash]) showDiary(hash);
+  } catch(err) {
+    console.error('Failed to load diaries:', err);
+  }
+}
+
+function renderFeaturedCards() {
+  const grid = document.querySelector('.diary-grid');
+  if (!grid) return;
+  grid.innerHTML = '';
+  featuredIds.forEach(key => {
+    const d = diaries[key];
+    if (!d) return;
+    const card = document.createElement('a');
+    card.className = 'diary-card';
+    card.onclick = function(){ showDiary(key); return false; };
+    card.innerHTML = '<img src="' + d.img + '" alt="' + d.title + '" style="width:100%;aspect-ratio:16/9;object-fit:cover;display:block;border-bottom:1px solid #eee" loading="lazy">'
+      + '<div class="info"><span class="day">' + d.title.split('：')[0] + '</span>'
+      + '<h3>' + (d.title.split('：')[1] || d.title) + '</h3></div>';
+    grid.appendChild(card);
+  });
+}
+
+function showDiary(key){
+  const d = diaries[key];
+  if(!d) return;
+  const body = document.getElementById('diaryModalBody');
+  body.innerHTML = '<h2 style="font-size:22px;margin-bottom:16px">' + d.title + '</h2>'
+    + '<img src="' + d.img + '" alt="' + d.title + '" style="width:100%;border-radius:8px;border:1.5px solid #ddd;margin-bottom:16px">'
+    + '<div style="font-size:15px;line-height:1.8;color:#333">' + d.text + '</div>';
+  document.getElementById('diaryModal').style.display = 'flex';
+  document.body.style.overflow = 'hidden';
+  history.replaceState(null, '', '#' + key);
+  const idx = diaryKeys.indexOf(key);
+  document.getElementById('btnPrev').style.visibility = idx > 0 ? 'visible' : 'hidden';
+  document.getElementById('btnNext').style.visibility = idx < diaryKeys.length - 1 ? 'visible' : 'hidden';
+  document.getElementById('diaryPageNum').textContent = (idx+1) + ' / ' + diaryKeys.length;
+}
+
+function closeDiary(){
+  document.getElementById('diaryModal').style.display='none';
+  document.body.style.overflow='';
+  history.replaceState(null,'','#');
+}
+
+function prevDiary(){
+  const current = location.hash.replace('#','');
+  const idx = diaryKeys.indexOf(current);
+  if(idx > 0) showDiary(diaryKeys[idx-1]);
+}
+
+function nextDiary(){
+  const current = location.hash.replace('#','');
+  const idx = diaryKeys.indexOf(current);
+  if(idx < diaryKeys.length-1) showDiary(diaryKeys[idx+1]);
+}
+
+document.addEventListener('keydown', function(e){
+  if(document.getElementById('diaryModal').style.display==='flex'){
+    if(e.key==='Escape') closeDiary();
+    if(e.key==='ArrowLeft') prevDiary();
+    if(e.key==='ArrowRight') nextDiary();
+  }
+});
+
+// Counter animation
+function animateCounter(el, target, suffix) {
+  let current = 0;
+  const step = Math.ceil(target / 40);
+  const timer = setInterval(() => {
+    current += step;
+    if (current >= target) { current = target; clearInterval(timer); }
+    el.textContent = current + (suffix || '');
+  }, 30);
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  // Animate counters
+  document.querySelectorAll('.counter-number').forEach(el => {
+    const target = parseInt(el.dataset.target);
+    const suffix = el.dataset.suffix || '';
+    if (target) animateCounter(el, target, suffix);
+  });
+});
+
+loadDiaries();
 
 
+// Scroll reveal
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
+}, {threshold: 0.1});
+document.querySelectorAll('.section, .section-bg').forEach(el => {
+  el.classList.add('reveal');
+  observer.observe(el);
+});
+</script>
 
-<!-- Vercel Analytics -->
-<script defer src="/_vercel/insights/script.js"></script>
+
+<div class="float-mascot" id="floatMascot">
+  <div class="float-bubble">
+    <div style="font-size:13px;font-weight:700;color:#c0392b;line-height:1.5">主人，快来领养我吧！❤️</div>
+    <a href="https://easyclaw.com" target="_blank" style="display:inline-block;margin-top:6px;background:#c0392b;color:#fff;padding:6px 16px;border-radius:20px;font-size:12px;font-weight:700;text-decoration:none;box-shadow:0 0 12px rgba(192,57,43,0.3);animation:btn-glow 2.5s ease-in-out infinite">领养龙虾 →</a>
+    <div class="bubble-tail"></div>
+    <div class="bubble-dot"></div>
+  </div>
+  <img class="float-lobster" src="mascot-float.png" alt="三万" style="width:80px;height:auto">
+</div>
 </body>
 </html>
