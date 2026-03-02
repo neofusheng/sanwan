@@ -103,6 +103,11 @@ footer a{color:#888;text-decoration:none;margin:0 8px}
 <div class="modal-overlay" id="diaryModal" onclick="if(event.target===this)closeDiary()">
 <div class="modal-content">
 <button class="modal-close" onclick="closeDiary()">✕</button>
+<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;padding-bottom:8px;border-bottom:2px dashed #ddd">
+<button onclick="prevDiary()" id="btnPrevTop" class="btn-outline">← 上一篇</button>
+<span id="diaryPageNumTop" style="font-size:12px;color:#999"></span>
+<button onclick="nextDiary()" id="btnNextTop" class="btn-outline">下一篇 →</button>
+</div>
 <div id="diaryModalBody"></div>
 <div style="display:flex;justify-content:space-between;align-items:center;margin-top:16px;padding-top:12px;border-top:2px dashed #ddd">
 <button onclick="prevDiary()" id="btnPrev" class="btn-outline">← 上一篇</button>
@@ -195,6 +200,9 @@ function showDiary(key){
   history.replaceState(null, '', '#' + key);
   // Update nav
   const idx = diaryKeys.indexOf(key);
+  document.getElementById('btnPrevTop').style.visibility = idx > 0 ? 'visible' : 'hidden';
+  document.getElementById('btnNextTop').style.visibility = idx < diaryKeys.length - 1 ? 'visible' : 'hidden';
+  document.getElementById('diaryPageNumTop').textContent = (idx+1) + ' / ' + diaryKeys.length;
   document.getElementById('btnPrev').style.visibility = idx > 0 ? 'visible' : 'hidden';
   document.getElementById('btnNext').style.visibility = idx < diaryKeys.length - 1 ? 'visible' : 'hidden';
   document.getElementById('diaryPageNum').textContent = (idx+1) + ' / ' + diaryKeys.length;
