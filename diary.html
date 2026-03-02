@@ -227,4 +227,18 @@ document.addEventListener('keydown', function(e){
 loadDiaries();
 </script>
 <script>!function(){var p=location.pathname,r=document.referrer,l=navigator.language;new Image().src="https://clawdbot-f.cmcm.com/sanwan-stats/api/track?page="+encodeURIComponent(p)+"&ref="+encodeURIComponent(r)+"&lang="+encodeURIComponent(l)}();</script>
+<!-- Floating Sanwan Mascot -->
+<div id="floatSanwan" style="position:fixed;bottom:20px;right:16px;z-index:99;display:flex;flex-direction:column;align-items:center;animation:sanwan-bob 3s ease-in-out infinite">
+<style>
+@keyframes sanwan-bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+@keyframes glow-pulse{0%,100%{box-shadow:0 0 8px rgba(192,57,43,0.2)}50%{box-shadow:0 0 16px rgba(192,57,43,0.4)}}
+@media(max-width:768px){#floatSanwan{bottom:12px;right:12px}}
+</style>
+<div style="background:#fff;border:1.5px solid #f0d0cc;padding:10px 14px;border-radius:16px;text-align:center;margin-bottom:4px;box-shadow:0 4px 16px rgba(192,57,43,0.12);position:relative">
+<div style="font-size:13px;font-weight:700;color:#c0392b;line-height:1.5">想要同款三万？</div>
+<a href="https://easyclaw.com" target="_blank" style="display:inline-block;margin-top:6px;background:#c0392b;color:#fff;padding:6px 16px;border-radius:20px;font-size:12px;font-weight:700;text-decoration:none;animation:glow-pulse 2.5s ease-in-out infinite">免费领养 →</a>
+<div style="position:absolute;bottom:-6px;left:50%;width:12px;height:12px;background:#fff;border-right:1.5px solid #f0d0cc;border-bottom:1.5px solid #f0d0cc;transform:translateX(-50%) rotate(45deg)"></div>
+</div>
+<img src="/img/sanwan-float.png" alt="三万" style="width:56px;height:auto;cursor:pointer;transition:transform .2s;filter:drop-shadow(0 3px 6px rgba(0,0,0,0.15))">
+</div>
 </body></html>
