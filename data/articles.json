@@ -470,5 +470,1105 @@
     "category": "部署教程",
     "rating": 3,
     "readTime": "5min"
+  },
+  {
+    "title": "快速部署OpenClaw教程：接入微信、钉钉、飞书和QQ全流程",
+    "source": "知乎",
+    "sourceUrl": "https://zhuanlan.zhihu.com/p/2000936273733514988",
+    "tags": [
+      "部署教程",
+      "多平台",
+      "微信"
+    ],
+    "category": "部署教程",
+    "rating": 4,
+    "summary": "腾讯云OpenClaw一键部署方案，手把手教你秒级部署并接入微信、飞书、钉钉和QQ四大平台。",
+    "id": "article-031",
+    "date": "2026-03-01",
+    "readTime": "5min"
+  },
+  {
+    "title": "OpenClaw钉钉对接保姆级教程：手把手打造AI助手",
+    "source": "博客园",
+    "sourceUrl": "https://www.cnblogs.com/catchadmin/p/19560247",
+    "tags": [
+      "部署教程",
+      "钉钉"
+    ],
+    "category": "部署教程",
+    "rating": 4,
+    "summary": "详细的钉钉机器人对接教程，从安装插件到钉钉配置的完整流程。",
+    "id": "article-032",
+    "date": "2026-03-01",
+    "readTime": "5min"
+  },
+  {
+    "title": "全网顶流OpenClaw+飞书 0基础最详细教程",
+    "source": "B站",
+    "sourceUrl": "https://www.bilibili.com/video/BV18uFYzxEr1/",
+    "tags": [
+      "视频教程",
+      "飞书",
+      "零基础"
+    ],
+    "category": "视频教程",
+    "rating": 4,
+    "summary": "B站热门视频教程，零基础用户也能跟着做的飞书接入完整流程。",
+    "id": "article-033",
+    "date": "2026-03-01",
+    "readTime": "10min"
+  },
+  {
+    "title": "OpenClaw飞书对接教程（CSDN版）",
+    "source": "CSDN",
+    "sourceUrl": "https://damodev.csdn.net/697d4c8fa16c6648a98652da.html",
+    "tags": [
+      "部署教程",
+      "飞书"
+    ],
+    "category": "部署教程",
+    "rating": 4,
+    "summary": "从Linux系统安装到飞书机器人对接的完整教程。",
+    "id": "article-034",
+    "date": "2026-03-01",
+    "readTime": "5min"
+  },
+  {
+    "title": "快速搭建OpenClaw AI机器人：对接TG/钉钉/飞书",
+    "source": "个人博客",
+    "sourceUrl": "https://www.3520.net/free-cargo/12280.html",
+    "tags": [
+      "部署教程",
+      "多平台"
+    ],
+    "category": "部署教程",
+    "rating": 3,
+    "summary": "简洁实用的多平台对接指南，涵盖Telegram、钉钉、飞书的配置步骤。",
+    "id": "article-035",
+    "date": "2026-03-01",
+    "readTime": "5min"
+  },
+  {
+    "title": "OpenClaw飞书对接教程（Windows版）",
+    "source": "CSDN",
+    "sourceUrl": "https://damodev.csdn.net/697deb97a16c6648a9866d36.html",
+    "tags": [
+      "部署教程",
+      "飞书",
+      "Windows"
+    ],
+    "category": "部署教程",
+    "rating": 4,
+    "summary": "Windows系统保姆级教程，从安装到飞书接入，在飞书App中直接指挥AI。",
+    "id": "article-036",
+    "date": "2026-03-01",
+    "readTime": "5min"
+  },
+  {
+    "title": "OpenClaw钉钉对接教程（阿里云版）",
+    "source": "阿里云",
+    "sourceUrl": "https://developer.aliyun.com/article/1709772",
+    "tags": [
+      "部署教程",
+      "钉钉",
+      "阿里云"
+    ],
+    "category": "部署教程",
+    "rating": 4,
+    "summary": "阿里云社区教程，涵盖环境配置、Qwen模型选择、权限设置及调试。",
+    "id": "article-037",
+    "date": "2026-03-01",
+    "readTime": "5min"
+  },
+  {
+    "title": "Token消耗降低90%：OpenClaw性能调优与降本实战指南",
+    "source": "知乎",
+    "sourceUrl": "https://zhuanlan.zhihu.com/p/2004224376657159734",
+    "tags": [
+      "Token优化",
+      "降本",
+      "QMD"
+    ],
+    "category": "进阶玩法",
+    "rating": 5,
+    "summary": "QMD智能检索功能深度解析，本地语义搜索将上下文token削减95%，成本降低90-99%。",
+    "id": "article-038",
+    "date": "2026-03-01",
+    "readTime": "5min"
+  },
+  {
+    "title": "OpenClaw付费模型Token爆炸？多智能体低成本方案",
+    "source": "个人博客",
+    "sourceUrl": "https://www.webzsky.com/archives/1868",
+    "tags": [
+      "Token优化",
+      "多Agent",
+      "降本"
+    ],
+    "category": "进阶玩法",
+    "rating": 4,
+    "summary": "多智能体低成本方案，模型分层架构+动态路由策略，成本降低70%以上。",
+    "id": "article-039",
+    "date": "2026-03-01",
+    "readTime": "5min"
+  },
+  {
+    "title": "OpenClaw省钱指南：从月烧千刀到月花10刀",
+    "source": "知乎",
+    "sourceUrl": "https://zhuanlan.zhihu.com/p/2010313268724523249",
+    "tags": [
+      "Token优化",
+      "省钱",
+      "模型选择"
+    ],
+    "category": "使用技巧",
+    "rating": 5,
+    "summary": "Opus到Haiku模型降级策略，MiniMax M2.5等国产模型推荐，完整省钱攻略。",
+    "id": "article-040",
+    "date": "2026-03-01",
+    "readTime": "5min"
+  },
+  {
+    "title": "我的OpenClaw每天吃饭花400块：AI时代的代谢成本真相",
+    "source": "腾讯新闻",
+    "sourceUrl": "https://news.qq.com/rain/a/20260214A03PHT00",
+    "tags": [
+      "成本分析",
+      "深度思考"
+    ],
+    "category": "评测分析",
+    "rating": 5,
+    "summary": "深度分析Agent Token消耗本质——不要为省钱限制AI能力，找到浪费和探索的平衡。",
+    "id": "article-041",
+    "date": "2026-03-01",
+    "readTime": "5min"
+  },
+  {
+    "title": "OpenClaw部署复盘：几种零成本高智商接入方案实测",
+    "source": "V2EX",
+    "sourceUrl": "https://v2ex.com/t/1191799",
+    "tags": [
+      "免费方案",
+      "实测"
+    ],
+    "category": "评测分析",
+    "rating": 4,
+    "summary": "V2EX社区实测，低成本甚至零成本的接入方案对比评测。",
+    "id": "article-042",
+    "date": "2026-03-01",
+    "readTime": "5min"
+  },
+  {
+    "title": "OpenClaw初始化消耗13000+ Tokens的原因和优化",
+    "source": "个人博客",
+    "sourceUrl": "https://blog.wentuo.ai/en/openclaw-system-prompt-token-optimization-haiku-guide-en.html",
+    "tags": [
+      "Token优化",
+      "系统提示词"
+    ],
+    "category": "进阶玩法",
+    "rating": 4,
+    "summary": "分析13000+ tokens来源，教你精简配置和用Haiku替代Opus处理80%场景。",
+    "id": "article-043",
+    "date": "2026-03-01",
+    "readTime": "5min"
+  },
+  {
+    "title": "OpenClaw Token优化可视化仪表盘",
+    "source": "GitHub",
+    "sourceUrl": "https://github.com/oneles/openclaw-token-optimization",
+    "tags": [
+      "Token优化",
+      "工具",
+      "开源"
+    ],
+    "category": "使用技巧",
+    "rating": 4,
+    "summary": "开源Token优化指南+可视化仪表盘，55分钟心跳策略让缓存永远激活。",
+    "id": "article-044",
+    "date": "2026-03-01",
+    "readTime": "5min"
+  },
+  {
+    "title": "OpenClaw降本攻略：5个Token节省Skills教程（立省97%）",
+    "source": "阿里云",
+    "sourceUrl": "https://developer.aliyun.com/article/1713330",
+    "tags": [
+      "Token优化",
+      "Skills"
+    ],
+    "category": "使用技巧",
+    "rating": 5,
+    "summary": "5个高性价比Token节省Skill的安装配置和实战效果，成本降低97%。",
+    "id": "article-045",
+    "date": "2026-03-01",
+    "readTime": "5min"
+  },
+  {
+    "title": "解锁OpenClaw多Agent高级玩法！Token消耗直接减半",
+    "source": "B站",
+    "sourceUrl": "https://www.bilibili.com/video/BV1dqffBMEcg/",
+    "tags": [
+      "视频教程",
+      "多Agent",
+      "Token优化"
+    ],
+    "category": "视频教程",
+    "rating": 4,
+    "summary": "不同任务分配不同模型，独立Session和记忆空间，Token消耗减半实战演示。",
+    "id": "article-046",
+    "date": "2026-03-01",
+    "readTime": "10min"
+  },
+  {
+    "title": "社区实践技巧：Skills、MCP、钉钉、多人格",
+    "source": "中文文档",
+    "sourceUrl": "https://openclaw-docs.dx3n.cn/tutorials/help/community-tips",
+    "tags": [
+      "Skills",
+      "MCP",
+      "社区"
+    ],
+    "category": "使用技巧",
+    "rating": 4,
+    "summary": "官方中文文档社区实践汇总，Skill安装、MCP集成、多人格配置。",
+    "id": "article-047",
+    "date": "2026-03-01",
+    "readTime": "5min"
+  },
+  {
+    "title": "OpenClaw白嫖云部署！附自定义模型API和4种Skills神级用法",
+    "source": "知乎",
+    "sourceUrl": "https://zhuanlan.zhihu.com/p/2004949782918104344",
+    "tags": [
+      "Skills",
+      "云部署"
+    ],
+    "category": "使用技巧",
+    "rating": 4,
+    "summary": "百度智能云免费部署+Coding Agent调用Claude Code实战演示。",
+    "id": "article-048",
+    "date": "2026-03-01",
+    "readTime": "5min"
+  },
+  {
+    "title": "OpenClaw自定义Skill开发完整指南（最新版）",
+    "source": "CSDN",
+    "sourceUrl": "https://blog.csdn.net/haolove527/article/details/157650169",
+    "tags": [
+      "Skill开发",
+      "MCP"
+    ],
+    "category": "进阶玩法",
+    "rating": 5,
+    "summary": "从纯SKILL.md到代码集成外部API的完整Skill开发指南。",
+    "id": "article-049",
+    "date": "2026-03-01",
+    "readTime": "5min"
+  },
+  {
+    "title": "OpenClaw新玩法！手把手施展组合技，国产Skills搞定几大场景",
+    "source": "腾讯新闻",
+    "sourceUrl": "https://news.qq.com/rain/a/20260209A03AFQ00",
+    "tags": [
+      "Skills",
+      "国产模型"
+    ],
+    "category": "使用技巧",
+    "rating": 4,
+    "summary": "百度千帆平台+MCP广场技能包安装的完整流程。",
+    "id": "article-050",
+    "date": "2026-03-01",
+    "readTime": "5min"
+  },
+  {
+    "title": "深入解析OpenClaw Skills扩展系统：AI如何学会自我进化",
+    "source": "知乎",
+    "sourceUrl": "https://zhuanlan.zhihu.com/p/2006196534333694047",
+    "tags": [
+      "Skills",
+      "架构分析"
+    ],
+    "category": "进阶玩法",
+    "rating": 5,
+    "summary": "三级加载策略让50个Skill只占1200 token，对比MCP和LangChain的经济性。",
+    "id": "article-051",
+    "date": "2026-03-01",
+    "readTime": "5min"
+  },
+  {
+    "title": "Awesome OpenClaw Skills：给AI助手装超级插件市场",
+    "source": "CSDN",
+    "sourceUrl": "https://blog.csdn.net/yangshangwei/article/details/158182209",
+    "tags": [
+      "Skills",
+      "生态"
+    ],
+    "category": "使用技巧",
+    "rating": 4,
+    "summary": "OpenClaw技能生态全景图，代码分析到自动化办公的第三方技能推荐。",
+    "id": "article-052",
+    "date": "2026-03-01",
+    "readTime": "5min"
+  },
+  {
+    "title": "ClawHub Skill精选：国内用户值得装的扩展",
+    "source": "个人博客",
+    "sourceUrl": "https://tbbbk.com/clawhub-skill-picks-for-china-users/",
+    "tags": [
+      "Skills",
+      "推荐"
+    ],
+    "category": "使用技巧",
+    "rating": 4,
+    "summary": "为国内用户精选的ClawHub技能清单，含小红书MCP等本土化扩展。",
+    "id": "article-053",
+    "date": "2026-03-01",
+    "readTime": "5min"
+  },
+  {
+    "title": "OpenClaw Agent记忆系统研究教程",
+    "source": "博客园",
+    "sourceUrl": "https://www.cnblogs.com/gyc567/p/19559062",
+    "tags": [
+      "记忆系统",
+      "架构"
+    ],
+    "category": "进阶玩法",
+    "rating": 4,
+    "summary": "记忆系统架构深度剖析，memory_search和memory_get核心工具工作原理。",
+    "id": "article-054",
+    "date": "2026-03-01",
+    "readTime": "5min"
+  },
+  {
+    "title": "OpenClaw记忆层详解",
+    "source": "知乎",
+    "sourceUrl": "https://zhuanlan.zhihu.com/p/2003948729007370532",
+    "tags": [
+      "记忆系统",
+      "核心概念"
+    ],
+    "category": "进阶玩法",
+    "rating": 4,
+    "summary": "memory是Agent进化为智能体的关键，记忆系统全面解读。",
+    "id": "article-055",
+    "date": "2026-03-01",
+    "readTime": "5min"
+  },
+  {
+    "title": "OpenClaw记忆管理：从入门到高阶完整实战指南",
+    "source": "X/Twitter",
+    "sourceUrl": "https://archive.ph/rdFNT",
+    "tags": [
+      "记忆系统",
+      "实战"
+    ],
+    "category": "进阶玩法",
+    "rating": 5,
+    "summary": "基于多Agent团队真实生产环境、历时17天打磨的记忆管理完整迭代记录。",
+    "id": "article-056",
+    "date": "2026-03-01",
+    "readTime": "5min"
+  },
+  {
+    "title": "OpenClaw记忆系统架构：从Markdown到混合检索",
+    "source": "知乎",
+    "sourceUrl": "https://zhuanlan.zhihu.com/p/2005943466006438841",
+    "tags": [
+      "记忆系统",
+      "架构"
+    ],
+    "category": "进阶玩法",
+    "rating": 5,
+    "summary": "对比MemGPT/Letta三层架构，OpenClaw Markdown+混合检索的设计哲学。",
+    "id": "article-057",
+    "date": "2026-03-01",
+    "readTime": "5min"
+  },
+  {
+    "title": "OpenClaw核心架构极简复现（openclaw-mini）",
+    "source": "GitHub",
+    "sourceUrl": "https://github.com/voocel/openclaw-mini",
+    "tags": [
+      "架构",
+      "源码",
+      "开源"
+    ],
+    "category": "进阶玩法",
+    "rating": 4,
+    "summary": "Go语言极简复现，涵盖会话域、记忆检索、技能扩展和心跳唤醒。",
+    "id": "article-058",
+    "date": "2026-03-01",
+    "readTime": "5min"
+  },
+  {
+    "title": "OpenClaw接入国产大模型总报错？试试OpenClawSwitch",
+    "source": "知乎",
+    "sourceUrl": "https://zhuanlan.zhihu.com/p/2003100262835979075",
+    "tags": [
+      "国产模型",
+      "工具"
+    ],
+    "category": "使用技巧",
+    "rating": 4,
+    "summary": "一键切换DeepSeek、Qwen等国产模型的配置工具。",
+    "id": "article-059",
+    "date": "2026-03-01",
+    "readTime": "5min"
+  },
+  {
+    "title": "OpenClaw国内大模型配置指南：MiniMax、GLM、Kimi、Doubao、Qwen",
+    "source": "CSDN",
+    "sourceUrl": "https://blog.csdn.net/weixin_45110225/article/details/157724298",
+    "tags": [
+      "国产模型",
+      "配置"
+    ],
+    "category": "使用技巧",
+    "rating": 5,
+    "summary": "最全国产模型接入指南，最佳实践：Kimi K2(Planner)+DeepSeek V3.2(Executor)。",
+    "id": "article-060",
+    "date": "2026-03-01",
+    "readTime": "5min"
+  },
+  {
+    "title": "OpenClaw在Mac mini上接入国产大模型与飞书",
+    "source": "CSDN",
+    "sourceUrl": "https://damodev.csdn.net/697dff7b7c1d88441d90f0e4.html",
+    "tags": [
+      "Mac",
+      "国产模型",
+      "飞书"
+    ],
+    "category": "部署教程",
+    "rating": 4,
+    "summary": "Mac mini上接入DeepSeek和飞书的配置教程，含通用OpenAI协议模板。",
+    "id": "article-061",
+    "date": "2026-03-01",
+    "readTime": "5min"
+  },
+  {
+    "title": "告别昂贵Claude！OpenClaw中文版原生支持DeepSeek、Qwen",
+    "source": "信息安全知识库",
+    "sourceUrl": "https://www.gm7.org/archives/48589",
+    "tags": [
+      "国产模型",
+      "中文版"
+    ],
+    "category": "评测分析",
+    "rating": 4,
+    "summary": "中文版原生支持国产模型，沙箱安全机制，针对国内网络优化。",
+    "id": "article-062",
+    "date": "2026-03-01",
+    "readTime": "5min"
+  },
+  {
+    "title": "OpenClaw模型接入全指南：免费Token+新模型适配",
+    "source": "SegmentFault",
+    "sourceUrl": "https://segmentfault.com/a/1190000047609742",
+    "tags": [
+      "模型接入",
+      "免费Token"
+    ],
+    "category": "使用技巧",
+    "rating": 4,
+    "summary": "Higress网关实现任意OpenAI兼容模型接入，内置主流厂商预配置。",
+    "id": "article-063",
+    "date": "2026-03-01",
+    "readTime": "5min"
+  },
+  {
+    "title": "OpenClaw架构详解：一只龙虾如何征服10万+ Stars",
+    "source": "掘金",
+    "sourceUrl": "https://juejin.cn/post/7603238967290527796",
+    "tags": [
+      "架构",
+      "深度分析"
+    ],
+    "category": "评测分析",
+    "rating": 5,
+    "summary": "深度技术分析OpenClaw架构设计，从个人项目到10万+ Star的技术演进。",
+    "id": "article-064",
+    "date": "2026-03-01",
+    "readTime": "5min"
+  },
+  {
+    "title": "OpenClaw远程浏览器使用指南：从入门到踩坑",
+    "source": "掘金",
+    "sourceUrl": "https://juejin.cn/post/7600986495927386153",
+    "tags": [
+      "浏览器",
+      "实战"
+    ],
+    "category": "使用技巧",
+    "rating": 4,
+    "summary": "远程浏览器功能完整使用指南，含常见问题和踩坑经验。",
+    "id": "article-065",
+    "date": "2026-03-01",
+    "readTime": "5min"
+  },
+  {
+    "title": "OpenClaw多会话模式：小白完整教程",
+    "source": "掘金",
+    "sourceUrl": "https://juejin.cn/post/7602064004317577279",
+    "tags": [
+      "多会话",
+      "新手"
+    ],
+    "category": "使用技巧",
+    "rating": 4,
+    "summary": "多会话模式通俗教程，Session管理和切换方法。",
+    "id": "article-066",
+    "date": "2026-03-01",
+    "readTime": "5min"
+  },
+  {
+    "title": "OpenClaw完整本地部署（掘金版·接入飞书）",
+    "source": "掘金",
+    "sourceUrl": "https://juejin.cn/post/7611477522031624238",
+    "tags": [
+      "部署教程",
+      "飞书"
+    ],
+    "category": "部署教程",
+    "rating": 4,
+    "summary": "掘金热门教程，从本地部署到飞书接入的完整流程。",
+    "id": "article-067",
+    "date": "2026-03-01",
+    "readTime": "5min"
+  },
+  {
+    "title": "OpenClaw究极越狱：用网页逆向强制驱动AI Agent",
+    "source": "掘金",
+    "sourceUrl": "https://juejin.cn/post/7601046076943859727",
+    "tags": [
+      "进阶",
+      "逆向"
+    ],
+    "category": "进阶玩法",
+    "rating": 3,
+    "summary": "极客向实验，通过网页逆向方式驱动AI Agent的非常规玩法。",
+    "id": "article-068",
+    "date": "2026-03-01",
+    "readTime": "5min"
+  },
+  {
+    "title": "中国版OpenClaw龙虾：枫清科技重新定义本地AI生产力",
+    "source": "掘金",
+    "sourceUrl": "https://juejin.cn/post/7601000638344593423",
+    "tags": [
+      "中国版",
+      "产品"
+    ],
+    "category": "评测分析",
+    "rating": 4,
+    "summary": "枫清科技Fabarta推出中国版OpenClaw。",
+    "id": "article-069",
+    "date": "2026-03-01",
+    "readTime": "5min"
+  },
+  {
+    "title": "OpenClaw经验分享：Skills、MCP、多人格",
+    "source": "LINUX DO",
+    "sourceUrl": "https://linux.do/t/topic/1639127",
+    "tags": [
+      "Skills",
+      "MCP"
+    ],
+    "category": "使用技巧",
+    "rating": 3,
+    "summary": "社区分享Skill搜索安装到MCP集成的实用经验。",
+    "id": "article-070",
+    "date": "2026-03-01",
+    "readTime": "5min"
+  },
+  {
+    "title": "随便聊聊OpenClaw记忆系统",
+    "source": "知乎",
+    "sourceUrl": "https://zhuanlan.zhihu.com/p/2005632275774195031",
+    "tags": [
+      "记忆系统",
+      "入门"
+    ],
+    "category": "进阶玩法",
+    "rating": 3,
+    "summary": "通俗易懂的记忆系统介绍，Daily Logs和Session Archives的作用。",
+    "id": "article-071",
+    "date": "2026-03-01",
+    "readTime": "5min"
+  },
+  {
+    "title": "OpenClaw如何接入多个免费国产模型",
+    "source": "X/Twitter",
+    "sourceUrl": "https://x.com/nopinduoduo/status/2021142822468903293",
+    "tags": [
+      "国产模型",
+      "免费"
+    ],
+    "category": "使用技巧",
+    "rating": 4,
+    "summary": "千问Qwen免费100万token领取+OpenRouter免费模型接入教程。",
+    "id": "article-072",
+    "date": "2026-03-01",
+    "readTime": "5min"
+  },
+  {
+    "title": "OpenClaw智能记忆管理系统（三层架构）",
+    "source": "GitHub",
+    "sourceUrl": "https://github.com/denda188/ClawIntelligentMemory",
+    "tags": [
+      "记忆系统",
+      "开源",
+      "工具"
+    ],
+    "category": "进阶玩法",
+    "rating": 4,
+    "summary": "三层架构智能记忆管理系统，从被动记录到主动学习的记忆进化方案。",
+    "id": "article-073",
+    "date": "2026-03-01",
+    "readTime": "5min"
+  },
+  {
+    "title": "awesome-openclaw-usecases：OpenClaw真实使用案例集",
+    "source": "掘金",
+    "sourceUrl": "https://juejin.cn/post/7609151073307951155",
+    "tags": [
+      "用例",
+      "开源"
+    ],
+    "category": "评测分析",
+    "rating": 3,
+    "summary": "收集整理OpenClaw的真实使用案例和最佳实践。",
+    "id": "article-074",
+    "date": "2026-03-01",
+    "readTime": "5min"
+  },
+  {
+    "title": "云上OpenClaw快速接入企业微信指南",
+    "source": "腾讯云",
+    "sourceUrl": "https://cloud.tencent.com/developer/article/2625147",
+    "tags": [
+      "企业微信",
+      "部署教程"
+    ],
+    "category": "部署教程",
+    "rating": 4,
+    "summary": "腾讯云可视化配置面板，几步快速完成企业微信接入。",
+    "id": "article-075",
+    "date": "2026-03-01",
+    "readTime": "5min"
+  },
+  {
+    "title": "将OpenClaw接入微信：部署24小时在线AI助理",
+    "source": "知乎",
+    "sourceUrl": "https://zhuanlan.zhihu.com/p/2010459468006200002",
+    "tags": [
+      "微信",
+      "企业微信"
+    ],
+    "category": "部署教程",
+    "rating": 4,
+    "summary": "智谱Coding Plan+企业微信应用接入的完整方案。",
+    "id": "article-076",
+    "date": "2026-03-01",
+    "readTime": "5min"
+  },
+  {
+    "title": "OpenClaw企业微信集成（阿里云官方）",
+    "source": "阿里云",
+    "sourceUrl": "https://help.aliyun.com/zh/simple-application-server/use-cases/openclaw-enterprise-wechat-integration",
+    "tags": [
+      "企业微信",
+      "阿里云"
+    ],
+    "category": "部署教程",
+    "rating": 4,
+    "summary": "阿里云官方企业微信集成教程，含视频操作演示。",
+    "id": "article-077",
+    "date": "2026-03-01",
+    "readTime": "5min"
+  },
+  {
+    "title": "openclaw-china：支持飞书钉钉QQ企业微信微信的中国插件",
+    "source": "GitHub",
+    "sourceUrl": "https://github.com/BytePioneer-AI/openclaw-china",
+    "tags": [
+      "多平台",
+      "开源",
+      "中国"
+    ],
+    "category": "使用技巧",
+    "rating": 4,
+    "summary": "一站式中国平台适配插件，QQ语音识别、企业微信API模式等全支持。",
+    "id": "article-078",
+    "date": "2026-03-01",
+    "readTime": "5min"
+  },
+  {
+    "title": "终于把OpenClaw接入微信了，安全可控详细教程",
+    "source": "CSDN",
+    "sourceUrl": "https://damodev.csdn.net/6994568a0a2f6a37c592362b.html",
+    "tags": [
+      "微信",
+      "教程"
+    ],
+    "category": "部署教程",
+    "rating": 4,
+    "summary": "企业微信后台自建应用接入OpenClaw的详细步骤。",
+    "id": "article-079",
+    "date": "2026-03-01",
+    "readTime": "5min"
+  },
+  {
+    "title": "openclaw-wechat：给OpenClaw加企业微信通道",
+    "source": "知乎",
+    "sourceUrl": "https://zhuanlan.zhihu.com/p/2007918983064613920",
+    "tags": [
+      "企业微信",
+      "开源"
+    ],
+    "category": "使用技巧",
+    "rating": 4,
+    "summary": "Cloudflare Tunnel+企业微信回调的开源接入方案。",
+    "id": "article-080",
+    "date": "2026-03-01",
+    "readTime": "5min"
+  },
+  {
+    "title": "OpenClaw接入企业微信（百度云版）",
+    "source": "百度云",
+    "sourceUrl": "https://cloud.baidu.com/doc/LS/s/Eml23lhy3",
+    "tags": [
+      "企业微信",
+      "百度云"
+    ],
+    "category": "部署教程",
+    "rating": 4,
+    "summary": "百度LS镜像预装wecom插件，几步完成企业微信集成。",
+    "id": "article-081",
+    "date": "2026-03-01",
+    "readTime": "5min"
+  },
+  {
+    "title": "打造Jarvis：OpenClaw很野，但Agent Studio简直变态",
+    "source": "腾讯新闻",
+    "sourceUrl": "https://news.qq.com/rain/a/20260130A05RZ400",
+    "tags": [
+      "评测",
+      "Agent Studio"
+    ],
+    "category": "评测分析",
+    "rating": 5,
+    "summary": "OpenClaw vs Agent Studio深度对比，企业微信接入体验实测。",
+    "id": "article-082",
+    "date": "2026-03-01",
+    "readTime": "5min"
+  },
+  {
+    "title": "深入OpenClaw网关：架构、网络模型与运行机制全解析",
+    "source": "腾讯云",
+    "sourceUrl": "https://cloud.tencent.com/developer/article/2629491",
+    "tags": [
+      "架构",
+      "Gateway",
+      "深度分析"
+    ],
+    "category": "进阶玩法",
+    "rating": 5,
+    "summary": "Gateway作为消息入口和控制平面的完整架构解析。",
+    "id": "article-083",
+    "date": "2026-03-01",
+    "readTime": "5min"
+  },
+  {
+    "title": "拆解OpenClaw自动化架构：从消息到执行的完整链路",
+    "source": "个人博客",
+    "sourceUrl": "https://www.heyuan110.com/posts/ai/2026-02-14-openclaw-architecture-deep-dive/",
+    "tags": [
+      "架构",
+      "自动化",
+      "深度分析"
+    ],
+    "category": "进阶玩法",
+    "rating": 5,
+    "summary": "Session/WebSocket/Heartbeat/工具权限等控制平面完整链路拆解。",
+    "id": "article-084",
+    "date": "2026-03-01",
+    "readTime": "5min"
+  },
+  {
+    "title": "OpenClaw：2026年GitHub最火的开源项目",
+    "source": "CSDN",
+    "sourceUrl": "https://damodev.csdn.net/69821f19a16c6648a98718f3.html",
+    "tags": [
+      "综合介绍",
+      "架构"
+    ],
+    "category": "评测分析",
+    "rating": 4,
+    "summary": "完整架构图解析，Gateway+Agent+Skills+Memory系统全景。",
+    "id": "article-085",
+    "date": "2026-03-01",
+    "readTime": "5min"
+  },
+  {
+    "title": "OpenClaw：开源多渠道AI个人助手的技术架构与实践",
+    "source": "CSDN",
+    "sourceUrl": "https://blog.csdn.net/qhvssonic/article/details/158068693",
+    "tags": [
+      "架构",
+      "源码分析"
+    ],
+    "category": "进阶玩法",
+    "rating": 4,
+    "summary": "从源码目录结构到Gateway控制平面的技术架构分析。",
+    "id": "article-086",
+    "date": "2026-03-01",
+    "readTime": "5min"
+  },
+  {
+    "title": "OpenClaw架构原理：单进程应用+插件式扩展",
+    "source": "CSDN",
+    "sourceUrl": "https://blog.csdn.net/inthat/article/details/158097236",
+    "tags": [
+      "架构",
+      "插件"
+    ],
+    "category": "进阶玩法",
+    "rating": 4,
+    "summary": "Gateway/Agent/Skills/Memory四大模块的架构原理剖析。",
+    "id": "article-087",
+    "date": "2026-03-01",
+    "readTime": "5min"
+  },
+  {
+    "title": "深度解析：一张图拆解OpenClaw的Agent核心设计",
+    "source": "CSDN",
+    "sourceUrl": "https://blog.csdn.net/sinat_37574187/article/details/158350774",
+    "tags": [
+      "架构",
+      "Agent",
+      "深度"
+    ],
+    "category": "进阶玩法",
+    "rating": 5,
+    "summary": "从Agent核心设计角度拆解OpenClaw的24×7运行架构。",
+    "id": "article-088",
+    "date": "2026-03-01",
+    "readTime": "5min"
+  },
+  {
+    "title": "OpenClaw系统架构分析",
+    "source": "知乎",
+    "sourceUrl": "https://zhuanlan.zhihu.com/p/2001369657106531342",
+    "tags": [
+      "架构",
+      "系统分析"
+    ],
+    "category": "进阶玩法",
+    "rating": 4,
+    "summary": "插件化Gateway控制平面架构+多渠道消息系统的完整分析。",
+    "id": "article-089",
+    "date": "2026-03-01",
+    "readTime": "5min"
+  },
+  {
+    "title": "OpenClaw源码分析：架构原理技术博客",
+    "source": "V2EX",
+    "sourceUrl": "https://v2ex.com/t/1191295",
+    "tags": [
+      "源码",
+      "架构"
+    ],
+    "category": "进阶玩法",
+    "rating": 4,
+    "summary": "V2EX开发者源码分析，Agent/Session/Context的架构概念详解。",
+    "id": "article-090",
+    "date": "2026-03-01",
+    "readTime": "5min"
+  },
+  {
+    "title": "OpenClaw技术原理：Gateway与Node的发现与连接",
+    "source": "知乎",
+    "sourceUrl": "https://zhuanlan.zhihu.com/p/2001963895926044536",
+    "tags": [
+      "技术原理",
+      "Gateway"
+    ],
+    "category": "进阶玩法",
+    "rating": 4,
+    "summary": "WebSocket Server架构，HTTP升级机制，会话管理和消息路由的技术原理。",
+    "id": "article-091",
+    "date": "2026-03-01",
+    "readTime": "5min"
+  },
+  {
+    "title": "一文彻底搞懂OpenClaw的架构设计与运行原理（万字图文）",
+    "source": "博客园",
+    "sourceUrl": "https://www.cnblogs.com/tangshiye/p/19642495",
+    "tags": [
+      "架构",
+      "万字",
+      "图文"
+    ],
+    "category": "进阶玩法",
+    "rating": 5,
+    "summary": "AI架构师汤师爷万字图文详解，用机场调度中心类比Gateway架构。",
+    "id": "article-092",
+    "date": "2026-03-01",
+    "readTime": "5min"
+  },
+  {
+    "title": "OpenClaw Cron Jobs完整指南：构建主动式AI自动化",
+    "source": "个人博客",
+    "sourceUrl": "https://openclawpulse.com/openclaw-cron-jobs-guide/",
+    "tags": [
+      "Cron",
+      "自动化"
+    ],
+    "category": "进阶玩法",
+    "rating": 4,
+    "summary": "Cron定时任务完整指南，isolated session模式和模型分配策略。",
+    "id": "article-093",
+    "date": "2026-03-01",
+    "readTime": "5min"
+  },
+  {
+    "title": "OpenClaw Cron调度器指南",
+    "source": "LumaDock",
+    "sourceUrl": "https://lumadock.com/tutorials/openclaw-cron-scheduler-guide",
+    "tags": [
+      "Cron",
+      "教程"
+    ],
+    "category": "使用技巧",
+    "rating": 3,
+    "summary": "Cron和Heartbeat配合使用的调度模式详解。",
+    "id": "article-094",
+    "date": "2026-03-01",
+    "readTime": "5min"
+  },
+  {
+    "title": "Heartbeats in OpenClaw: Cheap Checks First",
+    "source": "DEV Community",
+    "sourceUrl": "https://dev.to/damogallagher/heartbeats-in-openclaw-cheap-checks-first-models-only-when-you-need-them-4bfi",
+    "tags": [
+      "Heartbeat",
+      "优化",
+      "英文"
+    ],
+    "category": "进阶玩法",
+    "rating": 4,
+    "summary": "先用廉价脚本检查，有需要时才调用模型的心跳优化策略。",
+    "id": "article-095",
+    "date": "2026-03-01",
+    "readTime": "5min"
+  },
+  {
+    "title": "OpenClaw + DeepSeek API接入脚本",
+    "source": "GitHub",
+    "sourceUrl": "https://github.com/MEILOI/OpenClaw_DeepSeek_API",
+    "tags": [
+      "DeepSeek",
+      "工具",
+      "开源"
+    ],
+    "category": "使用技巧",
+    "rating": 3,
+    "summary": "一键脚本自动配置DeepSeek API接入OpenClaw。",
+    "id": "article-096",
+    "date": "2026-03-01",
+    "readTime": "5min"
+  },
+  {
+    "title": "一只小龙虾何以引爆全球AI圈？",
+    "source": "36氪",
+    "sourceUrl": "https://www.36kr.com/p/3676078931583876",
+    "tags": [
+      "行业分析",
+      "深度"
+    ],
+    "category": "评测分析",
+    "rating": 5,
+    "summary": "从Clawdbot到OpenClaw的三级跳，深度分析龙虾如何引爆全球科技界。",
+    "id": "article-097",
+    "date": "2026-03-01",
+    "readTime": "5min"
+  },
+  {
+    "title": "OpenClaw中文版Molili发布：一键部署AI助手",
+    "source": "中华网",
+    "sourceUrl": "https://tech.china.com/articles/20260226/202602261815442.html",
+    "tags": [
+      "中文版",
+      "产品"
+    ],
+    "category": "评测分析",
+    "rating": 4,
+    "summary": "当贝推出OpenClaw中文版Molili，一键部署使用的国产化AI助手。",
+    "id": "article-098",
+    "date": "2026-03-01",
+    "readTime": "5min"
+  },
+  {
+    "title": "全网爆火的小龙虾OpenClaw到底是什么？一篇看懂",
+    "source": "CSDN",
+    "sourceUrl": "https://blog.csdn.net/u011712942/article/details/158504967",
+    "tags": [
+      "入门",
+      "综合介绍"
+    ],
+    "category": "评测分析",
+    "rating": 4,
+    "summary": "OpenClaw全面入门科普，从概念到实战，Skills、工作流、提示词一站式解读。",
+    "id": "article-099",
+    "date": "2026-03-01",
+    "readTime": "5min"
+  },
+  {
+    "title": "OpenClaw，一只掀桌子的龙虾",
+    "source": "知乎",
+    "sourceUrl": "https://zhuanlan.zhihu.com/p/2002493250238451979",
+    "tags": [
+      "科普",
+      "入门"
+    ],
+    "category": "评测分析",
+    "rating": 4,
+    "summary": "通俗科普文，把AI大模型装进电脑，QQ/飞书遥控指挥7×24小时干活。",
+    "id": "article-100",
+    "date": "2026-03-01",
+    "readTime": "5min"
+  },
+  {
+    "title": "OpenClaw全球最火的AI助手，到底是什么神仙？",
+    "source": "53AI",
+    "sourceUrl": "https://www.53ai.com/news/OpenSourceLLM/2026022495120.html",
+    "tags": [
+      "入门",
+      "综合"
+    ],
+    "category": "评测分析",
+    "rating": 4,
+    "summary": "从改名史到核心能力的全面解读，太空龙虾Molty的脱壳进化之路。",
+    "id": "article-101",
+    "date": "2026-03-01",
+    "readTime": "5min"
+  },
+  {
+    "title": "Windows安装OpenClaw全面测评大龙虾",
+    "source": "CSDN",
+    "sourceUrl": "https://blog.csdn.net/xian0710830114/article/details/157618127",
+    "tags": [
+      "Windows",
+      "测评"
+    ],
+    "category": "部署教程",
+    "rating": 4,
+    "summary": "Windows部署+汉化版+功能全面测评，每小时自动同步官方更新。",
+    "id": "article-102",
+    "date": "2026-03-01",
+    "readTime": "5min"
   }
 ]
