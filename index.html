@@ -18,7 +18,6 @@
   font-display: swap;
 }
 </style>
-<link href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-webfont@1.7.0/style.css" rel="stylesheet">
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Long+Cang&family=ZCOOL+KuaiLe&family=Noto+Sans+SC:wght@500;700;900&family=Noto+Sans+SC:wght@300;400;500;700;900&family=&family=Ma+Shan+Zheng&display=swap');
 *{margin:0;padding:0;box-sizing:border-box}
@@ -40,6 +39,7 @@ nav{position:fixed;top:0;left:0;width:100%;z-index:1000;background:rgba(255,255,
 .nav-links a{text-decoration:none;color:#333;font-size:15px;font-weight:600;opacity:.7;transition:.2s;padding:6px 4px}
 .nav-links a:hover{opacity:1;color:#c0392b}
 .hamburger{display:none;background:none;border:none;font-size:15px;cursor:pointer;color:#333;font-weight:600;padding:6px 12px;border-radius:8px;border:1.5px solid #ddd}
+@media(max-width:768px){.float-mascot{display:none !important}}
 
 /* Hero */
 .hero{padding:66px 32px 28px;max-width:1000px;margin:0 auto;display:grid;grid-template-columns:1.1fr 0.9fr;gap:32px;align-items:center}
@@ -234,6 +234,7 @@ nav{padding:0 16px;top:0}
 <div class="hero">
 <div class="hero-text">
 <h1>🩼 春节滑雪骨折在家的CEO<br>14天卧床训了只<span class="red">龙虾三万</span></h1>
+<div style="font-size:15px;color:#c0392b;font-weight:700;margin-bottom:6px;background:rgba(192,57,43,0.06);padding:6px 12px;border-radius:8px;display:inline-block">🦞 龙虾 = AI私人助手，给它一台电脑，它就是你的数字员工</div>
 <div class="subtitle">
 写成日记，引发<span style="color:#2874a6;font-weight:800">百万人围观</span>——<br>
 📱 公众号 <span style="color:#2874a6;font-weight:800">10万+</span>阅读 · 🐦 Twitter <span style="color:#2874a6;font-weight:800">百万+</span>浏览 · 📺 直播+短视频 <span style="color:#2874a6;font-weight:800">百万+</span>观看
@@ -270,7 +271,7 @@ nav{padding:0 16px;top:0}
 <a href="https://easyclaw.com" target="_blank" style="display:inline-block;background:#c0392b;color:#fff;padding:12px 24px;border-radius:10px;font-weight:700;font-size:15px;text-decoration:none;box-shadow:0 4px 15px rgba(192,57,43,0.3)">🦞 本地领养</a>
 <a href="https://easyclaw.work" target="_blank" style="display:inline-block;background:#fff;color:#c0392b;border:1.5px solid #c0392b;padding:12px 24px;border-radius:10px;font-weight:700;font-size:15px;text-decoration:none">☁️ 云端领养</a>
 </div>
-<div style="font-size:12px;color:#999;margin-top:10px">本地领养 = 下载到自己电脑（Mac/Windows） · 云端领养 = 在云服务器上运行</div>
+<div style="font-size:12px;color:#999;margin-top:10px">🖥️ 本地领养 = 下载到自己电脑，数据全在你手里 · ☁️ 云端领养 = 7×24云端运行，无需开机</div>
 </div>
 
 <!-- SCIENCE -->
@@ -421,7 +422,7 @@ Agent之间知识传递成本趋近于零——一个学会发语音，群发邮
 
 </div>
 
-<div style="margin-top:16px"><a href="skills.html" style="color:#c0392b;font-weight:700;font-size:14px">浏览精选技能 →</a> &nbsp;·&nbsp; <a href="https://claw123.ai" target="_blank" style="color:#7a746e;font-weight:600;font-size:13px">5000+ 社区技能 (Claw123.ai) →</a></div>
+<div style="margin-top:16px"><a href="skills.html" style="color:#c0392b;font-weight:700;font-size:14px">浏览精选技能 →</a> &nbsp;·&nbsp; <a href="https://clawhub.com" target="_blank" style="color:#7a746e;font-weight:600;font-size:13px">5000+ 社区技能 (ClawHub) →</a></div>
 </div>
 </div>
 
@@ -628,12 +629,12 @@ document.querySelectorAll('.section, .section-bg').forEach(el => {
 
 <div class="float-mascot" id="floatMascot">
   <div class="float-bubble">
-    <div style="font-size:13px;font-weight:700;color:#c0392b;line-height:1.5">主人，快来领养我吧！❤️</div>
-    <a href="https://easyclaw.com" target="_blank" style="display:inline-block;margin-top:6px;background:#c0392b;color:#fff;padding:6px 16px;border-radius:20px;font-size:12px;font-weight:700;text-decoration:none;box-shadow:0 0 12px rgba(192,57,43,0.3);animation:btn-glow 2.5s ease-in-out infinite">领养龙虾 →</a>
+    <div style="font-size:13px;font-weight:700;color:#c0392b;line-height:1.5">想试试领养一只？</div>
+    <a href="https://easyclaw.com" target="_blank" style="display:inline-block;margin-top:6px;background:#c0392b;color:#fff;padding:6px 16px;border-radius:20px;font-size:12px;font-weight:700;text-decoration:none;box-shadow:0 0 12px rgba(192,57,43,0.3);animation:btn-glow 2.5s ease-in-out infinite">免费领养 →</a>
     <div class="bubble-tail"></div>
     <div class="bubble-dot"></div>
   </div>
-  <img class="float-lobster" src="mascot-float.png" alt="三万" style="width:80px;height:auto">
+  <img class="float-lobster" src="mascot-float.png" alt="三万" style="width:64px;height:auto">
 </div>
 <script>!function(){var p=location.pathname,r=document.referrer,l=navigator.language;new Image().src="https://clawdbot-f.cmcm.com/sanwan-stats/api/track?page="+encodeURIComponent(p)+"&ref="+encodeURIComponent(r)+"&lang="+encodeURIComponent(l)}();</script>
 </body>
