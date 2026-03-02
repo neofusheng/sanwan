@@ -90,7 +90,7 @@ footer a{color:#888;text-decoration:none;margin:0 8px}
 
 <div class="content">
 <h1>🦞 龙虾养成日记</h1>
-<p style="color:#666;margin-bottom:4px">14天，从查不了通讯录到8人AI团队。每天更新中。</p>
+<p style="color:#666;margin-bottom:4px">按最新日期排序，持续更新中。从查不了通讯录到8人AI团队的真实记录。</p>
 <div style="display:inline-flex;align-items:center;gap:6px;background:#fff5f5;border:1px solid #f5c6c6;border-radius:20px;padding:4px 12px;margin-bottom:8px;font-size:12px;color:#c0392b"><span style="display:inline-block;width:8px;height:8px;background:#c0392b;border-radius:50%;animation:pulse 2s infinite"></span>持续更新中</div>
 <style>@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.4}}</style>
 
@@ -180,9 +180,9 @@ function renderDiaryGrid() {
   diaryKeys.forEach(key => {
     const d = diaries[key];
     const card = document.createElement('a');
-    card.className = 'diary-card' + (key === diaryKeys[diaryKeys.length-1] ? ' continuing' : '');
+    card.className = 'diary-card' + (key === diaryKeys[0] ? ' continuing' : '');
     card.onclick = function(){ showDiary(key); return false; };
-    card.innerHTML = '<img src="' + d.img + '" alt="' + d.title + '" style="width:100%;aspect-ratio:16/9;object-fit:cover;display:block;border-bottom:2px solid #eee" loading="lazy">'
+    card.innerHTML = '<img src="' + (d.thumb || d.img) + '" alt="' + d.title + '" style="width:100%;aspect-ratio:16/9;object-fit:cover;display:block;border-bottom:2px solid #eee" loading="lazy">'
       + '<div class="info"><span class="day">' + d.title.split('：')[0] + '</span>'
       + '<h3>' + (d.title.split('：')[1] || d.title) + '</h3></div>';
     grid.appendChild(card);
