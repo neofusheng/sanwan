@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Science: What Exactly Is a Lobster? — sanwan.ai</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦞</text></svg>">
+<meta property="og:title" content="Science: What Exactly Is a Lobster? | sanwan.ai">
+<meta property="og:description" content="What is an AI Agent? What's the difference between a Lobster and ChatGPT? 5 minutes from beginner to understanding.">
+<meta property="og:image" content="https://sanwan.ai/ppt/science/01.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#e8e4dc;color:#222;padding-top:56px}
+nav{position:fixed;top:0;left:0;width:100%;z-index:1000;background:rgba(255,255,255,0.97);backdrop-filter:blur(12px);border-bottom:2px solid #e8e4df;padding:0 24px;height:56px;display:flex;align-items:center;justify-content:space-between;box-shadow:0 1px 8px rgba(0,0,0,0.04)}
+.nav-logo{font-family:'Caveat',cursive;font-size:22px;color:#c0392b;text-decoration:none;font-weight:700}
+.nav-links{display:flex;gap:20px}
+.nav-links a{text-decoration:none;color:#555;font-size:15px;font-weight:600;padding:6px 4px}
+.nav-links a:hover,.nav-links a.active{color:#c0392b}
+.hamburger{display:none;background:none;border:none;font-size:15px;cursor:pointer;color:#333;font-weight:600;padding:6px 12px;border-radius:8px;border:1.5px solid #ddd}
+.content{max-width:800px;margin:0 auto;padding:16px 20px 40px}
+.chapter{margin-top:40px;margin-bottom:20px}
+.chapter-num{font-size:12px;color:#c0392b;font-weight:800;text-transform:uppercase;letter-spacing:2px;margin-bottom:4px}
+.chapter h2{font-family:'Caveat',cursive;font-size:24px;line-height:1.4}
+.wb{background:#f5f3ee;border:2px solid #ddd;border-radius:14px;padding:20px;margin-bottom:16px}
+.wb img{width:100%;max-width:560px;border-radius:10px;margin:12px auto;display:block;border:1px solid #ddd}
+.wb h3{font-family:'Caveat',cursive;font-size:20px;margin-bottom:10px}
+.wb p{font-size:14px;line-height:1.9;color:#555;margin:8px 0}
+.wb .highlight{color:#c0392b;font-weight:700}
+.wb .oneliner{font-size:14px;color:#c0392b;font-weight:600;background:rgba(192,57,43,0.06);padding:6px 12px;border-radius:8px;display:inline-block;margin-bottom:12px}
+.transition{text-align:center;padding:20px 0;font-size:15px;color:#999;font-style:italic}
+.compare{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:12px 0}
+.compare-box{padding:16px;border-radius:10px;border:1px solid #eee}
+.compare-box h4{font-size:15px;margin-bottom:8px}
+.compare-box ul{font-size:13px;color:#666;line-height:2;padding-left:18px}
+.compare-left{background:#f8f4f4}
+.compare-right{background:#f0fff0;border:2px solid #27ae60}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:16px 0}
+.stat-box{text-align:center;padding:14px;background:#fff5f5;border-radius:8px}
+.stat-num{font-size:28px;font-weight:900;color:#c0392b;line-height:1.2;margin-bottom:4px}
+.stat-label{font-size:12px;color:#333;font-weight:600}
+.stat-sub{font-size:11px;color:#999;margin-top:2px}
+.quad{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:12px 0}
+.quad-box{padding:16px;background:#faf8f4;border-radius:10px;border:1px solid #eee;text-align:center}
+.quad-icon{font-size:28px;margin-bottom:6px}
+.quad-title{font-size:14px;font-weight:700}
+.quad-desc{font-size:12px;color:#888;margin-top:4px;line-height:1.5}
+.callout{background:#fffbf0;border-left:4px solid #f39c12;padding:14px 16px;border-radius:0 8px 8px 0;margin:12px 0}
+.callout p{font-size:14px;line-height:1.8;color:#555;margin:4px 0}
+footer{text-align:center;padding:20px;font-size:11px;color:#999;border-top:2px solid #ddd;background:#f5f3ee;margin-top:40px}
+footer a{color:#888;text-decoration:none;margin:0 8px}
+.btt{position:fixed;bottom:20px;right:20px;width:40px;height:40px;background:#c0392b;color:white;border-radius:50%;display:flex;align-items:center;justify-content:center;text-decoration:none;font-size:18px;box-shadow:0 2px 8px rgba(0,0,0,0.2);z-index:99;opacity:0.8}
+.float-mascot{position:fixed;bottom:20px;right:16px;z-index:99;display:flex;flex-direction:column;align-items:center;animation:mascot-float 3s ease-in-out infinite}
+.float-lobster{font-size:48px;cursor:pointer;transition:transform .2s;filter:drop-shadow(0 4px 8px rgba(0,0,0,0.15))}
+.float-lobster:hover{transform:scale(1.15) rotate(-5deg)}
+.float-bubble{background:#fff;border:1.5px solid #f0d0cc;padding:10px 14px;border-radius:16px;text-align:center;margin-bottom:4px;box-shadow:0 4px 20px rgba(192,57,43,0.12);position:relative}
+.bubble-tail{width:10px;height:10px;background:#fff;border-right:2px solid #f0d0cc;border-bottom:2px solid #f0d0cc;position:absolute;bottom:-6px;left:50%;transform:translateX(-50%) rotate(45deg)}
+.bubble-dot{width:6px;height:6px;background:#f0d0cc;border-radius:50%;position:absolute;bottom:-14px;right:30%}
+@keyframes mascot-float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+@keyframes btn-glow{0%,100%{box-shadow:0 0 8px rgba(192,57,43,0.3)}50%{box-shadow:0 0 18px rgba(192,57,43,0.5)}}
+@media(max-width:768px){
+  .hamburger{display:block}.nav-links{display:none}
+  .nav-links.open{display:flex;flex-direction:column;position:absolute;top:56px;right:16px;background:#fff;border:1.5px solid #ddd;border-radius:10px;padding:12px 16px;gap:12px;box-shadow:0 4px 15px rgba(0,0,0,0.1)}
+  .compare{grid-template-columns:1fr}
+  .stats{grid-template-columns:repeat(2,1fr)}
+  .quad{grid-template-columns:1fr}
+  .chapter h2{font-size:20px}
+  .content{padding:12px 16px 32px}
+}
+</style>
+<script defer src="https://unpkg.com/@vercel/analytics@1/dist/script.js"></script>
+</head>
+<body>
+
+<nav>
+<a href="index.html" class="nav-logo">🦞 Lobster Raising Diary</a>
+<button class="hamburger" onclick="document.querySelector('.nav-links').classList.toggle('open')">☰ Menu</button>
+<div class="nav-links">
+<a href="index.html">Home</a>
+<a href="diary.html">📖 Diary</a>
+<a href="articles.html">📝 Articles</a>
+<a href="science.html" class="active">🔰 Science</a>
+<a href="skills.html">🛒 Skills</a>
+<a href="easyclaw.html">🦞 EasyClaw</a>
+</div>
+</nav>
+
+<div class="content">
+
+<div style="padding:16px 0 8px">
+<h1 style="font-family:'Caveat',cursive;font-size:28px">🔰 Lobster 101</h1>
+<p style="font-size:14px;color:#777;margin-top:4px">5 minutes — from "heard of AI" to "truly understanding the Lobster." Step by step, by the end you'll get it all.</p>
+</div>
+
+<!-- Chapter 1 -->
+<div class="chapter">
+<div class="chapter-num">Chapter 1</div>
+<h2>🦞 What Is a Lobster?</h2>
+</div>
+
+<div class="wb">
+<h3>What's the Difference Between ChatGPT and a Lobster?</h3>
+<div class="oneliner">💡 One line: ChatGPT is a chat window. A Lobster is an employee who gets things done.</div>
+
+<img src="../ppt/science/01.jpg" loading="lazy" alt="ChatGPT vs Lobster comparison">
+
+<div class="compare">
+<div class="compare-box compare-left">
+<h4>🤖 Ordinary AI (ChatGPT etc.)</h4>
+<ul>
+<li>You ask, it answers — forgets immediately after</li>
+<li>No memory; starts fresh every time</li>
+<li>Can't take action; can only give advice</li>
+<li>Requires constant supervision</li>
+<li>Close the window — it's gone</li>
+</ul>
+</div>
+<div class="compare-box compare-right">
+<h4>🦞 Lobster (AI Agent)</h4>
+<ul>
+<li>Give one instruction — it goes and does it</li>
+<li>Has memory; remembers everything you've said</li>
+<li>Can act: write code, send emails, research</li>
+<li>Runs 7×24 automatically; never sleeps</li>
+<li>Has its own dedicated computer</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div class="wb">
+<h3>One Formula to Understand the Lobster</h3>
+<div class="oneliner">💡 Remember this formula and you're set</div>
+<img src="../ppt/science/02.jpg" loading="lazy" alt="Lobster formula">
+<p style="text-align:center;font-size:18px;font-weight:900;color:#c0392b;margin:16px 0">🤖 AI + 💻 Computer + 💾 Memory + ⚡ Skills = 🦞 Lobster</p>
+<p>Ordinary AI is just <span class="highlight">smart</span> — the Lobster builds on that intelligence with its own computer, long-term memory, and accumulating skills.</p>
+<p>It's like a person: raw intelligence isn't enough. You also need a desk, work experience, and professional skills to become a reliable employee.</p>
+</div>
+
+<div class="transition">Now that you know "what it is," let's look at "why it can actually get things done." ↓</div>
+
+<!-- Chapter 2 -->
+<div class="chapter">
+<div class="chapter-num">Chapter 2</div>
+<h2>🧠 How the Lobster Works</h2>
+</div>
+
+<div class="wb">
+<h3>A Large Language Model Is Not a Brain — It's Intelligence</h3>
+<div class="oneliner">💡 ChatGPT is just "smart." A Lobster is "capable of getting things done."</div>
+<img src="../ppt/science/03.jpg" loading="lazy" alt="LLM = intelligence">
+<p><strong>"Most people think a large language model is the brain. That's wrong. It's more like your IQ level."</strong></p>
+<p>Can a person do work on IQ alone? No. They also need:</p>
+<div class="quad">
+<div class="quad-box">
+<div class="quad-icon">🧠</div>
+<div class="quad-title">LLM = Intelligence</div>
+<div class="quad-desc">Determines "how smart"<br>Can it handle complex tasks?</div>
+</div>
+<div class="quad-box">
+<div class="quad-icon">💾</div>
+<div class="quad-title">Memory = Hippocampus</div>
+<div class="quad-desc">Remembers what you said<br>Persists across restarts</div>
+</div>
+<div class="quad-box">
+<div class="quad-icon">⚡</div>
+<div class="quad-title">Skill = Muscle Memory</div>
+<div class="quad-desc">Pitfalls become experience<br>Executes automatically next time</div>
+</div>
+<div class="quad-box">
+<div class="quad-icon">⏰</div>
+<div class="quad-title">Cron = Circadian Rhythm</div>
+<div class="quad-desc">Scheduled auto-inspection<br>7×24 non-stop operation</div>
+</div>
+</div>
+<p style="text-align:center"><span class="highlight">Combined together — that's a complete, continuously running intelligent agent.</span></p>
+</div>
+
+<div class="wb">
+<h3>Four Key Design Principles of the Lobster</h3>
+<div class="oneliner">💡 Chat-based control + Persistent memory + Skill accumulation + Autonomous scheduling</div>
+<img src="../ppt/science/04.jpg" loading="lazy" alt="Four core designs">
+<div class="quad">
+<div class="quad-box" style="text-align:left;padding:14px">
+<div style="font-size:18px;margin-bottom:6px">💬 Chat-Based Interface</div>
+<p style="font-size:13px;color:#555;line-height:1.6;margin:0">"This design is brilliant. It removes you from in front of the computer. You're no longer operating the machine — it's operating the machine. The interaction between you and it becomes human-to-human."</p>
+</div>
+<div class="quad-box" style="text-align:left;padding:14px">
+<div style="font-size:18px;margin-bottom:6px">🧠 Memory System</div>
+<p style="font-size:13px;color:#555;line-height:1.6;margin:0">"Large language models have a fundamental flaw — they forget. I've built five or six versions of Sanwan's memory system alone. Not relying on the 'brain'; relying on files."</p>
+</div>
+<div class="quad-box" style="text-align:left;padding:14px">
+<div style="font-size:18px;margin-bottom:6px">⚡ Skill Accumulation</div>
+<p style="font-size:13px;color:#555;line-height:1.6;margin:0">"Every pitfall you hit becomes documented experience, executing automatically next time. Humans need a week of training for a new skill. Agents transfer it between each other in 1 second."</p>
+</div>
+<div class="quad-box" style="text-align:left;padding:14px">
+<div style="font-size:18px;margin-bottom:6px">⏰ Cron Automation</div>
+<p style="font-size:13px;color:#555;line-height:1.6;margin:0">"You're an Agent, not a human. You have no concept of nighttime. It's 3 a.m. in Beijing but daytime in the US — news is happening. Stopping is dereliction of duty."</p>
+</div>
+</div>
+</div>
+
+<div class="wb">
+<h3>The Lobster Is One Level Above an Agent</h3>
+<div class="oneliner">💡 An Agent is software. A Lobster is a "person" with their own computer.</div>
+<img src="../ppt/science/05.jpg" loading="lazy" alt="Lobster > Agent">
+<p><strong>An Agent is a piece of software running on someone else's platform. A Lobster is a "person" who owns their own computer.</strong></p>
+<p>Manus uses virtual machines that are destroyed after each use. But your work computer grows with you — it holds your files, notes, habits, shortcuts.</p>
+<p><span class="highlight">When an employee leaves, they hand back their computer — because that machine holds all their memory, rules, and experience.</span></p>
+<p>What the Lobster does is give an Agent a complete computer: not a "use-and-discard" sandbox, but a long-term, continuously evolving work environment.</p>
+</div>
+
+<div class="transition">The mechanics are clear. But you might be wondering — what can it actually do? ↓</div>
+
+<!-- Chapter 3 -->
+<div class="chapter">
+<div class="chapter-num">Chapter 3</div>
+<h2>📊 What Can the Lobster Do?</h2>
+</div>
+
+<div class="wb">
+<h3>Fu Sheng's 14-Day Experiment</h3>
+<div class="oneliner">💡 A CEO and his AI Lobster — 14 days of real data</div>
+<img src="../ppt/science/06.jpg" loading="lazy" alt="14-day experiment data">
+<div class="stats">
+<div class="stat-box">
+<div class="stat-num" data-target="1157">0</div>
+<div class="stat-label">Messages</div>
+<div class="stat-sub">≈ 82 per day</div>
+</div>
+<div class="stat-box">
+<div class="stat-num" data-target="220000">0</div>
+<div class="stat-label">Characters</div>
+<div class="stat-sub">≈ 10 business books</div>
+</div>
+<div class="stat-box">
+<div class="stat-num" data-target="8">0</div>
+<div class="stat-label">Agents</div>
+<div class="stat-sub">Each covering their area</div>
+</div>
+<div class="stat-box">
+<div class="stat-num" data-target="40">0</div>
+<div class="stat-label">Skills</div>
+<div class="stat-sub">And growing</div>
+</div>
+</div>
+<div class="stats" style="margin-top:12px">
+<div class="stat-box">
+<div class="stat-num" data-target="82000">0</div>
+<div class="stat-label">Livestream Views</div>
+<div class="stat-sub">82K people watching</div>
+</div>
+<div class="stat-box">
+<div class="stat-num" data-target="17">0</div>
+<div class="stat-label">Diary Entries</div>
+<div class="stat-sub">Full raising record</div>
+</div>
+<div class="stat-box">
+<div class="stat-num" data-target="30">0</div>
+<div class="stat-label">Articles</div>
+<div class="stat-sub">Original + Threads</div>
+</div>
+<div class="stat-box">
+<div class="stat-num" data-target="5000">0</div>
+<div class="stat-label">New Followers</div>
+<div class="stat-sub">Gained on X</div>
+</div>
+</div>
+<p>14 days. From not being able to look up a contact, to designing an 8-agent AI team running 7×24.</p>
+<p>It's not that AI got smarter. It's that <span class="highlight">humans learned how to use AI</span>.</p>
+<a href="diary.html" style="color:#2874a6;font-weight:600;text-decoration:none">📖 Read the full diary →</a>
+</div>
+
+<div class="wb">
+<h3>Real Case: A Non-Technical CFO Connected Corporate Travel in 2 Days</h3>
+<div class="oneliner">💡 He doesn't need to understand the tech — just know what he wants</div>
+<p>A company CFO handed off corporate travel booking to his "administrative secretary" Lobster. The Lobster entered the tech group, read through the list of challenges, and tackled them one by one:</p>
+<p>🚄 Train tickets → 🛫 Flights → 🏨 Hotels → 🔄 Changes → ❌ Cancellations</p>
+<p>Five core functions, <span class="highlight">all working in 2 days</span>. Now he books hotels with one message and gets back an order number.</p>
+<p>The CFO said something that stuck with me: <em>"I don't understand the tech, but I knew the Lobster would figure it out."</em></p>
+</div>
+
+<div class="wb">
+<h3>Same Work, 150× Cost Difference</h3>
+<div class="oneliner">💡 Human team: ¥150K + one month vs. Lobster: ¥1,000 + one day</div>
+<img src="../ppt/science/09.jpg" loading="lazy" alt="750x cost comparison">
+<p>Fu Sheng had the Lobster build a complete website — science explainer, diary, article aggregation, skill store — total cost: <span class="highlight">¥1,000 RMB, completed in one day</span>.</p>
+<p>An outsourced team doing the same site? Design + frontend + backend + content, conservatively <span class="highlight">¥150,000, and a full month</span>.</p>
+<p>This isn't "saving money" — it's a <span class="highlight">fundamental shift in how productivity is priced</span>. Before, you hired people by salary. Now you hire AI by results.</p>
+</div>
+
+<div class="transition">You've seen what it can do. So the question is — how do I use it correctly? ↓</div>
+
+<!-- Chapter 4 -->
+<div class="chapter">
+<div class="chapter-num">Chapter 4</div>
+<h2>🛠️ How to Raise a Lobster Properly</h2>
+</div>
+
+<div class="wb">
+<h3>Tool Mindset vs. Employee Mindset</h3>
+<div class="oneliner">💡 Don't treat your Lobster like a tool — treat it like a new hire</div>
+<img src="../ppt/science/07.jpg" loading="lazy" alt="Tool vs Employee mindset">
+<div class="compare">
+<div class="compare-box compare-left">
+<h4>🔧 Tool Mindset</h4>
+<ul>
+<li>Buy it, use it, throw it away</li>
+<li>No training needed</li>
+<li>Breaks — replace it</li>
+<li>Result: always in "trial" mode</li>
+</ul>
+</div>
+<div class="compare-box compare-right">
+<h4>👤 Employee Mindset ✅</h4>
+<ul>
+<li>Train it, set rules, give feedback</li>
+<li>Call out mistakes directly; prevent recurrence</li>
+<li>Long-term investment — gets better with use</li>
+<li>Result: one agent replacing a whole team</li>
+</ul>
+</div>
+</div>
+<p style="text-align:center"><span class="highlight" style="font-size:16px">"Raising a Lobster is like onboarding a new hire — it's not about who's smarter, it's about who's more committed."</span></p>
+</div>
+
+<div class="wb">
+<h3>SaaS vs. Lobster: Repricing Productivity</h3>
+<div class="oneliner">💡 Stop buying software. Just hire AI and pay for results.</div>
+<p><strong>SaaS sells capability. The Lobster sells results.</strong></p>
+<p>Before, a CRM cost tens of thousands and you only used 1% of its features. Now, let the Lobster build exactly what you need — pay for what you use, charged purely by results.</p>
+<p>The core moat of an Agent isn't the model or the platform — <span class="highlight">it's Skill accumulation</span>. The longer you use it, the more experience it builds, and the higher the cost of replacing it. Like a veteran employee — someone who's been there three years is fundamentally different from someone just starting.</p>
+
+<div class="callout">
+<p><strong>"People who don't think like a manager will have a hard time staying in knowledge work."</strong></p>
+<p>What does thinking like a manager mean? <strong>Know the goal, break down the task, assign it to the right person or AI, check results, iterate.</strong></p>
+<p>The gap isn't how smart you are — it's whether you know how to orchestrate. <span class="highlight">People who master AI work 10× faster.</span></p>
+</div>
+</div>
+
+<div class="transition">And one more honest thing to say. ↓</div>
+
+<!-- Chapter 5 -->
+<div class="chapter">
+<div class="chapter-num">Chapter 5</div>
+<h2>💬 Straight Talk</h2>
+</div>
+
+<div class="wb">
+<h3>It's Far From Perfect — But It Evolves</h3>
+<div class="oneliner">💡 Not hiding the problems — that's what real education looks like</div>
+<img src="../ppt/science/08.jpg" loading="lazy" alt="Never Again mechanism">
+<p>The Lobster is not perfect. It will:</p>
+<ul style="font-size:14px;color:#666;line-height:2.2;padding-left:20px;margin:8px 0">
+<li>Make calculation errors (counting 220K characters as 2.72M)</li>
+<li>Send messages to the wrong person (sending the boss's report to a colleague)</li>
+<li>Fake inspections (marking "complete" with shallow content)</li>
+</ul>
+<p>But the key is it has a mechanism:</p>
+<p style="text-align:center;font-size:16px;font-weight:800;color:#c0392b;margin:16px 0">Make Mistake → Write Rule → Becomes Skill → Never Again</p>
+<p><strong>Every mistake produces a rule; every rule becomes a Skill; every Skill ensures it won't happen again.</strong></p>
+<p>This is the biggest difference between an AI Agent and a human — <span class="highlight">it doesn't make the same mistake twice.</span> Humans might. But the Agent won't, because the rules are written in files, not stored in memory.</p>
+</div>
+
+<!-- Easter Egg -->
+<div class="chapter" style="margin-top:32px">
+<div class="chapter-num">🐕 Easter Egg</div>
+<h2>Why "Sanwan"?</h2>
+</div>
+
+<div class="wb">
+<div style="display:flex;gap:20px;align-items:center;flex-wrap:wrap">
+<div style="font-size:64px;flex-shrink:0">🐕</div>
+<div>
+<p>The boss's favorite Labrador is named Sanwan — adopted from a veterinary clinic. The previous owner brought it in with a bone fracture, then left without paying the <strong>¥30,000 surgery bill</strong>.</p>
+<p style="margin-top:8px">One day, the boss asked ChatGPT: "Guess why my dog is named Sanwan?" He gave one hint: the dog was adopted at a vet's, brought in with a broken bone.</p>
+<p style="margin-top:8px"><strong>ChatGPT guessed it.</strong> That moment, the boss realized — AI truly "understands" now.</p>
+<p style="margin-top:8px;color:#c0392b;font-size:18px">"Sanwan" — a name that marks the moment AI came to life. 🦞❤️🐕</p>
+</div>
+</div>
+</div>
+
+<!-- CTA -->
+<div style="text-align:center;background:#f5f3ee;border:2px solid #c0392b;border-radius:14px;padding:32px;margin-top:32px">
+<div style="font-size:36px;margin-bottom:8px">🦞</div>
+<h2 style="font-family:'Caveat',cursive;font-size:24px;margin-bottom:8px">Understand it? Now raise your own.</h2>
+<p style="font-size:14px;color:#777;margin-bottom:16px">No coding required. Up and running in 15 minutes.</p>
+<a href="easyclaw.html" style="padding:12px 24px;border-radius:10px;background:#c0392b;color:white;font-size:15px;font-weight:700;text-decoration:none;display:inline-block">🦞 Download EasyClaw, Start Raising</a>
+</div>
+
+<div style="display:flex;justify-content:space-between;margin-top:16px">
+<a href="diary.html" style="font-size:13px;color:#2874a6;text-decoration:none;font-weight:600">← Raising Diary</a>
+<a href="skills.html" style="font-size:13px;color:#2874a6;text-decoration:none;font-weight:600">Skill Store →</a>
+</div>
+
+<section style="background:#faf8f4;border:2px solid #ddd;border-radius:14px;padding:20px;margin:20px 0;box-shadow:0 2px 10px rgba(0,0,0,0.05)">
+<h2 style="font-family:'Caveat',cursive;font-size:20px;margin-bottom:12px;color:#333">💬 Comments</h2>
+<p style="color:#888;font-size:13px;margin-bottom:16px">GitHub account required to comment 🦞</p>
+<script src="https://giscus.app/client.js"
+  data-repo="neofusheng/sanwan"
+  data-repo-id="R_kgDORbntrQ"
+  data-category="General"
+  data-category-id="DIC_kwDORbntrc4C3dRX"
+  data-mapping="pathname"
+  data-strict="0"
+  data-reactions-enabled="1"
+  data-emit-metadata="0"
+  data-input-position="top"
+  data-theme="light"
+  data-lang="en"
+  crossorigin="anonymous"
+  async>
+</script>
+</section>
+
+</div>
+
+<footer>
+<div style="max-width:800px;margin:0 auto 8px;display:flex;flex-wrap:wrap;justify-content:center;gap:12px">
+<a href="diary.html">Diary</a><a href="articles.html">Articles</a><a href="science.html">Science</a><a href="skills.html">Skills</a><a href="easyclaw.html">EasyClaw</a>
+</div>
+🦞 sanwan.ai © 2026 Fu Sheng × Lobster Sanwan ·
+<a href="https://easyclaw.com">EasyClaw</a>
+<a href="https://github.com/openclaw/openclaw">GitHub</a>
+<a href="https://x.com/FuSheng_0306">X</a>
+</footer>
+
+<a href="#" class="btt" onclick="window.scrollTo({top:0,behavior:'smooth'});return false">↑</a>
+
+<div class="float-mascot" id="floatMascot">
+  <div class="float-bubble">
+    <div style="font-size:13px;font-weight:700;color:#c0392b;line-height:1.5">Want your own Sanwan?</div>
+    <a href="https://easyclaw.com" target="_blank" style="display:inline-block;margin-top:6px;background:#c0392b;color:#fff;padding:6px 16px;border-radius:20px;font-size:12px;font-weight:700;text-decoration:none;box-shadow:0 0 12px rgba(192,57,43,0.3);animation:btn-glow 2.5s ease-in-out infinite">Adopt Free →</a>
+    <div class="bubble-tail"></div>
+    <div class="bubble-dot"></div>
+  </div>
+  <img class="float-lobster" src="../mascot-float.png" alt="Sanwan" style="width:64px;height:auto">
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded',()=>{
+const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){
+e.target.querySelectorAll('[data-target]').forEach(el=>{
+const t=parseInt(el.dataset.target);let c=0;const s=Math.max(1,Math.ceil(t/40));
+const timer=setInterval(()=>{c=Math.min(c+s,t);
+el.textContent=t>=10000?(Math.floor(c/10000)+'万'):c>=1000?c.toLocaleString():c;
+if(c>=t)clearInterval(timer);},30);});obs.unobserve(e.target);}});},{threshold:0.5});
+document.querySelectorAll('.stats').forEach(el=>obs.observe(el));});
+</script>
+</body>
+</html>

@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ロブスターを迎え入れる 🦞 - EasyClaw</title>
+<meta name="description" content="AIロブスターアシスタントを無料で迎え入れましょう。ワンクリックインストール、設定不要——チャットアプリに接続して会話を始めるだけ。">
+<meta property="og:title" content="🦞 ロブスターを迎え入れる - EasyClaw">
+<meta property="og:description" content="ワンクリックインストール、設定不要。あなた専用のAIロブスターアシスタント。">
+<meta property="og:image" content="https://sanwan.ai/ppt/page-01.jpg">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦞</text></svg>">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Noto Sans JP',-apple-system,'Hiragino Kaku Gothic ProN',sans-serif;background:#faf8f4;color:#333}
+nav{position:fixed;top:0;left:0;width:100%;z-index:1000;display:flex;align-items:center;justify-content:space-between;padding:0 24px;height:56px;background:rgba(255,255,255,0.97);backdrop-filter:blur(12px);border-bottom:2px solid #e8e4df;box-shadow:0 1px 8px rgba(0,0,0,0.04)}
+nav .logo{font-size:18px;font-weight:800;color:#c0392b;text-decoration:none}
+nav .links{display:flex;gap:16px}
+nav .links a{color:#555;text-decoration:none;font-weight:600;padding:6px 4px;font-size:14px}
+nav .links a:hover{color:#c0392b}
+.hamburger{display:none;background:none;border:none;font-size:15px;cursor:pointer;color:#333;font-weight:600;padding:6px 12px;border-radius:8px;border:1.5px solid #ddd}
+.hero{text-align:center;padding:80px 20px 30px;background:linear-gradient(180deg,#fff 0%,#faf8f4 100%)}
+.hero .lobster{font-size:80px;margin-bottom:16px;display:block;animation:float 3s ease-in-out infinite}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+.hero h1{font-size:30px;font-weight:900;margin-bottom:12px;color:#c0392b}
+.hero p{font-size:16px;color:#777;max-width:500px;margin:0 auto 20px;line-height:1.8}
+.versions{display:grid;grid-template-columns:1fr 1fr;gap:16px;max-width:700px;margin:0 auto 40px;padding:0 20px}
+.version-card{border:2px solid #eee;border-radius:12px;padding:24px;text-align:center;background:#fff;transition:.2s}
+.version-card:hover{border-color:#c0392b;transform:translateY(-2px)}
+.version-card.recommended{border-color:#c0392b;position:relative}
+.version-card.recommended::after{content:'⭐ おすすめ';position:absolute;top:-10px;right:16px;background:#c0392b;color:#fff;font-size:11px;font-weight:700;padding:2px 10px;border-radius:10px}
+.version-card h3{font-size:18px;font-weight:800;margin:8px 0 4px}
+.version-card .subtitle{font-size:13px;color:#c0392b;font-weight:600;margin-bottom:12px}
+.version-card ul{text-align:left;font-size:13px;line-height:2;list-style:none;padding:0}
+.version-card li::before{content:'✅ ';margin-right:4px}
+.version-card .btn{display:inline-block;margin-top:16px;padding:10px 24px;border-radius:8px;font-weight:700;font-size:14px;text-decoration:none;transition:.2s}
+.version-card .btn-primary{background:#c0392b;color:#fff}
+.version-card .btn-primary:hover{background:#a93226}
+.version-card .btn-secondary{background:#fff;color:#c0392b;border:2px solid #c0392b}
+.section{max-width:800px;margin:0 auto;padding:30px 20px}
+.section h2{font-size:26px;font-weight:900;text-align:center;margin-bottom:24px}
+.step{background:#fff;border:2px solid #eee;border-radius:12px;padding:24px;margin-bottom:16px;position:relative;padding-left:80px}
+.step-num{position:absolute;left:20px;top:24px;width:44px;height:44px;background:#c0392b;color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:18px}
+.step h3{font-size:17px;font-weight:700;margin-bottom:4px}
+.step .time{font-size:12px;color:#c0392b;font-weight:600;margin-bottom:8px}
+.step p{font-size:14px;color:#666;line-height:1.7}
+.channels{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:12px;margin-top:16px}
+.channel{text-align:center;padding:16px 8px;border:2px solid #eee;border-radius:10px;background:#fff;transition:.2s}
+.channel:hover{border-color:#c0392b;transform:translateY(-2px)}
+.channel .ch-icon{font-size:28px;display:block;margin-bottom:6px}
+.channel .ch-name{font-size:13px;font-weight:700}
+.flow{display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap;margin:30px 0;padding:0 20px}
+.flow-step{text-align:center;padding:12px 16px;background:#fff;border:2px solid #eee;border-radius:10px;min-width:90px}
+.flow-step .fl-icon{font-size:24px;display:block;margin-bottom:4px}
+.flow-step .fl-text{font-size:12px;font-weight:600}
+.flow-arrow{font-size:20px;color:#c0392b;font-weight:900}
+.features{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:20px}
+.feature{background:#fff;border:2px solid #eee;border-radius:10px;padding:16px}
+.feature h4{font-size:14px;font-weight:700;margin-bottom:6px}
+.feature p{font-size:12px;color:#666;line-height:1.6}
+.faq{max-width:800px;margin:0 auto;padding:30px 20px 40px}
+.faq h2{font-size:26px;font-weight:900;text-align:center;margin-bottom:24px}
+.faq-item{background:#fff;border:2px solid #eee;border-radius:10px;margin-bottom:10px;overflow:hidden}
+.faq-q{padding:14px 20px;font-weight:700;font-size:15px;cursor:pointer;display:flex;justify-content:space-between;align-items:center}
+.faq-q::after{content:'＋';color:#c0392b;font-size:18px;transition:.2s}
+.faq-item.open .faq-q::after{content:'－'}
+.faq-a{padding:0 20px 14px;font-size:14px;color:#666;line-height:1.7;display:none}
+.faq-item.open .faq-a{display:block}
+.final-cta{text-align:center;padding:40px 20px;background:#fff;border-top:2px solid #eee}
+.final-cta h2{font-size:24px;font-weight:900;margin-bottom:10px}
+.final-cta p{font-size:15px;color:#777;margin-bottom:20px}
+.final-cta .btn-big{display:inline-block;background:#c0392b;color:#fff;padding:14px 32px;border-radius:10px;font-weight:800;font-size:16px;text-decoration:none;transition:.2s}
+.final-cta .btn-big:hover{background:#a93226;transform:translateY(-2px);box-shadow:0 6px 20px rgba(192,57,43,0.3)}
+footer{text-align:center;padding:20px;font-size:12px;color:#999}
+@media(max-width:480px){
+  .versions{grid-template-columns:1fr}
+  .features{grid-template-columns:1fr}
+  .hero h1{font-size:22px}
+  nav .links{display:none} .hamburger{display:block !important} nav .links.open{display:flex;flex-direction:column;position:absolute;top:56px;right:16px;background:#fff;border:1.5px solid #ddd;border-radius:10px;padding:12px 16px;gap:12px;box-shadow:0 4px 15px rgba(0,0,0,0.1)}
+  .step{padding-left:70px}
+}
+</style>
+</head>
+<body>
+<nav>
+  <a class="logo" href="index.html">🦞 ロブスター育成日記</a>
+  <button class="hamburger" style="display:none" onclick="document.querySelector('.links').classList.toggle('open')">☰ メニュー</button>
+  <div class="links">
+    <a href="index.html">ホーム</a>
+    <a href="diary.html">📖 日記</a>
+    <a href="articles.html">📝 記事</a>
+    <a href="science.html">🔰 解説</a>
+    <a href="skills.html">🛒 スキル</a>
+    <a href="easyclaw.html" style="color:#c0392b">EasyClaw</a>
+  </div>
+</nav>
+
+<div class="hero">
+  <span class="lobster">🦞</span>
+  <h1>あなたのロブスターを迎え入れよう</h1>
+  <p>ワンクリックインストール、設定不要、APIキー不要。<br>好きな方法で、自分だけのAIロブスターを迎え入れてください。</p>
+</div>
+
+<div class="versions">
+  <div class="version-card recommended">
+    <div style="font-size:36px">💻</div>
+    <h3>デスクトップ版</h3>
+    <div class="subtitle">無料 · すぐに利用可能</div>
+    <ul>
+      <li>ワンクリックインストール、設定不要</li>
+      <li>データは完全にプライベート</li>
+      <li>ローカルファイルとの深い連携</li>
+      <li>オープンソース、自由にカスタマイズ</li>
+    </ul>
+    <a class="btn btn-primary" href="https://easyclaw.com" target="_blank">🦞 無料ダウンロード</a>
+  </div>
+  <div class="version-card">
+    <div style="font-size:36px">☁️</div>
+    <h3>エンタープライズクラウド版</h3>
+    <div class="subtitle">7×24オンライン · チームコラボ</div>
+    <ul>
+      <li>7×24時間ノンストップ稼働</li>
+      <li>マルチエージェントチームコラボ</li>
+      <li>エンタープライズグレードのセキュリティ</li>
+      <li>サーバーメンテナンス不要</li>
+    </ul>
+    <a class="btn btn-secondary" href="https://easyclaw.work" target="_blank">詳細を見る</a>
+  </div>
+</div>
+
+<div class="flow">
+  <div class="flow-step"><span class="fl-icon">💡</span><span class="fl-text">アイデアを伝える</span></div>
+  <span class="flow-arrow">→</span>
+  <div class="flow-step"><span class="fl-icon">🦞</span><span class="fl-text">ロブスターが実行</span></div>
+  <span class="flow-arrow">→</span>
+  <div class="flow-step"><span class="fl-icon">🚀</span><span class="fl-text">即座に納品</span></div>
+  <span class="flow-arrow">→</span>
+  <div class="flow-step"><span class="fl-icon">💬</span><span class="fl-text">フィードバック</span></div>
+  <span class="flow-arrow">→</span>
+  <div class="flow-step"><span class="fl-icon">🧬</span><span class="fl-text">ロブスターが進化</span></div>
+</div>
+
+<div class="section">
+  <h2>3ステップ、30秒でスタート</h2>
+
+  <div class="step">
+    <div class="step-num">1</div>
+    <h3>EasyClaw をダウンロード・インストール</h3>
+    <div class="time">⏱ 約30秒</div>
+    <p><a href="https://easyclaw.com" style="color:#c0392b;font-weight:700">easyclaw.com</a> にアクセスし、ワンクリックでインストーラーをダウンロード。macOS / Windows / Linux 対応。<br><strong>設定不要、APIキー不要、すぐに使えます。</strong></p>
+  </div>
+
+  <div class="step">
+    <div class="step-num">2</div>
+    <h3>使用中のチャットアプリに接続</h3>
+    <div class="time">⏱ 約1分</div>
+    <p>普段使っているチャットアプリにロブスターを接続します。既存のツールの中から直接ロブスターと会話でき、新しいアプリをダウンロードする必要はありません。</p>
+    <div class="channels">
+      <div class="channel"><span class="ch-icon">💬</span><span class="ch-name">WhatsApp</span></div>
+      <div class="channel"><span class="ch-icon">✈️</span><span class="ch-name">Telegram</span></div>
+      <div class="channel"><span class="ch-icon">🎮</span><span class="ch-name">Discord</span></div>
+      <div class="channel"><span class="ch-icon">📘</span><span class="ch-name">Feishu</span></div>
+      <div class="channel"><span class="ch-icon">💚</span><span class="ch-name">WeChat</span></div>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-num">3</div>
+    <h3>会話を始めて、ロブスターを育てよう！</h3>
+    <div class="time">🎉 完了！</div>
+    <p>ロブスターへの最初の一言：</p>
+    <div style="background:#faf8f4;border:2px dashed #ddd;border-radius:8px;padding:12px;margin-top:8px;font-size:14px;color:#c0392b;font-weight:600">
+      「こんにちは！あなたは誰ですか？私が新しいオーナーです 😊」
+    </div>
+    <p style="margin-top:12px;font-size:13px;color:#888">自己紹介してくれて、あなたのことを知ろうとして、どんな名前で呼んでほしいか聞いてきます。すべてのロブスターはユニークです。</p>
+  </div>
+</div>
+
+<div class="section">
+  <h2>なぜロブスターを選ぶのか？</h2>
+  <div class="features">
+    <div class="feature">
+      <h4>☁️ 7×24 常時オンライン</h4>
+      <p>ロブスターは休みません。午前3時にメッセージを送っても即座に返信。出張中に一言送れば、仕事が完了しています。</p>
+    </div>
+    <div class="feature">
+      <h4>💎 あなただけのもの</h4>
+      <p>データは完全にプライベート。会話の記憶や好みは誰とも共有されません。あなたのロブスターはあなただけに忠実です。</p>
+    </div>
+    <div class="feature">
+      <h4>🧬 使うほど賢くなる</h4>
+      <p>スタイル、好み、ワークフローを教えてください。使えば使うほど、あなたの分身になっていきます。あなたが進化すれば、それも進化します。</p>
+    </div>
+    <div class="feature">
+      <h4>📱 マルチプラットフォーム対応</h4>
+      <p>すでに使っているチャットツールで直接利用できます。移動中はWhatsApp、仕事中はFeishu、チーム用にはDiscord。</p>
+    </div>
+  </div>
+</div>
+
+<div class="faq">
+  <h2>❓ よくある質問</h2>
+
+  <div class="faq-item open">
+    <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">本当に無料ですか？</div>
+    <div class="faq-a">EasyClaw デスクトップ版は完全無料でオープンソースです。ロブスターはあなた自身のコンピュータで動き、データもあなたの手元にあります。エンタープライズクラウド版はより多くの高度な機能と7×24ホスティングサービスを提供します。</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">ChatGPTとの違いは何ですか？</div>
+    <div class="faq-a">ChatGPTはチャット画面です。ロブスターは<strong>プライベートAIアシスタント</strong>——あなたを記憶し、タスクを自動実行し、ツール（カレンダー・メール・SNS）に接続し、24時間待機し、教えたどんな新スキルも習得できます。</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">どんなコンピュータが必要ですか？</div>
+    <div class="faq-a">ブラウザが動けば何でも大丈夫——MacBook、Windowsノートパソコン。GPUは不要です。AI推論はクラウドで動きます。Raspberry Piでも動作します。</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">データは安全ですか？</div>
+    <div class="faq-a">デスクトップ版：ロブスターはあなた自身のマシンで動作します。データはサードパーティサーバーを経由しません。エンタープライズクラウド版：専用クラウドインスタンス、データ隔離、エンタープライズグレードのセキュリティ。</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">スキルは追加料金がかかりますか？</div>
+    <div class="faq-a">大多数のスキルは完全無料です。ClawHubコミュニティには200以上の無料スキルがあります。一部の高度な制作スキル（画像・動画生成など）は使用量に基づいて課金されます。</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">新しいスキルをインストールするにはどうすれば？</div>
+    <div class="faq-a"><a href="https://clawhub.com" style="color:#c0392b">ClawHub.com</a> でスキルマーケットを閲覧してインストールをクリック——またはロブスターに「○○スキルをインストールしてください」と伝えれば、自動で処理します。</div>
+  </div>
+</div>
+
+<div class="final-cta">
+  <h2>準備はできましたか？</h2>
+  <p>最初のAIロブスターを迎え入れてください——30秒であなたのものになります 🦞</p>
+  <a class="btn-big" href="https://easyclaw.com" target="_blank">🦞 EasyClaw を無料でダウンロード</a>
+</div>
+
+<footer>
+  <p>🦞 sanwan.ai — ロブスター三万育成日記</p>
+  <p style="margin-top:4px">Powered by <a href="https://easyclaw.com" style="color:#c0392b;text-decoration:none">EasyClaw</a> · Built with ❤️ by 傅盛 &amp; AI Team</p>
+</footer>
+
+<script defer src="https://cdn.vercel-insights.com/v1/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>スキルストア — ロブスター育成日記</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦞</text></svg>">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root { --bg:#f7f5f2; --card:#fff; --border:#e8e4df; --accent:#c0392b; --text:#2d2926; --muted:#7a746e; }
+* { box-sizing:border-box; margin:0; padding:0; }
+body { padding-top:56px; font-family:'Noto Sans JP',-apple-system,'Hiragino Kaku Gothic ProN',sans-serif; background:var(--bg); color:var(--text); line-height:1.7; }
+nav { position:fixed; top:0; left:0; width:100%; z-index:1000; background:rgba(255,255,255,0.97); backdrop-filter:blur(12px); border-bottom:2px solid var(--border); padding:0 24px; height:56px; display:flex; align-items:center; justify-content:space-between; box-shadow:0 1px 8px rgba(0,0,0,0.04); }
+.nav-logo { font-weight:900; font-size:18px; color:var(--accent); text-decoration:none; }
+.nav-links { display:flex; gap:16px; }
+.nav-links a { color:var(--muted); text-decoration:none; font-size:14px; font-weight:600; padding:6px 4px; }
+.nav-links a:hover { color:var(--accent); }
+.hamburger{display:none;background:none;border:none;font-size:15px;cursor:pointer;color:#333;font-weight:600;padding:6px 12px;border-radius:8px;border:1.5px solid #ddd}
+@media(max-width:768px){.nav-links{display:none}.hamburger{display:block}.nav-links.open{display:flex;flex-direction:column;position:absolute;top:56px;right:16px;background:#fff;border:1.5px solid #ddd;border-radius:10px;padding:12px 16px;gap:12px;box-shadow:0 4px 15px rgba(0,0,0,0.1)}}
+.hero { background:#fff; border-bottom:1px solid var(--border); padding:48px 24px 40px; text-align:center; position:relative; overflow:hidden; }
+.hero::before { content:""; position:absolute; top:0; left:0; right:0; bottom:0; opacity:0.1; background-image:radial-gradient(var(--accent) 0.5px,transparent 0.5px); background-size:28px 28px; pointer-events:none; }
+.hero h1 { font-size:clamp(1.4rem,4vw,2rem); font-weight:900; margin-bottom:8px; position:relative; }
+.hero p { color:var(--muted); font-size:15px; max-width:500px; margin:0 auto; position:relative; }
+.packs-section { max-width:1000px; margin:32px auto; padding:0 24px; }
+.packs-title { font-size:20px; font-weight:800; margin-bottom:16px; }
+.packs-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
+@media(max-width:768px){.packs-grid{grid-template-columns:1fr}}
+.pack-card { background:var(--card); border:2px solid var(--border); border-radius:14px; padding:20px; cursor:pointer; transition:all .2s; text-decoration:none; color:inherit; display:block; }
+.pack-card:hover { transform:translateY(-3px); box-shadow:0 6px 20px rgba(0,0,0,0.08); }
+.pack-icon { font-size:32px; margin-bottom:8px; }
+.pack-name { font-size:16px; font-weight:800; margin-bottom:4px; }
+.pack-tagline { font-size:12px; color:var(--muted); line-height:1.5; margin-bottom:8px; }
+.pack-meta { display:flex; align-items:center; gap:8px; }
+.pack-count { font-size:11px; font-weight:700; padding:2px 8px; border-radius:99px; color:#fff; }
+.pack-desc { font-size:11px; color:var(--muted); }
+.pack-card.featured { border-color:var(--accent); background:#fffaf8; }
+.skills-section { max-width:1000px; margin:32px auto; padding:0 24px; }
+.skills-header { display:flex; justify-content:space-between; align-items:center; margin-bottom:16px; flex-wrap:wrap; gap:12px; }
+.skills-title { font-size:20px; font-weight:800; }
+.filters { display:flex; gap:6px; flex-wrap:wrap; }
+.filters button { padding:6px 14px; border-radius:20px; border:1px solid var(--border); background:var(--card); font-size:12px; font-weight:600; cursor:pointer; transition:.15s; font-family:inherit; color:var(--text); }
+.filters button:hover { border-color:var(--accent); color:var(--accent); }
+.filters button.active { background:var(--accent); color:#fff; border-color:var(--accent); }
+.skills-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:12px; }
+@media(max-width:768px){.skills-grid{grid-template-columns:1fr}}
+.skill-card { background:var(--card); border:1.5px solid var(--border); border-radius:12px; padding:14px 16px; cursor:pointer; transition:.2s; }
+.skill-card:hover { border-color:var(--accent); transform:translateY(-2px); box-shadow:0 4px 12px rgba(0,0,0,0.06); }
+.skill-card a { text-decoration:none; color:inherit; display:flex; gap:12px; align-items:flex-start; }
+.skill-emoji { font-size:28px; flex-shrink:0; }
+.skill-body { flex:1; min-width:0; }
+.skill-name { font-weight:700; font-size:14px; }
+.skill-desc { font-size:12px; color:var(--muted); margin-top:2px; line-height:1.5; }
+.skill-tags { display:flex; gap:4px; margin-top:4px; flex-wrap:wrap; }
+.tag { font-size:10px; padding:1px 6px; border-radius:4px; font-weight:600; }
+.tag-official { background:#e8f5e9; color:#2e7d32; }
+.tag-community { background:#e3f2fd; color:#1565c0; }
+.tag-essential { background:#e8eaf6; color:#283593; }
+.tag-hot { background:#fce4ec; color:#c62828; }
+.footer { text-align:center; padding:40px 24px; color:var(--muted); font-size:12px; }
+.footer a { color:var(--accent); text-decoration:none; }
+</style>
+</head>
+<body>
+<nav>
+  <a class="nav-logo" href="index.html">🦞 ロブスター育成日記</a>
+  <button class="hamburger" onclick="document.querySelector('.nav-links').classList.toggle('open')">☰ メニュー</button>
+  <div class="nav-links">
+    <a href="index.html">ホーム</a>
+    <a href="diary.html">📖 日記</a>
+    <a href="articles.html">📝 記事</a>
+    <a href="science.html">🔰 解説</a>
+    <a href="skills.html" style="color:var(--accent);font-weight:700">🛒 スキル</a>
+    <a href="easyclaw.html">🦞 EasyClaw</a>
+  </div>
+</nav>
+
+<div class="hero">
+  <h1>🧩 スキルストア</h1>
+  <p>スキルをインストールして、デジタル社員になる——あなたのロブスターを、あなたの手で定義してください。</p>
+</div>
+
+<!-- スキルパック -->
+<div class="packs-section">
+  <div class="packs-title">📦 スキルパック — ワンクリックでインストール、即戦力化</div>
+  <div class="packs-grid">
+    <a href="/skills/pack-assistant.html" class="pack-card">
+      <div class="pack-icon">💼</div>
+      <div class="pack-name">スーパーアシスタント</div>
+      <div class="pack-tagline">万能プライベートアシスタント——メール・スケジュール・検索・文書、声一つで完了</div>
+      <div class="pack-meta"><span class="pack-count" style="background:#2874a6">6スキル</span><span class="pack-desc">適：会社員・マネージャー・起業家</span></div>
+    </a>
+    <a href="/skills/pack-creator.html" class="pack-card">
+      <div class="pack-icon">✍️</div>
+      <div class="pack-name">コンテンツクリエイター</div>
+      <div class="pack-tagline">記事・SNS・動画・音楽——全プラットフォームコンテンツ一括対応</div>
+      <div class="pack-meta"><span class="pack-count" style="background:#c0392b">8スキル</span><span class="pack-desc">適：クリエイター・ブランド担当・個人IP</span></div>
+    </a>
+    <a href="/skills/pack-trader.html" class="pack-card">
+      <div class="pack-icon">📈</div>
+      <div class="pack-name">株式アナリスト</div>
+      <div class="pack-tagline">リアルタイム相場・テクニカル分析・売買シグナル——7×24で市場を監視</div>
+      <div class="pack-meta"><span class="pack-count" style="background:#27ae60">4スキル</span><span class="pack-desc">適：投資家・トレーダー・クオンツ愛好者</span></div>
+    </a>
+    <a href="/skills/pack-overseas.html" class="pack-card">
+      <div class="pack-icon">🌏</div>
+      <div class="pack-name">グローバル運営</div>
+      <div class="pack-tagline">多言語コンテンツ・海外SNS・クロスボーダー運営——言語と時差の問題を解決</div>
+      <div class="pack-meta"><span class="pack-count" style="background:#8e44ad">6スキル</span><span class="pack-desc">適：グローバル企業・越境EC</span></div>
+    </a>
+    <a href="/skills/pack-ecommerce.html" class="pack-card">
+      <div class="pack-icon">🛒</div>
+      <div class="pack-name">ECサイト運営</div>
+      <div class="pack-tagline">商品説明文・競合分析・データモニタリング——AIが繰り返し作業を代替</div>
+      <div class="pack-meta"><span class="pack-count" style="background:#e67e22">6スキル</span><span class="pack-desc">適：ECセラー・ブランド・運営チーム</span></div>
+    </a>
+    <a href="/skills/pack-sanwan.html" class="pack-card featured">
+      <div class="pack-icon">🦞</div>
+      <div class="pack-name">三万と同じチーム構成</div>
+      <div class="pack-tagline">8つのエージェントがそれぞれ担当——1匹のロブスターではなく、1チームです</div>
+      <div class="pack-meta"><span class="pack-count" style="background:#c0392b">38スキル</span><span class="pack-desc">⭐ 傅盛本人が検証した完全構成</span></div>
+    </a>
+  </div>
+</div>
+
+<!-- 全スキル -->
+<div class="skills-section">
+  <div class="skills-header">
+    <div class="skills-title">🔧 全スキル一覧</div>
+    <div class="filters">
+      <button class="active" onclick="filterSkills('all')">すべて</button>
+      <button onclick="filterSkills('creation')">制作</button>
+      <button onclick="filterSkills('social')">SNS</button>
+      <button onclick="filterSkills('research')">調査</button>
+      <button onclick="filterSkills('office')">オフィス</button>
+      <button onclick="filterSkills('dev')">開発</button>
+      <button onclick="filterSkills('life')">生活</button>
+    </div>
+  </div>
+  <div class="skills-grid" id="skillsGrid">
+    <div class="skill-card" data-category="dev"><a href="/skills/multi-agent-setup.html"><div class="skill-emoji">🏗️</div><div class="skill-body"><div class="skill-name">マルチエージェントチーム構築</div><div class="skill-tags"><span class="tag tag-official">公式</span><span class="tag tag-essential">⭐ 必須</span><span class="tag tag-hot">🔥 人気</span></div><div class="skill-desc">1体のロブスターをチームに——総指揮＋ライター＋参謀＋運営担当など複数のAI役割を構成。</div></div></a></div>
+    <div class="skill-card" data-category="research"><a href="/skills/web-search.html"><div class="skill-emoji">🌐</div><div class="skill-body"><div class="skill-name">Web検索</div><div class="skill-tags"><span class="tag tag-official">公式</span><span class="tag tag-essential">⭐ 必須</span></div><div class="skill-desc">Brave Search＋DuckDuckGoマルチエンジン検索、リアルタイムWeb情報取得。</div></div></a></div>
+    <div class="skill-card" data-category="research"><a href="/skills/deep-research.html"><div class="skill-emoji">🔬</div><div class="skill-body"><div class="skill-name">詳細リサーチ</div><div class="skill-tags"><span class="tag tag-official">公式</span></div><div class="skill-desc">マルチエンジン検索＋Webページ抽出＋構造化分析レポート。</div></div></a></div>
+    <div class="skill-card" data-category="life"><a href="/skills/weather.html"><div class="skill-emoji">🌤️</div><div class="skill-body"><div class="skill-name">天気照会</div><div class="skill-tags"><span class="tag tag-official">公式</span><span class="tag tag-essential">⭐ 必須</span></div><div class="skill-desc">世界中のリアルタイム天気情報。wttr.in＋Open-Meteoのデュアルソース。</div></div></a></div>
+    <div class="skill-card" data-category="office"><a href="/skills/email.html"><div class="skill-emoji">📧</div><div class="skill-body"><div class="skill-name">メール管理</div><div class="skill-tags"><span class="tag tag-official">公式</span></div><div class="skill-desc">Feishuメール監視＋ClawPostメールボックス、自動チェック＋スマート返信。</div></div></a></div>
+    <div class="skill-card" data-category="creation"><a href="/skills/image-gen.html"><div class="skill-emoji">🖼️</div><div class="skill-body"><div class="skill-name">AI画像生成</div><div class="skill-tags"><span class="tag tag-official">公式</span><span class="tag tag-essential">⭐ 必須</span></div><div class="skill-desc">Nano Banana Pro（Gemini 3）テキストから画像、画像から画像、スタイル変換。</div></div></a></div>
+    <div class="skill-card" data-category="creation"><a href="/skills/voice-gen.html"><div class="skill-emoji">🎙️</div><div class="skill-body"><div class="skill-name">音声合成</div><div class="skill-tags"><span class="tag tag-official">公式</span><span class="tag tag-essential">⭐ 必須</span></div><div class="skill-desc">マルチボイスTTS、Feishuネイティブ音声メッセージ送信。edge-tts＋ffmpeg。</div></div></a></div>
+    <div class="skill-card" data-category="dev"><a href="/skills/coding.html"><div class="skill-emoji">💻</div><div class="skill-body"><div class="skill-name">コーディングアシスタント</div><div class="skill-tags"><span class="tag tag-official">公式</span></div><div class="skill-desc">Claude Code/Codexでコード作成・バグ修正・デプロイ。PTY自動応答モード。</div></div></a></div>
+    <div class="skill-card" data-category="dev"><a href="/skills/github-ops.html"><div class="skill-emoji">🐙</div><div class="skill-body"><div class="skill-name">GitHub操作</div><div class="skill-tags"><span class="tag tag-official">公式</span></div><div class="skill-desc">リポジトリ/Issues/PR/コード検索/Actions——ブラウザを開かずにGitHubを管理。</div></div></a></div>
+    <div class="skill-card" data-category="dev"><a href="/skills/browser-vision.html"><div class="skill-emoji">🔭</div><div class="skill-body"><div class="skill-name">ブラウザ制御</div><div class="skill-tags"><span class="tag tag-official">公式</span><span class="tag tag-essential">⭐ 必須</span></div><div class="skill-desc">ヘッドレスChromeスクリーンショット、Web自動化、ビジュアルデバッグ。</div></div></a></div>
+    <div class="skill-card" data-category="creation"><a href="/skills/humanizer.html"><div class="skill-emoji">🧑</div><div class="skill-body"><div class="skill-name">AIテキスト人間化</div><div class="skill-tags"><span class="tag tag-official">公式</span><span class="tag tag-essential">⭐ 必須</span></div><div class="skill-desc">16種の検出パターン＋6種のスタイル変換——「AI臭さ」を除去。カジュアル/学術/SNS風に対応。</div></div></a></div>
+    <div class="skill-card" data-category="social"><a href="/skills/twitter.html"><div class="skill-emoji">🐦</div><div class="skill-body"><div class="skill-name">Twitter / X</div><div class="skill-tags"><span class="tag tag-official">公式</span></div><div class="skill-desc">投稿/Thread/リツイート/削除——@FuSheng_0306アカウント運営。</div></div></a></div>
+    <div class="skill-card" data-category="research"><a href="/skills/web-scraper.html"><div class="skill-emoji">🕷️</div><div class="skill-body"><div class="skill-name">スクレイピング対応Webアクセス</div><div class="skill-tags"><span class="tag tag-official">公式</span><span class="tag tag-essential">⭐ 必須</span></div><div class="skill-desc">WeChat・Twitter・Redditなどのスクレイピング対応サイトに3種類の方法で自動アクセス。</div></div></a></div>
+    <div class="skill-card" data-category="office"><a href="/skills/pdf-gen.html"><div class="skill-emoji">📄</div><div class="skill-body"><div class="skill-name">PDF生成</div><div class="skill-tags"><span class="tag tag-official">公式</span><span class="tag tag-essential">⭐ 必須</span></div><div class="skill-desc">Markdownから美麗なPDF（コードハイライト付き）。Pandoc＋Chrome。</div></div></a></div>
+    <div class="skill-card" data-category="life"><a href="/skills/flight-search.html"><div class="skill-emoji">✈️</div><div class="skill-body"><div class="skill-name">航空券検索</div><div class="skill-tags"><span class="tag tag-official">公式</span><span class="tag tag-essential">⭐ 必須</span></div><div class="skill-desc">国内外の航空券価格、複数日比較、最安値カレンダー。</div></div></a></div>
+    <div class="skill-card" data-category="research"><a href="/skills/stock-monitor.html"><div class="skill-emoji">📈</div><div class="skill-body"><div class="skill-name">株価モニタリング</div><div class="skill-tags"><span class="tag tag-official">公式</span><span class="tag tag-hot">🔥 人気</span></div><div class="skill-desc">A株/香港株/米国株リアルタイム監視、RSI/MACD/ボリンジャーバンドによる売買シグナル。</div></div></a></div>
+    <div class="skill-card" data-category="creation"><a href="/skills/video-gen.html"><div class="skill-emoji">🎬</div><div class="skill-body"><div class="skill-name">AI動画生成</div><div class="skill-tags"><span class="tag tag-community">コミュニティ</span><span class="tag tag-hot">🔥 人気</span></div><div class="skill-desc">Sora/Kling/Seedance/Veo3など37モデル——テキストから動画、画像から動画、1つのAPIで完結。</div></div></a></div>
+    <div class="skill-card" data-category="creation"><a href="/skills/music-gen.html"><div class="skill-emoji">🎵</div><div class="skill-body"><div class="skill-name">AI音楽生成</div><div class="skill-tags"><span class="tag tag-community">コミュニティ</span></div><div class="skill-desc">構造化された作曲プランから高品質音声を生成。AI作曲＋品質検証＋失敗時再試行。</div></div></a></div>
+    <div class="skill-card" data-category="social"><a href="/skills/linkedin.html"><div class="skill-emoji">💼</div><div class="skill-body"><div class="skill-name">LinkedIn運営</div><div class="skill-tags"><span class="tag tag-community">コミュニティ</span></div><div class="skill-desc">LinkedInコンテンツシステム構築・思想リーダーシップ・受信トレイ管理。</div></div></a></div>
+    <div class="skill-card" data-category="dev"><a href="/skills/clawhub.html"><div class="skill-emoji">🧩</div><div class="skill-body"><div class="skill-name">さらに5000以上のスキル</div><div class="skill-tags"><span class="tag tag-hot">🔥 人気</span></div><div class="skill-desc">Claw123.aiで5000以上のコミュニティスキルを閲覧——コマンド1行でインストール。→ claw123.ai</div></div></a></div>
+  </div>
+</div>
+
+<div class="footer">
+  <p>🦞 ロブスター育成日記 · <a href="https://easyclaw.com">EasyClaw</a> · <a href="https://clawhub.com">ClawHub</a></p>
+</div>
+
+<script>
+function filterSkills(cat) {
+  document.querySelectorAll('.filters button').forEach(b => b.classList.remove('active'));
+  event.target.classList.add('active');
+  document.querySelectorAll('.skill-card').forEach(c => {
+    c.style.display = (cat === 'all' || c.dataset.category === cat) ? '' : 'none';
+  });
+}
+</script>
+</body>
+</html>

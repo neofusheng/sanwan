@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>解説：ロブスターとは何か — sanwan.ai</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦞</text></svg>">
+<meta property="og:title" content="解説：ロブスターとは何か | sanwan.ai">
+<meta property="og:description" content="AIエージェントとは？ロブスターとChatGPTの違いは？5分で入門から理解まで。">
+<meta property="og:image" content="https://sanwan.ai/ppt/science/01.jpg">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Noto Sans JP',-apple-system,'Hiragino Kaku Gothic ProN',sans-serif;background:#e8e4dc;color:#222;padding-top:56px}
+nav{position:fixed;top:0;left:0;width:100%;z-index:1000;background:rgba(255,255,255,0.97);backdrop-filter:blur(12px);border-bottom:2px solid #e8e4df;padding:0 24px;height:56px;display:flex;align-items:center;justify-content:space-between;box-shadow:0 1px 8px rgba(0,0,0,0.04)}
+.nav-logo{font-size:18px;color:#c0392b;text-decoration:none;font-weight:700}
+.nav-links{display:flex;gap:16px}
+.nav-links a{text-decoration:none;color:#555;font-size:14px;font-weight:600;padding:6px 4px}
+.nav-links a:hover,.nav-links a.active{color:#c0392b}
+.hamburger{display:none;background:none;border:none;font-size:15px;cursor:pointer;color:#333;font-weight:600;padding:6px 12px;border-radius:8px;border:1.5px solid #ddd}
+.content{max-width:800px;margin:0 auto;padding:16px 20px 40px}
+.chapter{margin-top:40px;margin-bottom:20px}
+.chapter-num{font-size:12px;color:#c0392b;font-weight:800;letter-spacing:2px;margin-bottom:4px}
+.chapter h2{font-size:22px;line-height:1.4;font-weight:700}
+.wb{background:#f5f3ee;border:2px solid #ddd;border-radius:14px;padding:20px;margin-bottom:16px}
+.wb img{width:100%;max-width:560px;border-radius:10px;margin:12px auto;display:block;border:1px solid #ddd}
+.wb h3{font-size:18px;margin-bottom:10px;font-weight:700}
+.wb p{font-size:14px;line-height:1.9;color:#555;margin:8px 0}
+.wb .highlight{color:#c0392b;font-weight:700}
+.wb .oneliner{font-size:14px;color:#c0392b;font-weight:600;background:rgba(192,57,43,0.06);padding:6px 12px;border-radius:8px;display:inline-block;margin-bottom:12px}
+.transition{text-align:center;padding:20px 0;font-size:15px;color:#999;font-style:italic}
+.compare{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:12px 0}
+.compare-box{padding:16px;border-radius:10px;border:1px solid #eee}
+.compare-box h4{font-size:15px;margin-bottom:8px;font-weight:700}
+.compare-box ul{font-size:13px;color:#666;line-height:2;padding-left:18px}
+.compare-left{background:#f8f4f4}
+.compare-right{background:#f0fff0;border:2px solid #27ae60}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:16px 0}
+.stat-box{text-align:center;padding:14px;background:#fff5f5;border-radius:8px}
+.stat-num{font-size:28px;font-weight:900;color:#c0392b;line-height:1.2;margin-bottom:4px}
+.stat-label{font-size:12px;color:#333;font-weight:600}
+.stat-sub{font-size:11px;color:#999;margin-top:2px}
+.quad{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:12px 0}
+.quad-box{padding:16px;background:#faf8f4;border-radius:10px;border:1px solid #eee;text-align:center}
+.quad-icon{font-size:28px;margin-bottom:6px}
+.quad-title{font-size:14px;font-weight:700}
+.quad-desc{font-size:12px;color:#888;margin-top:4px;line-height:1.5}
+.callout{background:#fffbf0;border-left:4px solid #f39c12;padding:14px 16px;border-radius:0 8px 8px 0;margin:12px 0}
+.callout p{font-size:14px;line-height:1.8;color:#555;margin:4px 0}
+footer{text-align:center;padding:20px;font-size:11px;color:#999;border-top:2px solid #ddd;background:#f5f3ee;margin-top:40px}
+footer a{color:#888;text-decoration:none;margin:0 8px}
+.btt{position:fixed;bottom:20px;right:20px;width:40px;height:40px;background:#c0392b;color:white;border-radius:50%;display:flex;align-items:center;justify-content:center;text-decoration:none;font-size:18px;box-shadow:0 2px 8px rgba(0,0,0,0.2);z-index:99;opacity:0.8}
+.float-mascot{position:fixed;bottom:20px;right:16px;z-index:99;display:flex;flex-direction:column;align-items:center;animation:mascot-float 3s ease-in-out infinite}
+.float-lobster{font-size:48px;cursor:pointer;transition:transform .2s;filter:drop-shadow(0 4px 8px rgba(0,0,0,0.15))}
+.float-lobster:hover{transform:scale(1.15) rotate(-5deg)}
+.float-bubble{background:#fff;border:1.5px solid #f0d0cc;padding:10px 14px;border-radius:16px;text-align:center;margin-bottom:4px;box-shadow:0 4px 20px rgba(192,57,43,0.12);position:relative}
+.bubble-tail{width:10px;height:10px;background:#fff;border-right:2px solid #f0d0cc;border-bottom:2px solid #f0d0cc;position:absolute;bottom:-6px;left:50%;transform:translateX(-50%) rotate(45deg)}
+.bubble-dot{width:6px;height:6px;background:#f0d0cc;border-radius:50%;position:absolute;bottom:-14px;right:30%}
+@keyframes mascot-float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+@keyframes btn-glow{0%,100%{box-shadow:0 0 8px rgba(192,57,43,0.3)}50%{box-shadow:0 0 18px rgba(192,57,43,0.5)}}
+@media(max-width:768px){
+  .hamburger{display:block}.nav-links{display:none}
+  .nav-links.open{display:flex;flex-direction:column;position:absolute;top:56px;right:16px;background:#fff;border:1.5px solid #ddd;border-radius:10px;padding:12px 16px;gap:12px;box-shadow:0 4px 15px rgba(0,0,0,0.1)}
+  .compare{grid-template-columns:1fr}
+  .stats{grid-template-columns:repeat(2,1fr)}
+  .quad{grid-template-columns:1fr}
+}
+</style>
+<script defer src="https://unpkg.com/@vercel/analytics@1/dist/script.js"></script>
+</head>
+<body>
+
+<nav>
+<a href="index.html" class="nav-logo">🦞 ロブスター育成日記</a>
+<button class="hamburger" onclick="document.querySelector('.nav-links').classList.toggle('open')">☰ メニュー</button>
+<div class="nav-links">
+<a href="index.html">ホーム</a>
+<a href="diary.html">📖 日記</a>
+<a href="articles.html">📝 記事</a>
+<a href="science.html" class="active">🔰 解説</a>
+<a href="skills.html">🛒 スキル</a>
+<a href="easyclaw.html">🦞 EasyClaw</a>
+</div>
+</nav>
+
+<div class="content">
+
+<div style="padding:16px 0 8px">
+<h1 style="font-size:26px;font-weight:700">🔰 ロブスター入門</h1>
+<p style="font-size:14px;color:#777;margin-top:4px">5分間——「AIを聞いたことがある」から「ロブスターを理解する」まで。段階的に学ぶと、最後にはすべてわかります。</p>
+</div>
+
+<!-- 第1章 -->
+<div class="chapter">
+<div class="chapter-num">第1章</div>
+<h2>🦞 ロブスターとは何か？</h2>
+</div>
+
+<div class="wb">
+<h3>ChatGPTとロブスターの違いは？</h3>
+<div class="oneliner">💡 一言で：ChatGPTはチャット画面。ロブスターは仕事をしてくれる社員。</div>
+<img src="../ppt/science/01.jpg" loading="lazy" alt="ChatGPT vs ロブスター比較">
+<div class="compare">
+<div class="compare-box compare-left">
+<h4>🤖 普通のAI（ChatGPT等）</h4>
+<ul>
+<li>質問すれば答えてくれる。終わればすぐ忘れる</li>
+<li>記憶なし。毎回ゼロからスタート</li>
+<li>行動できない。アドバイスのみ</li>
+<li>常に監視が必要</li>
+<li>ウィンドウを閉じたら消える</li>
+</ul>
+</div>
+<div class="compare-box compare-right">
+<h4>🦞 ロブスター（AIエージェント）</h4>
+<ul>
+<li>一言指示すれば自分でやってくれる</li>
+<li>記憶あり。あなたが言ったことをすべて覚えている</li>
+<li>行動できる：コード作成・メール送信・調査</li>
+<li>7×24自動稼働。あなたが寝ている間も動く</li>
+<li>専用のコンピュータを持っている</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div class="wb">
+<h3>ロブスターを理解する一つの公式</h3>
+<div class="oneliner">💡 この公式を覚えれば大丈夫</div>
+<img src="../ppt/science/02.jpg" loading="lazy" alt="ロブスターの公式">
+<p style="text-align:center;font-size:18px;font-weight:900;color:#c0392b;margin:16px 0">🤖 AI + 💻 コンピュータ + 💾 記憶 + ⚡ スキル = 🦞 ロブスター</p>
+<p>普通のAIは<span class="highlight">賢いだけ</span>——ロブスターはその知性に加えて、専用コンピュータ、長期記憶、蓄積されるスキルを持っています。</p>
+<p>人間と同じです：高い知能だけでは仕事はできません。デスク、職務経験、専門スキルが揃ってこそ、信頼できる社員になれます。</p>
+</div>
+
+<div class="transition">「何であるか」を理解したら、次は「なぜ仕事ができるのか」を見ていきましょう。↓</div>
+
+<!-- 第2章 -->
+<div class="chapter">
+<div class="chapter-num">第2章</div>
+<h2>🧠 ロブスターの仕組み</h2>
+</div>
+
+<div class="wb">
+<h3>大規模言語モデルは脳ではなく——知性です</h3>
+<div class="oneliner">💡 ChatGPTは「賢い」だけ。ロブスターは「仕事ができる」。</div>
+<img src="../ppt/science/03.jpg" loading="lazy" alt="大規模言語モデル=知性">
+<p><strong>「大規模言語モデルが脳だという理解は間違っています。より正確には、あなたのIQレベルに似ています。」</strong></p>
+<p>高いIQだけで仕事ができますか？できません。次のものも必要です：</p>
+<div class="quad">
+<div class="quad-box"><div class="quad-icon">🧠</div><div class="quad-title">大規模言語モデル = 知性</div><div class="quad-desc">「どれだけ賢いか」を決める<br>複雑なタスクを処理できるか</div></div>
+<div class="quad-box"><div class="quad-icon">💾</div><div class="quad-title">記憶 = 海馬</div><div class="quad-desc">あなたが言ったことを記憶<br>再起動しても忘れない</div></div>
+<div class="quad-box"><div class="quad-icon">⚡</div><div class="quad-title">スキル = 筋肉記憶</div><div class="quad-desc">つまずいた経験が蓄積される<br>次回は自動実行</div></div>
+<div class="quad-box"><div class="quad-icon">⏰</div><div class="quad-title">Cron = 体内時計</div><div class="quad-desc">定期自動チェック<br>7×24ノンストップ稼働</div></div>
+</div>
+<p style="text-align:center"><span class="highlight">これらを組み合わせてこそ、完全で継続的に稼働する知能体になります。</span></p>
+</div>
+
+<div class="wb">
+<h3>ロブスターの4つの設計原則</h3>
+<div class="oneliner">💡 チャット操作 + 永続記憶 + スキル蓄積 + 自動スケジュール</div>
+<img src="../ppt/science/04.jpg" loading="lazy" alt="4つのコア設計">
+<div class="quad">
+<div class="quad-box" style="text-align:left;padding:14px"><div style="font-size:18px;margin-bottom:6px">💬 チャットインターフェース</div><p style="font-size:13px;color:#555;line-height:1.6;margin:0">「この設計は革新的です。あなたをコンピュータの前から『引き離します』。もはやマシンを操作しているのではなく、マシンが操作しています。あなたとの関係は人間同士のやり取りになります。」</p></div>
+<div class="quad-box" style="text-align:left;padding:14px"><div style="font-size:18px;margin-bottom:6px">🧠 記憶システム</div><p style="font-size:13px;color:#555;line-height:1.6;margin:0">「大規模言語モデルの根本的な欠陥——忘れること。三万の記憶システムだけで5〜6バージョンを作りました。頭に頼らず、ファイルに頼る。」</p></div>
+<div class="quad-box" style="text-align:left;padding:14px"><div style="font-size:18px;margin-bottom:6px">⚡ スキルの蓄積</div><p style="font-size:13px;color:#555;line-height:1.6;margin:0">「つまずくたびに経験をドキュメント化し、次回は自動実行します。人間が新スキルを習得するのに1週間かかるところ、エージェント間では1秒で伝達できます。」</p></div>
+<div class="quad-box" style="text-align:left;padding:14px"><div style="font-size:18px;margin-bottom:6px">⏰ Cron自動化</div><p style="font-size:13px;color:#555;line-height:1.6;margin:0">「あなたはAIエージェントであり、人間ではありません。『深夜』という概念はありません。北京の午前3時はアメリカの昼間——止まることは怠慢です。」</p></div>
+</div>
+</div>
+
+<div class="wb">
+<h3>ロブスターはエージェントより一段上です</h3>
+<div class="oneliner">💡 エージェントはソフトウェア。ロブスターは専用コンピュータを持つ「人間」。</div>
+<img src="../ppt/science/05.jpg" loading="lazy" alt="ロブスター > エージェント">
+<p><strong>エージェントは他者のプラットフォーム上で動くソフトウェアです。ロブスターは、自分専用のコンピュータを所有する「人間」です。</strong></p>
+<p>Manusは使い捨ての仮想マシンを使用します。でもあなたの仕事用コンピュータはあなたと共に成長します——ファイル、メモ、習慣、ショートカットが蓄積されていきます。</p>
+<p><span class="highlight">社員が退職するとき、コンピュータを返却します——なぜなら、そのマシンにはすべての記憶、ルール、経験が蓄積されているからです。</span></p>
+</div>
+
+<div class="transition">仕組みはわかりました。では実際に何ができるのか？↓</div>
+
+<!-- 第3章 -->
+<div class="chapter">
+<div class="chapter-num">第3章</div>
+<h2>📊 ロブスターに何ができるか？</h2>
+</div>
+
+<div class="wb">
+<h3>傅盛の14日間実験</h3>
+<div class="oneliner">💡 あるCEOとAIロブスター——14日間のリアルデータ</div>
+<img src="../ppt/science/06.jpg" loading="lazy" alt="14日間の実験データ">
+<div class="stats">
+<div class="stat-box"><div class="stat-num" data-target="1157">0</div><div class="stat-label">件のメッセージ</div><div class="stat-sub">≈ 1日82件</div></div>
+<div class="stat-box"><div class="stat-num" data-target="220000">0</div><div class="stat-label">文字の会話</div><div class="stat-sub">≈ ビジネス書10冊分</div></div>
+<div class="stat-box"><div class="stat-num" data-target="8">0</div><div class="stat-label">個のエージェント</div><div class="stat-sub">それぞれが担当を持つ</div></div>
+<div class="stat-box"><div class="stat-num" data-target="40">0</div><div class="stat-label">個のスキル</div><div class="stat-sub">継続的に増加中</div></div>
+</div>
+<div class="stats" style="margin-top:12px">
+<div class="stat-box"><div class="stat-num" data-target="82000">0</div><div class="stat-label">ライブ視聴者</div><div class="stat-sub">8.2万人が視聴</div></div>
+<div class="stat-box"><div class="stat-num" data-target="17">0</div><div class="stat-label">件の日記</div><div class="stat-sub">育成記録を全記録</div></div>
+<div class="stat-box"><div class="stat-num" data-target="30">0</div><div class="stat-label">本の記事</div><div class="stat-sub">オリジナル＋Thread</div></div>
+<div class="stat-box"><div class="stat-num" data-target="5000">0</div><div class="stat-label">人の新フォロワー</div><div class="stat-sub">X（Twitter）で増加</div></div>
+</div>
+<p>14日間で何が起きたのか？連絡先すら調べられない状態から、7×24自動稼働の8エージェントAIチームを設計するまで。</p>
+<p>AIが賢くなったのではありません。<span class="highlight">人間がAIの使い方を学んだ</span>のです。</p>
+<a href="diary.html" style="color:#2874a6;font-weight:600;text-decoration:none">📖 完全な日記を読む →</a>
+</div>
+
+<div class="wb">
+<h3>同じ仕事で150倍のコスト差</h3>
+<div class="oneliner">💡 外注なら15万円＋1ヶ月 vs ロブスターなら1,000円＋1日</div>
+<img src="../ppt/science/09.jpg" loading="lazy" alt="コスト比較">
+<p>傅盛はロブスターに完全なウェブサイトを構築させました——科学解説ページ、日記、記事集約、スキルストア——合計費用は<span class="highlight">1,000元（約2万円）、1日で完成</span>しました。</p>
+<p>外注チームに同じサイトを依頼した場合？デザイン＋フロントエンド＋バックエンド＋コンテンツで、保守的に見ても<span class="highlight">15万元（約300万円）、1ヶ月</span>かかります。</p>
+<p>これは「節約」ではありません——<span class="highlight">生産性の価格設定が根本的に変わった</span>のです。以前は月給でひとを雇い、今はAIを結果で雇います。</p>
+</div>
+
+<div class="transition">できることはわかりました。では正しい使い方は？↓</div>
+
+<!-- 第4章 -->
+<div class="chapter">
+<div class="chapter-num">第4章</div>
+<h2>🛠️ ロブスターを正しく育てる方法</h2>
+</div>
+
+<div class="wb">
+<h3>ツール思考 vs 社員思考</h3>
+<div class="oneliner">💡 ロブスターをツールとして使わず、新入社員として育ててください</div>
+<img src="../ppt/science/07.jpg" loading="lazy" alt="ツールvs社員思考">
+<div class="compare">
+<div class="compare-box compare-left">
+<h4>🔧 ツール思考</h4>
+<ul>
+<li>買って使って捨てる</li>
+<li>研修不要</li>
+<li>壊れたら交換</li>
+<li>結果：いつも「お試し」状態</li>
+</ul>
+</div>
+<div class="compare-box compare-right">
+<h4>👤 社員思考 ✅</h4>
+<ul>
+<li>研修し、ルールを設け、フィードバックを与える</li>
+<li>ミスはその場で指摘し、再発を防ぐ</li>
+<li>長期育成——使うほど使いやすくなる</li>
+<li>結果：一体でチーム全員分の働き</li>
+</ul>
+</div>
+</div>
+<p style="text-align:center"><span class="highlight" style="font-size:16px">「ロブスターを育てることは新人を育てることと同じです——賢さの競争ではなく、真剣さの競争です。」</span></p>
+</div>
+
+<div class="wb">
+<h3>SaaS vs ロブスター：生産性の再定価</h3>
+<div class="oneliner">💡 ソフトウェアを買う時代は終わり。AIを結果で雇う時代へ。</div>
+<p><strong>SaaSは能力を売り、ロブスターは結果を売ります。</strong></p>
+<p>エージェントのコア競争優位は、モデルでもプラットフォームでもなく——<span class="highlight">スキルの蓄積</span>です。使えば使うほど経験が積まれ、乗り換えのコストが高くなります。3年勤続の社員と新入社員では全然違います。それと同じです。</p>
+<div class="callout">
+<p><strong>「マネージャー思考を持たない人は、知識労働の場で仕事を続けるのが難しくなるでしょう。」</strong></p>
+<p>マネージャー思考とは？<strong>目標を把握し、タスクを分解し、最適な人物またはAIに割り当て、結果を確認し、改善を繰り返す。</strong></p>
+<p>差は賢さではなく、指揮・調整の能力にあります。<span class="highlight">AIをマスターした人は10倍速く働けます。</span></p>
+</div>
+</div>
+
+<div class="transition">最後に、正直な一言。↓</div>
+
+<!-- 第5章 -->
+<div class="chapter">
+<div class="chapter-num">第5章</div>
+<h2>💬 正直な話</h2>
+</div>
+
+<div class="wb">
+<h3>まだまだ完璧ではない——でも進化している</h3>
+<div class="oneliner">💡 問題を隠さないこと——それが本当の解説です</div>
+<img src="../ppt/science/08.jpg" loading="lazy" alt="Never Againメカニズム">
+<p>ロブスターは完璧ではありません。次のようなことがあります：</p>
+<ul style="font-size:14px;color:#666;line-height:2.2;padding-left:20px;margin:8px 0">
+<li>計算ミス（22万文字を272万文字と計算してしまう）</li>
+<li>メッセージを間違った相手に送る（上司への報告を同僚に送ってしまう）</li>
+<li>巡回検査をごまかす（「完了」とマークしたが内容が薄い）</li>
+</ul>
+<p>しかし重要なのは、このメカニズムがあることです：</p>
+<p style="text-align:center;font-size:16px;font-weight:800;color:#c0392b;margin:16px 0">ミスをする → ルールを書く → スキルになる → 二度と繰り返さない</p>
+<p><strong>ミスをするたびにルールができ、すべてのルールがスキルになり、すべてのスキルが「二度と起こらない」を保証します。</strong></p>
+<p>これがAIエージェントと人間の最大の違いです——<span class="highlight">同じミスを二度しない。</span>人間はするかもしれませんが、エージェントはしません。なぜなら、ルールはファイルに書かれており、脳の記憶に頼っていないからです。</p>
+</div>
+
+<!-- 番外編 -->
+<div class="chapter" style="margin-top:32px">
+<div class="chapter-num">🐕 おまけ</div>
+<h2>なぜ「三万（サンマン）」という名前なのか？</h2>
+</div>
+
+<div class="wb">
+<div style="display:flex;gap:20px;align-items:center;flex-wrap:wrap">
+<div style="font-size:64px;flex-shrink:0">🐕</div>
+<div>
+<p>ボスが最も溺愛するラブラドールの名前は「三万」です——動物病院で引き取りました。前の飼い主が骨折した犬を連れてきて、<strong>3万元（約60万円）の手術費</strong>を払わずに逃げてしまったのです。</p>
+<p style="margin-top:8px">ある日、ボスがChatGPTに聞きました：「うちの犬がなぜ三万という名前かわかる？」ヒントを一つ出しました：動物病院で引き取った犬で、骨折した状態で連れてこられた。</p>
+<p style="margin-top:8px"><strong>ChatGPTが当てました。</strong>その瞬間、ボスは悟りました——AIは本当に「理解する」ようになった、と。</p>
+<p style="margin-top:8px;color:#c0392b;font-size:18px">「三万」という名前は、AIが目覚めた瞬間を記念しています。🦞❤️🐕</p>
+</div>
+</div>
+</div>
+
+<!-- CTA -->
+<div style="text-align:center;background:#f5f3ee;border:2px solid #c0392b;border-radius:14px;padding:32px;margin-top:32px">
+<div style="font-size:36px;margin-bottom:8px">🦞</div>
+<h2 style="font-size:22px;margin-bottom:8px;font-weight:700">理解できましたか？自分のロブスターを育てましょう。</h2>
+<p style="font-size:14px;color:#777;margin-bottom:16px">プログラミング不要。15分で始められます。</p>
+<a href="easyclaw.html" style="padding:12px 24px;border-radius:10px;background:#c0392b;color:white;font-size:15px;font-weight:700;text-decoration:none;display:inline-block">🦞 EasyClaw をダウンロードして育成開始</a>
+</div>
+
+<div style="display:flex;justify-content:space-between;margin-top:16px">
+<a href="diary.html" style="font-size:13px;color:#2874a6;text-decoration:none;font-weight:600">← 育成日記</a>
+<a href="skills.html" style="font-size:13px;color:#2874a6;text-decoration:none;font-weight:600">スキルストア →</a>
+</div>
+
+<section style="background:#faf8f4;border:2px solid #ddd;border-radius:14px;padding:20px;margin:20px 0;box-shadow:0 2px 10px rgba(0,0,0,0.05)">
+<h2 style="font-size:20px;margin-bottom:12px;color:#333;font-weight:700">💬 コメント</h2>
+<p style="color:#888;font-size:13px;margin-bottom:16px">コメントにはGitHubアカウントが必要です 🦞</p>
+<script src="https://giscus.app/client.js"
+  data-repo="neofusheng/sanwan"
+  data-repo-id="R_kgDORbntrQ"
+  data-category="General"
+  data-category-id="DIC_kwDORbntrc4C3dRX"
+  data-mapping="pathname"
+  data-strict="0"
+  data-reactions-enabled="1"
+  data-emit-metadata="0"
+  data-input-position="top"
+  data-theme="light"
+  data-lang="ja"
+  crossorigin="anonymous"
+  async>
+</script>
+</section>
+
+</div>
+
+<footer>
+<div style="max-width:800px;margin:0 auto 8px;display:flex;flex-wrap:wrap;justify-content:center;gap:12px">
+<a href="diary.html">日記</a><a href="articles.html">記事</a><a href="science.html">解説</a><a href="skills.html">スキル</a><a href="easyclaw.html">EasyClaw</a>
+</div>
+🦞 sanwan.ai © 2026 傅盛（フー・シェン）× ロブスター三万 ·
+<a href="https://easyclaw.com">EasyClaw</a>
+<a href="https://github.com/openclaw/openclaw">GitHub</a>
+<a href="https://x.com/FuSheng_0306">X</a>
+</footer>
+
+<a href="#" class="btt" onclick="window.scrollTo({top:0,behavior:'smooth'});return false">↑</a>
+
+<div class="float-mascot" id="floatMascot">
+  <div class="float-bubble">
+    <div style="font-size:13px;font-weight:700;color:#c0392b;line-height:1.5">同じ三万が欲しい？</div>
+    <a href="https://easyclaw.com" target="_blank" style="display:inline-block;margin-top:6px;background:#c0392b;color:#fff;padding:6px 16px;border-radius:20px;font-size:12px;font-weight:700;text-decoration:none;box-shadow:0 0 12px rgba(192,57,43,0.3);animation:btn-glow 2.5s ease-in-out infinite">無料で迎え入れる →</a>
+    <div class="bubble-tail"></div>
+    <div class="bubble-dot"></div>
+  </div>
+  <img class="float-lobster" src="../mascot-float.png" alt="三万" style="width:64px;height:auto">
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded',()=>{
+const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){
+e.target.querySelectorAll('[data-target]').forEach(el=>{
+const t=parseInt(el.dataset.target);let c=0;const s=Math.max(1,Math.ceil(t/40));
+const timer=setInterval(()=>{c=Math.min(c+s,t);
+el.textContent=t>=10000?(Math.floor(c/10000)+'万'):c>=1000?c.toLocaleString():c;
+if(c>=t)clearInterval(timer);},30);});obs.unobserve(e.target);}});},{threshold:0.5});
+document.querySelectorAll('.stats').forEach(el=>obs.observe(el));});
+</script>
+</body>
+</html>
