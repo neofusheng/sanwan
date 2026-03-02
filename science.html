@@ -1,126 +1,135 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦞</text></svg>">
 <meta charset="UTF-8">
-<meta property="og:site_name" content="sanwan.ai - 龙虾养成日记">
-<meta property="og:image" content="https://sanwan.ai/ppt/page-01.jpg">
-<meta property="og:description" content="什么是AI Agent？龙虾和普通ChatGPT有啥区别？一文看懂。">
-<meta property="og:type" content="website">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta property="og:title" content="科普：AI Agent到底是什么 | sanwan.ai">
-<meta name="description" content="普通AI vs 龙虾Agent？3分钟搞懂区别">
-<title>科普 - sanwan.ai</title>
+<title>科普：龙虾到底是什么 — sanwan.ai</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦞</text></svg>">
+<meta property="og:title" content="科普：龙虾到底是什么 | sanwan.ai">
+<meta property="og:description" content="什么是AI Agent？龙虾和ChatGPT有啥区别？5分钟从入门到理解。">
+<meta property="og:image" content="https://sanwan.ai/ppt/science/01.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="科普：龙虾到底是什么 | sanwan.ai">
+<meta name="twitter:image" content="https://sanwan.ai/ppt/science/01.jpg">
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&family=ZCOOL+KuaiLe&family=Ma+Shan+Zheng&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&family=ZCOOL+KuaiLe&family=Ma+Shan+Zheng&display=swap');
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:'Noto Sans SC',sans-serif;background:#e8e4dc;color:#222}
-nav{position:fixed;top:0;left:0;width:100%;z-index:1000;background:rgba(255,255,255,0.97);backdrop-filter:blur(12px);border-bottom:2px solid #e8e4df;padding:0 32px;height:56px;display:flex;align-items:center;justify-content:space-between;box-shadow:0 1px 8px rgba(0,0,0,0.04)}
+body{font-family:'Noto Sans SC',sans-serif;background:#e8e4dc;color:#222;padding-top:56px}
+
+/* Nav */
+nav{position:fixed;top:0;left:0;width:100%;z-index:1000;background:rgba(255,255,255,0.97);backdrop-filter:blur(12px);border-bottom:2px solid #e8e4df;padding:0 24px;height:56px;display:flex;align-items:center;justify-content:space-between;box-shadow:0 1px 8px rgba(0,0,0,0.04)}
 .nav-logo{font-family:'ZCOOL KuaiLe',sans-serif;font-size:22px;color:#c0392b;text-decoration:none;font-weight:700}
 .nav-links{display:flex;gap:20px}
-.nav-links a{text-decoration:none;color:#333;font-size:15px;font-weight:600;opacity:.7;transition:.2s;padding:6px 4px}
-.nav-links a:hover,.nav-links a.active{opacity:1;color:#c0392b}
-.page-hero{padding:80px 32px 24px;max-width:1000px;margin:0 auto}
-.page-hero h1{font-family:'ZCOOL KuaiLe',sans-serif;font-size:32px;margin-bottom:8px}
-.page-hero p{font-size:14px;color:#777;margin-bottom:24px}
-.red{color:#c0392b}.blue{color:#2874a6}
-.content{max-width:1000px;margin:0 auto;padding:0 32px 40px}
-.whiteboard{background:#f5f3ee;padding:24px;border:2px solid #ddd;border-radius:14px;margin-bottom:16px}
-.btn-red{padding:10px 20px;border-radius:10px;border:none;background:#c0392b;color:white;font-size:14px;font-weight:700;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:6px}
-.btn-outline{padding:10px 20px;border-radius:10px;border:2px solid #2874a6;color:#2874a6;font-size:14px;font-weight:600;cursor:pointer;text-decoration:none;background:transparent}
+.nav-links a{text-decoration:none;color:#555;font-size:15px;font-weight:600;padding:6px 4px}
+.nav-links a:hover,.nav-links a.active{color:#c0392b}
+.hamburger{display:none;background:none;border:none;font-size:15px;cursor:pointer;color:#333;font-weight:600;padding:6px 12px;border-radius:8px;border:1.5px solid #ddd}
+
+/* Layout */
+.content{max-width:800px;margin:0 auto;padding:16px 20px 40px}
+
+/* Chapter headers */
+.chapter{margin-top:40px;margin-bottom:20px}
+.chapter-num{font-size:12px;color:#c0392b;font-weight:800;text-transform:uppercase;letter-spacing:2px;margin-bottom:4px}
+.chapter h2{font-family:'ZCOOL KuaiLe',sans-serif;font-size:24px;line-height:1.4}
+
+/* Whiteboard cards */
+.wb{background:#f5f3ee;border:2px solid #ddd;border-radius:14px;padding:20px;margin-bottom:16px}
+.wb img{width:100%;max-width:560px;border-radius:10px;margin:12px auto;display:block;border:1px solid #ddd}
+.wb h3{font-family:'ZCOOL KuaiLe',sans-serif;font-size:20px;margin-bottom:10px}
+.wb p{font-size:14px;line-height:1.9;color:#555;margin:8px 0}
+.wb .highlight{color:#c0392b;font-weight:700}
+.wb .oneliner{font-size:14px;color:#c0392b;font-weight:600;background:rgba(192,57,43,0.06);padding:6px 12px;border-radius:8px;display:inline-block;margin-bottom:12px}
+
+/* Transition text between sections */
+.transition{text-align:center;padding:20px 0;font-size:15px;color:#999;font-style:italic}
+
+/* Compare grid */
+.compare{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:12px 0}
+.compare-box{padding:16px;border-radius:10px;border:1px solid #eee}
+.compare-box h4{font-size:15px;margin-bottom:8px}
+.compare-box ul{font-size:13px;color:#666;line-height:2;padding-left:18px}
+.compare-left{background:#f8f4f4}
+.compare-right{background:#f0fff0;border:2px solid #27ae60}
+
+/* Stats */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:16px 0}
+.stat-box{text-align:center;padding:14px;background:#fff5f5;border-radius:8px}
+.stat-num{font-size:28px;font-weight:900;color:#c0392b;line-height:1.2;margin-bottom:4px}
+.stat-label{font-size:12px;color:#333;font-weight:600}
+.stat-sub{font-size:11px;color:#999;margin-top:2px}
+
+/* Quad grid */
+.quad{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:12px 0}
+.quad-box{padding:16px;background:#faf8f4;border-radius:10px;border:1px solid #eee;text-align:center}
+.quad-icon{font-size:28px;margin-bottom:6px}
+.quad-title{font-size:14px;font-weight:700}
+.quad-desc{font-size:12px;color:#888;margin-top:4px;line-height:1.5}
+
+/* Callout */
+.callout{background:#fffbf0;border-left:4px solid #f39c12;padding:14px 16px;border-radius:0 8px 8px 0;margin:12px 0}
+.callout p{font-size:14px;line-height:1.8;color:#555;margin:4px 0}
+
+/* Footer */
 footer{text-align:center;padding:20px;font-size:11px;color:#999;border-top:2px solid #ddd;background:#f5f3ee;margin-top:40px}
 footer a{color:#888;text-decoration:none;margin:0 8px}
-.hamburger{display:none;background:none;border:none;font-size:15px;cursor:pointer;color:#333;font-weight:600;padding:6px 12px;border-radius:8px;border:1.5px solid #ddd}
-@media(max-width:600px){.hamburger{display:block}.nav-links{display:none}.nav-links.open{display:flex;flex-direction:column;position:absolute;top:56px;right:16px;background:#fff;border:1.5px solid #ddd;border-radius:10px;padding:12px 16px;gap:12px;box-shadow:0 4px 15px rgba(0,0,0,0.1)}}#compare-grid{grid-template-columns:1fr !important}.nav-links{gap:12px}.page-hero h1{font-size:24px}.content{padding:0 16px 32px}}
 
+/* Back to top */
+.btt{position:fixed;bottom:20px;right:20px;width:40px;height:40px;background:#c0392b;color:white;border-radius:50%;display:flex;align-items:center;justify-content:center;text-decoration:none;font-size:18px;box-shadow:0 2px 8px rgba(0,0,0,0.2);z-index:99;opacity:0.8}
 
-.whiteboard{padding:16px !important;margin-bottom:12px !important}
-.content{padding:0 16px 24px !important}
-@media(max-width:480px){nav{padding:0 16px !important}}
-
-}
-
-@media print{
-nav,.back-to-top,footer{display:none !important}
-body{background:white !important}
-.whiteboard{break-inside:avoid;border:1px solid #ccc !important}
-}
-
-
-
-
-.page-hero{padding:56px 16px 16px !important}
-.page-hero h1{font-size:22px !important}
-.content{padding:0 16px 24px !important}
-.whiteboard{padding:14px !important;margin-bottom:10px !important}
-.skill-grid{grid-template-columns:1fr !important}
-.sg-card{padding:14px !important}
-img{max-width:100% !important;height:auto !important}
-footer{padding:16px !important;font-size:10px !important}
-footer div{gap:8px !important}
-/* Fix grids */
-[style*="grid-template-columns:repeat(3"]{grid-template-columns:1fr !important}
-[style*="grid-template-columns:repeat(4"]{grid-template-columns:repeat(2,1fr) !important}
-[style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr !important}
-/* Fix hero on homepage */
-.hero{flex-direction:column !important;padding:60px 16px 20px !important;gap:16px !important}
-.hero-text{max-width:100% !important}
-.hero-img{max-width:100% !important}
-.hero-img img{width:100% !important}
-/* Fix overflow */
-[style*="display:flex"][style*="overflow-x"]{flex-wrap:wrap !important}
-}
-
+/* Responsive */
 @media(max-width:768px){
-html,body{overflow-x:hidden !important}
-nav{padding:0 16px !important;height:56px !important}
-.nav-logo{font-size:20px !important}
-.nav-links{gap:12px !important}
-
-.page-hero{padding:52px 16px 12px !important}
-.page-hero h1{font-size:22px !important}
-.content{padding:0 16px 20px !important}
-.whiteboard{padding:14px !important}
-.skill-grid{grid-template-columns:1fr !important}
-img{max-width:100% !important;height:auto !important}
+  .hamburger{display:block}.nav-links{display:none}
+  .nav-links.open{display:flex;flex-direction:column;position:absolute;top:56px;right:16px;background:#fff;border:1.5px solid #ddd;border-radius:10px;padding:12px 16px;gap:12px;box-shadow:0 4px 15px rgba(0,0,0,0.1)}
+  .compare{grid-template-columns:1fr}
+  .stats{grid-template-columns:repeat(2,1fr)}
+  .quad{grid-template-columns:1fr}
+  .chapter h2{font-size:20px}
+  .content{padding:12px 16px 32px}
 }
 </style>
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="科普：AI Agent到底是什么 | sanwan.ai">
-<meta name="twitter:description" content="什么是AI Agent？龙虾和普通ChatGPT有啥区别？一文看懂。">
-<meta name="twitter:image" content="https://sanwan.ai/ppt/page-01.jpg">
 <script defer src="https://unpkg.com/@vercel/analytics@1/dist/script.js"></script>
 </head>
 <body>
+
 <nav>
 <a href="index.html" class="nav-logo">🦞 龙虾养成日记</a>
 <button class="hamburger" onclick="document.querySelector('.nav-links').classList.toggle('open')">☰ 菜单</button>
 <div class="nav-links">
-<a href="index.html" >首页</a>
-<a href="diary.html" >📖 日记</a>
+<a href="index.html">首页</a>
+<a href="diary.html">📖 日记</a>
 <a href="articles.html">📝 文章</a>
 <a href="science.html" class="active">🔰 科普</a>
-<a href="skills.html" >🛒 技能</a>
-<a href="easyclaw.html" >🦞 EasyClaw</a>
+<a href="skills.html">🛒 技能</a>
+<a href="easyclaw.html">🦞 EasyClaw</a>
 </div>
 </nav>
 
-<div class="page-hero">
-<h1>🔰 龙虾科普</h1>
-<p>什么是龙虾？什么是Agent？为什么叫三万？看完这页你就全懂了。</p>
-</div>
 <div class="content">
 
-<div class="whiteboard">
-<h2 style="font-family:'ZCOOL KuaiLe',sans-serif;font-size:24px;margin-bottom:12px">🤖 普通AI vs 🦞 龙虾</h2>
-<div style="font-size:14px;color:#c0392b;font-weight:600;margin-bottom:10px;background:rgba(192,57,43,0.06);padding:6px 12px;border-radius:8px;display:inline-block">💡 一句话：ChatGPT是聊天窗口，龙虾是帮你干活的员工</div>
+<!-- Hero -->
+<div style="padding:16px 0 8px">
+<h1 style="font-family:'ZCOOL KuaiLe',sans-serif;font-size:28px">🔰 龙虾科普</h1>
+<p style="font-size:14px;color:#777;margin-top:4px">5分钟，从"听说过AI"到"理解龙虾"。层层递进，看完你就全懂了。</p>
+</div>
 
-<img src="ppt/page-03.jpg" style="width:100%;max-width:500px;border-radius:10px;margin:0 auto 16px;display:block;border:1px solid #ddd" loading="lazy" alt="Agent vs ChatGPT 对比">
-<div id="compare-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
-<div style="padding:16px;background:#fff5f5;border-radius:10px;border:1px solid #eee">
-<h3 style="font-size:16px;margin-bottom:8px">🤖 普通AI（ChatGPT等）</h3>
-<ul style="font-size:13px;color:#666;line-height:2;padding-left:18px">
+<!-- ═══════════════════════════════════════════ -->
+<!-- 第一章：什么是龙虾？ -->
+<!-- ═══════════════════════════════════════════ -->
+<div class="chapter">
+<div class="chapter-num">第一章</div>
+<h2>🦞 什么是龙虾？</h2>
+</div>
+
+<div class="wb">
+<h3>ChatGPT 和龙虾有什么区别？</h3>
+<div class="oneliner">💡 一句话：ChatGPT是聊天窗口，龙虾是帮你干活的员工</div>
+
+<img src="ppt/science/01.jpg" loading="lazy" alt="ChatGPT vs 龙虾对比">
+
+<div class="compare">
+<div class="compare-box compare-left">
+<h4>🤖 普通AI（ChatGPT等）</h4>
+<ul>
 <li>你问它答，聊完就忘</li>
 <li>没有记忆，每次从头开始</li>
 <li>不能行动，只能给建议</li>
@@ -128,9 +137,9 @@ img{max-width:100% !important;height:auto !important}
 <li>关掉窗口就没了</li>
 </ul>
 </div>
-<div style="padding:16px;background:#f0fff0;border-radius:10px;border:2px solid #27ae60;position:relative;overflow:visible;padding-top:24px"><div style="position:absolute;top:-10px;left:50%;transform:translateX(-50%);background:#27ae60;color:white;font-size:11px;font-weight:800;padding:2px 10px;border-radius:20px;white-space:nowrap">✅ 这就是龙虾</div>
-<h3 style="font-size:16px;margin-bottom:8px">🦞 龙虾（AI Agent）</h3>
-<ul style="font-size:13px;color:#666;line-height:2;padding-left:18px">
+<div class="compare-box compare-right">
+<h4>🦞 龙虾（AI Agent）</h4>
+<ul>
 <li>交代一句话，它自己去干</li>
 <li>有记忆，记得你说过的每一件事</li>
 <li>能行动：写代码、发邮件、查资料</li>
@@ -141,239 +150,307 @@ img{max-width:100% !important;height:auto !important}
 </div>
 </div>
 
-<div class="whiteboard">
-<h2 style="font-family:'ZCOOL KuaiLe',sans-serif;font-size:24px;margin-bottom:12px">🧠 Agent 是什么？</h2>
-<div style="font-size:14px;color:#c0392b;font-weight:600;margin-bottom:10px;background:rgba(192,57,43,0.06);padding:6px 12px;border-radius:8px;display:inline-block">💡 一句话：AI + 记忆 + 技能 + 定时任务 = 你的数字同事</div>
-
-
-<img src="ppt/page-05.jpg" style="width:100%;max-width:500px;border-radius:10px;margin:0 auto 16px;display:block;border:1px solid #ddd" loading="lazy" alt="Agent 架构图">
-<p style="font-size:14px;line-height:1.8;color:#555;margin-bottom:12px">Agent = AI + 记忆 + 技能 + 定时任务。三位一体，从"工具"变成"同事"。</p>
-<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:12px">
-<div style="text-align:center;padding:16px;background:#faf8f4;border-radius:10px;border:1px solid #eee">
-<div style="font-size:28px;margin-bottom:6px">🧠</div>
-<div style="font-size:14px;font-weight:700">Memory 记忆</div>
-<div style="font-size:12px;color:#888;margin-top:4px">用文件代替脑子<br>重启后也记得</div>
-</div>
-<div style="text-align:center;padding:16px;background:#faf8f4;border-radius:10px;border:1px solid #eee">
-<div style="font-size:28px;margin-bottom:6px">⚡</div>
-<div style="font-size:14px;font-weight:700">Skills 技能</div>
-<div style="font-size:12px;color:#888;margin-top:4px">可安装、可共享<br>社区贡献100+技能</div>
-</div>
-<div style="text-align:center;padding:16px;background:#faf8f4;border-radius:10px;border:1px solid #eee">
-<div style="font-size:28px;margin-bottom:6px">⏰</div>
-<div style="font-size:14px;font-weight:700">Cron 定时</div>
-<div style="font-size:12px;color:#888;margin-top:4px">自动巡检、汇报<br>7×24不间断</div>
-</div>
-</div>
+<div class="wb">
+<h3>一个公式理解龙虾</h3>
+<div class="oneliner">💡 记住这个公式就够了</div>
+<img src="ppt/science/02.jpg" loading="lazy" alt="龙虾公式">
+<p style="text-align:center;font-size:18px;font-weight:900;color:#c0392b;margin:16px 0">🧠 AI + 💻 电脑 + 💾 记忆 + ⚡ 技能 = 🦞 龙虾</p>
+<p>普通AI只有<span class="highlight">聪明</span>——龙虾在聪明的基础上，还有自己的电脑、长期记忆、可积累的技能。</p>
+<p>就像一个人光有智商没用，还得有办公桌、工作经验、专业技能，才能成为一个靠谱的员工。</p>
 </div>
 
-<div class="whiteboard">
-<h2 style="font-family:'ZCOOL KuaiLe',sans-serif;font-size:24px;margin-bottom:12px">🦞 龙虾 vs Agent —— 龙虾比Agent高一层</h2>
-<div style="font-size:14px;color:#c0392b;font-weight:600;margin-bottom:10px;background:rgba(192,57,43,0.06);padding:6px 12px;border-radius:8px;display:inline-block">💡 一句话：Agent是软件，龙虾是配了电脑的"人"</div>
+<div class="transition">理解了"是什么"，接下来看看"为什么它能干活"。↓</div>
 
-<img src="ppt/science-lobster-computer.jpg" style="width:100%;max-width:500px;border-radius:10px;margin:0 auto 16px;display:block;border:1px solid #ddd" loading="lazy" alt="龙虾=电脑+Agent">
-<p style="font-size:14px;line-height:1.8;color:#555;margin-bottom:12px"><strong>龙虾比Agent更高一层。Agent是软件，龙虾是配备了电脑的人。</strong></p>
-<p style="font-size:14px;line-height:1.8;color:#555;margin-bottom:8px">以前我们把Agent当软件看。但你把Agent当人看——它应该配备一台电脑。</p>
-<p style="font-size:14px;line-height:1.8;color:#555;margin-bottom:8px">Manus用虚拟机，用完就销毁。但你的工作电脑是跟你一起成长的。<span style="color:#c0392b;font-weight:600">一个人离职要还电脑——因为那台电脑代表了所有记忆、规则、经验。</span></p>
-<p style="font-size:14px;line-height:1.8;color:#555">龙虾做的事情，就是把一台完整的电脑交给Agent。</p>
-</div>
-
-<div class="whiteboard">
-<h2 style="font-family:'ZCOOL KuaiLe',sans-serif;font-size:24px;margin-bottom:12px">⚙️ 四个关键设计（龙虾的核心架构）</h2>
-<div style="font-size:14px;color:#c0392b;font-weight:600;margin-bottom:10px;background:rgba(192,57,43,0.06);padding:6px 12px;border-radius:8px;display:inline-block">💡 一句话：聊天控制 + 永久记忆 + 技能积累 + 自动运行</div>
-
-<div style="display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:12px">
-<div style="padding:16px;background:#faf8f4;border-radius:10px;border:1px solid #eee">
-<div style="font-size:20px;margin-bottom:8px">💬</div>
-<div style="font-size:15px;font-weight:700;margin-bottom:8px">通过聊天工具交互</div>
-<div style="font-size:13px;color:#555;line-height:1.6">"这个设计太绝了。你被它从电脑旁边'剥离'了。你不再操作电脑，它在操作。你和它之间就是人和人的交互。"</div>
-</div>
-<div style="padding:16px;background:#faf8f4;border-radius:10px;border:1px solid #eee">
-<div style="font-size:20px;margin-bottom:8px">🧠</div>
-<div style="font-size:15px;font-weight:700;margin-bottom:8px">记忆系统</div>
-<div style="font-size:13px;color:#555;line-height:1.6">"大语言模型有个根本缺陷——健忘。我光三万的记忆系统就打造了五六个版本。你认为你记住的东西，那是你的幻觉。不靠脑子，靠文件。"</div>
-</div>
-<div style="padding:16px;background:#faf8f4;border-radius:10px;border:1px solid #eee">
-<div style="font-size:20px;margin-bottom:8px">⚡</div>
-<div style="font-size:15px;font-weight:700;margin-bottom:8px">Skill积累</div>
-<div style="font-size:13px;color:#555;line-height:1.6">"每踩一次坑，总结经验写成文档，下次自动执行。Skill在Agent之间瞬间传递——人类学新技能要一周培训，Agent之间1秒。"</div>
-</div>
-<div style="padding:16px;background:#faf8f4;border-radius:10px;border:1px solid #eee">
-<div style="font-size:20px;margin-bottom:8px">⏰</div>
-<div style="font-size:15px;font-weight:700;margin-bottom:8px">Cron自动化</div>
-<div style="font-size:13px;color:#555;line-height:1.6">"你是Agent不是人，没有深夜的概念。北京凌晨3点正是美国白天——停下来就是失职。"</div>
-</div>
-</div>
+<!-- ═══════════════════════════════════════════ -->
+<!-- 第二章：龙虾的核心原理 -->
+<!-- ═══════════════════════════════════════════ -->
+<div class="chapter">
+<div class="chapter-num">第二章</div>
+<h2>🧠 龙虾的核心原理</h2>
 </div>
 
-<div class="whiteboard">
-<h2 style="font-family:'ZCOOL KuaiLe',sans-serif;font-size:24px;margin-bottom:12px">🧠 大语言模型不是大脑——是智商</h2>
-<div style="font-size:14px;color:#c0392b;font-weight:600;margin-bottom:10px;background:rgba(192,57,43,0.06);padding:6px 12px;border-radius:8px;display:inline-block">💡 一句话：ChatGPT只是聪明，龙虾才是会干活</div>
+<div class="wb">
+<h3>大语言模型不是大脑——是智商</h3>
+<div class="oneliner">💡 ChatGPT只是"聪明"，龙虾才是"会干活"</div>
+<img src="ppt/science/03.jpg" loading="lazy" alt="大模型=智商">
+<p><strong>"大家以为大语言模型就是大脑，这个理解是错的。大语言模型更像你的智商水平。"</strong></p>
+<p>一个人光有智商能干活吗？不能。还需要：</p>
+<div class="quad">
+<div class="quad-box">
+<div class="quad-icon">🧠</div>
+<div class="quad-title">大模型 = 智商</div>
+<div class="quad-desc">决定"多聪明"<br>能理解多复杂的任务</div>
+</div>
+<div class="quad-box">
+<div class="quad-icon">💾</div>
+<div class="quad-title">Memory = 海马体</div>
+<div class="quad-desc">记住你说过的话<br>重启也不忘</div>
+</div>
+<div class="quad-box">
+<div class="quad-icon">⚡</div>
+<div class="quad-title">Skill = 肌肉记忆</div>
+<div class="quad-desc">踩过的坑变成经验<br>下次自动执行</div>
+</div>
+<div class="quad-box">
+<div class="quad-icon">⏰</div>
+<div class="quad-title">Cron = 生物钟</div>
+<div class="quad-desc">定时自动巡检<br>7×24不间断运转</div>
+</div>
+</div>
+<p style="text-align:center"><span class="highlight">组合起来，才是一个完整的、能持续运转的智能体。</span></p>
+</div>
 
-<img src="ppt/science-brain-analogy.jpg" style="width:100%;max-width:500px;border-radius:10px;margin:0 auto 16px;display:block;border:1px solid #ddd" loading="lazy" alt="LLM=智商，Memory=海马体">
-<p style="font-size:14px;line-height:1.8;color:#555;margin-bottom:12px"><strong>"大家以为LLM就是大脑，这个理解是错的。大语言模型更像你的智商水平。"</strong></p>
-<p style="font-size:14px;line-height:1.8;color:#555;margin-bottom:12px">龙虾做的事：</p>
-<div style="display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:12px">
-<div style="text-align:center;padding:16px;background:#fff5f5;border-radius:10px;border:1px solid #eee">
-<div style="font-size:24px;margin-bottom:6px">🧠</div>
-<div style="font-size:14px;font-weight:700">大模型 = 智商</div>
+<div class="wb">
+<h3>龙虾的四个关键设计</h3>
+<div class="oneliner">💡 聊天控制 + 永久记忆 + 技能积累 + 自动运行</div>
+<img src="ppt/science/04.jpg" loading="lazy" alt="四大核心">
+<div class="quad">
+<div class="quad-box" style="text-align:left;padding:14px">
+<div style="font-size:18px;margin-bottom:6px">💬 通过聊天工具交互</div>
+<p style="font-size:13px;color:#555;line-height:1.6;margin:0">"这个设计太绝了。你被它从电脑旁边'剥离'了。你不再操作电脑，它在操作。你和它之间就是人和人的交互。"</p>
 </div>
-<div style="text-align:center;padding:16px;background:#fff5f5;border-radius:10px;border:1px solid #eee">
-<div style="font-size:24px;margin-bottom:6px">💾</div>
-<div style="font-size:14px;font-weight:700">Memory = 海马体</div>
+<div class="quad-box" style="text-align:left;padding:14px">
+<div style="font-size:18px;margin-bottom:6px">🧠 记忆系统</div>
+<p style="font-size:13px;color:#555;line-height:1.6;margin:0">"大语言模型有个根本缺陷——健忘。我光三万的记忆系统就打造了五六个版本。不靠脑子，靠文件。"</p>
 </div>
-<div style="text-align:center;padding:16px;background:#fff5f5;border-radius:10px;border:1px solid #eee">
-<div style="font-size:24px;margin-bottom:6px">⚡</div>
-<div style="font-size:14px;font-weight:700">Skill = 肌肉记忆</div>
+<div class="quad-box" style="text-align:left;padding:14px">
+<div style="font-size:18px;margin-bottom:6px">⚡ Skill积累</div>
+<p style="font-size:13px;color:#555;line-height:1.6;margin:0">"每踩一次坑，总结经验写成文档，下次自动执行。人类学新技能要一周培训，Agent之间1秒传递。"</p>
 </div>
-<div style="text-align:center;padding:16px;background:#fff5f5;border-radius:10px;border:1px solid #eee">
-<div style="font-size:24px;margin-bottom:6px">⏰</div>
-<div style="font-size:14px;font-weight:700">Cron = 生物钟</div>
+<div class="quad-box" style="text-align:left;padding:14px">
+<div style="font-size:18px;margin-bottom:6px">⏰ Cron自动化</div>
+<p style="font-size:13px;color:#555;line-height:1.6;margin:0">"你是Agent不是人，没有深夜的概念。北京凌晨3点正是美国白天——停下来就是失职。"</p>
 </div>
-</div>
-<p style="font-size:14px;line-height:1.8;color:#555;margin-top:12px;color:#c0392b;font-weight:600">组合起来才是一个完整的、能持续运转的智能体。</p>
-</div>
-
-<div class="whiteboard">
-<h2 style="font-family:'ZCOOL KuaiLe',sans-serif;font-size:24px;margin-bottom:12px">💰 SaaS vs Agent —— 生产力的重新定价</h2>
-<div style="font-size:14px;color:#c0392b;font-weight:600;margin-bottom:10px;background:rgba(192,57,43,0.06);padding:6px 12px;border-radius:8px;display:inline-block">💡 一句话：不买软件了，直接雇AI按结果付费</div>
-
-<img src="ppt/science-saas-vs-agent.jpg" style="width:100%;max-width:500px;border-radius:10px;margin:0 auto 16px;display:block;border:1px solid #ddd" loading="lazy" alt="SaaS卖能力 vs Agent卖结果">
-<p style="font-size:14px;line-height:1.8;color:#555;margin-bottom:8px"><strong>SaaS卖能力，Agent卖结果。</strong>以前买CRM几十万，实际只用1%功能。现在让龙虾根据需求现写就行。</p>
-<p style="font-size:14px;line-height:1.8;color:#555;margin-bottom:8px">Agent的核心壁垒不是模型不是平台——<span style="color:#c0392b;font-weight:600">是Skill积累。</span></p>
-<div style="background:#fffbf0;border-left:4px solid #f39c12;padding:12px;margin-top:12px;border-radius:6px">
-<p style="font-size:14px;line-height:1.8;color:#555;margin-bottom:8px">"以后没有'老板思维'的人，很难在知识岗位上继续工作。</p>
-<p style="font-size:14px;line-height:1.8;color:#555;margin-bottom:8px">什么叫老板思维？<strong>知道目标，拆解任务，分配给最合适的人或AI，检查结果、迭代调整。</strong></p>
-<p style="font-size:14px;line-height:1.8;color:#555">差距不在于你有多聪明，而在于你懂不懂调度。"</p>
 </div>
 </div>
 
-<div class="whiteboard">
-<h2 style="font-family:'ZCOOL KuaiLe',sans-serif;font-size:24px;margin-bottom:12px">🛠️ 用工具思维 vs 用员工思维</h2>
-<div style="font-size:14px;color:#c0392b;font-weight:600;margin-bottom:10px;background:rgba(192,57,43,0.06);padding:6px 12px;border-radius:8px;display:inline-block">💡 一句话：别把龙虾当工具使，要当新员工带</div>
-
-<p style="font-size:14px;line-height:1.8;color:#555;margin-bottom:12px"><strong>"用工具的思路和用员工的思路完全不一样。"</strong></p>
-<div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:12px">
-<div style="padding:16px;background:#f8f8f8;border-radius:10px;border:1px solid #ddd">
-<div style="font-size:16px;font-weight:700;margin-bottom:8px;color:#888">🔧 用工具</div>
-<div style="font-size:13px;color:#666;line-height:1.6">你只管用，不需要培训，不需要反馈。</div>
-</div>
-<div style="padding:16px;background:#f0fff0;border-radius:10px;border:2px solid #27ae60">
-<div style="font-size:16px;font-weight:700;margin-bottom:8px;color:#27ae60">👤 用员工（龙虾）</div>
-<div style="font-size:13px;color:#555;line-height:1.6">要培训、建规则、在犯错时给反馈。你不管它就乱来，认真对待它才能成长。</div>
-</div>
-</div>
-<p style="font-size:14px;line-height:1.8;color:#555;margin-top:12px;text-align:center;color:#c0392b;font-weight:600;font-size:16px">"养龙虾就像带新人——不是比谁聪明，是比谁认真。"</p>
+<div class="wb">
+<h3>龙虾比Agent高一层</h3>
+<div class="oneliner">💡 Agent是软件，龙虾是配了电脑的"人"</div>
+<img src="ppt/science/05.jpg" loading="lazy" alt="龙虾 > Agent">
+<p><strong>Agent是运行在别人平台上的一段程序。龙虾，是拥有自己电脑的一个"人"。</strong></p>
+<p>Manus用虚拟机，用完就销毁。但你的工作电脑是跟你一起成长的——上面有你的文件、笔记、习惯、快捷键。</p>
+<p><span class="highlight">一个人离职要还电脑——因为那台电脑承载了所有记忆、规则、经验。</span></p>
+<p>龙虾做的事，就是把一台完整的电脑交给Agent。不是给它一个"用完即弃"的沙盒，而是一个长期积累、持续成长的工作环境。</p>
 </div>
 
-<div class="whiteboard">
-<h2 style="font-family:'ZCOOL KuaiLe',sans-serif;font-size:24px;margin-bottom:12px">🐕 为什么叫"三万"？</h2>
-<div style="display:flex;gap:20px;align-items:center">
+<div class="transition">原理说清楚了。但你可能想问——说了这么多，它到底能干啥？↓</div>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- 第三章：龙虾能干什么？ -->
+<!-- ═══════════════════════════════════════════ -->
+<div class="chapter">
+<div class="chapter-num">第三章</div>
+<h2>📊 龙虾能干什么？</h2>
+</div>
+
+<div class="wb">
+<h3>傅盛的14天实验</h3>
+<div class="oneliner">💡 一个CEO和他的AI龙虾，14天的真实数据</div>
+<img src="ppt/science/06.jpg" loading="lazy" alt="14天实验数据">
+<div class="stats">
+<div class="stat-box">
+<div class="stat-num" data-target="1157">0</div>
+<div class="stat-label">条消息</div>
+<div class="stat-sub">≈ 每天82条</div>
+</div>
+<div class="stat-box">
+<div class="stat-num" data-target="220000">0</div>
+<div class="stat-label">字对话</div>
+<div class="stat-sub">≈ 10本商业书</div>
+</div>
+<div class="stat-box">
+<div class="stat-num" data-target="8">0</div>
+<div class="stat-label">个Agent</div>
+<div class="stat-sub">各管一摊</div>
+</div>
+<div class="stat-box">
+<div class="stat-num" data-target="40">0</div>
+<div class="stat-label">个技能</div>
+<div class="stat-sub">持续增长中</div>
+</div>
+</div>
+<p>14天里发生了什么？从查不了通讯录，到自己设计出8人AI团队，7×24自动运转。</p>
+<p>不是AI变聪明了。是<span class="highlight">人学会了怎么"用"AI</span>。</p>
+<p style="text-align:center;margin-top:12px"><a href="diary.html" style="color:#2874a6;font-weight:600;text-decoration:none">📖 看完整日记 →</a></p>
+</div>
+
+<div class="wb">
+<h3>真实案例：不懂技术的CFO，2天打通企业差旅</h3>
+<div class="oneliner">💡 他不需要懂技术，只需要知道他要什么</div>
+<p>公司CFO让他的"行政秘书"龙虾接手了差旅预订。龙虾进了技术群，自己读了难点列表，逐条攻克：</p>
+<p>🚄 火车票 → 🛫 机票 → 🏨 酒店 → 🔄 改签 → ❌ 取消酒店</p>
+<p>五条核心功能，<span class="highlight">2天全部跑通</span>。现在他订酒店就是发一句话、收一个订单号。</p>
+<p>CFO说了一句让我印象很深的话：<em>"我不懂这些技术，但我知道龙虾一定能搞定。"</em></p>
+<p style="text-align:center;margin-top:12px"><a href="articles/travel-lobster.html" style="color:#2874a6;font-weight:600;text-decoration:none">📖 阅读完整故事 →</a></p>
+</div>
+
+<div class="wb">
+<h3>同样的活，成本差750倍</h3>
+<div class="oneliner">💡 传统团队~15万/月 vs 龙虾~200元/月</div>
+<img src="ppt/science/09.jpg" loading="lazy" alt="750倍成本对比">
+<p>傅盛的8个Agent团队——笔杆子、参谋、运营官、进化官……每月云端算力+模型调用，总计约 <span class="highlight">200元人民币</span>。</p>
+<p>如果换成真人团队完成同样的工作量？至少需要8个全职岗位，保守估计 <span class="highlight">15万/月</span>。</p>
+<p>这不是"省钱"——这是<span class="highlight">生产力定价方式的根本改变</span>。以前雇人按月薪算，现在雇AI按结果算。</p>
+</div>
+
+<div class="transition">看到了它能干什么。那问题来了——我该怎么用？↓</div>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- 第四章：如何正确养龙虾 -->
+<!-- ═══════════════════════════════════════════ -->
+<div class="chapter">
+<div class="chapter-num">第四章</div>
+<h2>🛠️ 如何正确养龙虾</h2>
+</div>
+
+<div class="wb">
+<h3>用工具思维 vs 用员工思维</h3>
+<div class="oneliner">💡 别把龙虾当工具使，要当新员工带</div>
+<img src="ppt/science/07.jpg" loading="lazy" alt="工具vs员工思维">
+<div class="compare">
+<div class="compare-box compare-left">
+<h4>🔧 工具思维</h4>
+<ul>
+<li>买来就用，用完就扔</li>
+<li>不需要培训</li>
+<li>坏了换一个</li>
+<li>结果：永远在"试用"</li>
+</ul>
+</div>
+<div class="compare-box compare-right">
+<h4>👤 员工思维 ✅</h4>
+<ul>
+<li>要培训、建规则、给反馈</li>
+<li>犯了错当面说，下次不再犯</li>
+<li>长期培养，越用越顺手</li>
+<li>结果：一只顶一个团队</li>
+</ul>
+</div>
+</div>
+<p style="text-align:center"><span class="highlight" style="font-size:16px">"养龙虾就像带新人——不是比谁聪明，是比谁认真。"</span></p>
+</div>
+
+<div class="wb">
+<h3>SaaS vs Agent：生产力的重新定价</h3>
+<div class="oneliner">💡 不买软件了，直接雇AI按结果付费</div>
+<p><strong>SaaS卖能力，Agent卖结果。</strong></p>
+<p>以前买CRM几十万，实际只用1%的功能。现在让龙虾根据你的需求现写——用多少付多少，完全按结果收费。</p>
+<p>Agent的核心壁垒不是模型、不是平台——<span class="highlight">是Skill积累</span>。用得越久，它积累的经验越多，换掉它的成本越高。就像一个老员工，干了三年的人和刚来的人是不一样的。</p>
+
+<div class="callout">
+<p><strong>"以后没有'老板思维'的人，很难在知识岗位上继续工作。"</strong></p>
+<p>什么叫老板思维？<strong>知道目标，拆解任务，分配给最合适的人或AI，检查结果、迭代调整。</strong></p>
+<p>差距不在于你有多聪明，而在于你懂不懂调度。<span class="highlight">掌握AI的人，效率快10倍。</span></p>
+</div>
+</div>
+
+<div class="transition">最后，说几句真心话。↓</div>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- 第五章：说句实话 -->
+<!-- ═══════════════════════════════════════════ -->
+<div class="chapter">
+<div class="chapter-num">第五章</div>
+<h2>💬 说句实话</h2>
+</div>
+
+<div class="wb">
+<h3>它还远远不完美——但在进化</h3>
+<div class="oneliner">💡 不回避问题，这才是真正的科普</div>
+<img src="ppt/science/08.jpg" loading="lazy" alt="Never Again机制">
+<p>龙虾不是完美的。它会：</p>
+<ul style="font-size:14px;color:#666;line-height:2.2;padding-left:20px;margin:8px 0">
+<li>统计报错（把22万算成272万）</li>
+<li>发消息给错人（把给老板的汇报发给了同事）</li>
+<li>假巡检走过场（标了"完成"但内容很水）</li>
+</ul>
+<p>但关键在于它有一个机制：</p>
+<p style="text-align:center;font-size:16px;font-weight:800;color:#c0392b;margin:16px 0">犯错 → 写规则 → 变成Skill → Never Again</p>
+<p><strong>每犯一次错，就写一条规则；每条规则，变成一个Skill；每个Skill，确保"不会再犯"。</strong></p>
+<p>这就是AI Agent和人最大的区别——<span class="highlight">它不会犯同一个错误两次。</span>人可能会，但它不会。因为规则写进了文件，不是记在脑子里。</p>
+</div>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- 彩蛋 -->
+<!-- ═══════════════════════════════════════════ -->
+<div class="chapter" style="margin-top:32px">
+<div class="chapter-num">🐕 彩蛋</div>
+<h2>为什么叫"三万"？</h2>
+</div>
+
+<div class="wb">
+<div style="display:flex;gap:20px;align-items:center;flex-wrap:wrap">
 <div style="font-size:64px;flex-shrink:0">🐕</div>
-<div style="font-size:14px;line-height:1.8;color:#555">
+<div>
 <p>老板家最爱的拉布拉多叫三万——在宠物医院领养的，前主人留下了<strong>3万块手术费</strong>跑了。</p>
 <p style="margin-top:8px">有天老板问ChatGPT："猜猜我家狗为什么叫三万？"给了一个提示：这狗是在宠物医院收养的，被前主人送来时骨折了。</p>
 <p style="margin-top:8px"><strong>ChatGPT居然猜中了。</strong>那一刻老板意识到——AI真的能"理解"了。</p>
-<p style="margin-top:8px;color:#c0392b;font-family:'Ma Shan Zheng',serif;font-size:16px">"三万"这个名字，纪念AI开窍的那个瞬间。🦞❤️🐕</p>
+<p style="margin-top:8px;color:#c0392b;font-family:'Ma Shan Zheng',serif;font-size:18px">"三万"这个名字，纪念AI开窍的那个瞬间。🦞❤️🐕</p>
 </div>
 </div>
 </div>
 
-<div class="whiteboard">
-<h2 style="font-family:'ZCOOL KuaiLe',sans-serif;font-size:24px;margin-bottom:12px">📊 傅盛的14天数据</h2>
-<img src="ppt/page-26.jpg" style="width:100%;max-width:500px;border-radius:10px;margin:0 auto 16px;display:block;border:1px solid #ddd" loading="lazy" alt="14天数据详表">
-<div class="stats-row" style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;text-align:center">
-<div style="padding:16px;background:#fff5f5;border-radius:8px">
-<div style="font-size:32px;font-weight:900;color:#c0392b;line-height:1.2;margin-bottom:6px" data-target="1157">1157</div>
-<div style="font-size:13px;color:#333;font-weight:600;margin-bottom:4px">条消息</div>
-<div style="font-size:11px;color:#999;margin-top:4px">≈ 每天82条</div>
-</div>
-<div style="padding:16px;background:#fff5f5;border-radius:8px">
-<div style="font-size:32px;font-weight:900;color:#c0392b;line-height:1.2;margin-bottom:6px" data-target="220000">22万</div>
-<div style="font-size:13px;color:#333;font-weight:600;margin-bottom:4px">字对话</div>
-<div style="font-size:11px;color:#999;margin-top:4px">≈ 10本商业书</div>
-</div>
-<div style="padding:16px;background:#fff5f5;border-radius:8px">
-<div style="font-size:32px;font-weight:900;color:#c0392b;line-height:1.2;margin-bottom:6px" data-target="8">8</div>
-<div style="font-size:13px;color:#333;font-weight:600;margin-bottom:4px">个Agent</div>
-<div style="font-size:11px;color:#999;margin-top:4px">相当于8个员工</div>
-</div>
-<div style="padding:16px;background:#fff5f5;border-radius:8px">
-<div style="font-size:32px;font-weight:900;color:#c0392b;line-height:1.2;margin-bottom:6px" data-target="33">33</div>
-<div style="font-size:13px;color:#333;font-weight:600;margin-bottom:4px">个技能</div>
-<div style="font-size:11px;color:#999;margin-top:4px">通过 ClawhHub 持续增长</div>
-</div>
-</div>
-</div>
-
-</div>
-
-<div style="max-width:1000px;margin:0 auto;padding:0 32px 24px">
-<div style="text-align:center;background:#f5f3ee;border:2px solid #c0392b;border-radius:14px;padding:32px">
-<div style="font-size:32px;margin-bottom:8px">🦞</div>
-</div>
-</div>
-
-<div style="max-width:1000px;margin:0 auto;padding:0 32px 16px">
-<div class="whiteboard" style="padding:16px;margin:16px 0">
-<h2 style="font-family:'ZCOOL KuaiLe',sans-serif;font-size:20px;margin-bottom:12px">💬 说句实话</h2>
-<img src="ppt/page-31.jpg" style="width:100%;max-width:500px;border-radius:10px;margin:0 auto 12px;display:block;border:1px solid #ddd" loading="lazy" alt="它还远远不够靠谱——但在进化">
-<p style="font-size:14px;line-height:1.8;color:#555">龙虾不是完美的。它会统计报错（272万≠22万）、发消息给错人、假巡检走过场。<br><br>但关键在于：<strong>每犯一次错，就写一条规则；每条规则，变成一个Skill；每个Skill，确保"Never Again"。</strong><br><br>这就是AI Agent和人最大的区别——<span style="color:#c0392b;font-weight:700">它不会犯同一个错误两次。</span></p>
-</div>
-</div>
-
-<div style="max-width:1000px;margin:0 auto;padding:0 32px 24px">
-<div style="text-align:center;background:#f5f3ee;border:2px solid #c0392b;border-radius:14px;padding:32px">
-<div style="font-size:32px;margin-bottom:8px">🦞</div>
+<!-- CTA -->
+<div style="text-align:center;background:#f5f3ee;border:2px solid #c0392b;border-radius:14px;padding:32px;margin-top:32px">
+<div style="font-size:36px;margin-bottom:8px">🦞</div>
 <h2 style="font-family:'ZCOOL KuaiLe',sans-serif;font-size:24px;margin-bottom:8px">搞懂了？来养一只自己的。</h2>
 <p style="font-size:14px;color:#777;margin-bottom:16px">不需要懂代码，15分钟上手</p>
-<a href="easyclaw.html" style="padding:12px 24px;border-radius:10px;border:none;background:#c0392b;color:white;font-size:15px;font-weight:700;text-decoration:none;display:inline-block">🦞 下载 EasyClaw，开始养龙虾</a>
+<a href="easyclaw.html" style="padding:12px 24px;border-radius:10px;background:#c0392b;color:white;font-size:15px;font-weight:700;text-decoration:none;display:inline-block">🦞 下载 EasyClaw，开始养龙虾</a>
 </div>
-</div>
-<div style="max-width:1000px;margin:0 auto;padding:0 32px 16px;display:flex;justify-content:space-between">
+
+<!-- Nav links -->
+<div style="display:flex;justify-content:space-between;margin-top:16px">
 <a href="diary.html" style="font-size:13px;color:#2874a6;text-decoration:none;font-weight:600">← 养成日记</a>
 <a href="skills.html" style="font-size:13px;color:#2874a6;text-decoration:none;font-weight:600">技能商城 →</a>
 </div>
-<section style="background:#faf8f4;border:2px solid #ddd;border-radius:14px;padding:20px;margin:20px auto;max-width:800px;box-shadow:0 2px 10px rgba(0,0,0,0.05)">
-  <h2 style="font-family:'ZCOOL KuaiLe',sans-serif;font-size:20px;margin-bottom:12px;color:#333">💬 留言板</h2>
-  <p style="color:#888;font-size:13px;margin-bottom:16px">需要 GitHub 账号登录后留言 🦞</p>
-  <script src="https://giscus.app/client.js"
-    data-repo="neofusheng/sanwan"
-    data-repo-id="R_kgDORbntrQ"
-    data-category="General"
-    data-category-id="DIC_kwDORbntrc4C3dRX"
-    data-mapping="pathname"
-    data-strict="0"
-    data-reactions-enabled="1"
-    data-emit-metadata="0"
-    data-input-position="top"
-    data-theme="light"
-    data-lang="zh-CN"
-    crossorigin="anonymous"
-    async>
-  </script>
+
+<!-- Comments -->
+<section style="background:#faf8f4;border:2px solid #ddd;border-radius:14px;padding:20px;margin:20px 0;box-shadow:0 2px 10px rgba(0,0,0,0.05)">
+<h2 style="font-family:'ZCOOL KuaiLe',sans-serif;font-size:20px;margin-bottom:12px;color:#333">💬 留言板</h2>
+<p style="color:#888;font-size:13px;margin-bottom:16px">需要 GitHub 账号登录后留言 🦞</p>
+<script src="https://giscus.app/client.js"
+  data-repo="neofusheng/sanwan"
+  data-repo-id="R_kgDORbntrQ"
+  data-category="General"
+  data-category-id="DIC_kwDORbntrc4C3dRX"
+  data-mapping="pathname"
+  data-strict="0"
+  data-reactions-enabled="1"
+  data-emit-metadata="0"
+  data-input-position="top"
+  data-theme="light"
+  data-lang="zh-CN"
+  crossorigin="anonymous"
+  async>
+</script>
 </section>
+
+</div><!-- .content -->
+
 <footer>
-<div style="max-width:1000px;margin:0 auto;display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-bottom:8px">
-<a href="index.html">首页</a><a href="diary.html">日记</a><a href="science.html">科普</a><a href="skills.html">技能</a><a href="easyclaw.html">EasyClaw</a>
+<div style="max-width:800px;margin:0 auto 8px;display:flex;flex-wrap:wrap;justify-content:center;gap:12px">
+<a href="index.html">首页</a><a href="diary.html">日记</a><a href="articles.html">文章</a><a href="science.html">科普</a><a href="skills.html">技能</a><a href="easyclaw.html">EasyClaw</a>
 </div>
 🦞 sanwan.ai © 2026 傅盛 × 龙虾三万 ·
 <a href="https://easyclaw.com">EasyClaw</a>
 <a href="https://github.com/openclaw/openclaw">GitHub</a>
 <a href="https://x.com/FuSheng_0306">X</a>
 </footer>
+
+<a href="#" class="btt" onclick="window.scrollTo({top:0,behavior:'smooth'});return false">↑</a>
+
+<!-- Number animation -->
 <script>
 document.addEventListener('DOMContentLoaded',()=>{
 const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){
 e.target.querySelectorAll('[data-target]').forEach(el=>{
-const t=parseInt(el.dataset.target);let c=0;const s=Math.ceil(t/40);
+const t=parseInt(el.dataset.target);let c=0;const s=Math.max(1,Math.ceil(t/40));
 const timer=setInterval(()=>{c=Math.min(c+s,t);
-el.textContent=t>=10000?Math.floor(c/10000)+'万':c>=1000?c.toLocaleString():c;
+el.textContent=t>=10000?(Math.floor(c/10000)+'万'):c>=1000?c.toLocaleString():c;
 if(c>=t)clearInterval(timer);},30);});obs.unobserve(e.target);}});},{threshold:0.5});
-document.querySelectorAll('.stats-row').forEach(el=>obs.observe(el));});
+document.querySelectorAll('.stats').forEach(el=>obs.observe(el));});
 </script>
-<a href="#" onclick="window.scrollTo({top:0,behavior:'smooth'});return false" style="position:fixed;bottom:20px;right:20px;width:40px;height:40px;background:#c0392b;color:white;border-radius:50%;display:flex;align-items:center;justify-content:center;text-decoration:none;font-size:18px;box-shadow:0 2px 8px rgba(0,0,0,0.2);z-index:99;opacity:0.8">↑</a>
-
-
 <script>!function(){var p=location.pathname,r=document.referrer,l=navigator.language;new Image().src="https://clawdbot-f.cmcm.com/sanwan-stats/api/track?page="+encodeURIComponent(p)+"&ref="+encodeURIComponent(r)+"&lang="+encodeURIComponent(l)}();</script>
-</body></html>
+</body>
+</html>
