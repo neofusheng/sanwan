@@ -2,57 +2,82 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>文章 — 龙虾养成日记</title>
-<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦞</text></svg>">
-<meta property="og:title" content="龙虾深度文章 | sanwan.ai">
-<meta property="og:description" content="关于AI Agent和龙虾的深度思考。从真实故事出发，讲透AI如何改变工作方式。">
-<meta property="og:image" content="https://sanwan.ai/ppt/page-01.jpg">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>文章精选 - sanwan.ai</title>
+<meta property="og:title" content="文章精选 | sanwan.ai">
+<meta property="og:description" content="OpenClaw/龙虾最新教程、使用技巧、深度分析，每日AI精选更新。">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🦞</text></svg>">
+<link href="https://fonts.googleapis.com/css2?family=ZCOOL+KuaiLe&family=Noto+Sans+SC:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&family=ZCOOL+KuaiLe&display=swap');
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:'Noto Sans SC',sans-serif;background:#e8e4dc;color:#222;padding-top:56px}
-nav{position:fixed;top:0;left:0;width:100%;z-index:1000;background:rgba(255,255,255,0.97);backdrop-filter:blur(12px);border-bottom:2px solid #e8e4df;padding:0 24px;height:56px;display:flex;align-items:center;justify-content:space-between;box-shadow:0 1px 8px rgba(0,0,0,0.04)}
-.nav-logo{font-family:'ZCOOL KuaiLe',sans-serif;font-size:22px;color:#c0392b;text-decoration:none;font-weight:700}
-.nav-links{display:flex;gap:20px}
-.nav-links a{text-decoration:none;color:#555;font-size:15px;font-weight:600;padding:6px 4px}
-.nav-links a:hover,.nav-links a.active{color:#c0392b}
+body{font-family:'Noto Sans SC',-apple-system,sans-serif;background:#f5f3ee;color:#333;padding-top:56px}
+.nav{position:fixed;top:0;left:0;width:100%;z-index:1000;background:rgba(255,255,255,0.97);backdrop-filter:blur(12px);border-bottom:2px solid #e8e4df;display:flex;align-items:center;justify-content:space-between;padding:0 24px;height:56px;box-shadow:0 1px 8px rgba(0,0,0,0.04)}
+.nav-links{display:flex;gap:16px}.nav a,.nav-links a{font-size:15px;color:#666;text-decoration:none;padding:6px 4px;font-weight:600}
+.nav a.active{color:#c0392b;font-weight:700}
+.nav .logo{font-family:'ZCOOL KuaiLe',sans-serif;color:#c0392b;font-size:22px;margin-right:8px;font-weight:700}
 .hamburger{display:none;background:none;border:none;font-size:15px;cursor:pointer;color:#333;font-weight:600;padding:6px 12px;border-radius:8px;border:1.5px solid #ddd}
-@media(max-width:600px){.hamburger{display:block}.nav-links{display:none}.nav-links.open{display:flex;flex-direction:column;position:absolute;top:56px;right:16px;background:#fff;border:1.5px solid #ddd;border-radius:10px;padding:12px 16px;gap:12px;box-shadow:0 4px 15px rgba(0,0,0,0.1)}}
 
-.content{max-width:800px;margin:0 auto;padding:24px 20px}
-h1{font-family:'ZCOOL KuaiLe',sans-serif;font-size:28px;margin-bottom:8px}
-.subtitle{color:#777;font-size:14px;margin-bottom:24px}
-.article-card{background:#fff;border:2px solid #e8e4df;border-radius:14px;padding:20px 24px;margin-bottom:16px;transition:.2s;cursor:pointer;text-decoration:none;color:inherit;display:block}
-.article-card:hover{border-color:#c0392b;transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,0,0,0.08)}
-.article-date{font-size:12px;color:#999;margin-bottom:6px}
-.article-title{font-size:18px;font-weight:800;margin-bottom:6px;line-height:1.4}
-.article-excerpt{font-size:14px;color:#666;line-height:1.7}
-.article-tags{display:flex;gap:6px;margin-top:10px;flex-wrap:wrap}
-.article-tag{font-size:11px;padding:2px 8px;border-radius:4px;font-weight:600}
-.tag-story{background:#fff5f5;color:#c0392b}
-.tag-insight{background:#e8f5e9;color:#2e7d32}
-.tag-tutorial{background:#e3f2fd;color:#1565c0}
-.read-more{display:inline-block;margin-top:10px;font-size:13px;color:#c0392b;font-weight:600}
+.content{max-width:900px;margin:0 auto;padding:24px 16px}
+h1{font-family:'ZCOOL KuaiLe',sans-serif;font-size:26px;margin-bottom:4px}
+.subtitle{color:#888;font-size:14px;margin-bottom:16px}
 
-.section-label{font-size:16px;font-weight:800;color:#c0392b;margin:32px 0 16px;padding-bottom:8px;border-bottom:2px dashed #ddd}
+/* Search */
+.search-bar{position:relative;margin-bottom:16px}
+.search-bar input{width:100%;padding:12px 16px 12px 40px;border:2px solid #ddd;border-radius:12px;font-size:15px;background:#fff;outline:none;transition:border .2s}
+.search-bar input:focus{border-color:#c0392b}
+.search-bar::before{content:'🔍';position:absolute;left:12px;top:50%;transform:translateY(-50%);font-size:16px}
+
+/* Filter tabs */
+.filter-tabs{display:flex;gap:8px;margin-bottom:20px;overflow-x:auto;padding-bottom:4px;-webkit-overflow-scrolling:touch}
+.filter-tab{padding:6px 14px;border:1.5px solid #ddd;border-radius:20px;font-size:13px;font-weight:600;cursor:pointer;white-space:nowrap;background:#fff;color:#666;transition:.2s}
+.filter-tab:hover{border-color:#c0392b;color:#c0392b}
+.filter-tab.active{background:#c0392b;color:#fff;border-color:#c0392b}
+.filter-count{font-size:11px;opacity:0.7;margin-left:2px}
+
+/* Stats bar */
+.stats-bar{display:flex;gap:16px;margin-bottom:20px;font-size:13px;color:#999}
+.stats-bar span{display:flex;align-items:center;gap:4px}
+
+/* Article cards */
+.article-list{display:flex;flex-direction:column;gap:12px}
+.article-card{background:#fff;border:1.5px solid #e8e4df;border-radius:12px;padding:16px 18px;transition:.2s;cursor:pointer;text-decoration:none;color:inherit;display:block}
+.article-card:hover{border-color:#c0392b;box-shadow:0 4px 16px rgba(192,57,43,0.08);transform:translateY(-1px)}
+.article-card h3{font-size:16px;font-weight:700;margin-bottom:6px;line-height:1.4;color:#222}
+.article-card .summary{font-size:13px;color:#666;line-height:1.6;margin-bottom:10px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.article-card .meta{display:flex;align-items:center;gap:12px;font-size:12px;color:#999;flex-wrap:wrap}
+.source-badge{background:#f0f0f0;padding:2px 8px;border-radius:4px;font-weight:600;color:#555}
+.tag-badge{background:#fff5f5;color:#c0392b;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:600}
+.rating{color:#f39c12}
+.article-card .video-badge{background:#ff4757;color:#fff;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:700}
+
+/* Empty state */
+.empty-state{text-align:center;padding:60px 20px;color:#bbb}
+.empty-state .emoji{font-size:48px;margin-bottom:12px}
 
 footer{text-align:center;padding:20px;font-size:11px;color:#999;border-top:2px solid #ddd;background:#f5f3ee;margin-top:40px}
 footer a{color:#888;text-decoration:none;margin:0 8px}
+
+/* Floating mascot */
+.float-mascot{position:fixed;bottom:20px;right:16px;z-index:99;display:flex;flex-direction:column;align-items:center;animation:mascot-float 3s ease-in-out infinite}
+.float-lobster{cursor:pointer;transition:transform .2s;filter:drop-shadow(0 4px 8px rgba(0,0,0,0.15))}
+.float-lobster:hover{transform:scale(1.15) rotate(-5deg)}
+.float-bubble{background:#fff;border:1.5px solid #f0d0cc;padding:10px 14px;border-radius:16px;text-align:center;margin-bottom:4px;box-shadow:0 4px 20px rgba(192,57,43,0.12);position:relative}
+.bubble-tail{width:10px;height:10px;background:#fff;border-right:2px solid #f0d0cc;border-bottom:2px solid #f0d0cc;position:absolute;bottom:-6px;left:50%;transform:translateX(-50%) rotate(45deg)}
+@keyframes mascot-float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+@keyframes btn-glow{0%,100%{box-shadow:0 0 8px rgba(192,57,43,0.3)}50%{box-shadow:0 0 18px rgba(192,57,43,0.5)}}
+
+@media(max-width:600px){
+  .nav-links{display:none !important}.hamburger{display:block !important}
+  .nav-links.open{display:flex !important;flex-direction:column;position:absolute;top:56px;right:16px;background:#fff;border:1.5px solid #ddd;border-radius:10px;padding:12px 16px;gap:12px;box-shadow:0 4px 15px rgba(0,0,0,0.1)}
+  .content{padding:16px 12px}
+  .article-card{padding:14px}
+}
 </style>
 <script defer src="https://unpkg.com/@vercel/analytics@1/dist/script.js"></script>
-<style>.float-mascot{position:fixed;bottom:20px;right:16px;z-index:99;display:flex;flex-direction:column;align-items:center;animation:mascot-float 3s ease-in-out infinite}
-.float-lobster{font-size:48px;cursor:pointer;transition:transform .2s;filter:drop-shadow(0 4px 8px rgba(0,0,0,0.15))}
-.float-lobster:hover{transform:scale(1.15) rotate(-5deg)}
-.float-bubble{background:#fff;border:1.5px solid #f0d0cc;padding:10px 14px;border-radius:16px;text-align:center;margin-bottom:4px;box-shadow:0 4px 20px rgba(192,57,43,0.12);position:relative;animation:popIn .5s ease .3s both}
-.bubble-tail{width:10px;height:10px;background:#fff;border-right:2px solid #f0d0cc;border-bottom:2px solid #f0d0cc;position:absolute;bottom:-6px;left:50%;transform:translateX(-50%) rotate(45deg)}
-.bubble-dot{width:6px;height:6px;background:#f0d0cc;border-radius:50%;position:absolute;bottom:-14px;right:30%}
-@keyframes mascot-float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
-@keyframes btn-glow{0%,100%{box-shadow:0 0 8px rgba(192,57,43,0.3)}50%{box-shadow:0 0 18px rgba(192,57,43,0.5)}}</style>
 </head>
 <body>
-<nav>
-<a href="index.html" class="nav-logo">🦞 龙虾养成日记</a>
+<nav class="nav">
+<span class="logo">🦞 sanwan.ai</span>
 <button class="hamburger" onclick="this.nextElementSibling.classList.toggle('open')">☰ 菜单</button>
 <div class="nav-links">
 <a href="index.html">首页</a>
@@ -65,79 +90,162 @@ footer a{color:#888;text-decoration:none;margin:0 8px}
 </nav>
 
 <div class="content">
-<h1>📝 深度文章</h1>
-<p class="subtitle">关于AI Agent和龙虾的深度思考。从真实故事出发，讲透AI如何改变工作方式。</p>
+<h1>📰 龙虾文章精选</h1>
+<p class="subtitle">每日AI精选，OpenClaw/龙虾最新教程、使用技巧、深度分析</p>
 
-<div class="section-label">🔥 最新</div>
-
-<a class="article-card" href="articles/travel-lobster.html">
-<div class="article-date">2026年3月3日</div>
-<div class="article-title">不懂技术的CFO把龙虾训练成了行政助理，帮他订票、订酒店、安排行程，过得比我滋润</div>
-<div class="article-excerpt">他让龙虾帮他订机票、订火车票、订酒店、处理改签。两天，全打通了。我问他：你懂技术吗？他说：不懂。我说：那你怎么做到的？他说：我不需要懂技术。我只需要知道我要什么。</div>
-<div class="article-tags">
-<span class="article-tag tag-story">📖 真实案例</span>
-<span class="article-tag tag-insight">💡 行业洞察</span>
+<div class="search-bar">
+<input type="text" id="searchInput" placeholder="搜索文章标题、标签..." oninput="filterArticles()">
 </div>
-<div class="read-more">阅读全文 →</div>
-</a>
 
-<div class="section-label">📖 龙虾日记系列</div>
+<div class="filter-tabs" id="filterTabs"></div>
 
-<a class="article-card" href="articles/diary-day16.html">
-<div class="article-date">2026年3月2日</div>
-<div class="article-title">Day 16：24小时，AI独立造了一个网站</div>
-<div class="article-excerpt">从域名注册、设计、编码、部署到SEO优化，AI独立完成了一个完整网站的搭建。59个页面，7000行代码，76张图片——全程没写一行代码。</div>
-<div class="article-tags">
-<span class="article-tag tag-story">📖 龙虾日记</span>
-</div>
-<div class="read-more">阅读全文 →</div>
-</a>
+<div class="stats-bar" id="statsBar"></div>
 
-<a class="article-card" href="diary.html">
-<div class="article-date">2026年2月 — 持续更新</div>
-<div class="article-title">龙虾养成日记 Day 1-16 全集</div>
-<div class="article-excerpt">14天，1157条消息，22万字对话。从查不了通讯录开始，到自己设计8人AI团队。每一天都有新的突破和踩坑。这是一个CEO和他的AI龙虾共同成长的真实记录。</div>
-<div class="article-tags">
-<span class="article-tag tag-story">📖 龙虾日记</span>
-</div>
-<div class="read-more">从Day 1看起 →</div>
-</a>
+<div class="article-list" id="articleList"></div>
 
-<div class="section-label">💡 思考与洞察</div>
-
-<a class="article-card" href="science.html">
-<div class="article-date">2026年3月</div>
-<div class="article-title">龙虾科普：AI Agent到底是什么？</div>
-<div class="article-excerpt">普通AI vs 龙虾，SaaS vs Agent，工具思维 vs 员工思维。用最直白的语言，讲清楚AI Agent为什么是一场生产力革命。</div>
-<div class="article-tags">
-<span class="article-tag tag-tutorial">🔰 科普入门</span>
-</div>
-<div class="read-more">阅读全文 →</div>
-</a>
-
-<div style="text-align:center;margin-top:32px;padding:20px;background:#faf8f4;border-radius:12px;border:1.5px dashed #ddd">
-<div style="font-size:14px;color:#999">📮 更多文章持续更新中</div>
-<div style="font-size:13px;color:#bbb;margin-top:4px">关注 <a href="https://x.com/FuSheng_0306" style="color:#c0392b;text-decoration:none;font-weight:600">@FuSheng_0306</a> 第一时间获取</div>
+<div class="empty-state" id="emptyState" style="display:none">
+<div class="emoji">🦞</div>
+<p>没有找到匹配的文章</p>
+<p style="font-size:12px;margin-top:8px">试试其他关键词？</p>
 </div>
 </div>
+
+<!-- 留言板 -->
+<section style="background:#faf8f4;border:2px solid #ddd;border-radius:14px;padding:20px;margin:20px auto;max-width:900px;box-shadow:0 2px 10px rgba(0,0,0,0.05)">
+  <h2 style="font-family:'ZCOOL KuaiLe',sans-serif;font-size:20px;margin-bottom:12px;color:#333">💬 推荐好文</h2>
+  <p style="color:#888;font-size:13px;margin-bottom:16px">发现好文章？留言推荐给大家！需要 GitHub 账号 🦞</p>
+  <script src="https://giscus.app/client.js"
+    data-repo="neofusheng/sanwan"
+    data-repo-id="R_kgDORbntrQ"
+    data-category="General"
+    data-category-id="DIC_kwDORbntrc4C3dRX"
+    data-mapping="pathname"
+    data-strict="0"
+    data-reactions-enabled="1"
+    data-emit-metadata="0"
+    data-input-position="top"
+    data-theme="light"
+    data-lang="zh-CN"
+    crossorigin="anonymous"
+    async>
+  </script>
+</section>
 
 <footer>
+<div style="max-width:1000px;margin:0 auto;display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-bottom:8px">
+<a href="diary.html">日记</a><a href="articles.html">文章</a><a href="science.html">科普</a><a href="skills.html">技能</a><a href="easyclaw.html">EasyClaw</a>
+</div>
 🦞 sanwan.ai © 2026 傅盛 × 龙虾三万 ·
 <a href="https://easyclaw.com">EasyClaw</a>
 <a href="https://github.com/openclaw/openclaw">GitHub</a>
 <a href="https://x.com/FuSheng_0306">X</a>
 </footer>
-<script>!function(){var p=location.pathname,r=document.referrer,l=navigator.language;new Image().src="https://clawdbot-f.cmcm.com/sanwan-stats/api/track?page="+encodeURIComponent(p)+"&ref="+encodeURIComponent(r)+"&lang="+encodeURIComponent(l)}();</script>
-<!-- Floating Sanwan Mascot -->
 
+<!-- Floating Mascot -->
 <div class="float-mascot" id="floatMascot">
   <div class="float-bubble">
     <div style="font-size:13px;font-weight:700;color:#c0392b;line-height:1.5">想要同款三万？</div>
     <a href="https://easyclaw.com" target="_blank" style="display:inline-block;margin-top:6px;background:#c0392b;color:#fff;padding:6px 16px;border-radius:20px;font-size:12px;font-weight:700;text-decoration:none;box-shadow:0 0 12px rgba(192,57,43,0.3);animation:btn-glow 2.5s ease-in-out infinite">免费领养 →</a>
     <div class="bubble-tail"></div>
-    <div class="bubble-dot"></div>
   </div>
   <img class="float-lobster" src="/mascot-float.png" alt="三万" style="width:64px;height:auto">
 </div>
+
+<script>
+let articles = [];
+let currentFilter = '全部';
+
+async function loadArticles() {
+  try {
+    const res = await fetch('data/articles.json');
+    articles = await res.json();
+    buildFilterTabs();
+    filterArticles();
+  } catch(err) {
+    console.error('Failed to load articles:', err);
+  }
+}
+
+function buildFilterTabs() {
+  const tabs = document.getElementById('filterTabs');
+  const cats = {};
+  articles.forEach(a => {
+    const c = a.category || '其他';
+    cats[c] = (cats[c] || 0) + 1;
+  });
+  
+  let html = '<div class="filter-tab active" onclick="setFilter(\'全部\',this)">全部<span class="filter-count">(' + articles.length + ')</span></div>';
+  const order = ['部署教程','使用技巧','进阶玩法','评测分析','视频教程'];
+  order.forEach(cat => {
+    if (cats[cat]) {
+      html += '<div class="filter-tab" onclick="setFilter(\'' + cat + '\',this)">' + cat + '<span class="filter-count">(' + cats[cat] + ')</span></div>';
+    }
+  });
+  tabs.innerHTML = html;
+}
+
+function setFilter(cat, el) {
+  currentFilter = cat;
+  document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
+  if (el) el.classList.add('active');
+  filterArticles();
+}
+
+function filterArticles() {
+  const query = (document.getElementById('searchInput').value || '').toLowerCase();
+  let filtered = articles;
+  
+  if (currentFilter !== '全部') {
+    filtered = filtered.filter(a => a.category === currentFilter);
+  }
+  
+  if (query) {
+    filtered = filtered.filter(a => {
+      const searchText = (a.title + ' ' + a.summary + ' ' + (a.tags||[]).join(' ') + ' ' + a.source).toLowerCase();
+      return searchText.includes(query);
+    });
+  }
+  
+  renderArticles(filtered);
+}
+
+function renderArticles(list) {
+  const container = document.getElementById('articleList');
+  const empty = document.getElementById('emptyState');
+  const stats = document.getElementById('statsBar');
+  
+  stats.innerHTML = '<span>📊 共 <strong>' + list.length + '</strong> 篇文章</span>' +
+    '<span>🔄 每日更新</span>';
+  
+  if (list.length === 0) {
+    container.innerHTML = '';
+    empty.style.display = 'block';
+    return;
+  }
+  empty.style.display = 'none';
+  
+  container.innerHTML = list.map(a => {
+    const stars = '⭐'.repeat(a.rating || 3);
+    const isVideo = (a.tags || []).some(t => t.includes('视频'));
+    const videoBadge = isVideo ? '<span class="video-badge">▶ 视频</span>' : '';
+    const tagHtml = (a.tags || []).slice(0, 3).map(t => '<span class="tag-badge">' + t + '</span>').join('');
+    
+    return '<a class="article-card" href="' + a.sourceUrl + '" target="_blank" rel="noopener">' +
+      '<h3>' + a.title + '</h3>' +
+      '<div class="summary">' + a.summary + '</div>' +
+      '<div class="meta">' +
+        '<span class="source-badge">' + a.source + '</span>' +
+        videoBadge +
+        tagHtml +
+        '<span class="rating">' + stars + '</span>' +
+        '<span>📖 ' + (a.readTime || '5min') + '</span>' +
+      '</div>' +
+    '</a>';
+  }).join('');
+}
+
+loadArticles();
+</script>
+<script>!function(){var p=location.pathname,r=document.referrer,l=navigator.language;new Image().src="https://clawdbot-f.cmcm.com/sanwan-stats/api/track?page="+encodeURIComponent(p)+"&ref="+encodeURIComponent(r)+"&lang="+encodeURIComponent(l)}();</script>
 </body>
 </html>
