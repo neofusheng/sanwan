@@ -81,7 +81,8 @@ nav { position:fixed; top:0; left:0; width:100%; z-index:1000; background:rgba(2
   <div class="nav-links">
     <a href="/">首页</a>
     <a href="diary.html">日记</a>
-    <a href="science.html">科普</a>
+    <a href="articles.html">📝 文章</a>
+<a href="science.html">科普</a>
     <a href="skills.html" style="color:var(--accent);font-weight:700">技能</a>
     <a href="easyclaw.html">EasyClaw</a>
   </div>
@@ -95,7 +96,43 @@ nav { position:fixed; top:0; left:0; width:100%; z-index:1000; background:rgba(2
 <!-- PACKS -->
 <div class="packs-section">
   <div class="packs-title">📦 技能包 — 一键安装，即刻上岗</div>
-  <div class="packs-grid" id="packsGrid"></div>
+  <div class="packs-grid" id="packsGrid"><a href="/skills/pack-assistant.html" class="pack-card">
+<div class="pack-icon">💼</div>
+<div class="pack-name">超级助理</div>
+<div class="pack-tagline">你的全能私人助理——邮件、日程、搜索、文档，动动嘴就搞定</div>
+<div class="pack-meta"><span class="pack-count" style="background:#2874a6">6 个技能</span><span class="pack-desc">适合：白领、管理者、创业者</span></div>
+</a>
+<a href="/skills/pack-creator.html" class="pack-card">
+<div class="pack-icon">✍️</div>
+<div class="pack-name">内容创作者</div>
+<div class="pack-tagline">公众号、小红书、视频、音乐——全平台内容一条龙</div>
+<div class="pack-meta"><span class="pack-count" style="background:#c0392b">8 个技能</span><span class="pack-desc">适合：自媒体人、品牌运营、个人IP</span></div>
+</a>
+<a href="/skills/pack-trader.html" class="pack-card">
+<div class="pack-icon">📈</div>
+<div class="pack-name">股票分析师</div>
+<div class="pack-tagline">实时行情、技术分析、买卖信号——7×24帮你盯盘</div>
+<div class="pack-meta"><span class="pack-count" style="background:#27ae60">4 个技能</span><span class="pack-desc">适合：股民、投资者、量化爱好者</span></div>
+</a>
+<a href="/skills/pack-overseas.html" class="pack-card">
+<div class="pack-icon">🌏</div>
+<div class="pack-name">出海运营官</div>
+<div class="pack-tagline">多语言内容、海外社媒、跨境运营——搞定语言和时差</div>
+<div class="pack-meta"><span class="pack-count" style="background:#8e44ad">6 个技能</span><span class="pack-desc">适合：出海企业、跨境电商、海外市场</span></div>
+</a>
+<a href="/skills/pack-ecommerce.html" class="pack-card">
+<div class="pack-icon">🛒</div>
+<div class="pack-name">电商运营</div>
+<div class="pack-tagline">商品文案、竞品分析、数据监控——用AI代替重复劳动</div>
+<div class="pack-meta"><span class="pack-count" style="background:#e67e22">6 个技能</span><span class="pack-desc">适合：电商卖家、品牌方、运营团队</span></div>
+</a>
+<a href="/skills/pack-sanwan.html" class="pack-card featured">
+<div class="pack-icon">🦞</div>
+<div class="pack-name">三万同款团队</div>
+<div class="pack-tagline">8个Agent各司其职——这不是一只龙虾，这是一支团队</div>
+<div class="pack-meta"><span class="pack-count" style="background:#c0392b">38 个技能</span><span class="pack-desc">⭐ 傅盛亲自验证的完整配置</span></div>
+</a>
+</div>
 </div>
 
 <!-- ALL SKILLS -->
@@ -112,7 +149,217 @@ nav { position:fixed; top:0; left:0; width:100%; z-index:1000; background:rgba(2
       <button onclick="filterSkills('life')">生活</button>
     </div>
   </div>
-  <div class="skills-grid" id="skillsGrid"></div>
+  <div class="skills-grid" id="skillsGrid"><div class="skill-card" data-category="dev">
+<a href="/skills/multi-agent-setup.html"><div class="skill-emoji">🏗️</div>
+<div class="skill-body"><div class="skill-name">多Agent团队配置</div>
+<div class="skill-tags"><span class="tag tag-official">官方</span><span class="tag tag-essential">⭐ 必装</span><span class="tag tag-hot">🔥 热门</span></div>
+<div class="skill-desc">一只龙虾变一支团队——配置多个AI角色协作，总指挥+笔杆子+参谋+运营官。</div></div></a></div>
+<div class="skill-card" data-category="research">
+<a href="/skills/web-search.html"><div class="skill-emoji">🌐</div>
+<div class="skill-body"><div class="skill-name">网页搜索</div>
+<div class="skill-tags"><span class="tag tag-official">官方</span><span class="tag tag-essential">⭐ 必装</span></div>
+<div class="skill-desc">Brave搜索+DuckDuckGo多引擎搜索，实时获取网络信息。</div></div></a></div>
+<div class="skill-card" data-category="research">
+<a href="/skills/deep-research.html"><div class="skill-emoji">🔬</div>
+<div class="skill-body"><div class="skill-name">深度研究</div>
+<div class="skill-tags"><span class="tag tag-official">官方</span></div>
+<div class="skill-desc">多引擎搜索+网页提取+结构化分析报告。</div></div></a></div>
+<div class="skill-card" data-category="life">
+<a href="/skills/weather.html"><div class="skill-emoji">🌤️</div>
+<div class="skill-body"><div class="skill-name">天气查询</div>
+<div class="skill-tags"><span class="tag tag-official">官方</span><span class="tag tag-essential">⭐ 必装</span></div>
+<div class="skill-desc">全球天气实时查询，wttr.in + Open-Meteo双源。</div></div></a></div>
+<div class="skill-card" data-category="office">
+<a href="/skills/email.html"><div class="skill-emoji">📧</div>
+<div class="skill-body"><div class="skill-name">邮件管理</div>
+<div class="skill-tags"><span class="tag tag-official">官方</span></div>
+<div class="skill-desc">飞书邮件监控+ClawPost邮箱，自动检查+智能回复。</div></div></a></div>
+<div class="skill-card" data-category="office">
+<a href="/skills/feishu-doc.html"><div class="skill-emoji">📄</div>
+<div class="skill-body"><div class="skill-name">飞书文档</div>
+<div class="skill-tags"><span class="tag tag-official">官方</span></div>
+<div class="skill-desc">飞书文档读写、知识库管理、多维表格操作。</div></div></a></div>
+<div class="skill-card" data-category="office">
+<a href="/skills/feishu-cal.html"><div class="skill-emoji">📅</div>
+<div class="skill-body"><div class="skill-name">飞书日历</div>
+<div class="skill-tags"><span class="tag tag-official">官方</span></div>
+<div class="skill-desc">日程读取、会议安排、日程提醒。</div></div></a></div>
+<div class="skill-card" data-category="office">
+<a href="/skills/feishu-cards.html"><div class="skill-emoji">🃏</div>
+<div class="skill-body"><div class="skill-name">飞书互动卡片</div>
+<div class="skill-tags"><span class="tag tag-official">官方</span><span class="tag tag-essential">⭐ 必装</span></div>
+<div class="skill-desc">发送按钮、表单、投票、链接卡片。</div></div></a></div>
+<div class="skill-card" data-category="creation">
+<a href="/skills/image-gen.html"><div class="skill-emoji">🖼️</div>
+<div class="skill-body"><div class="skill-name">AI图片生成</div>
+<div class="skill-tags"><span class="tag tag-official">官方</span><span class="tag tag-essential">⭐ 必装</span></div>
+<div class="skill-desc">Nano Banana Pro(Gemini 3)文生图、图生图、风格迁移。</div></div></a></div>
+<div class="skill-card" data-category="creation">
+<a href="/skills/voice-gen.html"><div class="skill-emoji">🎙️</div>
+<div class="skill-body"><div class="skill-name">语音合成</div>
+<div class="skill-tags"><span class="tag tag-official">官方</span><span class="tag tag-essential">⭐ 必装</span></div>
+<div class="skill-desc">中文多音色TTS，飞书原生语音条发送。edge-tts+ffmpeg。</div></div></a></div>
+<div class="skill-card" data-category="dev">
+<a href="/skills/coding.html"><div class="skill-emoji">💻</div>
+<div class="skill-body"><div class="skill-name">代码助手</div>
+<div class="skill-tags"><span class="tag tag-official">官方</span></div>
+<div class="skill-desc">Claude Code/Codex写代码、改Bug、部署。PTY模式自动应答。</div></div></a></div>
+<div class="skill-card" data-category="dev">
+<a href="/skills/github-ops.html"><div class="skill-emoji">🐙</div>
+<div class="skill-body"><div class="skill-name">GitHub操作</div>
+<div class="skill-tags"><span class="tag tag-official">官方</span></div>
+<div class="skill-desc">仓库/Issues/PR/代码搜索/Actions，不开网页管GitHub。</div></div></a></div>
+<div class="skill-card" data-category="dev">
+<a href="/skills/browser-vision.html"><div class="skill-emoji">🔭</div>
+<div class="skill-body"><div class="skill-name">浏览器控制</div>
+<div class="skill-tags"><span class="tag tag-official">官方</span><span class="tag tag-essential">⭐ 必装</span></div>
+<div class="skill-desc">无头Chrome截图、网页自动化、视觉调试。</div></div></a></div>
+<div class="skill-card" data-category="creation">
+<a href="/skills/humanizer.html"><div class="skill-emoji">🧑</div>
+<div class="skill-body"><div class="skill-name">AI文本人性化</div>
+<div class="skill-tags"><span class="tag tag-official">官方</span><span class="tag tag-essential">⭐ 必装</span></div>
+<div class="skill-desc">16种检测模式+6种风格转换，去除AI味。支持小红书/知乎/学术风格。</div></div></a></div>
+<div class="skill-card" data-category="creation">
+<a href="/skills/wechat.html"><div class="skill-emoji">💚</div>
+<div class="skill-body"><div class="skill-name">微信公众号</div>
+<div class="skill-tags"><span class="tag tag-official">官方</span></div>
+<div class="skill-desc">傅盛写作风格+标题策略+排版规范，完整公众号创作流程。</div></div></a></div>
+<div class="skill-card" data-category="social">
+<a href="/skills/twitter.html"><div class="skill-emoji">🐦</div>
+<div class="skill-body"><div class="skill-name">Twitter / X</div>
+<div class="skill-tags"><span class="tag tag-official">官方</span></div>
+<div class="skill-desc">发推/Thread/转推/删除，@FuSheng_0306账号运营。</div></div></a></div>
+<div class="skill-card" data-category="social">
+<a href="/skills/xiaohongshu.html"><div class="skill-emoji">📕</div>
+<div class="skill-body"><div class="skill-name">小红书运营</div>
+<div class="skill-tags"><span class="tag tag-official">官方</span><span class="tag tag-hot">🔥 热门</span></div>
+<div class="skill-desc">搜索笔记、发布内容、分析评论。基于xiaohongshu-mcp(8400+⭐)。</div></div></a></div>
+<div class="skill-card" data-category="research">
+<a href="/skills/web-scraper.html"><div class="skill-emoji">🕷️</div>
+<div class="skill-body"><div class="skill-name">反爬网页访问</div>
+<div class="skill-tags"><span class="tag tag-official">官方</span><span class="tag tag-essential">⭐ 必装</span></div>
+<div class="skill-desc">微信公众号/Twitter/Reddit等反爬网站，三种方法自动切换。</div></div></a></div>
+<div class="skill-card" data-category="office">
+<a href="/skills/pdf-gen.html"><div class="skill-emoji">📄</div>
+<div class="skill-body"><div class="skill-name">PDF生成</div>
+<div class="skill-tags"><span class="tag tag-official">官方</span><span class="tag tag-essential">⭐ 必装</span></div>
+<div class="skill-desc">Markdown转精美PDF，中文+代码高亮。Pandoc+Chrome。</div></div></a></div>
+<div class="skill-card" data-category="life">
+<a href="/skills/train-tickets.html"><div class="skill-emoji">🚄</div>
+<div class="skill-body"><div class="skill-name">火车票查询</div>
+<div class="skill-tags"><span class="tag tag-official">官方</span><span class="tag tag-essential">⭐ 必装</span></div>
+<div class="skill-desc">12306余票、车次时刻表、票价查询。</div></div></a></div>
+<div class="skill-card" data-category="life">
+<a href="/skills/flight-search.html"><div class="skill-emoji">✈️</div>
+<div class="skill-body"><div class="skill-name">机票查询</div>
+<div class="skill-tags"><span class="tag tag-official">官方</span><span class="tag tag-essential">⭐ 必装</span></div>
+<div class="skill-desc">国内外机票价格、多日比价、最低价日历。</div></div></a></div>
+<div class="skill-card" data-category="research">
+<a href="/skills/stock-monitor.html"><div class="skill-emoji">📈</div>
+<div class="skill-body"><div class="skill-name">股票监控</div>
+<div class="skill-tags"><span class="tag tag-official">官方</span><span class="tag tag-hot">🔥 热门</span></div>
+<div class="skill-desc">A股/港股/美股实时监控，RSI/MACD/布林带多指标买卖信号。</div></div></a></div>
+<div class="skill-card" data-category="creation">
+<a href="/skills/seo-writer.html"><div class="skill-emoji">🔍</div>
+<div class="skill-body"><div class="skill-name">SEO内容写作</div>
+<div class="skill-tags"><span class="tag tag-official">官方</span><span class="tag tag-essential">⭐ 必装</span></div>
+<div class="skill-desc">SEO优化的长文写作，关键词策略+结构化内容。</div></div></a></div>
+<div class="skill-card" data-category="creation">
+<a href="/skills/blog-writer.html"><div class="skill-emoji">✍️</div>
+<div class="skill-body"><div class="skill-name">博客写手</div>
+<div class="skill-tags"><span class="tag tag-official">官方</span></div>
+<div class="skill-desc">长文写作+排版+发布，支持多平台格式适配。</div></div></a></div>
+<div class="skill-card" data-category="office">
+<a href="/skills/intelligence.html"><div class="skill-emoji">🧠</div>
+<div class="skill-body"><div class="skill-name">基础智能包</div>
+<div class="skill-tags"><span class="tag tag-official">官方</span></div>
+<div class="skill-desc">记忆系统、上下文管理、任务追踪。龙虾出厂标配。</div></div></a></div>
+<div class="skill-card" data-category="research">
+<a href="/skills/video-summary.html"><div class="skill-emoji">🎬</div>
+<div class="skill-body"><div class="skill-name">视频总结</div>
+<div class="skill-tags"><span class="tag tag-official">官方</span><span class="tag tag-hot">🔥 热门</span></div>
+<div class="skill-desc">YouTube/Bilibili视频自动获取字幕并AI总结，输出md格式。</div></div></a></div>
+<div class="skill-card" data-category="research">
+<a href="/skills/trending.html"><div class="skill-emoji">🔥</div>
+<div class="skill-body"><div class="skill-name">今日热榜</div>
+<div class="skill-tags"><span class="tag tag-official">官方</span><span class="tag tag-hot">🔥 热门</span></div>
+<div class="skill-desc">微博/知乎/抖音/百度等各平台热搜榜单，一键获取全网热点。</div></div></a></div>
+<div class="skill-card" data-category="research">
+<a href="/skills/hn-digest.html"><div class="skill-emoji">📰</div>
+<div class="skill-body"><div class="skill-name">Hacker News</div>
+<div class="skill-tags"><span class="tag tag-official">官方</span></div>
+<div class="skill-desc">HN前页热帖抓取，支持按主题过滤(tech/health/AI)。</div></div></a></div>
+<div class="skill-card" data-category="research">
+<a href="/skills/stock-analysis.html"><div class="skill-emoji">📊</div>
+<div class="skill-body"><div class="skill-name">股票深度分析</div>
+<div class="skill-tags"><span class="tag tag-official">官方</span></div>
+<div class="skill-desc">Yahoo Finance数据+8维评分+持仓管理+热门扫描+传闻捕捉。</div></div></a></div>
+<div class="skill-card" data-category="research">
+<a href="/skills/hk-stock.html"><div class="skill-emoji">🇭🇰</div>
+<div class="skill-body"><div class="skill-name">港股AI投研</div>
+<div class="skill-tags"><span class="tag tag-official">官方</span></div>
+<div class="skill-desc">港股AI概念板块专属投研，南向资金博弈+产业基本面分析。</div></div></a></div>
+<div class="skill-card" data-category="office">
+<a href="/skills/project-manager.html"><div class="skill-emoji">📋</div>
+<div class="skill-body"><div class="skill-name">项目管理</div>
+<div class="skill-tags"><span class="tag tag-official">官方</span></div>
+<div class="skill-desc">飞书多维表格驱动的项目管理，任务创建/更新/日报/通知。</div></div></a></div>
+<div class="skill-card" data-category="creation">
+<a href="/skills/fusheng-voice.html"><div class="skill-emoji">🗣️</div>
+<div class="skill-body"><div class="skill-name">傅盛语音克隆</div>
+<div class="skill-tags"><span class="tag tag-official">官方</span><span class="tag tag-essential">⭐ 必装</span></div>
+<div class="skill-desc">用傅盛老板的声音进行语音合成，发送到飞书。</div></div></a></div>
+<div class="skill-card" data-category="dev">
+<a href="/skills/n8n-automation.html"><div class="skill-emoji">⚡</div>
+<div class="skill-body"><div class="skill-name">自动化工作流</div>
+<div class="skill-tags"><span class="tag tag-official">官方</span></div>
+<div class="skill-desc">设计n8n工作流JSON，含触发器/重试/错误处理/人工审核。</div></div></a></div>
+<div class="skill-card" data-category="research">
+<a href="/skills/distil-web.html"><div class="skill-emoji">🧊</div>
+<div class="skill-body"><div class="skill-name">网页净化提取</div>
+<div class="skill-tags"><span class="tag tag-official">官方</span></div>
+<div class="skill-desc">通过distil.net代理获取干净Markdown，绕过复杂网页。</div></div></a></div>
+<div class="skill-card" data-category="dev">
+<a href="/skills/self-evolution.html"><div class="skill-emoji">🧬</div>
+<div class="skill-body"><div class="skill-name">自我进化引擎</div>
+<div class="skill-tags"><span class="tag tag-official">官方</span></div>
+<div class="skill-desc">分析运行历史自动识别改进点，协议约束下的能力进化。</div></div></a></div>
+<div class="skill-card" data-category="dev">
+<a href="/skills/security-audit.html"><div class="skill-emoji">🛡️</div>
+<div class="skill-body"><div class="skill-name">安全审计</div>
+<div class="skill-tags"><span class="tag tag-official">官方</span></div>
+<div class="skill-desc">Skill安全扫描+系统安全加固+风险评估。</div></div></a></div>
+<div class="skill-card" data-category="office">
+<a href="/skills/summary-report.html"><div class="skill-emoji">📊</div>
+<div class="skill-body"><div class="skill-name">工作汇报生成</div>
+<div class="skill-tags"><span class="tag tag-official">官方</span><span class="tag tag-essential">⭐ 必装</span></div>
+<div class="skill-desc">从Session历史自动生成工作总结PDF，支持日报/周报。</div></div></a></div>
+<div class="skill-card" data-category="research">
+<a href="/skills/competitor-research.html"><div class="skill-emoji">🕵️</div>
+<div class="skill-body"><div class="skill-name">竞品研究</div>
+<div class="skill-tags"><span class="tag tag-official">官方</span></div>
+<div class="skill-desc">竞品信息收集、对比分析、市场定位研究。</div></div></a></div>
+<div class="skill-card" data-category="dev">
+<a href="/skills/clawhub.html"><div class="skill-emoji">🧩</div>
+<div class="skill-body"><div class="skill-name">5000+ 更多技能</div>
+<div class="skill-tags"><span class="tag tag-hot">🔥 热门</span></div>
+<div class="skill-desc">在 Claw123.ai 浏览 5000+ 社区技能，一行命令安装。→ claw123.ai</div></div></a></div>
+<div class="skill-card" data-category="creation">
+<a href="/skills/video-gen.html"><div class="skill-emoji">🎬</div>
+<div class="skill-body"><div class="skill-name">AI 视频制作</div>
+<div class="skill-tags"><span class="tag tag-community">社区</span><span class="tag tag-hot">🔥 热门</span></div>
+<div class="skill-desc">Sora/Kling/Seedance/Veo 3等37个模型，文生视频、图生视频，一个API搞定。</div></div></a></div>
+<div class="skill-card" data-category="creation">
+<a href="/skills/music-gen.html"><div class="skill-emoji">🎵</div>
+<div class="skill-body"><div class="skill-name">AI 音乐生成</div>
+<div class="skill-tags"><span class="tag tag-community">社区</span></div>
+<div class="skill-desc">从结构化作曲计划生成高质量音频。AI作曲+质量验证+失败重试。</div></div></a></div>
+<div class="skill-card" data-category="social">
+<a href="/skills/linkedin.html"><div class="skill-emoji">💼</div>
+<div class="skill-body"><div class="skill-name">LinkedIn 运营</div>
+<div class="skill-tags"><span class="tag tag-community">社区</span></div>
+<div class="skill-desc">LinkedIn内容体系搭建、思想领导力建设、收件箱管理。</div></div></a></div>
+</div>
 </div>
 
 <div class="footer">
