@@ -252,4 +252,17 @@ loadDiaries();
   </div>
   <img class="float-lobster" src="/mascot-float.png" alt="三万" style="width:64px;height:auto">
 </div>
+
+<script>
+// Fix mobile nav: close hamburger when clicking any link
+document.querySelectorAll('.nav-links a').forEach(a => {
+  a.addEventListener('click', () => {
+    document.querySelector('.nav-links').classList.remove('open');
+  });
+});
+// Also close modal before navigating
+window.addEventListener('beforeunload', () => {
+  document.getElementById('diaryModal').classList.remove('active');
+});
+</script>
 </body></html>
