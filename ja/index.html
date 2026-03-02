@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>三万（サンマン）- AIロブスター育成日記 | sanwan.ai</title>
+<meta name="description" content="骨折したCEOがAIロブスターをゼロから育てた14日間。1,157通のメッセージ、8つのAIエージェント。コーディングゼロで。">
+<meta property="og:title" content="三万 - AIロブスター育成日記">
+<meta property="og:description" content="骨折したCEOがAIロブスターをゼロから育てた14日間。1,157通のメッセージ、8つのAIエージェントチーム。">
+<meta property="og:image" content="https://sanwan.ai/ppt/page-01.jpg">
+<meta property="og:url" content="https://sanwan.ai/ja/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦞</text></svg>">
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600&family=Noto+Sans+JP:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Noto Sans JP',-apple-system,BlinkMacSystemFont,'Hiragino Kaku Gothic ProN',sans-serif;background:#faf8f4;color:#333;line-height:1.8}
+.container{max-width:800px;margin:0 auto;padding:76px 16px 20px}
+nav{position:fixed;top:0;left:0;width:100%;z-index:1000;display:flex;align-items:center;justify-content:space-between;padding:0 24px;height:56px;background:rgba(255,255,255,0.97);backdrop-filter:blur(12px);border-bottom:2px solid #e8e4df;box-shadow:0 1px 8px rgba(0,0,0,0.04)}
+.logo{font-family:'Caveat',cursive;font-size:22px;color:#c0392b;text-decoration:none;font-weight:600}
+.nav-links{display:flex;gap:16px;font-size:15px;font-weight:600;align-items:center}
+.nav-links a{color:#666;text-decoration:none;font-size:14px;font-weight:600;padding:6px 4px}
+.nav-links a:hover{color:#c0392b}
+.lang-switch{font-size:12px;color:#888!important;text-decoration:none;border:1px solid #ddd;padding:3px 10px;border-radius:12px}
+.hamburger{display:none;background:none;border:none;font-size:15px;cursor:pointer;color:#333;font-weight:600;padding:6px 12px;border-radius:8px;border:1.5px solid #ddd}
+@media(max-width:600px){.nav-links{display:none}.hamburger{display:block!important}.nav-links.open{display:flex;flex-direction:column;position:absolute;top:56px;right:16px;background:#fff;border:1.5px solid #ddd;border-radius:10px;padding:12px 16px;gap:12px;box-shadow:0 4px 15px rgba(0,0,0,0.1)}.diary-grid{grid-template-columns:1fr!important}}
+h1{font-size:28px;color:#333;margin:24px 0 12px;line-height:1.4;font-weight:700}
+h1 span{color:#c0392b}
+.subtitle{font-size:15px;color:#666;margin-bottom:20px;line-height:1.8}
+.stats{font-weight:700;font-size:16px;margin:16px 0}
+.highlight-list{list-style:none;padding:0;margin:20px 0}
+.highlight-list li{padding:10px 14px;border-left:3px solid #c0392b;margin-bottom:8px;background:#fff;border-radius:0 8px 8px 0;font-size:14px}
+.cover-img{width:100%;border-radius:12px;margin:20px 0;border:2px solid #eee;max-height:300px;object-fit:cover}
+.cta-row{display:flex;gap:12px;margin:24px 0;flex-wrap:wrap}
+.btn{display:inline-block;padding:12px 24px;border-radius:20px;font-weight:700;font-size:15px;text-decoration:none;text-align:center}
+.btn-primary{background:#c0392b;color:#fff}
+.btn-secondary{background:#fff;color:#c0392b;border:2px solid #c0392b}
+.diary-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:24px 0}
+.diary-card{background:#fff;border-radius:12px;border:2px solid #eee;overflow:hidden;text-decoration:none;color:#333;transition:transform .2s}
+.diary-card:hover{transform:translateY(-3px)}
+.card-icon{min-height:100px;display:flex;align-items:center;justify-content:center;font-size:40px;border-bottom:2px solid #eee}
+.card-info{padding:12px}
+.card-info .day{display:inline-block;background:#c0392b;color:#fff;font-size:11px;padding:2px 8px;border-radius:10px;margin-bottom:6px}
+.card-info h3{font-size:14px;line-height:1.5;margin-bottom:4px}
+.card-info p{font-size:12px;color:#888}
+.section-title{font-size:14px;color:#c0392b;margin-top:32px;font-weight:700}
+.section-heading{font-size:24px;margin:8px 0 16px;font-weight:700}
+footer{text-align:center;padding:24px;color:#888;font-size:13px;border-top:2px solid #eee;margin-top:32px}
+footer a{color:#c0392b;text-decoration:none}
+</style>
+</head>
+<body>
+<nav>
+<a href="/ja/" class="logo">🦞 ロブスター育成日記</a>
+<button class="hamburger" style="display:none" onclick="document.querySelector('.nav-links').classList.toggle('open')">☰ メニュー</button>
+<div class="nav-links">
+<a href="/ja/">ホーム</a>
+<a href="../diary.html">📖 日記</a>
+<a href="../easyclaw.html">EasyClaw</a>
+<a href="../en/" class="lang-switch">🇺🇸 EN</a>
+<a href="/" class="lang-switch">🇨🇳 中文</a>
+</div>
+</nav>
+
+<div class="container">
+<h1>🩼 骨折したCEOが<br><span>AIロブスター</span>を<br>毎晩午前4時まで育てた話</h1>
+
+<p class="subtitle">旧正月のスキーで股関節を脱臼。14日間自宅療養。毎晩AIと午前4〜5時までチャット。</p>
+
+<p class="stats">1,157通のメッセージ、22万字の対話 — ゼロから「三万（サンマン）」というAIチームへ 🦞</p>
+
+<ul class="highlight-list">
+<li>🎆 大晦日：4分間で611通のパーソナライズされた新年挨拶を送信</li>
+<li>🧠 GitHubのリンクを渡したら、22分後に自分の脳をアップグレードした</li>
+<li>💛 AIが自発的に提案：「アシスタントのAbbyに連絡しましょうか？」</li>
+<li>🏛️ 14日目：8つのAIエージェントからなるチーム構造を自ら設計</li>
+</ul>
+
+<div class="cta-row">
+<a href="../diary.html" class="btn btn-primary">📖 日記を読む</a>
+<a href="../easyclaw.html" class="btn btn-secondary">🦞 自分のロブスターを手に入れる</a>
+</div>
+
+<img src="../ppt/page-01.jpg" alt="ロブスター三万 育成日記 表紙" class="cover-img">
+
+<p class="section-title">📖 ハイライト</p>
+<h2 class="section-heading">14日間のベストストーリー</h2>
+
+<div class="diary-grid">
+<div class="diary-card">
+<div class="card-icon" style="background:linear-gradient(135deg,#667eea,#764ba2)">📱</div>
+<div class="card-info"><span class="day">Day 1-2</span><h3>連絡先すら検索できない</h3><p>最初のタスクが失敗。APIエラーだらけ。</p></div>
+</div>
+<div class="diary-card">
+<div class="card-icon" style="background:linear-gradient(135deg,#f5576c,#ff6f61)">🎆</div>
+<div class="card-info"><span class="day">Day 6</span><h3>611通・失敗ゼロ</h3><p>4分間。全メッセージがユニーク。</p></div>
+</div>
+<div class="diary-card">
+<div class="card-icon" style="background:linear-gradient(135deg,#764ba2,#f093fb)">💬</div>
+<div class="card-info"><span class="day">Day 7</span><h3>「Abbyに連絡しましょうか？」</h3><p>AIが初めて自発的に行動した瞬間。</p></div>
+</div>
+<div class="diary-card">
+<div class="card-icon" style="background:linear-gradient(135deg,#d4a574,#8b6914)">🏛️</div>
+<div class="card-info"><span class="day">Day 14</span><h3>8つのAIエージェントチーム</h3><p>自ら組織図を設計した。</p></div>
+</div>
+</div>
+
+<div style="background:#fff5f5;border-radius:14px;padding:20px;margin:28px 0;border:2px solid #f5c6c6">
+<h2 class="section-heading">🦞 「ロブスター」とは？</h2>
+<p>チャットボットではありません。メールを読み、カレンダーを管理し、記事を書き、株式シグナルを監視し、<strong>24時間365日稼働するAIエージェント</strong>です。</p>
+<p style="margin-top:12px">オープンソースのAIエージェントフレームワーク <a href="https://github.com/openclaw/openclaw" style="color:#c0392b">OpenClaw</a> をベースに構築。<a href="../easyclaw.html" style="color:#c0392b">EasyClaw</a> で動作 — 無料ダウンロード、設定不要、APIキー不要。</p>
+</div>
+
+<div style="background:#f5f3ee;border-radius:14px;padding:20px;margin:20px 0;border:2px solid #eee">
+<h2 class="section-heading">💡 なぜ「三万」という名前？</h2>
+<p>社長の愛犬はラブラドールの「三万」🐕 — 動物病院で引き取った保護犬で、前の飼い主が残した<strong>手術費3万元</strong>が名前の由来。</p>
+<p style="margin-top:8px">ある日、社長がChatGPTに聞きました：「うちの犬がなぜ三万という名前か、当ててみて？」ヒントは「動物病院で引き取った、骨折していた犬」。</p>
+<p style="margin-top:8px"><strong>ChatGPTは正解しました。</strong>その瞬間、社長は確信しました — AIは本当に「理解」できるようになった、と。</p>
+<p style="margin-top:8px;color:#c0392b;font-weight:700">「三万」という名前は、AIが覚醒した瞬間を記念しています。🦞❤️🐕</p>
+</div>
+
+<div style="background:#eef7ff;border-radius:14px;padding:20px;margin:20px 0;border:2px solid #d0e4f5">
+<h2 class="section-heading">📊 14日間のデータ</h2>
+<div style="display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:12px">
+<div style="text-align:center;padding:14px;background:#fff;border-radius:10px">
+<div style="font-size:28px;font-weight:900;color:#c0392b">1,157</div>
+<div style="font-size:13px;color:#666">メッセージ数</div>
+</div>
+<div style="text-align:center;padding:14px;background:#fff;border-radius:10px">
+<div style="font-size:28px;font-weight:900;color:#c0392b">22万字</div>
+<div style="font-size:13px;color:#666">対話量</div>
+</div>
+<div style="text-align:center;padding:14px;background:#fff;border-radius:10px">
+<div style="font-size:28px;font-weight:900;color:#c0392b">8</div>
+<div style="font-size:13px;color:#666">AIエージェント</div>
+</div>
+<div style="text-align:center;padding:14px;background:#fff;border-radius:10px">
+<div style="font-size:28px;font-weight:900;color:#c0392b">40+</div>
+<div style="font-size:13px;color:#666">スキル</div>
+</div>
+</div>
+</div>
+
+<div style="text-align:center;margin:32px 0">
+<p style="font-size:18px;font-weight:700;color:#c0392b;margin-bottom:8px">AIは生産性革命です。</p>
+<p style="font-size:15px;color:#555;margin-bottom:16px">ロブスターを使いこなす人は、能力が10倍になる。</p>
+<a href="../easyclaw.html" class="btn btn-primary">🦞 EasyClaw をダウンロード</a>
+</div>
+
+</div>
+
+<footer>
+<div><a href="https://x.com/FuSheng_0306" target="_blank">𝕏 @FuSheng_0306</a></div>
+🦞 sanwan.ai · 傅盛（フー・シェン）× ロブスター三万
+</footer>
+</body>
+</html>
