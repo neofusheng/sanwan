@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Skill-Shop — Hummer-Aufzucht-Tagebuch</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦞</text></svg>">
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root { --bg:#f7f5f2; --card:#fff; --border:#e8e4df; --accent:#c0392b; --text:#2d2926; --muted:#7a746e; }
+* { box-sizing:border-box; margin:0; padding:0; }
+body { padding-top:56px; font-family:'Inter',-apple-system,sans-serif; background:var(--bg); color:var(--text); line-height:1.6; }
+nav { position:fixed; top:0; left:0; width:100%; z-index:1000; background:rgba(255,255,255,0.97); backdrop-filter:blur(12px); border-bottom:2px solid var(--border); padding:0 24px; height:56px; display:flex; align-items:center; justify-content:space-between; box-shadow:0 1px 8px rgba(0,0,0,0.04); }
+.nav-logo { font-weight:900; font-size:22px; color:var(--accent); text-decoration:none; font-family:"Caveat",cursive; }
+.nav-links { display:flex; gap:20px; }
+.nav-links a { color:var(--muted); text-decoration:none; font-size:15px; font-weight:600; padding:6px 4px; }
+.nav-links a:hover { color:var(--accent); }
+.hamburger{display:none;background:none;border:none;font-size:15px;cursor:pointer;color:#333;font-weight:600;padding:6px 12px;border-radius:8px;border:1.5px solid #ddd}
+@media(max-width:768px){.nav-links{display:none}.hamburger{display:block}.nav-links.open{display:flex;flex-direction:column;position:absolute;top:56px;right:16px;background:#fff;border:1.5px solid #ddd;border-radius:10px;padding:12px 16px;gap:12px;box-shadow:0 4px 15px rgba(0,0,0,0.1)}}
+.hero { background:#fff; border-bottom:1px solid var(--border); padding:48px 24px 40px; text-align:center; position:relative; overflow:hidden; }
+.hero::before { content:""; position:absolute; top:0; left:0; right:0; bottom:0; opacity:0.1; background-image:radial-gradient(var(--accent) 0.5px,transparent 0.5px); background-size:28px 28px; pointer-events:none; }
+.hero h1 { font-size:clamp(1.6rem,4vw,2.2rem); font-weight:900; margin-bottom:8px; position:relative; }
+.hero p { color:var(--muted); font-size:15px; max-width:500px; margin:0 auto; position:relative; }
+.packs-section { max-width:1000px; margin:32px auto; padding:0 24px; }
+.packs-title { font-size:20px; font-weight:800; margin-bottom:16px; }
+.packs-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
+@media(max-width:768px){.packs-grid{grid-template-columns:1fr}}
+.pack-card { background:var(--card); border:2px solid var(--border); border-radius:14px; padding:20px; cursor:pointer; transition:all .2s; text-decoration:none; color:inherit; display:block; }
+.pack-card:hover { transform:translateY(-3px); box-shadow:0 6px 20px rgba(0,0,0,0.08); }
+.pack-icon { font-size:32px; margin-bottom:8px; }
+.pack-name { font-size:16px; font-weight:800; margin-bottom:4px; }
+.pack-tagline { font-size:12px; color:var(--muted); line-height:1.5; margin-bottom:8px; }
+.pack-meta { display:flex; align-items:center; gap:8px; }
+.pack-count { font-size:11px; font-weight:700; padding:2px 8px; border-radius:99px; color:#fff; }
+.pack-desc { font-size:11px; color:var(--muted); }
+.pack-card.featured { border-color:var(--accent); background:#fffaf8; }
+.skills-section { max-width:1000px; margin:32px auto; padding:0 24px; }
+.skills-header { display:flex; justify-content:space-between; align-items:center; margin-bottom:16px; flex-wrap:wrap; gap:12px; }
+.skills-title { font-size:20px; font-weight:800; }
+.filters { display:flex; gap:6px; flex-wrap:wrap; }
+.filters button { padding:6px 14px; border-radius:20px; border:1px solid var(--border); background:var(--card); font-size:12px; font-weight:600; cursor:pointer; transition:.15s; font-family:inherit; color:var(--text); }
+.filters button:hover { border-color:var(--accent); color:var(--accent); }
+.filters button.active { background:var(--accent); color:#fff; border-color:var(--accent); }
+.skills-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:12px; }
+@media(max-width:768px){.skills-grid{grid-template-columns:1fr}}
+.skill-card { background:var(--card); border:1.5px solid var(--border); border-radius:12px; padding:14px 16px; cursor:pointer; transition:.2s; }
+.skill-card:hover { border-color:var(--accent); transform:translateY(-2px); box-shadow:0 4px 12px rgba(0,0,0,0.06); }
+.skill-card a { text-decoration:none; color:inherit; display:flex; gap:12px; align-items:flex-start; }
+.skill-emoji { font-size:28px; flex-shrink:0; }
+.skill-body { flex:1; min-width:0; }
+.skill-name { font-weight:700; font-size:14px; }
+.skill-desc { font-size:12px; color:var(--muted); margin-top:2px; line-height:1.5; }
+.skill-tags { display:flex; gap:4px; margin-top:4px; flex-wrap:wrap; }
+.tag { font-size:10px; padding:1px 6px; border-radius:4px; font-weight:600; }
+.tag-official { background:#e8f5e9; color:#2e7d32; }
+.tag-community { background:#e3f2fd; color:#1565c0; }
+.tag-featured { background:#fff3e0; color:#e65100; }
+.tag-essential { background:#e8eaf6; color:#283593; }
+.tag-hot { background:#fce4ec; color:#c62828; }
+.footer { text-align:center; padding:40px 24px; color:var(--muted); font-size:12px; }
+.footer a { color:var(--accent); text-decoration:none; }
+</style>
+</head>
+<body>
+<nav>
+  <a class="nav-logo" href="index.html">🦞 Hummer-Aufzucht-Tagebuch</a>
+  <button class="hamburger" onclick="document.querySelector('.nav-links').classList.toggle('open')">☰ Menü</button>
+  <div class="nav-links">
+    <a href="index.html">Start</a>
+    <a href="diary.html">📖 Tagebuch</a>
+    <a href="articles.html">📝 Artikel</a>
+    <a href="science.html">🔰 Wissenschaft</a>
+    <a href="skills.html" style="color:var(--accent);font-weight:700">🛒 Skills</a>
+    <a href="easyclaw.html">🦞 EasyClaw</a>
+  </div>
+<span style="margin-left:auto"><a href="../skills.html" style="font-size:12px;color:#888;text-decoration:none;border:1px solid #ddd;padding:2px 8px;border-radius:10px">ZH</a> <a href="../en/skills.html" style="font-size:12px;color:#888;text-decoration:none;border:1px solid #ddd;padding:2px 8px;border-radius:10px">EN</a> <a href="../ja/skills.html" style="font-size:12px;color:#888;text-decoration:none;border:1px solid #ddd;padding:2px 8px;border-radius:10px">JA</a> <span style="font-size:12px;color:#c0392b;font-weight:700;padding:2px 8px">DE</span></span></nav>
+
+<div class="hero">
+  <h1>🧩 Skill-Shop</h1>
+  <p>Einen Skill installieren, digitaler Mitarbeiter werden — dein Hummer, von dir definiert.</p>
+</div>
+
+<!-- Pakete -->
+<div class="packs-section">
+  <div class="packs-title">📦 Skill-Pakete — Ein Klick installieren, sofort einsetzen</div>
+  <div class="packs-grid">
+    <a href="/skills/pack-assistant.html" class="pack-card">
+      <div class="pack-icon">💼</div>
+      <div class="pack-name">Super-Assistent</div>
+      <div class="pack-tagline">Dein All-in-One-Persönlichkeitsassistent — E-Mail, Terminplanung, Suche, Dokumente, alles per Sprache</div>
+      <div class="pack-meta"><span class="pack-count" style="background:#2874a6">6 Skills</span><span class="pack-desc">Für: Fachleute, Manager, Unternehmer</span></div>
+    </a>
+    <a href="/skills/pack-creator.html" class="pack-card">
+      <div class="pack-icon">✍️</div>
+      <div class="pack-name">Content-Creator</div>
+      <div class="pack-tagline">Artikel, Social Media, Video, Musik — Full-Stack-Inhaltserstellung</div>
+      <div class="pack-meta"><span class="pack-count" style="background:#c0392b">8 Skills</span><span class="pack-desc">Für: Ersteller, Markenoperatoren, persönliche Marken</span></div>
+    </a>
+    <a href="/skills/pack-trader.html" class="pack-card">
+      <div class="pack-icon">📈</div>
+      <div class="pack-name">Aktienanalyst</div>
+      <div class="pack-tagline">Echtzeitkurse, technische Analyse, Kauf-/Verkaufssignale — 7×24 Marktbeobachtung</div>
+      <div class="pack-meta"><span class="pack-count" style="background:#27ae60">4 Skills</span><span class="pack-desc">Für: Investoren, Trader, Quant-Enthusiasten</span></div>
+    </a>
+    <a href="/skills/pack-overseas.html" class="pack-card">
+      <div class="pack-icon">🌏</div>
+      <div class="pack-name">Globaler Betrieb</div>
+      <div class="pack-tagline">Mehrsprachige Inhalte, internationale Social Media, Cross-Border-Ops — Sprache und Zeitzone gelöst</div>
+      <div class="pack-meta"><span class="pack-count" style="background:#8e44ad">6 Skills</span><span class="pack-desc">Für: globale Unternehmen, grenzüberschreitenden E-Commerce</span></div>
+    </a>
+    <a href="/skills/pack-ecommerce.html" class="pack-card">
+      <div class="pack-icon">🛒</div>
+      <div class="pack-name">E-Commerce-Betrieb</div>
+      <div class="pack-tagline">Produkttexte, Wettbewerbsanalyse, Datenmonitoring — KI ersetzt Wiederholungsarbeit</div>
+      <div class="pack-meta"><span class="pack-count" style="background:#e67e22">6 Skills</span><span class="pack-desc">Für: Verkäufer, Marken, Betriebsteams</span></div>
+    </a>
+    <a href="/skills/pack-sanwan.html" class="pack-card featured">
+      <div class="pack-icon">🦞</div>
+      <div class="pack-name">Sanwan-Komplett-Team</div>
+      <div class="pack-tagline">8 Agenten, jeder in seinem Bereich — nicht ein Hummer, ein ganzes Team</div>
+      <div class="pack-meta"><span class="pack-count" style="background:#c0392b">38 Skills</span><span class="pack-desc">⭐ Komplettes Setup, persönlich von Fu Sheng überprüft</span></div>
+    </a>
+  </div>
+</div>
+
+<!-- Alle Skills -->
+<div class="skills-section">
+  <div class="skills-header">
+    <div class="skills-title">🔧 Alle Skills</div>
+    <div class="filters">
+      <button class="active" onclick="filterSkills('all')">Alle</button>
+      <button onclick="filterSkills('creation')">Erstellung</button>
+      <button onclick="filterSkills('social')">Social</button>
+      <button onclick="filterSkills('research')">Recherche</button>
+      <button onclick="filterSkills('office')">Büro</button>
+      <button onclick="filterSkills('dev')">Entwicklung</button>
+      <button onclick="filterSkills('life')">Leben</button>
+    </div>
+  </div>
+  <div class="skills-grid" id="skillsGrid">
+    <div class="skill-card" data-category="dev"><a href="/skills/multi-agent-setup.html"><div class="skill-emoji">🏗️</div><div class="skill-body"><div class="skill-name">Multi-Agenten-Team-Einrichtung</div><div class="skill-tags"><span class="tag tag-official">Offiziell</span><span class="tag tag-essential">⭐ Wesentlich</span><span class="tag tag-hot">🔥 Beliebt</span></div><div class="skill-desc">Einen Hummer in ein Team verwandeln — mehrere KI-Rollen konfigurieren: Kommandant + Schreiber + Stratege + Betrieb.</div></div></a></div>
+    <div class="skill-card" data-category="research"><a href="/skills/web-search.html"><div class="skill-emoji">🌐</div><div class="skill-body"><div class="skill-name">Web-Suche</div><div class="skill-tags"><span class="tag tag-official">Offiziell</span><span class="tag tag-essential">⭐ Wesentlich</span></div><div class="skill-desc">Brave Search + DuckDuckGo Multi-Engine-Suche, Echtzeit-Webinformationen.</div></div></a></div>
+    <div class="skill-card" data-category="research"><a href="/skills/deep-research.html"><div class="skill-emoji">🔬</div><div class="skill-body"><div class="skill-name">Tiefenrecherche</div><div class="skill-tags"><span class="tag tag-official">Offiziell</span></div><div class="skill-desc">Multi-Engine-Suche + Web-Extraktion + strukturierte Analyseberichte.</div></div></a></div>
+    <div class="skill-card" data-category="life"><a href="/skills/weather.html"><div class="skill-emoji">🌤️</div><div class="skill-body"><div class="skill-name">Wetterabfrage</div><div class="skill-tags"><span class="tag tag-official">Offiziell</span><span class="tag tag-essential">⭐ Wesentlich</span></div><div class="skill-desc">Globales Echtzeit-Wetter, zwei Quellen: wttr.in + Open-Meteo.</div></div></a></div>
+    <div class="skill-card" data-category="office"><a href="/skills/email.html"><div class="skill-emoji">📧</div><div class="skill-body"><div class="skill-name">E-Mail-Verwaltung</div><div class="skill-tags"><span class="tag tag-official">Offiziell</span></div><div class="skill-desc">Feishu E-Mail-Überwachung + ClawPost-Postfach, automatische Prüfung + intelligente Antworten.</div></div></a></div>
+    <div class="skill-card" data-category="creation"><a href="/skills/image-gen.html"><div class="skill-emoji">🖼️</div><div class="skill-body"><div class="skill-name">KI-Bildgenerierung</div><div class="skill-tags"><span class="tag tag-official">Offiziell</span><span class="tag tag-essential">⭐ Wesentlich</span></div><div class="skill-desc">Nano Banana Pro (Gemini 3) Text-zu-Bild, Bild-zu-Bild, Stil-Transfer.</div></div></a></div>
+    <div class="skill-card" data-category="creation"><a href="/skills/voice-gen.html"><div class="skill-emoji">🎙️</div><div class="skill-body"><div class="skill-name">Sprachsynthese</div><div class="skill-tags"><span class="tag tag-official">Offiziell</span><span class="tag tag-essential">⭐ Wesentlich</span></div><div class="skill-desc">Mehrsprachige TTS, native Feishu-Sprachnachrichtenübermittlung. edge-tts + ffmpeg.</div></div></a></div>
+    <div class="skill-card" data-category="dev"><a href="/skills/coding.html"><div class="skill-emoji">💻</div><div class="skill-body"><div class="skill-name">Coding-Assistent</div><div class="skill-tags"><span class="tag tag-official">Offiziell</span></div><div class="skill-desc">Claude Code/Codex zum Schreiben von Code, Beheben von Bugs, Deployen. PTY Auto-Antwort-Modus.</div></div></a></div>
+    <div class="skill-card" data-category="dev"><a href="/skills/github-ops.html"><div class="skill-emoji">🐙</div><div class="skill-body"><div class="skill-name">GitHub-Operationen</div><div class="skill-tags"><span class="tag tag-official">Offiziell</span></div><div class="skill-desc">Repos/Issues/PRs/Code-Suche/Actions — GitHub verwalten ohne Browser zu öffnen.</div></div></a></div>
+    <div class="skill-card" data-category="dev"><a href="/skills/browser-vision.html"><div class="skill-emoji">🔭</div><div class="skill-body"><div class="skill-name">Browser-Steuerung</div><div class="skill-tags"><span class="tag tag-official">Offiziell</span><span class="tag tag-essential">⭐ Wesentlich</span></div><div class="skill-desc">Headless Chrome Screenshots, Web-Automatisierung, visuelles Debugging.</div></div></a></div>
+    <div class="skill-card" data-category="creation"><a href="/skills/humanizer.html"><div class="skill-emoji">🧑</div><div class="skill-body"><div class="skill-name">KI-Text-Humanisierer</div><div class="skill-tags"><span class="tag tag-official">Offiziell</span><span class="tag tag-essential">⭐ Wesentlich</span></div><div class="skill-desc">16 Erkennungsmuster + 6 Stil-Transformationen — entfernt den „KI-Geschmack". Unterstützt lässige/akademische/soziale Stile.</div></div></a></div>
+    <div class="skill-card" data-category="social"><a href="/skills/twitter.html"><div class="skill-emoji">🐦</div><div class="skill-body"><div class="skill-name">Twitter / X</div><div class="skill-tags"><span class="tag tag-official">Offiziell</span></div><div class="skill-desc">Post/Thread/Retweet/Löschen — Kontooperationen für @FuSheng_0306.</div></div></a></div>
+    <div class="skill-card" data-category="research"><a href="/skills/web-scraper.html"><div class="skill-emoji">🕷️</div><div class="skill-body"><div class="skill-name">Anti-Scrape-Web-Zugang</div><div class="skill-tags"><span class="tag tag-official">Offiziell</span><span class="tag tag-essential">⭐ Wesentlich</span></div><div class="skill-desc">Zugang zu WeChat, Twitter, Reddit und anderen scraping-geschützten Seiten. Drei Methoden, automatisches Umschalten.</div></div></a></div>
+    <div class="skill-card" data-category="office"><a href="/skills/pdf-gen.html"><div class="skill-emoji">📄</div><div class="skill-body"><div class="skill-name">PDF-Generierung</div><div class="skill-tags"><span class="tag tag-official">Offiziell</span><span class="tag tag-essential">⭐ Wesentlich</span></div><div class="skill-desc">Markdown zu schönem PDF, mit Code-Hervorhebung. Pandoc + Chrome.</div></div></a></div>
+    <div class="skill-card" data-category="life"><a href="/skills/flight-search.html"><div class="skill-emoji">✈️</div><div class="skill-body"><div class="skill-name">Flugsuche</div><div class="skill-tags"><span class="tag tag-official">Offiziell</span><span class="tag tag-essential">⭐ Wesentlich</span></div><div class="skill-desc">Inlands- und Auslandsflugpreise, Mehrtagsvergleich, Günstigster-Preis-Kalender.</div></div></a></div>
+    <div class="skill-card" data-category="research"><a href="/skills/stock-monitor.html"><div class="skill-emoji">📈</div><div class="skill-body"><div class="skill-name">Aktienüberwachung</div><div class="skill-tags"><span class="tag tag-official">Offiziell</span><span class="tag tag-hot">🔥 Beliebt</span></div><div class="skill-desc">A-Aktien/HK/US Echtzeit-Überwachung, RSI/MACD/Bollinger Multi-Indikator Kauf-/Verkaufssignale.</div></div></a></div>
+    <div class="skill-card" data-category="creation"><a href="/skills/seo-writer.html"><div class="skill-emoji">🔍</div><div class="skill-body"><div class="skill-name">SEO-Content-Schreiben</div><div class="skill-tags"><span class="tag tag-official">Offiziell</span><span class="tag tag-essential">⭐ Wesentlich</span></div><div class="skill-desc">SEO-optimiertes Langform-Schreiben mit Keyword-Strategie + strukturiertem Inhalt.</div></div></a></div>
+    <div class="skill-card" data-category="research"><a href="/skills/video-summary.html"><div class="skill-emoji">🎬</div><div class="skill-body"><div class="skill-name">Video-Zusammenfassung</div><div class="skill-tags"><span class="tag tag-official">Offiziell</span><span class="tag tag-hot">🔥 Beliebt</span></div><div class="skill-desc">YouTube/Bilibili: automatisches Untertitel-Abrufen und KI-Zusammenfassung, als Markdown ausgeben.</div></div></a></div>
+    <div class="skill-card" data-category="research"><a href="/skills/trending.html"><div class="skill-emoji">🔥</div><div class="skill-body"><div class="skill-name">Trending Topics</div><div class="skill-tags"><span class="tag tag-official">Offiziell</span><span class="tag tag-hot">🔥 Beliebt</span></div><div class="skill-desc">Top-Trending-Listen über Plattformen hinweg — alles Heiße auf einmal erhalten.</div></div></a></div>
+    <div class="skill-card" data-category="research"><a href="/skills/hn-digest.html"><div class="skill-emoji">📰</div><div class="skill-body"><div class="skill-name">Hacker News Digest</div><div class="skill-tags"><span class="tag tag-official">Offiziell</span></div><div class="skill-desc">HN-Frontpage heiße Beiträge abrufen, nach Thema filterbar (Tech/Gesundheit/KI).</div></div></a></div>
+    <div class="skill-card" data-category="creation"><a href="/skills/video-gen.html"><div class="skill-emoji">🎬</div><div class="skill-body"><div class="skill-name">KI-Videogenerierung</div><div class="skill-tags"><span class="tag tag-community">Community</span><span class="tag tag-hot">🔥 Beliebt</span></div><div class="skill-desc">Sora/Kling/Seedance/Veo3 und 37 weitere Modelle — Text-zu-Video, Bild-zu-Video, eine API.</div></div></a></div>
+    <div class="skill-card" data-category="creation"><a href="/skills/music-gen.html"><div class="skill-emoji">🎵</div><div class="skill-body"><div class="skill-name">KI-Musikgenerierung</div><div class="skill-tags"><span class="tag tag-community">Community</span></div><div class="skill-desc">Hochwertige Audioerzeugung aus strukturierten Kompositionsplänen. KI-Komposition + Qualitätsvalidierung + Wiederholung.</div></div></a></div>
+    <div class="skill-card" data-category="social"><a href="/skills/linkedin.html"><div class="skill-emoji">💼</div><div class="skill-body"><div class="skill-name">LinkedIn-Operationen</div><div class="skill-tags"><span class="tag tag-community">Community</span></div><div class="skill-desc">LinkedIn-Inhaltssystem, Thought-Leadership-Aufbau, Posteingangs-Verwaltung.</div></div></a></div>
+    <div class="skill-card" data-category="dev"><a href="/skills/clawhub.html"><div class="skill-emoji">🧩</div><div class="skill-body"><div class="skill-name">5000+ weitere Skills</div><div class="skill-tags"><span class="tag tag-hot">🔥 Beliebt</span></div><div class="skill-desc">Über 5000 Community-Skills auf Claw123.ai — mit einem Befehl installieren. → claw123.ai</div></div></a></div>
+  </div>
+</div>
+
+<div class="footer">
+  <p>🦞 Hummer-Aufzucht-Tagebuch · <a href="https://easyclaw.com">EasyClaw</a> · <a href="https://clawhub.com">ClawHub</a></p>
+</div>
+
+<script>
+let allSkills = [];
+function filterSkills(cat) {
+  document.querySelectorAll('.filters button').forEach(b => b.classList.remove('active'));
+  event.target.classList.add('active');
+  document.querySelectorAll('.skill-card').forEach(c => {
+    c.style.display = (cat === 'all' || c.dataset.category === cat) ? '' : 'none';
+  });
+}
+</script>
+</body>
+</html>

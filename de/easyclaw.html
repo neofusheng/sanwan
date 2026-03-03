@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Adoptiere deinen Hummer 🦞 - EasyClaw</title>
+<meta name="description" content="Adoptiere deinen KI-Hummer-Assistenten kostenlos. Ein-Klick-Installation, keine Konfiguration — connect your chat app and und fang an zu sprechen.">
+<meta property="og:title" content="🦞 Adoptiere deinen Hummer - EasyClaw">
+<meta property="og:description" content="Ein-Klick-Installation, keine Konfiguration. Dein privater KI-Hummer-Assistent.">
+<meta property="og:image" content="https://sanwan.ai/ppt/page-01.jpg">
+<meta property="og:url" content="https://sanwan.ai/en/easyclaw.html">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦞</text></svg>">
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=Noto+Sans+SC:wght@500;700;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#faf8f4;color:#333}
+nav{position:fixed;top:0;left:0;width:100%;z-index:1000;display:flex;align-items:center;justify-content:space-between;padding:0 24px;height:56px;background:rgba(255,255,255,0.97);backdrop-filter:blur(12px);border-bottom:2px solid #e8e4df;box-shadow:0 1px 8px rgba(0,0,0,0.04)}
+nav .logo{font-size:22px;font-weight:800;color:#c0392b;text-decoration:none;font-family:'Caveat',cursive}
+nav .links{display:flex;gap:20px}
+nav .links a{color:#555;text-decoration:none;font-weight:600;padding:6px 4px;font-size:15px}
+nav .links a:hover{color:#c0392b}
+.hamburger{display:none;background:none;border:none;font-size:15px;cursor:pointer;color:#333;font-weight:600;padding:6px 12px;border-radius:8px;border:1.5px solid #ddd}
+.hero{text-align:center;padding:80px 20px 30px;background:linear-gradient(180deg,#fff 0%,#faf8f4 100%)}
+.hero .lobster{font-size:80px;margin-bottom:16px;display:block;animation:float 3s ease-in-out infinite}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+.hero h1{font-size:34px;font-weight:900;margin-bottom:12px;color:#c0392b;font-family:'Caveat',cursive}
+.hero p{font-size:16px;color:#777;max-width:500px;margin:0 auto 20px}
+.versions{display:grid;grid-template-columns:1fr 1fr;gap:16px;max-width:700px;margin:0 auto 40px;padding:0 20px}
+.version-card{border:2px solid #eee;border-radius:12px;padding:24px;text-align:center;background:#fff;transition:.2s}
+.version-card:hover{border-color:#c0392b;transform:translateY(-2px)}
+.version-card.recommended{border-color:#c0392b;position:relative}
+.version-card.recommended::after{content:'⭐ Recommended';position:absolute;top:-10px;right:16px;background:#c0392b;color:#fff;font-size:11px;font-weight:700;padding:2px 10px;border-radius:10px}
+.version-card h3{font-size:18px;font-weight:800;margin:8px 0 4px}
+.version-card .subtitle{font-size:13px;color:#c0392b;font-weight:600;margin-bottom:12px}
+.version-card ul{text-align:left;font-size:13px;line-height:2;list-style:none;padding:0}
+.version-card li::before{content:'✅ ';margin-right:4px}
+.version-card .btn{display:inline-block;margin-top:16px;padding:10px 24px;border-radius:8px;font-weight:700;font-size:14px;text-decoration:none;transition:.2s}
+.version-card .btn-primary{background:#c0392b;color:#fff}
+.version-card .btn-primary:hover{background:#a93226}
+.version-card .btn-secondary{background:#fff;color:#c0392b;border:2px solid #c0392b}
+.section{max-width:800px;margin:0 auto;padding:30px 20px}
+.section h2{font-size:28px;font-weight:900;text-align:center;margin-bottom:24px;font-family:'Caveat',cursive}
+.step{background:#fff;border:2px solid #eee;border-radius:12px;padding:24px;margin-bottom:16px;position:relative;padding-left:80px}
+.step-num{position:absolute;left:20px;top:24px;width:44px;height:44px;background:#c0392b;color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:18px}
+.step h3{font-size:17px;font-weight:700;margin-bottom:4px}
+.step .time{font-size:12px;color:#c0392b;font-weight:600;margin-bottom:8px}
+.step p{font-size:14px;color:#666;line-height:1.6}
+.channels{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:12px;margin-top:16px}
+.channel{text-align:center;padding:16px 8px;border:2px solid #eee;border-radius:10px;background:#fff;transition:.2s}
+.channel:hover{border-color:#c0392b;transform:translateY(-2px)}
+.channel .ch-icon{font-size:28px;display:block;margin-bottom:6px}
+.channel .ch-name{font-size:13px;font-weight:700}
+.flow{display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap;margin:30px 0;padding:0 20px}
+.flow-step{text-align:center;padding:12px 16px;background:#fff;border:2px solid #eee;border-radius:10px;min-width:90px}
+.flow-step .fl-icon{font-size:24px;display:block;margin-bottom:4px}
+.flow-step .fl-text{font-size:12px;font-weight:600}
+.flow-arrow{font-size:20px;color:#c0392b;font-weight:900}
+.features{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:20px}
+.feature{background:#fff;border:2px solid #eee;border-radius:10px;padding:16px}
+.feature h4{font-size:14px;font-weight:700;margin-bottom:6px}
+.feature p{font-size:12px;color:#666;line-height:1.5}
+.faq{max-width:800px;margin:0 auto;padding:30px 20px 40px}
+.faq h2{font-size:28px;font-weight:900;text-align:center;margin-bottom:24px;font-family:'Caveat',cursive}
+.faq-item{background:#fff;border:2px solid #eee;border-radius:10px;margin-bottom:10px;overflow:hidden}
+.faq-q{padding:14px 20px;font-weight:700;font-size:15px;cursor:pointer;display:flex;justify-content:space-between;align-items:center}
+.faq-q::after{content:'＋';color:#c0392b;font-size:18px;transition:.2s}
+.faq-item.open .faq-q::after{content:'－'}
+.faq-a{padding:0 20px 14px;font-size:14px;color:#666;line-height:1.6;display:none}
+.faq-item.open .faq-a{display:block}
+.final-cta{text-align:center;padding:40px 20px;background:#fff;border-top:2px solid #eee}
+.final-cta h2{font-size:24px;font-weight:900;margin-bottom:10px}
+.final-cta p{font-size:15px;color:#777;margin-bottom:20px}
+.final-cta .btn-big{display:inline-block;background:#c0392b;color:#fff;padding:14px 32px;border-radius:10px;font-weight:800;font-size:16px;text-decoration:none;transition:.2s}
+.final-cta .btn-big:hover{background:#a93226;transform:translateY(-2px);box-shadow:0 6px 20px rgba(192,57,43,0.3)}
+footer{text-align:center;padding:20px;font-size:12px;color:#999}
+@media(max-width:480px){
+  .versions{grid-template-columns:1fr}
+  .features{grid-template-columns:1fr}
+  .hero h1{font-size:24px}
+  nav .links{display:none} .hamburger{display:block !important} nav .links.open{display:flex;flex-direction:column;position:absolute;top:56px;right:16px;background:#fff;border:1.5px solid #ddd;border-radius:10px;padding:12px 16px;gap:12px;box-shadow:0 4px 15px rgba(0,0,0,0.1)}
+  .step{padding-left:70px}
+}
+</style>
+</head>
+<body>
+<nav>
+  <a class="logo" href="index.html">🦞 Lobster Raising Tagebuch</a>
+  <button class="hamburger" style="display:none" onclick="document.querySelector('.links').classList.toggle('open')">☰ Menu</button>
+  <div class="links">
+    <a href="index.html">Startseite</a>
+    <a href="diary.html">📖 Tagebuch</a>
+    <a href="articles.html">📝 Artikel</a>
+    <a href="science.html">🔰 Wissenschaft</a>
+    <a href="skills.html">🛒 Fähigkeiten</a>
+    <a href="easyclaw.html" style="color:#c0392b">EasyClaw</a>
+  </div>
+<span style="margin-left:auto"><a href="../easyclaw.html" style="font-size:12px;color:#888;text-decoration:none;border:1px solid #ddd;padding:2px 8px;border-radius:10px">ZH</a> <a href="../en/easyclaw.html" style="font-size:12px;color:#888;text-decoration:none;border:1px solid #ddd;padding:2px 8px;border-radius:10px">EN</a> <a href="../ja/easyclaw.html" style="font-size:12px;color:#888;text-decoration:none;border:1px solid #ddd;padding:2px 8px;border-radius:10px">JA</a> <span style="font-size:12px;color:#c0392b;font-weight:700;padding:2px 8px">DE</span></span></nav>
+
+<div class="hero">
+  <span class="lobster">🦞</span>
+  <h1>Adopt Your Baby Lobster</h1>
+  <p>Ein-Klick-Installation, keine Konfiguration, no API key required.<br>Choose your way to start raising your own AI lobster companion.</p>
+</div>
+
+<div class="versions">
+  <div class="version-card recommended">
+    <div style="font-size:36px">💻</div>
+    <h3>Desktop Edition</h3>
+    <div class="subtitle">Free · Ready Instantly</div>
+    <ul>
+      <li>Ein-Klick-Installation, keine Konfiguration</li>
+      <li>Data completely private</li>
+      <li>Deep integration with local files</li>
+      <li>Open source, freely customizable</li>
+    </ul>
+    <a class="btn btn-primary" href="https://easyclaw.com" target="_blank">🦞 Download Free</a>
+  </div>
+  <div class="version-card">
+    <div style="font-size:36px">☁️</div>
+    <h3>Enterprise Cloud</h3>
+    <div class="subtitle">7×24 Online · Team Collaboration</div>
+    <ul>
+      <li>7×24 uninterrupted operation</li>
+      <li>Multi-agent team collaboration</li>
+      <li>Enterprise-grade security &amp; permissions</li>
+      <li>No server maintenance required</li>
+    </ul>
+    <a class="btn btn-secondary" href="https://easyclaw.work" target="_blank">Learn More</a>
+  </div>
+</div>
+
+<div class="flow">
+  <div class="flow-step"><span class="fl-icon">💡</span><span class="fl-text">Describe</span></div>
+  <span class="flow-arrow">→</span>
+  <div class="flow-step"><span class="fl-icon">🦞</span><span class="fl-text">Lobster Acts</span></div>
+  <span class="flow-arrow">→</span>
+  <div class="flow-step"><span class="fl-icon">🚀</span><span class="fl-text">Delivered</span></div>
+  <span class="flow-arrow">→</span>
+  <div class="flow-step"><span class="fl-icon">💬</span><span class="fl-text">Feedback</span></div>
+  <span class="flow-arrow">→</span>
+  <div class="flow-step"><span class="fl-icon">🧬</span><span class="fl-text">Evolves</span></div>
+</div>
+
+<div class="section">
+  <h2>3 Steps, 30 Seconds to Start</h2>
+
+  <div class="step">
+    <div class="step-num">1</div>
+    <h3>Download &amp; Install EasyClaw</h3>
+    <div class="time">⏱ ~30 seconds</div>
+    <p>Visit <a href="https://easyclaw.com" style="color:#c0392b;font-weight:700">easyclaw.com</a>, download the installer with one click. Supports macOS / Windows / Linux.<br><strong>Zero config, no API key required, works out of the box.</strong></p>
+  </div>
+
+  <div class="step">
+    <div class="step-num">2</div>
+    <h3>Connect Your Chat App</h3>
+    <div class="time">⏱ ~1 minute</div>
+    <p>Connect your Lobster to the chat app you already use. Talk to it right inside your existing tools — no new app download needed.</p>
+    <div class="channels">
+      <div class="channel"><span class="ch-icon">💬</span><span class="ch-name">WhatsApp</span></div>
+      <div class="channel"><span class="ch-icon">✈️</span><span class="ch-name">Telegram</span></div>
+      <div class="channel"><span class="ch-icon">🎮</span><span class="ch-name">Discord</span></div>
+      <div class="channel"><span class="ch-icon">📘</span><span class="ch-name">Feishu</span></div>
+      <div class="channel"><span class="ch-icon">💚</span><span class="ch-name">WeChat</span></div>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-num">3</div>
+    <h3>Start Talking — Raise Your Lobster!</h3>
+    <div class="time">🎉 Done!</div>
+    <p>Your first message to the Lobster:</p>
+    <div style="background:#faf8f4;border:2px dashed #ddd;border-radius:8px;padding:12px;margin-top:8px;font-size:14px;color:#c0392b;font-weight:600">
+      "Hey, who are you? I'm your new owner 😊"
+    </div>
+    <p style="margin-top:12px;font-size:13px;color:#888">It will introduce itself, get to know you, and ask what you'd like to call it. Every Lobster is unique.</p>
+  </div>
+</div>
+
+<div class="section">
+  <h2>Why Choose a Lobster?</h2>
+  <div class="features">
+    <div class="feature">
+      <h4>☁️ 7×24 Always Online</h4>
+      <p>Your Lobster never rests. Message it at 3 a.m. and get an instant reply. One message while traveling — the job is done.</p>
+    </div>
+    <div class="feature">
+      <h4>💎 Exclusively Yours</h4>
+      <p>Data is completely private. Conversation memory and preferences are never shared with anyone. Your Lobster is loyal only to you.</p>
+    </div>
+    <div class="feature">
+      <h4>🧬 Gets Smarter Over Time</h4>
+      <p>Teach it your style, preferences, and workflow. The more you use it, the more it becomes your digital twin. You evolve — it evolves too.</p>
+    </div>
+    <div class="feature">
+      <h4>📱 Multi-Platform Everywhere</h4>
+      <p>Use it directly inside the chat tools you already have. WhatsApp on the go, Feishu in the office, Discord for your team.</p>
+    </div>
+  </div>
+</div>
+
+<div class="faq">
+  <h2>❓ FAQ</h2>
+
+  <div class="faq-item open">
+    <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Is it really free?</div>
+    <div class="faq-a">The EasyClaw Desktop Edition is completely free and open source. The Lobster runs on your own computer, and your data stays in your hands. The Enterprise Cloud Edition offers additional premium features and 7×24 hosting services.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">How is it different from ChatGPT?</div>
+    <div class="faq-a">ChatGPT is a chat window. The Lobster is your <strong>personal AI assistant</strong> — it remembers you, executes tasks automatically, connects to your tools (calendar, email, social media), stays on standby 24/7, and can learn any new skill you teach it.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">What kind of computer do I need?</div>
+    <div class="faq-a">Anything that can run a browser — a MacBook, a Windows laptop. No GPU required. AI inference runs in the cloud. Even a Raspberry Pi can run it.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Is my data safe?</div>
+    <div class="faq-a">Desktop Edition: the Lobster runs on your own machine. Data doesn't pass through any third-party servers. Enterprise Cloud: dedicated cloud instance, data isolation, enterprise-grade security.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Do skills cost extra?</div>
+    <div class="faq-a">The vast majority of Skills are completely free. The ClawHub community has 200+ free skills to install. Some premium creation skills (image/video generation etc.) are billed by usage.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">How do I install new skills?</div>
+    <div class="faq-a">Browse the skill marketplace at <a href="https://clawhub.com" style="color:#c0392b">ClawHub.com</a>, click install on any skill — or just tell your Lobster "install the XX skill for me" and it will handle it automatically.</div>
+  </div>
+</div>
+
+<div class="final-cta">
+  <h2>Ready?</h2>
+  <p>Adopt your first AI Lobster — 30 seconds and it's yours 🦞</p>
+  <a class="btn-big" href="https://easyclaw.com" target="_blank">🦞 Download EasyClaw Free</a>
+</div>
+
+<footer>
+  <p>🦞 sanwan.ai — Lobster Sanwan Raising Diary</p>
+  <p style="margin-top:4px">Powered by <a href="https://easyclaw.com" style="color:#c0392b;text-decoration:none">EasyClaw</a> · Built with ❤️ by Fu Sheng &amp; AI Team</p>
+</footer>
+
+<script defer src="https://cdn.vercel-insights.com/v1/script.js"></script>
+</body>
+</html>
