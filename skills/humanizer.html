@@ -99,13 +99,13 @@
 
 **检测AI痕迹（16种模式）：**
 \`\`\`bash
-python3 ~/.openclaw/skills/humanize-chinese/scripts/detect_cn.py 文件.txt
+python3 clawhub install humanize-chinese/scripts/detect_cn.py 文件.txt
 \`\`\`
 
 **人性化处理：**
 \`\`\`bash
 # 基础人性化
-python3 ~/.openclaw/skills/humanize-chinese/scripts/humanize_cn.py input.txt -o output.txt
+python3 clawhub install humanize-chinese/scripts/humanize_cn.py input.txt -o output.txt
 
 # 指定场景
 python3 .../humanize_cn.py input.txt --scene social -o output.txt   # 社媒
@@ -115,7 +115,7 @@ python3 .../humanize_cn.py input.txt --scene formal -o output.txt   # 正式
 
 **风格转换（6种）：**
 \`\`\`bash
-python3 ~/.openclaw/skills/humanize-chinese/scripts/style_cn.py input.txt --style casual        # 口语化
+python3 clawhub install humanize-chinese/scripts/style_cn.py input.txt --style casual        # 口语化
 python3 .../style_cn.py input.txt --style zhihu          # 知乎风
 python3 .../style_cn.py input.txt --style xiaohongshu    # 小红书风
 python3 .../style_cn.py input.txt --style wechat         # 微信公众号风

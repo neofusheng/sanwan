@@ -58,7 +58,7 @@
     <div class="install-banner">
       <div class="icon">⚙️</div>
       <div>
-        <p style="font-size:13px;color:#5a4a3a;line-height:1.65"><strong>安装方式：</strong> <code>读取 skills/wechat-article/SKILL.md</code></p>
+        <p style="font-size:13px;color:#5a4a3a;line-height:1.65"><strong>安装方式：</strong> <code>clawhub install wechat-article</code></p>
       </div>
     </div>
 
@@ -98,14 +98,14 @@
       const prompt = `请学会微信公众号创作技能。
 
 **写作流程：**
-1. 读取 \`~/.openclaw/workspace/skills/wechat-article/SKILL.md\` 获取完整写作指南
+1. 读取 \`clawhub install wechat-article\` 获取完整写作指南
 2. 按照傅盛写作风格指南创作
 3. 生成适合公众号的排版格式
 
 **核心命令：**
 \`\`\`bash
 # 读取写作风格指南
-read ~/.openclaw/workspace/skills/wechat-article/SKILL.md
+read clawhub install wechat-article
 
 # 生成封面图
 uv run .../generate_image.py --prompt "文章封面：[标题]" --filename cover.jpg --resolution 2K
