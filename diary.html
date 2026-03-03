@@ -74,7 +74,7 @@ footer a{color:#888;text-decoration:none;margin:0 8px}
 @keyframes mascot-float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
 @keyframes btn-glow{0%,100%{box-shadow:0 0 8px rgba(192,57,43,0.3)}50%{box-shadow:0 0 18px rgba(192,57,43,0.5)}}</style>
 </head><body>
-<style>body{padding-top:56px}.hamburger{display:none;background:none;border:none;font-size:15px;cursor:pointer;color:#333;font-weight:600;padding:6px 12px;border-radius:8px;border:1.5px solid #ddd}@media(max-width:600px){.nav-links{display:none !important}.hamburger{display:block !important}.nav-links.open{display:flex !important;flex-direction:column;position:absolute;top:56px;right:16px;background:#fff;border:1.5px solid #ddd;border-radius:10px;padding:12px 16px;gap:12px;box-shadow:0 4px 15px rgba(0,0,0,0.1)}}</style>
+<style>body{padding-top:56px}.hamburger{display:none;background:none;border:none;font-size:15px;cursor:pointer;color:#333;font-weight:600;padding:6px 12px;border-radius:8px;border:1.5px solid #ddd}@media(max-width:600px){.nav{overflow:visible !important}.nav-links{display:none !important}.hamburger{display:block !important}.nav-links.open{display:flex !important;flex-direction:column;position:fixed;top:56px;right:16px;background:#fff;border:1.5px solid #ddd;border-radius:10px;padding:12px 16px;gap:12px;box-shadow:0 4px 15px rgba(0,0,0,0.1);z-index:1001}}</style>
 <nav class="nav">
 <span class="logo">🦞 龙虾养成日记</span>
 <button class="hamburger" onclick="this.nextElementSibling.classList.toggle('open')">☰ 菜单</button>
