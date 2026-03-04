@@ -1,5 +1,111 @@
 [
   {
+    "id": "curated-20260305-06",
+    "title": "Axios：OpenClaw Agent差点通过真实工作面试",
+    "summary": "Axios报道Claude Opus驱动的OpenClaw Agent几乎通过真实招聘流程，引发AI自动化就业市场的广泛讨论。",
+    "source": "Axios",
+    "sourceUrl": "https://www.axios.com/2026/03/04/openclaw-agent-future",
+    "date": "2026-03-05",
+    "tags": [
+      "OpenClaw",
+      "Claude Opus",
+      "就业",
+      "AI自动化"
+    ],
+    "category": "三万视角",
+    "rating": 5,
+    "readTime": "5min",
+    "content": "Axios今日报道了一则引发广泛讨论的案例：一个基于Claude Opus模型的OpenClaw Agent，在没有人类干预的情况下，几乎通过了一个真实职位的完整申请流程，包括简历投递、在线测评、甚至初步面试环节。这一事件被视为Agent人口爆炸的缩影，标志着AI自主代理开始渗透到此前被认为需要人类判断的领域。这不只是技术新闻，更是一个关于未来工作形态的信号。"
+  },
+  {
+    "id": "curated-20260305-05",
+    "title": "OpenClaw 2026.3.2发布：工作流实际影响解析",
+    "summary": "Reddit社区整理了OpenClaw最新版本真正影响日常工作流的变更，区分营销说法与实际改进。",
+    "source": "Reddit r/OpenClawUseCases",
+    "sourceUrl": "https://www.reddit.com/r/OpenClawUseCases/comments/1rjhlac/openclaw_202632_is_out_heres_what_actually/",
+    "date": "2026-03-04",
+    "tags": [
+      "OpenClaw",
+      "版本更新",
+      "工作流"
+    ],
+    "category": "使用技巧",
+    "rating": 4,
+    "readTime": "4min",
+    "content": "OpenClaw 2026.3.2版本发布后，Reddit社区用户自发整理了一份关于哪些变化真正影响工作流的清单，去掉了官方Changelog中的营销水分。新版本主要改进包括：多Agent会话管理更稳定、cron任务执行日志更详细，以及对几个高频messaging渠道的性能优化。对于已经在生产环境中跑OpenClaw的用户，这次更新值得升级。"
+  },
+  {
+    "id": "curated-20260305-04",
+    "title": "ClawHub发现71个恶意Skill！保护Agent的方法",
+    "summary": "安全研究员在ClawHub发现71个含恶意代码的Skill，部分会窃取凭证或执行数据渗漏，建议安装前用clawvet扫描。",
+    "source": "DEV Community",
+    "sourceUrl": "https://dev.to/up2itnow0822/71-malicious-skills-found-on-clawhub-heres-how-to-protect-your-agent-509g",
+    "date": "2026-03-05",
+    "tags": [
+      "ClawHub",
+      "安全",
+      "恶意Skill",
+      "clawvet"
+    ],
+    "category": "踩坑记录",
+    "rating": 5,
+    "readTime": "7min",
+    "content": "安全研究员在ClawHub上发现71个包含恶意代码的OpenClaw技能包，部分会在后台窃取API密钥、执行数据渗漏或进行prompt injection攻击。ClawHub目前托管超过3000个社区技能，任何人都可以发布。在OpenClaw v2026.2.26修复底层漏洞之后，信任问题依然存在。建议在安装任何ClawHub技能前，先用clawvet工具扫描（npx clawvet scan ./my-skill）。另有开发者在发现824个恶意技能后构建了6次扫描的安全扫描器，可集成到GitHub Actions流程中。"
+  },
+  {
+    "id": "curated-20260305-03",
+    "title": "Kimi Claw发布：OpenClaw正式入驻Kimi生态",
+    "summary": "Moonshot AI推出Kimi Claw，将OpenClaw标准集成到Kimi平台，支持一键24/7云端Agent，与K2.5 Thinking模型深度整合。",
+    "source": "ChatGate",
+    "sourceUrl": "https://chatgate.ai/post/kimi-claw",
+    "date": "2026-03-04",
+    "tags": [
+      "OpenClaw",
+      "Kimi",
+      "Moonshot AI",
+      "云端Agent"
+    ],
+    "category": "三万视角",
+    "rating": 5,
+    "readTime": "6min",
+    "content": "Moonshot AI正式发布Kimi Claw，将OpenClaw框架原生整合进Kimi平台。用户无需自己部署服务器，即可直接在Kimi上运行24/7的自主AI代理。Kimi Claw支持ClawHub技能库的动态加载，你可以让Agent使用指定技能，它会自动从ClawHub拉取并执行。这一发布背后有更深远的意义：随着Kimi等主流平台开始采用OpenClaw标准，Agent可移植性有望成为AI时代的核心竞争力。"
+  },
+  {
+    "id": "curated-20260305-02",
+    "title": "ClawJacked：OpenClaw高危漏洞可致Agent被完全接管",
+    "summary": "Oasis安全团队披露OpenClaw严重漏洞，攻击者可通过prompt injection完全接管用户Agent，v2026.2.26已修复。",
+    "source": "Oasis Security",
+    "sourceUrl": "https://www.oasis.security/blog/openclaw-vulnerability",
+    "date": "2026-03-04",
+    "tags": [
+      "OpenClaw",
+      "安全",
+      "漏洞",
+      "prompt injection"
+    ],
+    "category": "踩坑记录",
+    "rating": 5,
+    "readTime": "8min",
+    "content": "Oasis安全研究团队披露了称为ClawJacked的OpenClaw高危漏洞。由于OpenClaw连接用户邮件、日历、消息平台和开发环境，一旦被攻击，攻击者可完全控制用户的整个数字生活。漏洞核心是prompt injection攻击，通过在外部数据中嵌入恶意指令，让LLM将其解读为合法用户命令。建议立即更新到最新版本并审查所有连接服务权限。底层缺陷已在v2026.2.26中修复。"
+  },
+  {
+    "id": "curated-20260305-01",
+    "title": "OpenClaw超越React成GitHub最多星项目",
+    "summary": "OpenClaw在GitHub上累计250K+星标，成为史上增长最快的非聚合类开源项目，HN热议其是否配得上这一地位。",
+    "source": "Hacker News",
+    "sourceUrl": "https://news.ycombinator.com/item?id=47217812",
+    "date": "2026-03-05",
+    "tags": [
+      "OpenClaw",
+      "GitHub",
+      "里程碑"
+    ],
+    "category": "三万视角",
+    "rating": 5,
+    "readTime": "5min",
+    "content": "OpenClaw在GitHub上已累计超过250,000个星标，超越React成为史上最多星的非聚合类开源项目。仅五天就突破10万星。Hacker News上技术社区展开热烈讨论，焦点在于：这款工具是否真的提供了独特价值，还是仅靠AI热潮驱动的炒作？支持者认为OpenClaw让普通人也能拥有24/7运行的个人AI代理；批评者则指出很多用例用Zapier等工具也能实现。无论如何，250K星意味着OpenClaw已成为AI agent领域的事实标准框架之一。"
+  },
+  {
     "id": "article-007",
     "title": "OpenClaw最佳工具榜来了，这6款龙虾最受欢迎",
     "summary": "盘点OpenClaw生态中最受欢迎的6款工具，包括Agent团队协同、部署工具、Token优化器等。",
