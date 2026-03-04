@@ -375,69 +375,13 @@ nav { position:fixed; top:0; left:0; width:100%; z-index:1000; background:rgba(2
 </div>
 
 <script>
-// Load packs
-fetch('data/packs.json').then(r=>r.json()).then(packs => {
-  const grid = document.getElementById('packsGrid');
-  grid.innerHTML = '';
-  packs.forEach(p => {
-    const isSanwan = p.id === 'sanwan';
-    const card = document.createElement('a');
-    card.href = '/skills/pack-' + p.id + '.html';
-    card.className = 'pack-card' + (isSanwan ? ' featured' : '');
-    card.innerHTML = '<div class="pack-icon">' + p.icon + '</div>'
-      + '<div class="pack-name">' + p.name + '</div>'
-      + '<div class="pack-tagline">' + p.tagline + '</div>'
-      + '<div class="pack-meta">'
-      + '<span class="pack-count" style="background:' + p.color + '">' + p.skillCount + ' 个技能</span>'
-      + '<span class="pack-desc">' + p.desc + '</span>'
-      + '</div>';
-    grid.appendChild(card);
-  });
-});
-
-// Load skills
-let allSkills = [];
-fetch('data/skills.json').then(r=>r.json()).then(skills => {
-  allSkills = skills;
-  renderSkills(skills);
-});
-
-function renderSkills(skills) {
-  const grid = document.getElementById('skillsGrid');
-  grid.innerHTML = '';
-  skills.forEach(s => {
-    const card = document.createElement('div');
-    card.className = 'skill-card';
-    card.dataset.category = s.category;
-
-    let tagsHtml = '';
-    if (s.tags.includes('official')) tagsHtml += '<span class="tag tag-official">官方</span>';
-    if (s.tags.includes('community')) tagsHtml += '<span class="tag tag-community">社区</span>';
-    if (s.tags.includes('featured')) tagsHtml += '<span class="tag tag-featured">⭐ 推荐</span>';
-    if (s.tags.includes('essential')) tagsHtml += '<span class="tag tag-essential">⭐ 必装</span>';
-    if (s.tags.includes('hot')) tagsHtml += '<span class="tag tag-hot">🔥 热门</span>';
-
-    const link = document.createElement('a');
-    link.href = '/skills/' + s.id + '.html';
-    link.innerHTML = '<div class="skill-emoji">' + s.emoji + '</div>'
-      + '<div class="skill-body">'
-      + '<div class="skill-name">' + s.name + '</div>'
-      + '<div class="skill-tags">' + tagsHtml + '</div>'
-      + '<div class="skill-desc">' + s.desc + '</div>'
-      + '</div>';
-    card.appendChild(link);
-    grid.appendChild(card);
-  });
-}
-
+// 直接从DOM读取技能数据（无需fetch，避免重复渲染）
 function filterSkills(cat) {
   document.querySelectorAll('.filters button').forEach(b => b.classList.remove('active'));
   event.target.classList.add('active');
-  if (cat === 'all') {
-    renderSkills(allSkills);
-  } else {
-    renderSkills(allSkills.filter(s => s.category === cat));
-  }
+  document.querySelectorAll('#skillsGrid .skill-card').forEach(card => {
+    card.style.display = (cat === 'all' || card.dataset.category === cat) ? '' : 'none';
+  });
 }
 </script>
 <script>!function(){var p=location.pathname,r=document.referrer,l=navigator.language;new Image().src="https://clawdbot-f.cmcm.com/sanwan-stats/api/track?page="+encodeURIComponent(p)+"&ref="+encodeURIComponent(r)+"&lang="+encodeURIComponent(l)}();</script>
