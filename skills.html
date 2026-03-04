@@ -378,6 +378,7 @@ nav { position:fixed; top:0; left:0; width:100%; z-index:1000; background:rgba(2
 // Load packs
 fetch('data/packs.json').then(r=>r.json()).then(packs => {
   const grid = document.getElementById('packsGrid');
+  grid.innerHTML = '';
   packs.forEach(p => {
     const isSanwan = p.id === 'sanwan';
     const card = document.createElement('a');
