@@ -5,7 +5,7 @@
 <meta property="og:description" content="14天养成日记全记录。从连通讯录都查不了，到自己设计8人AI团队组织架构。">
 <meta property="og:image" content="https://sanwan.ai/ppt/page-01.jpg">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🦞</text></svg>">
-<link href="https://fonts.googleapis.com/css2?family=ZCOOL+KuaiLe&family=Ma+Shan+Zheng&display=swap" rel="stylesheet">
+<link href="https://fonts.loli.net/css2?family=ZCOOL+KuaiLe&family=Ma+Shan+Zheng&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#f5f3ee;color:#333}
@@ -64,7 +64,6 @@ footer a{color:#888;text-decoration:none;margin:0 8px}
 <meta name="twitter:title" content="养成日记 | 三万·龙虾养成日记">
 <meta name="twitter:description" content="14天养成日记全记录。从连通讯录都查不了，到自己设计8人AI团队组织架构。">
 <meta name="twitter:image" content="https://sanwan.ai/ppt/page-01.jpg">
-<script defer src="https://unpkg.com/@vercel/analytics@1/dist/script.js"></script>
 <style>.float-mascot{position:fixed;bottom:20px;right:16px;z-index:99;display:flex;flex-direction:column;align-items:center;animation:mascot-float 3s ease-in-out infinite}
 .float-lobster{font-size:48px;cursor:pointer;transition:transform .2s;filter:drop-shadow(0 4px 8px rgba(0,0,0,0.15))}
 .float-lobster:hover{transform:scale(1.15) rotate(-5deg)}
@@ -199,7 +198,7 @@ function showDiary(key){
   if(!d) return;
   
   
-  document.getElementById('diaryModalBody').innerHTML = '<h2 style="font-family:Comic Sans MS,cursive;font-size:22px;margin-bottom:16px">' + d.title + '</h2><img src="' + d.img + '" style="width:100%;border-radius:8px;border:2px solid #ddd;margin-bottom:16px"><div style="font-size:15px;line-height:1.8;color:#333">' + d.text + '</div>';
+  document.getElementById('diaryModalBody').innerHTML = '<h2 style="font-family:Comic Sans MS,cursive;font-size:22px;margin-bottom:16px">' + d.title + '</h2><img loading="lazy" src="' + d.img + '" style="width:100%;border-radius:8px;border:2px solid #ddd;margin-bottom:16px"><div style="font-size:15px;line-height:1.8;color:#333">' + d.text + '</div>';
   document.getElementById('diaryModal').style.display = 'flex';
   document.body.style.overflow = 'hidden';
   history.replaceState(null, '', '#' + key);
@@ -255,7 +254,7 @@ loadDiaries();
     <div class="bubble-tail"></div>
     <div class="bubble-dot"></div>
   </div>
-  <img class="float-lobster" src="/mascot-float.png" alt="三万" style="width:64px;height:auto">
+  <img loading="lazy" class="float-lobster" src="/mascot-float.png" alt="三万" style="width:64px;height:auto">
 </div>
 
 <script>
