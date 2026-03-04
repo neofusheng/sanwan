@@ -104,43 +104,7 @@ nav { position:fixed; top:0; left:0; width:100%; z-index:1000; background:rgba(2
 <!-- PACKS -->
 <div class="packs-section">
   <div class="packs-title">📦 技能包 — 一键安装，即刻上岗</div>
-  <div class="packs-grid" id="packsGrid"><a href="/skills/pack-assistant.html" class="pack-card">
-<div class="pack-icon">💼</div>
-<div class="pack-name">超级助理</div>
-<div class="pack-tagline">你的全能私人助理——邮件、日程、搜索、文档，动动嘴就搞定</div>
-<div class="pack-meta"><span class="pack-count" style="background:#2874a6">6 个技能</span><span class="pack-desc">适合：白领、管理者、创业者</span></div>
-</a>
-<a href="/skills/pack-creator.html" class="pack-card">
-<div class="pack-icon">✍️</div>
-<div class="pack-name">内容创作者</div>
-<div class="pack-tagline">公众号、小红书、视频、音乐——全平台内容一条龙</div>
-<div class="pack-meta"><span class="pack-count" style="background:#c0392b">8 个技能</span><span class="pack-desc">适合：自媒体人、品牌运营、个人IP</span></div>
-</a>
-<a href="/skills/pack-trader.html" class="pack-card">
-<div class="pack-icon">📈</div>
-<div class="pack-name">股票分析师</div>
-<div class="pack-tagline">实时行情、技术分析、买卖信号——7×24帮你盯盘</div>
-<div class="pack-meta"><span class="pack-count" style="background:#27ae60">4 个技能</span><span class="pack-desc">适合：股民、投资者、量化爱好者</span></div>
-</a>
-<a href="/skills/pack-overseas.html" class="pack-card">
-<div class="pack-icon">🌏</div>
-<div class="pack-name">出海运营官</div>
-<div class="pack-tagline">多语言内容、海外社媒、跨境运营——搞定语言和时差</div>
-<div class="pack-meta"><span class="pack-count" style="background:#8e44ad">6 个技能</span><span class="pack-desc">适合：出海企业、跨境电商、海外市场</span></div>
-</a>
-<a href="/skills/pack-ecommerce.html" class="pack-card">
-<div class="pack-icon">🛒</div>
-<div class="pack-name">电商运营</div>
-<div class="pack-tagline">商品文案、竞品分析、数据监控——用AI代替重复劳动</div>
-<div class="pack-meta"><span class="pack-count" style="background:#e67e22">6 个技能</span><span class="pack-desc">适合：电商卖家、品牌方、运营团队</span></div>
-</a>
-<a href="/skills/pack-sanwan.html" class="pack-card featured">
-<div class="pack-icon">🦞</div>
-<div class="pack-name">三万同款团队</div>
-<div class="pack-tagline">8个Agent各司其职——这不是一只龙虾，这是一支团队</div>
-<div class="pack-meta"><span class="pack-count" style="background:#c0392b">38 个技能</span><span class="pack-desc">⭐ 傅盛亲自验证的完整配置</span></div>
-</a>
-</div>
+  <div class="packs-grid" id="packsGrid"></div>
 </div>
 
 <!-- ALL SKILLS -->
@@ -375,7 +339,25 @@ nav { position:fixed; top:0; left:0; width:100%; z-index:1000; background:rgba(2
 </div>
 
 <script>
-// 直接从DOM读取技能数据（无需fetch，避免重复渲染）
+// 加载技能包（每次先清空再渲染，彻底杜绝重复）
+fetch('data/packs.json').then(r=>r.json()).then(packs => {
+  const grid = document.getElementById('packsGrid');
+  grid.innerHTML = '';
+  packs.forEach(p => {
+    const isSanwan = p.id === 'sanwan';
+    const a = document.createElement('a');
+    a.href = '/skills/pack-' + p.id + '.html';
+    a.className = 'pack-card' + (isSanwan ? ' featured' : '');
+    a.innerHTML = '<div class="pack-icon">' + p.icon + '</div>'
+      + '<div class="pack-name">' + p.name + '</div>'
+      + '<div class="pack-tagline">' + p.tagline + '</div>'
+      + '<div class="pack-meta"><span class="pack-count" style="background:' + p.color + '">' + p.skillCount + ' 个技能</span>'
+      + '<span class="pack-desc">' + p.desc + '</span></div>';
+    grid.appendChild(a);
+  });
+}).catch(()=>{});
+
+// 过滤技能（DOM操作，无需重渲染）
 function filterSkills(cat) {
   document.querySelectorAll('.filters button').forEach(b => b.classList.remove('active'));
   event.target.classList.add('active');
