@@ -70,7 +70,7 @@ footer a{color:#888;text-decoration:none;margin:0 8px}
 .float-bubble{background:#fff;border:1.5px solid #f0d0cc;padding:10px 14px;border-radius:16px;text-align:center;margin-bottom:4px;box-shadow:0 4px 20px rgba(192,57,43,0.12);position:relative;animation:popIn .5s ease .3s both}
 .bubble-tail{width:10px;height:10px;background:#fff;border-right:2px solid #f0d0cc;border-bottom:2px solid #f0d0cc;position:absolute;bottom:-6px;left:50%;transform:translateX(-50%) rotate(45deg)}
 .bubble-dot{width:6px;height:6px;background:#f0d0cc;border-radius:50%;position:absolute;bottom:-14px;right:30%}
-@keyframes mascot-bob{0%,100%{transform:translateY(0) rotate(0deg)}35%{transform:translateY(-9px) rotate(2.5deg)}70%{transform:translateY(-4px) rotate(-1.5deg)}}
+@keyframes mascot-bob{0%,100%{transform:translateY(0)}35%{transform:translateY(-14px)}70%{transform:translateY(-6px)}}
 @keyframes btn-glow{0%,100%{box-shadow:0 0 8px rgba(192,57,43,0.3)}50%{box-shadow:0 0 18px rgba(192,57,43,0.5)}}</style>
 </head><body>
 <style>body{padding-top:56px}.hamburger{display:none;background:none;border:none;font-size:15px;cursor:pointer;color:#333;font-weight:600;padding:6px 12px;border-radius:8px;border:1.5px solid #ddd}@media(max-width:600px){.nav{overflow:visible !important}.nav-links{display:none !important}.hamburger{display:block !important}.nav-links.open{display:flex !important;flex-direction:column;position:fixed;top:56px;right:16px;background:#fff;border:1.5px solid #ddd;border-radius:10px;padding:12px 16px;gap:12px;box-shadow:0 4px 15px rgba(0,0,0,0.1);z-index:1001}}</style>
@@ -271,50 +271,78 @@ window.addEventListener('beforeunload', () => {
 </script>
 
 <script>
-// 🦋 三万蝴蝶飞行动画
+// 🦋 三万蝴蝶升级版飞行动画 v2
 (function(){
   var el = document.getElementById('floatMascot');
-  if (!el) return;
-  var bubble = el.querySelector('.float-bubble');
+  var img = el ? el.querySelector('.float-lobster') : null;
+  if (!el || !img) return;
 
-  // 覆盖静态定位，由JS接管
-  el.style.bottom = 'auto';
-  el.style.right  = 'auto';
-  // 平滑过渡：飞行4s（缓入缓出），给人轻盈感
-  el.style.transition = 'left 4s cubic-bezier(0.37,0,0.63,1), top 4s cubic-bezier(0.37,0,0.63,1)';
-
-  var EW = 95, EH = 155; // 元素宽高估算（含气泡）
-  var NAV = 74;           // 导航栏高度 + 缓冲
+  var EW = 100, EH = 165;
+  var NAV = 76;
+  var curX = 0, curY = 0;
 
   function rand(a, b) { return a + Math.random() * (b - a); }
 
-  function fly() {
+  function nextPos() {
     var W = window.innerWidth, H = window.innerHeight;
-    var minX = 8, maxX = W - EW - 8;
-    var minY = NAV, maxY = H - EH - 8;
-    var nx = rand(minX, maxX);
-    var ny = rand(minY, maxY);
-
-    el.style.left = nx + 'px';
-    el.style.top  = ny + 'px';
-
-    // 靠近顶部时，气泡翻到下方避免被导航栏挡住
-    if (ny < NAV + 20) {
-      el.style.flexDirection = 'column-reverse';
-    } else {
-      el.style.flexDirection = 'column';
-    }
-
-    // 飞行4s + 停留2~5s后再起飞
-    setTimeout(fly, rand(6500, 9500));
+    var minX = 14, maxX = W - EW - 14;
+    var minY = NAV + 10, maxY = H - EH - 14;
+    var nx, ny, tries = 0;
+    do {
+      nx = rand(minX, maxX);
+      ny = rand(minY, maxY);
+      tries++;
+    } while (tries < 15 &&
+      Math.abs(nx - curX) < W * 0.25 &&
+      Math.abs(ny - curY) < H * 0.18);
+    return { x: nx, y: ny };
   }
 
-  // 初始落点：右下角
-  el.style.left = (window.innerWidth  - EW - 8) + 'px';
-  el.style.top  = (window.innerHeight - EH - 8) + 'px';
+  function fly() {
+    var pos = nextPos();
+    var nx = pos.x, ny = pos.y;
+    var dx = nx - curX;
+    var tilt = dx > 0
+      ? rand(6, 14)
+      : dx < 0
+        ? rand(-14, -6)
+        : rand(-4, 4);
 
-  // 2.5秒后开始第一次飞行
-  setTimeout(fly, 2500);
+    var dur = rand(2800, 3500);
+    var durS = (dur / 1000).toFixed(2) + 's';
+    var ease = 'cubic-bezier(0.4,0.05,0.6,0.95)';
+
+    img.style.animation = 'none';
+    img.style.transition = 'transform ' + durS + ' ' + ease;
+    img.style.transform  = 'rotate(' + tilt + 'deg)';
+
+    el.style.transition = 'left ' + durS + ' ' + ease + ', top ' + durS + ' ' + ease;
+    el.style.left = nx + 'px';
+    el.style.top  = ny + 'px';
+    curX = nx; curY = ny;
+
+    el.style.flexDirection = (ny < NAV + 35) ? 'column-reverse' : 'column';
+
+    setTimeout(function() {
+      img.style.transition = 'transform 0.5s ease-out';
+      img.style.transform  = '';
+      setTimeout(function() {
+        img.style.animation  = 'mascot-bob 3s ease-in-out infinite';
+        img.style.transition = 'transform .2s';
+      }, 550);
+    }, dur + 100);
+
+    setTimeout(fly, dur + rand(3000, 5500));
+  }
+
+  curX = window.innerWidth  - EW - 18;
+  curY = window.innerHeight - EH - 18;
+  el.style.bottom = 'auto';
+  el.style.right  = 'auto';
+  el.style.left   = curX + 'px';
+  el.style.top    = curY + 'px';
+
+  setTimeout(fly, 1800);
 })();
 </script>
 </body></html>

@@ -35,13 +35,13 @@ h1{font-family:'Caveat',cursive;font-size:26px;margin-bottom:8px}
 .btn-outline:hover{border-color:#c0392b;color:#c0392b}
 footer{text-align:center;padding:20px;font-size:11px;color:#999;border-top:2px solid #ddd;background:#f5f3ee;margin-top:40px}
 footer a{color:#888;text-decoration:none;margin:0 8px}
-.float-mascot{position:fixed;bottom:20px;right:16px;z-index:99;display:flex;flex-direction:column;align-items:center;animation:mascot-float 3s ease-in-out infinite}
-.float-lobster{font-size:48px;cursor:pointer;transition:transform .2s;filter:drop-shadow(0 4px 8px rgba(0,0,0,0.15))}
+.float-mascot{position:fixed;z-index:99;display:flex;flex-direction:column;align-items:center;will-change:left,top}
+.float-lobster{cursor:pointer;filter:drop-shadow(0 4px 12px rgba(192,57,43,0.25));animation:mascot-bob 3s ease-in-out infinite;transition:transform .2s}
 .float-lobster:hover{transform:scale(1.15) rotate(-5deg)}
 .float-bubble{background:#fff;border:1.5px solid #f0d0cc;padding:10px 14px;border-radius:16px;text-align:center;margin-bottom:4px;box-shadow:0 4px 20px rgba(192,57,43,0.12);position:relative}
 .bubble-tail{width:10px;height:10px;background:#fff;border-right:2px solid #f0d0cc;border-bottom:2px solid #f0d0cc;position:absolute;bottom:-6px;left:50%;transform:translateX(-50%) rotate(45deg)}
 .bubble-dot{width:6px;height:6px;background:#f0d0cc;border-radius:50%;position:absolute;bottom:-14px;right:30%}
-@keyframes mascot-float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+@keyframes mascot-bob{0%,100%{transform:translateY(0)}35%{transform:translateY(-14px)}70%{transform:translateY(-6px)}}
 @keyframes btn-glow{0%,100%{box-shadow:0 0 8px rgba(192,57,43,0.3)}50%{box-shadow:0 0 18px rgba(192,57,43,0.5)}}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:0.4}}
 </style>
@@ -212,4 +212,72 @@ document.addEventListener('keydown', function(e){
 loadDiaries();
 </script>
 <script>document.querySelectorAll('.nav-links a').forEach(a=>{a.addEventListener('click',()=>{document.querySelector('.nav-links').classList.remove('open');});});</script>
+<script>
+// 🦋 Butterfly Flight Animation v2
+(function(){
+  var el = document.getElementById('floatMascot');
+  var img = el ? el.querySelector('.float-lobster') : null;
+  if (!el || !img) return;
+
+  var EW = 100, EH = 165;
+  var NAV = 76;
+  var curX = 0, curY = 0;
+
+  function rand(a, b) { return a + Math.random() * (b - a); }
+
+  function nextPos() {
+    var W = window.innerWidth, H = window.innerHeight;
+    var nx, ny, tries = 0;
+    do {
+      nx = rand(14, W - EW - 14);
+      ny = rand(NAV + 10, H - EH - 14);
+      tries++;
+    } while (tries < 15 &&
+      Math.abs(nx - curX) < W * 0.25 &&
+      Math.abs(ny - curY) < H * 0.18);
+    return { x: nx, y: ny };
+  }
+
+  function fly() {
+    var pos = nextPos();
+    var nx = pos.x, ny = pos.y;
+    var dx = nx - curX;
+    var tilt = dx > 0 ? rand(6,14) : dx < 0 ? rand(-14,-6) : rand(-4,4);
+    var dur = rand(2800, 3500);
+    var durS = (dur/1000).toFixed(2)+'s';
+    var ease = 'cubic-bezier(0.4,0.05,0.6,0.95)';
+
+    img.style.animation = 'none';
+    img.style.transition = 'transform '+durS+' '+ease;
+    img.style.transform  = 'rotate('+tilt+'deg)';
+
+    el.style.transition = 'left '+durS+' '+ease+', top '+durS+' '+ease;
+    el.style.left = nx+'px';
+    el.style.top  = ny+'px';
+    curX = nx; curY = ny;
+
+    el.style.flexDirection = (ny < NAV+35) ? 'column-reverse' : 'column';
+
+    setTimeout(function(){
+      img.style.transition = 'transform 0.5s ease-out';
+      img.style.transform  = '';
+      setTimeout(function(){
+        img.style.animation  = 'mascot-bob 3s ease-in-out infinite';
+        img.style.transition = 'transform .2s';
+      }, 550);
+    }, dur+100);
+
+    setTimeout(fly, dur + rand(3000, 5500));
+  }
+
+  curX = window.innerWidth  - EW - 18;
+  curY = window.innerHeight - EH - 18;
+  el.style.bottom = 'auto';
+  el.style.right  = 'auto';
+  el.style.left   = curX+'px';
+  el.style.top    = curY+'px';
+
+  setTimeout(fly, 1800);
+})();
+</script>
 </body></html>
