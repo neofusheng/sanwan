@@ -8,6 +8,7 @@
 <meta property="og:description" content="骨折在家的CEO，凌晨4点在训练一只AI龙虾。14天，1157条消息，从零搭出8人AI团队。">
 <meta property="og:image" content="https://sanwan.ai/ppt/page-01.jpg">
 <title>sanwan.ai - 我的龙虾三万养成日记</title>
+<link href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-webfont@1.7.0/style.css" rel="stylesheet">
 <style>
 @font-face {
   font-family: 'Smiley Sans';
@@ -16,11 +17,61 @@
   font-style: normal;
   font-display: swap;
 }
+
+/* ===== HERO V2 ===== */
+.hero-v2{max-width:860px;margin:0 auto;padding:76px 20px 28px}
+.hero-v2-title{text-align:center;margin-bottom:20px}
+.hero-v2-title h1{font-family:'ZCOOL KuaiLe',sans-serif;font-size:clamp(22px,4vw,34px);line-height:1.45;margin-bottom:10px}
+.hero-tagline-pill{display:inline-block;font-size:14px;color:#c0392b;font-weight:700;background:rgba(192,57,43,0.08);padding:7px 18px;border-radius:20px}
+/* Carousel */
+.caro-root{position:relative;display:flex;align-items:center;gap:8px;margin-bottom:10px;max-width:520px;margin-left:auto;margin-right:auto}
+.caro-outer{flex:1;overflow:hidden;border-radius:14px}
+.caro-track{display:flex;gap:14px;transition:transform .44s cubic-bezier(.25,.46,.45,.94);will-change:transform}
+.c-card{flex:0 0 auto;border-radius:12px;overflow:hidden;cursor:pointer;
+  box-shadow:0 6px 28px rgba(0,0,0,0.13);transition:transform .44s,opacity .44s}
+.c-card img{width:100%;aspect-ratio:3/2;object-fit:cover;display:block}
+.c-card-cap{position:absolute;bottom:0;left:0;right:0;
+  background:linear-gradient(transparent,rgba(0,0,0,0.75));
+  color:#fff;padding:14px 14px 12px}
+.c-card-inner{position:relative}
+.c-day{font-size:10px;font-weight:800;opacity:.8;text-transform:uppercase;display:block;margin-bottom:2px}
+.c-title{font-size:13px;font-weight:700;line-height:1.4}
+.caro-arrow{flex-shrink:0;width:36px;height:36px;border-radius:50%;border:1.5px solid #ddd;
+  background:#fff;font-size:22px;cursor:pointer;color:#555;
+  box-shadow:0 2px 10px rgba(0,0,0,0.1);display:flex;align-items:center;
+  justify-content:center;transition:.2s;padding:0;line-height:1}
+.caro-arrow:hover{border-color:#c0392b;color:#c0392b;transform:scale(1.08)}
+.caro-dots{display:flex;gap:6px;justify-content:center;margin-bottom:16px}
+.cdot{width:6px;height:6px;border-radius:50%;background:#ddd;cursor:pointer;
+  transition:all .25s;border:none;padding:0}
+.cdot.active{background:#c0392b;width:18px;border-radius:3px}
+/* Stats row */
+.hero-stats-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:18px}
+.stat-panel{background:#fff;border:1.5px solid #e8e4df;border-radius:14px;padding:14px 16px}
+.stat-panel-title{font-size:11px;font-weight:800;color:#c0392b;
+  letter-spacing:1px;text-transform:uppercase;margin-bottom:10px}
+.stat-item{display:flex;align-items:flex-start;gap:7px;margin-bottom:8px;
+  font-size:13px;color:#444;line-height:1.55}
+.sico{font-size:17px;flex-shrink:0}
+.stat-item strong{color:#1a1a1a}
+/* CTA */
+.hero-v2-cta{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+/* Modal */
+.hero-modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.62);
+  z-index:2000;justify-content:center;align-items:center;padding:20px}
+.hero-modal.open{display:flex}
+.hero-modal-box{background:#f5f3ee;border-radius:16px;max-width:680px;width:100%;
+  max-height:88vh;overflow-y:auto;padding:24px;position:relative}
+.hm-close{position:absolute;top:12px;right:16px;font-size:26px;cursor:pointer;
+  color:#999;background:none;border:none;line-height:1}
+.hm-close:hover{color:#c0392b}
+@media(max-width:600px){
+  .hero-stats-row{grid-template-columns:1fr}
+}
+
 </style>
-<link rel="preconnect" href="https://fonts.loli.net" crossorigin>
-<link rel="stylesheet" href="https://fonts.loli.net/css2?family=Long+Cang&family=ZCOOL+KuaiLe&family=Noto+Sans+SC:wght@500;700;900&family=Noto+Sans+SC:wght@300;400;500;700;900&family=&family=Ma+Shan+Zheng&display=swap" media="print" onload="this.media='all'">
-<noscript><link rel="stylesheet" href="https://fonts.loli.net/css2?family=Long+Cang&family=ZCOOL+KuaiLe&family=Noto+Sans+SC:wght@500;700;900&family=Noto+Sans+SC:wght@300;400;500;700;900&family=&family=Ma+Shan+Zheng&display=swap"></noscript>
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Long+Cang&family=ZCOOL+KuaiLe&family=Noto+Sans+SC:wght@500;700;900&family=Noto+Sans+SC:wght@300;400;500;700;900&family=&family=Ma+Shan+Zheng&display=swap');
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-size:16px;font-family:'Noto Sans SC',sans-serif;background:#e8e4dc;color:#222;overflow-x:hidden}
 
@@ -222,6 +273,7 @@ nav{padding:0 16px;top:0}
 <a href="en/" style="font-size:12px;color:#888;text-decoration:none;border:1px solid #ddd;padding:2px 8px;border-radius:10px">EN</a> <a href="ja/" style="font-size:12px;color:#888;text-decoration:none;border:1px solid #ddd;padding:2px 8px;border-radius:10px">JA</a> <a href="de/" style="font-size:12px;color:#888;text-decoration:none;border:1px solid #ddd;padding:2px 8px;border-radius:10px">DE</a>
 <button class="hamburger" onclick="document.querySelector('.nav-links').classList.toggle('open')">☰ 菜单</button>
 <div class="nav-links">
+<a href="index.html" class="active">首页</a>
 <a href="diary.html">📖 日记</a>
 <a href="articles.html">📝 文章</a>
 <a href="science.html">🔰 科普</a>
@@ -230,33 +282,64 @@ nav{padding:0 16px;top:0}
 </div>
 </nav>
 
-<!-- HERO -->
+<!-- HERO V2 -->
 <div class="whiteboard">
-<div class="hero">
-<div class="hero-text">
-<h1>🩼 春节滑雪骨折在家的CEO<br>14天卧床训了只<span class="red">龙虾三万</span></h1>
-<div style="font-size:15px;color:#c0392b;font-weight:700;margin-bottom:6px;background:rgba(192,57,43,0.06);padding:6px 12px;border-radius:8px;display:inline-block">🦞 龙虾 = AI私人助手，给它一台电脑，它就是你的数字员工</div>
-<div class="subtitle">
-写成日记，引发<span style="color:#2874a6;font-weight:800">百万人围观</span>——<br>
-📱 公众号 <span style="color:#2874a6;font-weight:800">10万+</span>阅读 · 🐦 Twitter <span style="color:#2874a6;font-weight:800">百万+</span>浏览 · 📺 直播+短视频 <span style="color:#2874a6;font-weight:800">百万+</span>观看
+<div class="hero-v2">
+
+  <div class="hero-v2-title">
+    <h1>🩼 春节骨折卧床14天的CEO<br>训了只<span class="red">AI龙虾三万</span></h1>
+    <span class="hero-tagline-pill">🦞 龙虾 = AI私人助手，给它一台电脑，它就是你的数字员工</span>
+  </div>
+
+  <div class="caro-root">
+    <button class="caro-arrow" onclick="heroNav(-1)">&#8249;</button>
+    <div class="caro-outer" id="caroOuter">
+      <div class="caro-track" id="cTrack">
+        <div style="padding:60px 40px;text-align:center;color:#aaa;font-size:13px;width:100%">🦞 加载中...</div>
+      </div>
+    </div>
+    <button class="caro-arrow" onclick="heroNav(1)">&#8250;</button>
+  </div>
+
+  <div class="caro-dots" id="cDots"></div>
+
+  <div class="hero-stats-row">
+    <div class="stat-panel">
+      <div class="stat-panel-title">📖 故事梗概</div>
+      <div class="stat-item"><span class="sico">🩼</span><div><strong>2026年春节</strong>滑雪摔伤骨折</div></div>
+      <div class="stat-item"><span class="sico">💬</span><div><strong>1157条消息</strong>，14天密集训练</div></div>
+      <div class="stat-item"><span class="sico">🎆</span><div>除夕4分钟给<strong>611人个性化拜年</strong></div></div>
+      <div class="stat-item"><span class="sico">🏗️</span><div>自主设计出<strong>8个AI团队成员</strong></div></div>
+      <div class="stat-item"><span class="sico">🧬</span><div><strong>40+ 技能</strong>，7×24 不停运转</div></div>
+    </div>
+    <div class="stat-panel">
+      <div class="stat-panel-title">🔥 媒体效应</div>
+      <div class="stat-item"><span class="sico">📝</span><div>公众号<strong>6篇10万+</strong>，AI选题爆款1.8万阅</div></div>
+      <div class="stat-item"><span class="sico">🐦</span><div>Twitter Thread <strong>100万+</strong>阅读</div></div>
+      <div class="stat-item"><span class="sico">📺</span><div>AI龙虾直播<strong>8.2万人</strong>观看</div></div>
+      <div class="stat-item"><span class="sico">🌐</span><div>短视频+直播<strong>百万+</strong>播放量</div></div>
+      <div class="stat-item"><span class="sico">👨‍💻</span><div>全球技术社区<strong>持续热讨</strong></div></div>
+    </div>
+  </div>
+
+  <div class="hero-v2-cta">
+    <a href="diary.html" class="btn-red">📖 从 Day 1 看起</a>
+    <a href="skills/pack-sanwan.html" class="btn-outline">🦞 领养同款三万</a>
+  </div>
+
 </div>
-<div class="aha-list">
-<div class="aha-item"><span class="aha-icon">🎆</span><strong>除夕夜4分钟</strong>给611人发了个性化拜年</div>
-<div class="aha-item"><span class="aha-icon">💡</span>扔篇文章，<strong>22分钟自己学会了新技能</strong></div>
-<div class="aha-item"><span class="aha-icon">💛</span>主动想起<strong>5天前提过一次的助理Abby</strong></div>
-<div class="aha-item"><span class="aha-icon">🏗️</span>第14天<strong>自己设计了8人团队架构</strong></div>
 </div>
-<div class="hero-cta">
-<a href="diary.html" class="btn-red">📖 从 Day 1 看起</a>
-<a href="skills/pack-sanwan.html" class="btn-outline">🦞 领养同款三万</a>
-</div>
-</div>
-<!-- Cartoon scene: Boss on crutches + Lobster + Dog -->
-<div class="hero-img" style="border-radius:12px;overflow:hidden;box-shadow:4px 4px 20px rgba(0,0,0,0.1);border:1px solid #e0e0e0">
-<img src="ppt/page-01.jpg" alt="龙虾三万养成日记封面" style="width:100%;border-radius:10px;border:1px solid #e0e0e0;display:block;margin-bottom:12px" loading="lazy">
-<img src="ppt/page-27.jpg" alt="14天真实产出数据" style="width:100%;border-radius:10px;border:1px solid #e0e0e0;display:block" loading="lazy">
-</div>
-</div>
+
+<div class="hero-modal" id="heroModal" onclick="if(event.target===this)closeHeroModal()">
+  <div class="hero-modal-box">
+    <button class="hm-close" onclick="closeHeroModal()">&#10005;</button>
+    <div id="heroModalBody"></div>
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-top:16px">
+      <button class="btn-outline" id="hmprev" onclick="heroModalStep(-1)" style="font-size:13px;padding:6px 14px">← 上一篇</button>
+      <span id="hmnum" style="font-size:12px;color:#999"></span>
+      <button class="btn-outline" id="hmnext" onclick="heroModalStep(1)" style="font-size:13px;padding:6px 14px">下一篇 →</button>
+    </div>
+  </div>
 </div>
 </div>
 
@@ -635,5 +718,166 @@ document.querySelectorAll('.section, .section-bg').forEach(el => {
 
 
 <script>!function(){var p=location.pathname,r=document.referrer,l=navigator.language;new Image().src="https://clawdbot-f.cmcm.com/sanwan-stats/api/track?page="+encodeURIComponent(p)+"&ref="+encodeURIComponent(r)+"&lang="+encodeURIComponent(l)}();</script>
+
+<!-- sanwan.ai Analytics -->
+<script>
+(function(){
+  if(navigator.webdriver || /bot|crawl|spider|curl|wget/i.test(navigator.userAgent)) return;
+  var sid = sessionStorage.getItem('_sw_sid');
+  if(!sid){ sid = Math.random().toString(36).substr(2,9); sessionStorage.setItem('_sw_sid', sid); }
+  var d = {p: location.pathname, r: document.referrer, s: sid, w: screen.width, t: Date.now()};
+  fetch('/api/track', {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(d), keepalive:true}).catch(function(){});
+})();
+</script>
+<script>
+
+// ===== HERO CAROUSEL V2 =====
+(function(){
+  var hData={}, hKeys=[], hIdx=0, hMIdx=0, hTimer=null;
+
+  async function init(){
+    try{
+      var r=await fetch('data/diaries.json');
+      var entries=await r.json();
+      entries.forEach(function(e){ hData[e.id]=e; });
+      hKeys=entries.map(function(e){return e.id;});
+      buildCards();
+    }catch(e){console.warn(e);}
+  }
+
+  function buildCards(){
+    var track=document.getElementById('cTrack');
+    var dots=document.getElementById('cDots');
+    if(!track||!dots)return;
+    track.innerHTML=''; dots.innerHTML='';
+    hKeys.forEach(function(key,i){
+      var d=hData[key];
+      var parts=d.title.split(/[：:]/);
+      var dayLabel=parts[0]||'';
+      var titleText=parts[1]||d.title;
+      var card=document.createElement('div');
+      card.className='c-card';
+      var inner=document.createElement('div');
+      inner.className='c-card-inner';
+      var img=document.createElement('img');
+      img.src=d.thumb||d.img;
+      img.alt=d.title;
+      img.loading=i<3?'eager':'lazy';
+      var cap=document.createElement('div');
+      cap.className='c-card-cap';
+      cap.innerHTML='<span class="c-day">'+dayLabel+'</span><div class="c-title">'+titleText+'</div>';
+      inner.appendChild(img);
+      inner.appendChild(cap);
+      card.appendChild(inner);
+      card.addEventListener('click',function(){openModal(i);});
+      track.appendChild(card);
+      var dot=document.createElement('button');
+      dot.className='cdot'+(i===0?' active':'');
+      dot.onclick=function(){goCard(i);};
+      dots.appendChild(dot);
+    });
+    setSizes();
+    window.addEventListener('resize',setSizes);
+    startAuto();
+  }
+
+  function setSizes(){
+    var outer=document.getElementById('caroOuter');
+    if(!outer)return;
+    var W=outer.offsetWidth;
+    var peek=Math.round(Math.min(W*0.13,56));
+    var gap=14;
+    var cardW=W-2*peek;
+    var cards=document.querySelectorAll('.c-card');
+    cards.forEach(function(c){
+      c.style.width=cardW+'px';
+      c.style.minWidth=cardW+'px';
+    });
+    outer._cardW=cardW;
+    outer._peek=peek;
+    outer._gap=gap;
+    goCard(hIdx,false);
+  }
+
+  function goCard(idx,animate){
+    if(animate===undefined)animate=true;
+    var n=hKeys.length;
+    hIdx=((idx%n)+n)%n;
+    var outer=document.getElementById('caroOuter');
+    var track=document.getElementById('cTrack');
+    if(!outer||!track)return;
+    var W=outer.offsetWidth;
+    var cardW=outer._cardW||W*0.74;
+    var peek=outer._peek||W*0.13;
+    var gap=outer._gap||14;
+    if(!animate) track.style.transition='none';
+    else track.style.transition='transform .44s cubic-bezier(.25,.46,.45,.94)';
+    // offset: first card starts at peek px, each subsequent card moves by (cardW+gap)
+    var offset=peek-hIdx*(cardW+gap);
+    track.style.transform='translateX('+offset+'px)';
+    document.querySelectorAll('.c-card').forEach(function(c,i){
+      var d=Math.abs(i-hIdx);
+      c.style.transform=d===0?'scale(1)':d===1?'scale(0.89)':'scale(0.78)';
+      c.style.opacity=d===0?'1':d===1?'0.6':'0.3';
+    });
+    document.querySelectorAll('.cdot').forEach(function(dot,i){
+      dot.classList.toggle('active',i===hIdx);
+    });
+    if(!animate) setTimeout(function(){track.style.transition='';},60);
+  }
+
+  window.heroNav=function(dir){goCard(hIdx+dir);};
+
+  function startAuto(){
+    clearInterval(hTimer);
+    hTimer=setInterval(function(){heroNav(1);},4500);
+  }
+
+  var outer=document.getElementById('caroOuter');
+  if(outer){
+    outer.addEventListener('mouseenter',function(){clearInterval(hTimer);});
+    outer.addEventListener('mouseleave',startAuto);
+    var ts=null;
+    outer.addEventListener('touchstart',function(e){ts=e.touches[0].clientX;},{passive:true});
+    outer.addEventListener('touchend',function(e){
+      if(ts===null)return;
+      var diff=ts-e.changedTouches[0].clientX;
+      if(Math.abs(diff)>30)heroNav(diff>0?1:-1);
+      ts=null;
+    },{passive:true});
+  }
+
+  function openModal(idx){
+    hMIdx=idx;
+    renderModal();
+    document.getElementById('heroModal').classList.add('open');
+    document.body.style.overflow='hidden';
+    goCard(idx);
+  }
+
+  function renderModal(){
+    var d=hData[hKeys[hMIdx]];
+    document.getElementById('heroModalBody').innerHTML=
+      '<h2 style="font-family:\'ZCOOL KuaiLe\',sans-serif;font-size:20px;margin-bottom:14px">'+d.title+'</h2>'+
+      '<img src="'+d.img+'" style="width:100%;border-radius:8px;border:2px solid #ddd;margin-bottom:14px" loading="lazy">'+
+      '<div style="font-size:14px;line-height:1.9;color:#333">'+d.text+'</div>';
+    document.getElementById('hmprev').style.visibility=hMIdx>0?'visible':'hidden';
+    document.getElementById('hmnext').style.visibility=hMIdx<hKeys.length-1?'visible':'hidden';
+    document.getElementById('hmnum').textContent=(hMIdx+1)+' / '+hKeys.length;
+  }
+
+  window.heroModalStep=function(dir){
+    hMIdx=Math.max(0,Math.min(hKeys.length-1,hMIdx+dir));
+    renderModal();
+  };
+  window.closeHeroModal=function(){
+    document.getElementById('heroModal').classList.remove('open');
+    document.body.style.overflow='';
+  };
+
+  init();
+})();
+
+</script>
 </body>
 </html>
