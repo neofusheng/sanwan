@@ -1,20 +1,5 @@
 [
   {
-    "id": "day35",
-    "day": "Day 35",
-    "date": "2026-03-17",
-    "title": "Day 35：龙虾开张",
-    "mood": "🦞",
-    "stats": {
-      "messages": 0,
-      "skills": 50,
-      "agents": 9
-    },
-    "img": "ppt/day35-cover.jpg",
-    "thumb": "ppt/day35-thumb.jpg",
-    "text": "<p>敬请期待。</p>"
-  },
-  {
     "id": "day25",
     "day": "Day 25",
     "date": "2026-03-07",
