@@ -582,22 +582,66 @@ Agent之间知识传递成本趋近于零——一个学会发语音，群发邮
   (function(){
     var API='/api/comments', PAGE='index', LIMIT=10, curOffset=0, totalCount=0;
     function esc(s){var d=document.createElement('div');d.textContent=s;return d.innerHTML}
+    function renderReply(r){
+      var loc=r.location?'<span style="font-size:11px;color:#c0392b;margin-left:4px">📍'+esc(r.location)+'</span>':'';
+      return '<div style="margin:8px 0 0 20px;padding:8px 12px;background:#f5f3ee;border-left:3px solid #c0392b;border-radius:0 8px 8px 0">'+
+        '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:3px">'+
+        '<span><span style="font-weight:700;font-size:13px;color:#c0392b">'+esc(r.nickname||'匿名龙虾🦞')+'</span>'+loc+'</span>'+
+        '<span style="font-size:11px;color:#bbb">'+(r.created_at||'')+'</span></div>'+
+        '<p style="font-size:13px;color:#555;line-height:1.55;margin:0">'+esc(r.content)+'</p></div>';
+    }
+    function renderCard(c){
+      var loc=c.location?'<span style="font-size:11px;color:#c0392b;margin-left:6px">📍'+esc(c.location)+'</span>':'';
+      var replies=(c.replies||[]).map(renderReply).join('');
+      var replyBox='<div id="rb-'+c.id+'" style="display:none;margin:8px 0 0 20px">'+
+        '<div style="display:flex;gap:6px;margin-bottom:6px">'+
+        '<input id="rn-'+c.id+'" placeholder="昵称（选填）" maxlength="20" style="width:110px;padding:6px 10px;border:1.5px solid #ddd;border-radius:8px;font-size:13px;outline:none">'+
+        '<textarea id="rc-'+c.id+'" placeholder="写回复..." maxlength="300" rows="2" style="flex:1;padding:6px 10px;border:1.5px solid #ddd;border-radius:8px;font-size:13px;resize:none;outline:none;font-family:inherit"></textarea>'+
+        '</div>'+
+        '<div style="text-align:right">'+
+        '<button onclick="cancelReply('+c.id+')" style="background:#eee;border:none;padding:5px 14px;border-radius:7px;font-size:13px;cursor:pointer;margin-right:6px">取消</button>'+
+        '<button onclick="submitReply('+c.id+')" style="background:#c0392b;color:#fff;border:none;padding:5px 14px;border-radius:7px;font-size:13px;font-weight:700;cursor:pointer">回复 🦞</button>'+
+        '</div></div>';
+      return '<div style="padding:12px 0;border-bottom:1px solid #eee">'+
+        '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px">'+
+        '<span><span style="font-weight:700;font-size:14px;color:#333">'+esc(c.nickname||'匿名龙虾🦞')+'</span>'+loc+'</span>'+
+        '<span style="font-size:12px;color:#bbb">'+(c.created_at||'')+'</span></div>'+
+        '<p style="font-size:14px;color:#555;line-height:1.6;margin:0 0 6px">'+esc(c.content)+'</p>'+
+        replies+
+        '<button onclick="showReply('+c.id+')" id="rbtn-'+c.id+'" style="background:none;border:none;color:#c0392b;font-size:12px;cursor:pointer;padding:4px 0;margin-top:4px">💬 回复</button>'+
+        replyBox+'</div>';
+    }
     function render(list,total){
       var el=document.getElementById('comment-list');
       if(!list||!list.length){el.innerHTML='<p style="color:#bbb;text-align:center;font-size:13px">还没有留言，来第一个吧！</p>';document.getElementById('comment-pagination').style.display='none';return}
-      el.innerHTML=list.map(function(c){var loc=c.location?'<span style="font-size:11px;color:#c0392b;margin-left:6px">📍'+esc(c.location)+'</span>':'';return '<div style="padding:12px 0;border-bottom:1px solid #eee"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px"><span><span style="font-weight:700;font-size:14px;color:#333">'+esc(c.name||c.nickname||'匿名龙虾🦞')+'</span>'+loc+'</span><span style="font-size:12px;color:#bbb">'+(c.time||c.created_at||'')+'</span></div><p style="font-size:14px;color:#555;line-height:1.6;margin:0">'+esc(c.content)+'</p></div>'}).join('');
+      el.innerHTML=list.map(renderCard).join('');
       totalCount=total||0;
-      var totalPages=Math.ceil(totalCount/LIMIT)||1, curPage=Math.floor(curOffset/LIMIT)+1;
-      var pagination=document.getElementById('comment-pagination');
-      if(totalCount>LIMIT){pagination.style.display='flex'}else{pagination.style.display='none'}
+      var totalPages=Math.ceil(totalCount/LIMIT)||1,curPage=Math.floor(curOffset/LIMIT)+1;
+      var pag=document.getElementById('comment-pagination');
+      if(totalCount>LIMIT){pag.style.display='flex'}else{pag.style.display='none'}
       document.getElementById('cmtPageInfo').textContent='第'+curPage+'页 / 共'+totalPages+'页（'+totalCount+'条）';
       document.getElementById('cmtPrevBtn').disabled=(curOffset<=0);
       document.getElementById('cmtNextBtn').disabled=(curOffset+LIMIT>=totalCount);
     }
-    function load(){fetch(API+'?page='+PAGE+'&limit='+LIMIT+'&offset='+curOffset).then(function(r){return r.json()}).then(function(j){render(j.data||j.comments||[],j.total)}).catch(function(){document.getElementById('comment-list').innerHTML='<p style="color:#c0392b;font-size:13px;text-align:center">加载失败，刷新试试</p>'})}
+    function load(){fetch(API+'?page='+PAGE+'&limit='+LIMIT+'&offset='+curOffset).then(function(r){return r.json()}).then(function(j){render(j.data||[],j.total)}).catch(function(){document.getElementById('comment-list').innerHTML='<p style="color:#c0392b;font-size:13px;text-align:center">加载失败，刷新试试</p>'})}
+    window.showReply=function(id){
+      document.querySelectorAll('[id^="rb-"]').forEach(function(el){el.style.display='none'});
+      var rb=document.getElementById('rb-'+id);
+      if(rb){rb.style.display='block';var ta=document.getElementById('rc-'+id);if(ta)ta.focus()}
+    };
+    window.cancelReply=function(id){var rb=document.getElementById('rb-'+id);if(rb)rb.style.display='none'};
+    window.submitReply=function(id){
+      var nick=(document.getElementById('rn-'+id)||{}).value||'';
+      var ct=(document.getElementById('rc-'+id)||{}).value||'';
+      if(!ct.trim()){alert('写点什么再回复吧');return}
+      fetch(API,{method:'POST',headers:{'Content-Type':'application/json'},
+        body:JSON.stringify({page:PAGE,name:nick||'匿名龙虾🦞',nickname:nick||'匿名龙虾🦞',content:ct.trim(),parent_id:id})
+      }).then(function(r){return r.json()}).then(function(j){
+        if(!j.error){curOffset=0;load()}else{alert(j.error||'回复失败')}
+      }).catch(function(){alert('网络错误，再试一次')})
+    };
     window.cmtChangePage=function(dir){
-      curOffset=Math.max(0,curOffset+dir*LIMIT);
-      load();
+      curOffset=Math.max(0,curOffset+dir*LIMIT);load();
       document.getElementById('comment-list').scrollIntoView({behavior:'smooth',block:'nearest'});
     };
     window.submitComment=function(){
