@@ -141,11 +141,14 @@ function renderCard(a){
   const tagHtml=(a.tags||[]).map(t=>`<span class="card-tag">${t}</span>`).join('');
   const ratingHtml=a.rating?`<span class="card-rating">${stars(a.rating)}</span>`:'';
   const rt=a.readTime?`· ${a.readTime}`:'';
-  return `<a class="article-card" href="${a.sourceUrl||'#'}" target="_blank" rel="noopener">
+  const url=a.sourceUrl?a.sourceUrl:('article.html?id='+a.id);
+  const tgt=a.sourceUrl?'target="_blank" rel="noopener"':'';
+  const linkText=a.sourceUrl?'阅读原文 →':'查看全文 →';
+  return `<a class="article-card" href="${url}" ${tgt}>
     <div class="card-meta"><span class="card-source">${a.source||'来源'}</span><span class="card-date">${a.date||''}</span><span class="card-readtime">${rt}</span></div>
     <div class="card-title">${a.title}</div>
     <div class="card-summary">${a.summary||''}</div>
-    <div class="card-footer"><div class="card-tags">${tagHtml}</div><div style="display:flex;align-items:center;gap:10px">${ratingHtml}<span class="card-external">阅读原文 →</span></div></div>
+    <div class="card-footer"><div class="card-tags">${tagHtml}</div><div style="display:flex;align-items:center;gap:10px">${ratingHtml}<span class="card-external">${linkText}</span></div></div>
   </a>`;
 }
 function filterArticles(){
@@ -166,7 +169,7 @@ function buildCatTabs(){
 function setCategory(c){activeCategory=c;activeTag='';buildCatTabs();document.querySelectorAll('.tag-pill').forEach(p=>p.classList.remove('active'));filterArticles();}
 function buildSidebar(){
   const hot=[...allArticles].sort((a,b)=>(b.rating||0)-(a.rating||0)).slice(0,5);
-  document.getElementById('hotList').innerHTML=hot.map((a,i)=>`<div class="hot-item" onclick="window.open('${a.sourceUrl||'#'}','_blank')"><div class="hot-item-inner"><span class="hot-rank${i<3?' top3':''}">${i+1}</span><span>${a.title}</span></div></div>`).join('');
+  document.getElementById('hotList').innerHTML=hot.map((a,i)=>`<div class="hot-item" onclick="window.open(a.sourceUrl?a.sourceUrl:'article.html?id='+a.id,a.sourceUrl?'_blank':'_self')"><div class="hot-item-inner"><span class="hot-rank${i<3?' top3':''}">${i+1}</span><span>${a.title}</span></div></div>`).join('');
   const cats={};allArticles.forEach(a=>{const c=a.category||'其他';cats[c]=(cats[c]||0)+1;});
   const maxV=Math.max(...Object.values(cats),1);
   document.getElementById('catStat').innerHTML=Object.entries(cats).sort((a,b)=>b[1]-a[1]).map(([c,n])=>`<div class="cat-stat-row"><span style="font-size:12px;color:#666;min-width:70px">${CAT_EMOJI[c]||'📄'} ${c}</span><div class="cat-stat-bar-wrap"><div class="cat-stat-bar" style="width:${Math.round(n/maxV*100)}%"></div></div><span class="cat-stat-num">${n}</span></div>`).join('');
