@@ -40,14 +40,19 @@ setInterval(() => {
 app.use(cors());
 app.use(express.json());
 
-// 获取留言列表
+// 获取留言列表（支持翻页：offset + limit）
 app.get('/api/comments', (req, res) => {
   const page = (req.query.page || 'default').slice(0, 50);
+  const limit = Math.min(parseInt(req.query.limit) || 10, 50);
+  const offset = Math.max(parseInt(req.query.offset) || 0, 0);
   try {
+    const total = db.prepare(
+      'SELECT COUNT(*) as cnt FROM comments WHERE page=?'
+    ).get(page).cnt;
     const rows = db.prepare(
-      'SELECT id, nickname, content, created_at FROM comments WHERE page=? ORDER BY id DESC LIMIT 100'
-    ).all(page);
-    res.json({ ok: true, data: rows });
+      'SELECT id, nickname, content, created_at FROM comments WHERE page=? ORDER BY id DESC LIMIT ? OFFSET ?'
+    ).all(page, limit, offset);
+    res.json({ ok: true, data: rows, total, limit, offset });
   } catch (e) {
     console.error('GET /api/comments error:', e);
     res.status(500).json({ ok: false, error: '服务器错误' });
