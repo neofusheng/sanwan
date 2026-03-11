@@ -180,7 +180,7 @@ function buildSidebar(){
 function toggleTag(t){if(activeTag===t){activeTag='';}else{activeTag=t;}document.querySelectorAll('.tag-pill').forEach(p=>{p.classList.toggle('active',p.textContent.trim().startsWith(t));});filterArticles();}
 async function init(){
   try{
-    const res=await fetch('data/articles.json?v='+Date.now());
+    const res=await fetch("/api/articles");
     allArticles=await res.json();
     allArticles.sort((a,b)=>new Date(b.date)-new Date(a.date));
     buildCatTabs();buildSidebar();filterArticles();
