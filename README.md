@@ -6,7 +6,7 @@ What started as boredom became an experiment. What became an experiment became s
 
 Her name is **Sanwan** (三万). She's a lobster. Long story.
 
-**See the result: [sanwan.ai](https://sanwan.ai)** | **Follow the journey: [X (@�sheng)](https://x.com/傅盛)**
+**See the result: [sanwan.ai](https://sanwan.ai)** | **Follow the journey: [X (@fusheng_0306)](https://x.com/fusheng_0306)**
 
 > [中文版 README](./README_CN.md)
 
@@ -80,7 +80,7 @@ I've seen hundreds of AI demos. Most are party tricks — impressive for 30 seco
 
 This isn't really about me or about Sanwan. It's about what's coming.
 
-If a CEO who has never programmed, never had a GitHub account, and was literally stuck in bed with a broken leg can build an autonomous 8-agent AI system in 14 days using only his voice — **what's your excuse?**
+If a CEO who has never programmed, never had a GitHub account, and was literally stuck in bed with a broken leg can build an autonomous 8-agent AI system in 14 days using only his voice — **imagine what you could do.**
 
 AI agents aren't a future concept. They work today. But most people are underestimating how to use them — they're still treating agents like search engines. The unlock is treating them like junior employees: give them context, give them memory, give them tools, and let them run. You don't need to be an engineer. I'm living proof.
 
@@ -113,7 +113,7 @@ I'm **Fu Sheng** (傅盛):
 - Former VP at **Qihoo 360** — led 360 Security Guard to 400M+ users
 - **Not a programmer.** Never have been. My background is product and business strategy — which is exactly why this experiment matters. If AI agents only work for engineers, they're not ready. They worked for me.
 
-I share updates and reflections on **[X (@傅盛)](https://x.com/傅盛)**. DMs open.
+I share updates and reflections on **[X (@fusheng_0306)](https://x.com/fusheng_0306)**. DMs open.
 
 ---
 
