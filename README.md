@@ -1,8 +1,8 @@
 # I Broke My Leg. Then I Spent 14 Days Training an AI — Using Only My Voice.
 
-I'm Fu Sheng, CEO of [Cheetah Mobile](https://www.cmcm.com) (NYSE: CMCM). On January 17, 2025, I fractured my leg skiing. Couldn't walk. Couldn't type. So I did the only thing I could: I talked to an AI, over and over, for 14 days straight.
+I'm Fu Sheng, CEO of [Cheetah Mobile](https://www.cmcm.com) (NYSE: CMCM). I've never been a programmer. I don't write code. I didn't even have a GitHub account before this project. On January 17, 2025, I fractured my leg skiing. Couldn't walk. Couldn't type. So I did the only thing I could: I talked to an AI, over and over, for 14 days straight.
 
-What started as boredom became an experiment. What became an experiment became something real — **an autonomous AI agent that sends messages, builds websites, monitors itself, and recovers from crashes. All trained by voice. Zero code written.**
+What started as boredom became an experiment. What became an experiment became something real — **an autonomous AI agent that sends messages, builds websites, monitors itself, and recovers from crashes. All trained by voice. By someone who has never written a line of code in his life.**
 
 Her name is **Sanwan** (三万). She's a lobster. Long story.
 
@@ -28,7 +28,7 @@ And I never wrote a single line of code. Every instruction was spoken.
 
 ## The 14-Day Journey
 
-This isn't a polished product launch. It's a raw log of what happened when a non-engineer pushed an AI agent to its limits using nothing but natural language.
+This isn't a polished product launch. It's a raw log of what happened when someone with **zero programming experience** pushed an AI agent to its limits using nothing but natural language.
 
 | Day | What Happened |
 |-----|---------------|
@@ -74,9 +74,9 @@ I've seen hundreds of AI demos. Most are party tricks — impressive for 30 seco
 
 This isn't really about me or about Sanwan. It's about what's coming.
 
-If a CEO with a broken leg, no engineering background for this task, and only his voice can build an autonomous AI system in 14 days — **what does that mean for everyone else?**
+If a CEO who has never programmed, never had a GitHub account, and was literally stuck in bed with a broken leg can build an autonomous 8-agent AI system in 14 days using only his voice — **what's your excuse?**
 
-AI agents aren't a future concept. They work today. But most people are underestimating how to use them — they're still treating agents like search engines. The unlock is treating them like junior employees: give them context, give them memory, give them tools, and let them run.
+AI agents aren't a future concept. They work today. But most people are underestimating how to use them — they're still treating agents like search engines. The unlock is treating them like junior employees: give them context, give them memory, give them tools, and let them run. You don't need to be an engineer. I'm living proof.
 
 ## Built On
 
@@ -105,7 +105,7 @@ I'm **Fu Sheng** (傅盛):
 - CEO of **[Cheetah Mobile](https://www.cmcm.com)** (NYSE: CMCM) — took a mobile internet company global
 - Founder of **[OrionStar](https://www.orionstar.com)** — building AI-powered service robots
 - Former VP at **Qihoo 360** — led 360 Security Guard to 400M+ users
-- I think a lot about product strategy, AI, and what happens when non-engineers get real AI tools
+- **Not a programmer.** Never have been. My background is product and business strategy — which is exactly why this experiment matters. If AI agents only work for engineers, they're not ready. They worked for me.
 
 I share updates and reflections on **[X (@傅盛)](https://x.com/傅盛)**. DMs open.
 
