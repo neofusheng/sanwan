@@ -26,6 +26,12 @@ The answer surprised me. By Day 14, I had an 8-agent system that:
 
 And I never wrote a single line of code. Every instruction was spoken.
 
+## Two Moments That Changed Everything
+
+**The greetings.** It was Day 2–3, right before Chinese New Year's Eve. I was lying in bed, unable to visit anyone. I told Sanwan: "I want to send a personalized New Year greeting to every single employee." She wrote a script, pulled the contact list, and drafted 611 unique messages — each one tailored to the person, their role, their recent work. I reviewed a few, approved the batch, and she sent them all. On New Year's Eve. While I couldn't even get out of bed. That was the moment I realized: this isn't a chatbot. This is something else.
+
+**The article.** A few days later, I told Sanwan to write up our training story and post it on X (Twitter). She drafted it, I refined it by voice, and we published. It hit **1 million+ views** and gained me **5,000+ new followers** — all from a post written by an AI, about training that AI, dictated by a man who couldn't type. The meta-ness wasn't lost on anyone.
+
 ## The 14-Day Journey
 
 This isn't a polished product launch. It's a raw log of what happened when someone with **zero programming experience** pushed an AI agent to its limits using nothing but natural language.
