@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>📝 选题决策</title>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { background:#f5f5f7; font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif; color:#1d1d1f; padding:16px; max-width:860px; margin:0 auto; }
+h1 { font-size:26px; font-weight:700; margin-bottom:4px; }
+.sub { color:#86868b; font-size:13px; margin-bottom:20px; }
+.tabs { display:flex; gap:4px; margin-bottom:20px; background:#e8e8ed; border-radius:10px; padding:3px; }
+.tab { flex:1; text-align:center; padding:9px; border-radius:8px; font-size:14px; font-weight:600; cursor:pointer; color:#636366; transition:all .2s; }
+.tab.active { background:#fff; color:#1d1d1f; box-shadow:0 1px 3px rgba(0,0,0,.1); }
+.badge { display:inline-block; background:#ff375f; color:#fff; border-radius:10px; padding:1px 7px; font-size:11px; margin-left:4px; }
+.tab.active .badge { background:#007aff; }
+.card { background:#fff; border-radius:12px; padding:18px; margin-bottom:12px; box-shadow:0 1px 3px rgba(0,0,0,.06); }
+.card-title { font-size:16px; font-weight:600; margin-bottom:6px; }
+.card-summary { font-size:13px; color:#636366; line-height:1.55; margin-bottom:6px; }
+.card-angle { font-size:13px; color:#007aff; margin-bottom:10px; }
+.card-meta { font-size:12px; color:#aeaeb2; margin-bottom:12px; }
+.btns { display:flex; gap:8px; }
+.btn { padding:8px 18px; border-radius:8px; font-size:13px; font-weight:600; cursor:pointer; border:none; }
+.btn-approve { background:#34c759; color:#fff; }
+.btn-reject  { background:#ff3b30; color:#fff; }
+.btn-approve:active { opacity:.8; }
+.btn-reject:active  { opacity:.8; }
+.note-input { flex:1; padding:8px 12px; border:1.5px solid #e0e0e0; border-radius:8px; font-size:13px; outline:none; }
+.note-input:focus { border-color:#007aff; }
+.decided-tag { font-size:12px; padding:3px 10px; border-radius:6px; font-weight:600; }
+.tag-approved { background:#e9f9ee; color:#34c759; }
+.tag-rejected { background:#fff0f0; color:#ff3b30; }
+.empty { text-align:center; color:#aeaeb2; padding:40px 0; font-size:14px; }
+.loading { text-align:center; color:#aeaeb2; padding:30px 0; }
+</style>
+</head>
+<body>
+<h1>📝 选题决策</h1>
+<p class="sub" id="subtext">加载中...</p>
+
+<div class="tabs">
+  <div class="tab active" onclick="switchTab('pending')" id="tab-pending">
+    待定 <span class="badge" id="cnt-pending">0</span>
+  </div>
+  <div class="tab" onclick="switchTab('approved')" id="tab-approved">
+    ✅ 通过 <span class="badge" id="cnt-approved">0</span>
+  </div>
+  <div class="tab" onclick="switchTab('rejected')" id="tab-rejected">
+    ❌ 拒绝 <span class="badge" id="cnt-rejected">0</span>
+  </div>
+</div>
+
+<div id="list"><div class="loading">加载中...</div></div>
+
+<script>
+let allTopics = [];
+let currentTab = 'pending';
+
+async function load() {
+  try {
+    const r = await fetch('/api/topics');
+    allTopics = await r.json();
+    updateCounts();
+    renderTab(currentTab);
+    document.getElementById('subtext').textContent =
+      '上次刷新：' + new Date().toLocaleTimeString('zh-CN');
+  } catch(e) {
+    document.getElementById('list').innerHTML = '<div class="empty">加载失败，请刷新重试</div>';
+  }
+}
+
+function updateCounts() {
+  document.getElementById('cnt-pending').textContent =
+    allTopics.filter(t => t.status === 'pending').length;
+  document.getElementById('cnt-approved').textContent =
+    allTopics.filter(t => t.status === 'approved').length;
+  document.getElementById('cnt-rejected').textContent =
+    allTopics.filter(t => t.status === 'rejected').length;
+}
+
+function renderTab(tab) {
+  const items = allTopics.filter(t => {
+    if (tab === 'pending') return t.status === 'pending';
+    if (tab === 'approved') return t.status === 'approved';
+    if (tab === 'rejected') return t.status === 'rejected';
+  });
+  const el = document.getElementById('list');
+  if (items.length === 0) {
+    el.innerHTML = '<div class="empty">暂无选题</div>';
+    return;
+  }
+  el.innerHTML = items.map(t => renderCard(t, tab)).join('');
+}
+
+function renderCard(t, tab) {
+  const ts = t.created_at ? new Date(t.created_at*1000).toLocaleDateString('zh-CN') : '';
+  if (tab === 'pending') {
+    return `<div class="card" id="card-${t.id}">
+      <div class="card-title">${t.title}</div>
+      ${t.summary ? `<div class="card-summary">${t.summary}</div>` : ''}
+      ${t.angle ? `<div class="card-angle">💡 ${t.angle}</div>` : ''}
+      <div class="card-meta">${t.source || ''} ${ts}</div>
+      <div class="btns">
+        <input class="note-input" id="note-${t.id}" placeholder="备注（可选）" />
+        <button class="btn btn-approve" onclick="decide('${t.id}','approve')">✅ 选</button>
+        <button class="btn btn-reject"  onclick="decide('${t.id}','reject')">❌ 不选</button>
+      </div>
+    </div>`;
+  } else {
+    const tagClass = t.status === 'approved' ? 'tag-approved' : 'tag-rejected';
+    const tagText  = t.status === 'approved' ? '✅ 已选' : '❌ 不选';
+    return `<div class="card">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:6px">
+        <div class="card-title">${t.title}</div>
+        <span class="decided-tag ${tagClass}">${tagText}</span>
+      </div>
+      ${t.summary ? `<div class="card-summary">${t.summary}</div>` : ''}
+      ${t.decision_note ? `<div class="card-angle">📝 ${t.decision_note}</div>` : ''}
+      <div class="card-meta">${t.source || ''} ${ts}</div>
+    </div>`;
+  }
+}
+
+async function decide(id, action) {
+  const note = document.getElementById('note-'+id)?.value || '';
+  const card = document.getElementById('card-'+id);
+  if (card) { card.style.opacity = '0.4'; card.style.pointerEvents = 'none'; }
+  try {
+    await fetch('/api/topics/'+id+'/decide', {
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({action, note})
+    });
+    await load();
+  } catch(e) {
+    alert('操作失败，请重试');
+    if (card) { card.style.opacity = '1'; card.style.pointerEvents = ''; }
+  }
+}
+
+function switchTab(tab) {
+  currentTab = tab;
+  document.querySelectorAll('.tab').forEach(el => el.classList.remove('active'));
+  document.getElementById('tab-'+tab).classList.add('active');
+  renderTab(tab);
+}
+
+load();
+setInterval(load, 60000);
+</script>
+</body>
+</html>
