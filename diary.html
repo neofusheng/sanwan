@@ -300,7 +300,7 @@ function showDiary(key){
   if(!d) return;
   
   
-  document.getElementById('diaryModalBody').innerHTML = '<h2 style="font-family:Comic Sans MS,cursive;font-size:22px;margin-bottom:16px">' + d.title + '</h2><img loading="lazy" src="' + d.img + '" style="width:100%;border-radius:8px;border:2px solid #ddd;margin-bottom:16px"><div style="font-size:15px;line-height:1.8;color:#333">' + d.text + '</div>';
+  document.getElementById('diaryModalBody').innerHTML = '<h2 style="font-family:Comic Sans MS,cursive;font-size:22px;margin-bottom:16px">' + d.title + '</h2><img loading="lazy" src="' + d.img + '" style="width:100%;border-radius:8px;border:2px solid #ddd;margin-bottom:16px"><div style="font-size:15px;line-height:1.8;color:#333">' + (d.text || d.content || '') + '</div>';
   document.getElementById('diaryModal').style.display = 'flex';
   document.body.style.overflow = 'hidden';
   history.replaceState(null, '', '#' + key);
