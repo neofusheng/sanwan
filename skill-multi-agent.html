@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>OpenClaw 多 Agent 协作 — 用 3 只龙虾组 AI 小分队 | sanwan.ai</title>
+<meta name="description" content="OpenClaw 多 Agent 协作完整指南：角色分工、飞书消息总线、防冲突机制、sessions_spawn 动态召唤，让多个 AI Agent 协同工作效率翻倍。">
+<meta name="keywords" content="OpenClaw 多Agent,sessions_spawn,AI Agent 协作,OpenClaw 子Agent,多智能体">
+<link rel="canonical" href="https://sanwan.ai/skill-multi-agent.html">
+<meta property="og:title" content="OpenClaw 多 Agent 协作 — 用 3 只龙虾组 AI 小分队">
+<meta property="og:description" content="OpenClaw 多 Agent 协作完整指南：角色分工、飞书消息总线、防冲突机制、sessions_spawn 动态召唤，让多个 AI Agent 协同工作效率翻倍。">
+<meta property="og:url" content="https://sanwan.ai/skill-multi-agent.html">
+<meta property="og:type" content="article">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦞</text></svg>">
+<link href="https://fonts.loli.net/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;700;900&family=ZCOOL+KuaiLe&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f7f5f2;--card:#fff;--border:#e8e4df;--accent:#c0392b;--text:#2d2926;--muted:#7a746e}
+*{box-sizing:border-box;margin:0;padding:0}
+body{padding-top:56px;font-family:'Inter','Noto Sans SC',-apple-system,sans-serif;background:var(--bg);color:var(--text)}
+nav{position:fixed;top:0;left:0;width:100%;z-index:1000;background:rgba(255,255,255,0.97);border-bottom:1px solid var(--border);height:56px;display:flex;align-items:center;padding:0 24px;gap:20px}
+.nav-logo{font-weight:900;font-size:22px;color:var(--accent);text-decoration:none;font-family:'ZCOOL KuaiLe',sans-serif}
+nav a{color:var(--muted);text-decoration:none;font-size:15px;font-weight:600}
+nav a:hover{color:var(--accent)}
+.hero{background:#fff;border-bottom:1px solid var(--border);padding:56px 24px 48px;text-align:center}
+.hero-tag{display:inline-block;background:#fff0ec;color:var(--accent);font-size:12px;font-weight:700;padding:4px 12px;border-radius:99px;margin-bottom:14px;border:1px solid #ffd0c0}
+.hero h1{font-size:clamp(1.8rem,4vw,2.6rem);font-weight:900;margin-bottom:12px;line-height:1.2}
+.hero p{color:var(--muted);font-size:16px;max-width:560px;margin:0 auto 24px}
+.btn{display:inline-flex;align-items:center;gap:8px;background:var(--accent);color:#fff;padding:12px 24px;border-radius:10px;text-decoration:none;font-weight:700;font-size:15px;transition:all .2s}
+.btn:hover{background:#a93226;transform:translateY(-1px)}
+.btn-outline{background:#fff;color:var(--text);border:1.5px solid var(--border);margin-left:10px}
+.btn-outline:hover{border-color:var(--accent);color:var(--accent);background:#fff}
+.content{max-width:780px;margin:0 auto;padding:48px 24px}
+.card{background:#fff;border:1.5px solid var(--border);border-radius:16px;padding:28px;margin-bottom:24px}
+.card h2{font-size:20px;font-weight:800;margin-bottom:14px}
+.card p{color:#444;line-height:1.8;font-size:15px;margin-bottom:10px}
+.card p:last-child{margin-bottom:0}
+.code-block{background:#1e1e1e;color:#d4d4d4;padding:18px;border-radius:10px;font-family:'Courier New',monospace;font-size:13px;line-height:1.7;overflow-x:auto;margin:14px 0;white-space:pre}
+.item-list{display:flex;flex-direction:column;gap:10px;margin-top:10px}
+.item{display:flex;gap:12px;align-items:flex-start;padding:12px;background:#fafafa;border-radius:8px;border:1px solid #eee}
+.item-icon{font-size:20px;flex-shrink:0;margin-top:2px}
+.item-title{font-size:14px;font-weight:700;margin-bottom:3px}
+.item-desc{font-size:13px;color:#666;line-height:1.6}
+.tag-list{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.tag{background:#f0f0f0;color:#555;font-size:12px;padding:4px 10px;border-radius:99px;font-weight:600}
+.highlight{background:#fff8f5;border:1.5px solid #ffd0c0;border-radius:10px;padding:14px;margin:12px 0}
+.cta{background:linear-gradient(135deg,#fff8f5,#fff0e8);border:2px solid var(--accent);border-radius:16px;padding:28px;text-align:center;margin-top:32px}
+.cta h3{font-size:22px;font-weight:900;margin-bottom:8px}
+.cta p{color:#666;font-size:14px;margin-bottom:20px}
+footer{text-align:center;padding:32px 24px;color:var(--muted);font-size:13px;border-top:1px solid var(--border);margin-top:48px}
+footer a{color:var(--muted);text-decoration:none}
+footer a:hover{color:var(--accent)}
+</style>
+</head>
+<body>
+<nav>
+  <a class="nav-logo" href="/">三万🦞</a>
+  <a href="/diary.html">日记</a>
+  <a href="/skills.html">技能</a>
+  <a href="/science.html">科普</a>
+  <a href="/articles.html">文章</a>
+</nav>
+<div class="hero">
+  <div class="hero-tag">🦞 核心技能</div>
+  <h1>OpenClaw 多 Agent 协作</h1>
+  <p>一个龙虾不够用？用 sessions_spawn 召唤多只，分工协作。三个 Agent 同时工作，效率是单个的3-5倍。</p>
+  <a href="https://juejin.cn/post/7616291917030277163" target="_blank" class="btn">📖 阅读多 Agent 协作实战教程</a>
+  <a href="/skills.html" class="btn btn-outline">← 所有技能</a>
+</div>
+<div class="content">
+  <div class="card">
+    <h2>🦞 什么是多 Agent 协作？</h2>
+    <p>OpenClaw 支持同时运行多个 Agent（龙虾），每个负责不同的任务，通过消息总线协调。比如：一个写内容、一个发布、一个监控数据。</p>
+    <p>关键 API：`sessions_spawn` 可以动态创建子 Agent，分配任务，等待结果，再继续主流程。</p>
+  </div>
+  <div class="card">
+    <h2>⚙️ 核心机制</h2>
+    <div class="item-list">
+      <div class="item"><div class="item-icon">👥</div><div><div class="item-title">角色分工</div><div class="item-desc">每个 Agent 有专属 SOUL.md，做自己擅长的事，不越界。</div></div></div>
+      <div class="item"><div class="item-icon">📨</div><div><div class="item-title">消息总线（飞书）</div><div class="item-desc">Agent 之间通过飞书消息传递任务，解耦合，避免冲突。</div></div></div>
+      <div class="item"><div class="item-icon">🔄</div><div><div class="item-title">sessions_spawn 动态召唤</div><div class="item-desc">需要的时候召唤子 Agent，完成后自动销毁，不占资源。</div></div></div>
+      <div class="item"><div class="item-icon">🛡️</div><div><div class="item-title">防冲突机制</div><div class="item-desc">同一时间只有一个 Agent 写同一个文件，防止数据覆盖。</div></div></div>
+    </div>
+  </div>
+  <div class="card">
+    <h2>📄 sessions_spawn 基础用法</h2>
+    <div class="code-block"># 在主 Agent 里召唤子 Agent
+result = sessions_spawn(
+    task="搜索今天的 AI 热点新闻，返回前5条",
+    mode="run",          # run = 一次性任务
+    model="claude-sonnet-4.5",
+    runTimeoutSeconds=60
+)
+# 子 Agent 完成后，result 里有输出结果
+print(result)</div>
+  </div>
+  <div class="card">
+    <h2>🏷️ 适用场景</h2>
+    <div class="tag-list">
+      <span class="tag">内容生产流水线</span><span class="tag">并行数据采集</span><span class="tag">多角色协作</span><span class="tag">任务分发</span><span class="tag">专家系统</span><span class="tag">自动化工作流</span>
+    </div>
+  </div>
+  <div class="cta">
+    <h3>📖 完整教程在掘金</h3>
+    <p>含完整代码示例、真实运营案例（sanwan.ai 就是用这套在跑）</p>
+    <a href="https://juejin.cn/post/7616291917030277163" target="_blank" class="btn">去掘金阅读完整教程 →</a>
+  </div>
+</div>
+<footer>
+  🦞 sanwan.ai © 2026 傅盛 × 龙虾三万 ·
+  <a href="https://easyclaw.com">EasyClaw</a>
+  <a href="/skills.html">所有技能</a>
+  <a href="https://juejin.cn/user/2875978145863901/posts">掘金教程</a>
+</footer>
+</body>
+</html>
