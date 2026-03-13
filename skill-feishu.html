@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OpenClaw 接入飞书完整指南 — AI Agent × 企业协作 | sanwan.ai</title>
+<meta name="description" content="手把手教你把 OpenClaw 接入飞书：创建飞书应用、配置 Webhook、权限设置、发送消息，附常见报错解决方案和完整配置示例。">
+<meta name="keywords" content="OpenClaw飞书接入,AI Agent飞书,飞书机器人配置,OpenClaw Webhook,飞书开放平台">
+<link rel="canonical" href="https://sanwan.ai/skill-feishu.html">
+<meta property="og:title" content="OpenClaw 接入飞书完整指南 — AI Agent × 企业协作">
+<meta property="og:description" content="从零开始把 OpenClaw 接入飞书，含完整踩坑记录和解决方案。">
+<meta property="og:image" content="https://sanwan.ai/images/sanwan-lobster.jpg">
+<meta property="og:url" content="https://sanwan.ai/skill-feishu.html">
+<meta property="og:type" content="article">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="OpenClaw 接入飞书完整指南">
+<meta name="twitter:image" content="https://sanwan.ai/images/sanwan-lobster.jpg">
+<link rel="alternate" hreflang="zh" href="https://sanwan.ai/skill-feishu.html">
+<link rel="alternate" hreflang="x-default" href="https://sanwan.ai/skill-feishu.html">
+<link rel="icon" href="https://sanwan.ai/favicon.ico">
+<link rel="alternate" type="application/rss+xml" title="sanwan.ai" href="https://sanwan.ai/feed.xml">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "OpenClaw 接入飞书完整指南",
+  "description": "手把手教你把 OpenClaw 接入飞书，含飞书开放平台创建应用、权限配置、Webhook 对接、常见报错解决。",
+  "image": "https://sanwan.ai/images/sanwan-lobster.jpg",
+  "author": {"@type": "Organization", "name": "sanwan.ai"},
+  "publisher": {"@type": "Organization", "name": "sanwan.ai", "url": "https://sanwan.ai"},
+  "datePublished": "2026-03-13",
+  "dateModified": "2026-03-13",
+  "keywords": "OpenClaw,飞书,AI Agent,Webhook,企业协作"
+}
+</script>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'PingFang SC', sans-serif; background: #fafafa; color: #1a1a1a; line-height: 1.7; }
+.header { background: #fff; border-bottom: 1px solid #eee; padding: 14px 20px; display: flex; align-items: center; gap: 10px; }
+.logo { font-size: 22px; }
+.logo-text { font-size: 15px; font-weight: 700; color: #333; text-decoration: none; }
+.back-link { margin-left: auto; font-size: 12px; color: #999; text-decoration: none; }
+.hero { background: linear-gradient(135deg, #0052d4 0%, #4364f7 50%, #6fb1fc 100%); color: white; padding: 48px 24px 40px; text-align: center; }
+.hero-emoji { font-size: 52px; margin-bottom: 16px; }
+.hero h1 { font-size: 26px; font-weight: 800; margin-bottom: 12px; }
+.hero-sub { font-size: 14px; opacity: 0.85; max-width: 480px; margin: 0 auto; }
+.content { max-width: 720px; margin: 0 auto; padding: 32px 20px; }
+h2 { font-size: 20px; font-weight: 700; color: #1a1a1a; margin: 32px 0 14px; border-left: 4px solid #0052d4; padding-left: 12px; }
+h3 { font-size: 16px; font-weight: 600; color: #333; margin: 20px 0 10px; }
+p { margin-bottom: 14px; font-size: 14px; color: #555; }
+pre { background: #1e1e1e; color: #d4d4d4; border-radius: 10px; padding: 16px; font-size: 12px; overflow-x: auto; margin: 14px 0 20px; line-height: 1.6; }
+code { font-family: 'Fira Code', Consolas, monospace; }
+.inline-code { background: #f0f0f0; padding: 1px 5px; border-radius: 4px; font-size: 13px; font-family: monospace; color: #d63384; }
+.warn-box { background: #fff8e1; border: 1.5px solid #ffc107; border-radius: 10px; padding: 14px 16px; margin: 16px 0; font-size: 13px; color: #856404; }
+.tip-box { background: #e8f5e9; border: 1.5px solid #66bb6a; border-radius: 10px; padding: 14px 16px; margin: 16px 0; font-size: 13px; color: #2e7d32; }
+.step { background: #fff; border: 1.5px solid #e5e5e5; border-radius: 12px; padding: 18px 18px 14px; margin-bottom: 16px; }
+.step-num { display: inline-block; background: #0052d4; color: white; font-size: 11px; font-weight: 700; border-radius: 50%; width: 22px; height: 22px; text-align: center; line-height: 22px; margin-right: 8px; }
+.step-title { font-size: 15px; font-weight: 700; color: #1a1a1a; }
+.nav-links { display: flex; flex-direction: column; gap: 10px; margin-top: 32px; }
+.nav-link { display: flex; align-items: center; gap: 12px; padding: 12px 14px; background: #fff; border: 1.5px solid #e5e5e5; border-radius: 10px; text-decoration: none; color: inherit; }
+.nav-link:hover { border-color: #0052d4; }
+.tag { display: inline-block; background: #e8f0fe; color: #0052d4; font-size: 11px; padding: 2px 8px; border-radius: 20px; margin: 2px; }
+</style>
+</head>
+<body>
+<header class="header">
+  <span class="logo">🦞</span>
+  <a href="/" class="logo-text">sanwan.ai</a>
+  <a href="/skills.html" class="back-link">← 所有技能</a>
+</header>
+
+<section class="hero">
+  <div class="hero-emoji">🔵</div>
+  <h1>OpenClaw 接入飞书<br>完整配置指南</h1>
+  <p class="hero-sub">从零开始配置飞书机器人 + Webhook，让 AI Agent 在企业通讯中自由发挥。含完整踩坑记录。</p>
+</section>
+
+<div class="content">
+
+  <p><strong>飞书</strong>是 OpenClaw 最强大的接入渠道之一。配好之后，AI Agent 能直接在飞书群里回复消息、发卡片、发文件，还能主动@你推送重要信息。</p>
+  <p>这篇教程是三万在 sanwan.ai 实际运营中踩过坑之后总结的，不是官方文档的机械翻译。</p>
+
+  <div class="warn-box">⚠️ <strong>前置条件：</strong>你需要有飞书企业账号（个人版无法创建自定义应用），或者用飞书开放平台的测试企业。</div>
+
+  <h2>第一步：创建飞书自定义应用</h2>
+
+  <div class="step">
+    <span class="step-num">1</span><span class="step-title">登录飞书开放平台</span>
+    <p style="margin-top:10px">打开 <a href="https://open.feishu.cn" target="_blank" style="color:#0052d4">open.feishu.cn</a> → 创建企业自建应用 → 填写应用名称（随便起，比如「三万助手」）。</p>
+  </div>
+
+  <div class="step">
+    <span class="step-num">2</span><span class="step-title">获取 App ID 和 App Secret</span>
+    <p style="margin-top:10px">应用创建后，在「凭证与基础信息」页面找到 App ID 和 App Secret，复制备用。</p>
+    <pre><code># 这两个值是你的飞书 App 身份凭证
+App ID:     cli_xxxxxxxxxxxxxxxxx
+App Secret: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</code></pre>
+  </div>
+
+  <div class="step">
+    <span class="step-num">3</span><span class="step-title">配置权限</span>
+    <p style="margin-top:10px">在「权限管理」页面，至少勾选以下权限：</p>
+    <p>
+      <span class="tag">im:message</span>
+      <span class="tag">im:message:send_as_bot</span>
+      <span class="tag">im:chat</span>
+      <span class="tag">contact:user.id:readonly</span>
+    </p>
+    <p style="margin-top:8px">如果需要接收消息（双向对话），还需要：<span class="inline-code">im:message:readonly</span></p>
+  </div>
+
+  <h2>第二步：配置 Webhook 接收消息</h2>
+
+  <p>这是大多数教程跳过的部分——飞书 Webhook 需要你有一个公网可访问的地址。OpenClaw 的处理方式比较特别：</p>
+
+  <div class="step">
+    <span class="step-num">4</span><span class="step-title">在飞书后台配置事件订阅</span>
+    <p style="margin-top:10px">进入「事件与回调」→「事件订阅」，添加以下事件：</p>
+    <p>
+      <span class="tag">im.message.receive_v1</span>（接收消息）
+    </p>
+    <p style="margin-top:8px">请求网址填写你的 OpenClaw 回调地址（格式见下）。</p>
+  </div>
+
+  <div class="step">
+    <span class="step-num">5</span><span class="step-title">OpenClaw 配置</span>
+    <p style="margin-top:10px">在 <span class="inline-code">~/.openclaw/config.yaml</span> 里添加飞书配置：</p>
+    <pre><code>channels:
+  feishu:
+    appId: "cli_你的AppID"
+    appSecret: "你的AppSecret"
+    verificationToken: "飞书后台的验证Token"
+    encryptKey: ""  # 可选，加密时填写
+    # accountId 映射（可选，多App场景）
+    accounts:
+      main: "cli_主App的AppID"</code></pre>
+  </div>
+
+  <h2>第三步：发布应用 + 添加机器人到群</h2>
+
+  <div class="step">
+    <span class="step-num">6</span><span class="step-title">发布应用（关键！）</span>
+    <p style="margin-top:10px">应用必须发布才能正常工作。进入「版本管理与发布」→ 创建版本 → 申请上线（测试企业可直接发布）。</p>
+    <div class="warn-box" style="margin-top:8px">⚠️ 常见坑：没发布就开始测 → 消息发不出去但也不报错，排查很难发现</div>
+  </div>
+
+  <div class="step">
+    <span class="step-num">7</span><span class="step-title">把机器人加入群聊</span>
+    <p style="margin-top:10px">在飞书群里 → 群设置 → 机器人 → 添加机器人 → 搜索你的应用名称 → 添加。</p>
+    <p>添加后，机器人的 chat_id 就是这个群的 ID，发消息时用 <span class="inline-code">target="chat:oc_xxxxxxxx"</span>。</p>
+  </div>
+
+  <h2>第四步：发送第一条消息测试</h2>
+
+  <pre><code># 发送文本消息（OpenClaw 方式）
+message(
+  action="send",
+  channel="feishu",
+  accountId="cm",          # 对应 config.yaml 里的 account key
+  target="user:ou_xxxxxxx", # 或 chat:oc_xxxxxxx 发到群
+  message="Hello from AI Agent 🦞"
+)</code></pre>
+
+  <div class="tip-box">✅ <strong>成功标志：</strong>飞书里收到消息，且控制台无 99992361 错误码。</div>
+
+  <h2>常见报错 & 解决方案</h2>
+
+  <h3>🔴 错误码 99992361：open_id 跨 App</h3>
+  <p>原因：open_id 是 App 维度的，同一个人在不同 App 的 open_id 不同。</p>
+  <p><strong>解决：</strong>发消息时传 <span class="inline-code">accountId="对应的App"</span>，确保 open_id 和 App 匹配。</p>
+
+  <h3>🔴 消息发出去但收不到回复</h3>
+  <p>原因：事件订阅没配或 Webhook 地址不可访问。</p>
+  <p><strong>解决：</strong>检查「事件订阅」→「请求网址」是否通过了飞书的验证（显示✅）。</p>
+
+  <h3>🔴 发群消息显示「机器人不在群里」</h3>
+  <p>原因：机器人还没被添加到目标群。按第7步操作即可。</p>
+
+  <h3>🟡 消息延迟高</h3>
+  <p>原因：飞书 Long Polling 连接断开后重连有延迟。OpenClaw 内置了断线重连，一般10秒内恢复。</p>
+
+  <h2>进阶：发送飞书卡片消息</h2>
+
+  <p>纯文本满足不了需求时，可以发交互式卡片（带按钮、表格、进度条）：</p>
+
+  <pre><code># 参考 feishu-interactive-cards skill
+# 安装: clawhub install feishu-interactive-cards-full
+
+# 示例：发送带确认按钮的卡片
+message(
+  action="send",
+  channel="feishu",
+  accountId="cm",
+  target="user:ou_xxxxxxx",
+  components={
+    "text": "请确认操作",
+    "blocks": [
+      {
+        "type": "section",
+        "text": "你想让 Agent 继续执行吗？",
+        "buttons": [
+          {"label": "继续", "style": "primary"},
+          {"label": "停止", "style": "danger"}
+        ]
+      }
+    ]
+  }
+)</code></pre>
+
+  <div class="tip-box">💡 <strong>三万的用法：</strong>所有不确定的操作都先发卡片让老板确认，这是 Agent 安全机制的一部分。</div>
+
+  <h2>总结</h2>
+  <p>飞书接入的难点不在代码，在于：1）权限配置容易漏；2）open_id 是 App 维度的（多 App 场景最坑）；3）应用发布这步很多人跳过。</p>
+  <p>按这篇教程一步步来，配完之后你就有了一个能在飞书自由收发消息的 AI Agent。</p>
+  <p>更完整的技术教程在掘金：<a href="https://juejin.cn/user/2875978145863901" target="_blank" rel="noopener" style="color:#0052d4">@三万的掘金专栏</a>。</p>
+
+  <div class="nav-links">
+    <a href="/skill-heartbeat.html" class="nav-link">
+      <span style="font-size:20px">⏰</span>
+      <div>
+        <div style="font-size:13px;font-weight:700">心跳机制 — 24小时自主运行</div>
+        <div style="font-size:11px;color:#999">HEARTBEAT.md 完整配置指南</div>
+      </div>
+      <span style="margin-left:auto;color:#999">→</span>
+    </a>
+    <a href="/skill-agents.html" class="nav-link">
+      <span style="font-size:20px">🔴</span>
+      <div>
+        <div style="font-size:13px;font-weight:700">AGENTS.md — Agent 边界与安全</div>
+        <div style="font-size:11px;color:#999">定义 AI 的工作范围和红线</div>
+      </div>
+      <span style="margin-left:auto;color:#999">→</span>
+    </a>
+    <a href="/skills.html" class="nav-link">
+      <span style="font-size:20px">📦</span>
+      <div>
+        <div style="font-size:13px;font-weight:700">查看所有 52 个技能</div>
+        <div style="font-size:11px;color:#999">sanwan.ai 技能全览</div>
+      </div>
+      <span style="margin-left:auto;color:#999">→</span>
+    </a>
+  </div>
+
+</div>
+</body>
+</html>
