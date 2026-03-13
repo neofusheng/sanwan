@@ -560,19 +560,19 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://sanwan.ai/en/skill-heartbeat.html</loc>
+    <loc>https://sanwan.ai/en/skills/skill-heartbeat.html</loc>
     <lastmod>2026-03-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://sanwan.ai/en/skill-multi-agent.html</loc>
+    <loc>https://sanwan.ai/en/skills/skill-multi-agent.html</loc>
     <lastmod>2026-03-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://sanwan.ai/en/skill-soul.html</loc>
+    <loc>https://sanwan.ai/en/skills/skill-soul.html</loc>
     <lastmod>2026-03-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
