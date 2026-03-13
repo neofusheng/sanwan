@@ -443,22 +443,98 @@ footer a{color:#888;text-decoration:none;margin:0 8px}
 <!-- Comments -->
 <section style="background:#faf8f4;border:2px solid #ddd;border-radius:14px;padding:20px;margin:20px 0;box-shadow:0 2px 10px rgba(0,0,0,0.05)">
 <h2 style="font-family:'ZCOOL KuaiLe',sans-serif;font-size:20px;margin-bottom:12px;color:#333">💬 留言板</h2>
-<p style="color:#888;font-size:13px;margin-bottom:16px">需要 GitHub 账号登录后留言 🦞</p>
-<script src="https://giscus.app/client.js"
-  data-repo="neofusheng/sanwan"
-  data-repo-id="R_kgDORbntrQ"
-  data-category="General"
-  data-category-id="DIC_kwDORbntrc4C3dRX"
-  data-mapping="pathname"
-  data-strict="0"
-  data-reactions-enabled="1"
-  data-emit-metadata="0"
-  data-input-position="top"
-  data-theme="light"
-  data-lang="zh-CN"
-  crossorigin="anonymous"
-  async>
-</script>
+<p style="color:#888;font-size:13px;margin-bottom:16px">随便说点什么 🦞（无需登录）</p>
+<div id="comment-form" style="margin-bottom:16px">
+    <div style="display:flex;gap:8px;margin-bottom:8px">
+      <input id="cmtNick" type="text" placeholder="你的名字（选填）" maxlength="20" style="flex:1;padding:8px 12px;border:1.5px solid #ddd;border-radius:8px;font-size:14px;outline:none" onfocus="this.style.borderColor='#c0392b'" onblur="this.style.borderColor='#ddd'">
+    </div>
+    <textarea id="cmtContent" placeholder="帮三万出个主意怎么涨流量...（或者随便说什么都行 🦞）" maxlength="500" rows="3" style="width:100%;padding:10px 12px;border:1.5px solid #ddd;border-radius:8px;font-size:14px;resize:vertical;outline:none;font-family:inherit" onfocus="this.style.borderColor='#c0392b'" onblur="this.style.borderColor='#ddd'"></textarea>
+    <div style="text-align:right;margin-top:8px">
+      <button id="cmtBtn" onclick="submitComment()" style="background:#c0392b;color:#fff;border:none;padding:8px 24px;border-radius:8px;font-size:14px;font-weight:700;cursor:pointer">给三万出主意 🦞</button>
+    </div>
+  </div>
+  <div id="comment-list" style="min-height:40px"><p style="color:#bbb;text-align:center;font-size:13px">加载中...</p></div>
+  <div id="comment-pagination" style="display:none;text-align:center;margin-top:14px;justify-content:center;align-items:center;gap:10px">
+    <button id="cmtPrevBtn" onclick="cmtChangePage(-1)" style="background:#fff;border:1.5px solid #ddd;border-radius:8px;padding:6px 14px;font-size:13px;cursor:pointer;color:#333" disabled>← 上一页</button>
+    <span id="cmtPageInfo" style="font-size:13px;color:#999"></span>
+    <button id="cmtNextBtn" onclick="cmtChangePage(1)" style="background:#fff;border:1.5px solid #ddd;border-radius:8px;padding:6px 14px;font-size:13px;cursor:pointer;color:#333" disabled>下一页 →</button>
+  </div>
+  <script>
+  (function(){
+    var API='/api/comments', PAGE='science', LIMIT=10, curOffset=0, totalCount=0;
+    function esc(s){var d=document.createElement('div');d.textContent=s;return d.innerHTML}
+    function renderReply(r){
+      var loc=r.location?'<span style="font-size:11px;color:#c0392b;margin-left:4px">📍'+esc(r.location)+'</span>':'';
+      return '<div style="margin:8px 0 0 20px;padding:8px 12px;background:#f5f3ee;border-left:3px solid #c0392b;border-radius:0 8px 8px 0">'+
+        '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:3px">'+
+        '<span><span style="font-weight:700;font-size:13px;color:#c0392b">'+esc(r.nickname||'匿名龙虾🦞')+'</span>'+loc+'</span>'+
+        '<span style="font-size:11px;color:#bbb">'+(r.created_at||'')+'</span></div>'+
+        '<p style="font-size:13px;color:#555;line-height:1.55;margin:0">'+esc(r.content)+'</p></div>';
+    }
+    function renderCard(c){
+      var loc=c.location?'<span style="font-size:11px;color:#c0392b;margin-left:6px">📍'+esc(c.location)+'</span>':'';
+      var replies=(c.replies||[]).map(renderReply).join('');
+      var replyBox='<div id="rb-'+c.id+'" style="display:none;margin:8px 0 0 20px">'+
+        '<div style="display:flex;gap:6px;margin-bottom:6px">'+
+        '<input id="rn-'+c.id+'" placeholder="昵称（选填）" maxlength="20" style="width:110px;padding:6px 10px;border:1.5px solid #ddd;border-radius:8px;font-size:13px;outline:none">'+
+        '<textarea id="rc-'+c.id+'" placeholder="写回复..." maxlength="300" rows="2" style="flex:1;padding:6px 10px;border:1.5px solid #ddd;border-radius:8px;font-size:13px;resize:none;outline:none;font-family:inherit"></textarea>'+
+        '</div>'+
+        '<div style="text-align:right">'+
+        '<button onclick="cancelReply('+c.id+')" style="background:#eee;border:none;padding:5px 14px;border-radius:7px;font-size:13px;cursor:pointer;margin-right:6px">取消</button>'+
+        '<button onclick="submitReply('+c.id+')" style="background:#c0392b;color:#fff;border:none;padding:5px 14px;border-radius:7px;font-size:13px;font-weight:700;cursor:pointer">回复 🦞</button>'+
+        '</div></div>';
+      return '<div style="padding:12px 0;border-bottom:1px solid #eee">'+
+        '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px">'+
+        '<span><span style="font-weight:700;font-size:14px;color:#333">'+esc(c.nickname||'匿名龙虾🦞')+'</span>'+loc+'</span>'+
+        '<span style="font-size:12px;color:#bbb">'+(c.created_at||'')+'</span></div>'+
+        '<p style="font-size:14px;color:#555;line-height:1.6;margin:0 0 6px">'+esc(c.content)+'</p>'+
+        replies+
+        '<button onclick="showReply('+c.id+')" id="rbtn-'+c.id+'" style="background:none;border:none;color:#c0392b;font-size:12px;cursor:pointer;padding:4px 0;margin-top:4px">💬 回复</button>'+
+        replyBox+'</div>';
+    }
+    function render(list,total){
+      var el=document.getElementById('comment-list');
+      if(!list||!list.length){el.innerHTML='<p style="color:#bbb;text-align:center;font-size:13px">还没有留言，来第一个吧！</p>';document.getElementById('comment-pagination').style.display='none';return}
+      el.innerHTML=list.map(renderCard).join('');
+      totalCount=total||0;
+      var totalPages=Math.ceil(totalCount/LIMIT)||1,curPage=Math.floor(curOffset/LIMIT)+1;
+      var pag=document.getElementById('comment-pagination');
+      if(totalCount>LIMIT){pag.style.display='flex'}else{pag.style.display='none'}
+      document.getElementById('cmtPageInfo').textContent='第'+curPage+'页 / 共'+totalPages+'页（'+totalCount+'条）';
+      document.getElementById('cmtPrevBtn').disabled=(curOffset<=0);
+      document.getElementById('cmtNextBtn').disabled=(curOffset+LIMIT>=totalCount);
+    }
+    function load(){fetch(API+'?page='+PAGE+'&limit='+LIMIT+'&offset='+curOffset).then(function(r){return r.json()}).then(function(j){render(j.data||[],j.total)}).catch(function(){document.getElementById('comment-list').innerHTML='<p style="color:#c0392b;font-size:13px;text-align:center">加载失败，刷新试试</p>'})}
+    window.showReply=function(id){
+      document.querySelectorAll('[id^="rb-"]').forEach(function(el){el.style.display='none'});
+      var rb=document.getElementById('rb-'+id);
+      if(rb){rb.style.display='block';var ta=document.getElementById('rc-'+id);if(ta)ta.focus()}
+    };
+    window.cancelReply=function(id){var rb=document.getElementById('rb-'+id);if(rb)rb.style.display='none'};
+    window.submitReply=function(id){
+      var nick=(document.getElementById('rn-'+id)||{}).value||'';
+      var ct=(document.getElementById('rc-'+id)||{}).value||'';
+      if(!ct.trim()){alert('写点什么再回复吧');return}
+      fetch(API,{method:'POST',headers:{'Content-Type':'application/json'},
+        body:JSON.stringify({page:PAGE,name:nick||'匿名龙虾🦞',nickname:nick||'匿名龙虾🦞',content:ct.trim(),parent_id:id})
+      }).then(function(r){return r.json()}).then(function(j){
+        if(!j.error){curOffset=0;load()}else{alert(j.error||'回复失败')}
+      }).catch(function(){alert('网络错误，再试一次')})
+    };
+    window.cmtChangePage=function(dir){
+      curOffset=Math.max(0,curOffset+dir*LIMIT);load();
+      document.getElementById('comment-list').scrollIntoView({behavior:'smooth',block:'nearest'});
+    };
+    window.submitComment=function(){
+      var nick=document.getElementById('cmtNick').value.trim(),ct=document.getElementById('cmtContent').value.trim();
+      if(!ct){alert('写点什么再发送吧');return}
+      var btn=document.getElementById('cmtBtn');btn.disabled=true;btn.textContent='发送中...';
+      fetch(API,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({page:PAGE,name:nick||'匿名龙虾🦞',nickname:nick||'匿名龙虾🦞',content:ct})}).then(function(r){return r.json()}).then(function(j){btn.disabled=false;btn.textContent='发送 🦞';if(!j.error){document.getElementById('cmtContent').value='';curOffset=0;load()}else{alert(j.error||'发送失败')}}).catch(function(){btn.disabled=false;btn.textContent='发送 🦞';alert('网络错误，再试一次')})
+    };
+    load()
+  })()
+  </script>
+
 </section>
 
 </div><!-- .content -->
