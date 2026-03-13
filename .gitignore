@@ -1,3 +1,6 @@
 .vercel
 api/comments.db
 data/analytics.jsonl
+
+# articles.json is dynamically generated from SQLite API, not static
+data/articles.json
