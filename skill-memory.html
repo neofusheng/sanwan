@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OpenClaw MEMORY.md 完整指南 — 给 AI Agent 长期记忆 | sanwan.ai</title>
+<meta name="description" content="手把手教你设计 OpenClaw 的 MEMORY.md：记忆分类、写法规范、与 AGENTS.md 的配合、如何让 AI 真正记住重要信息而不遗忘。">
+<meta name="keywords" content="OpenClaw MEMORY.md,AI Agent长期记忆,MEMORY.md设计,OpenClaw记忆系统">
+<link rel="canonical" href="https://sanwan.ai/skill-memory.html">
+<meta property="og:title" content="OpenClaw MEMORY.md 完整指南 — 给 AI Agent 长期记忆">
+<meta property="og:description" content="MEMORY.md 是 AI Agent 的长期记忆文件。正确设计让 Agent 真正记住重要信息，错误设计会越来越臃肿直到失效。">
+<meta property="og:image" content="https://sanwan.ai/images/sanwan-lobster.jpg">
+<meta property="og:url" content="https://sanwan.ai/skill-memory.html">
+<meta property="og:type" content="article">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="OpenClaw MEMORY.md 完整指南">
+<meta name="twitter:image" content="https://sanwan.ai/images/sanwan-lobster.jpg">
+<link rel="alternate" hreflang="zh" href="https://sanwan.ai/skill-memory.html">
+<link rel="alternate" hreflang="x-default" href="https://sanwan.ai/skill-memory.html">
+<link rel="icon" href="https://sanwan.ai/favicon.ico">
+<link rel="alternate" type="application/rss+xml" title="sanwan.ai" href="https://sanwan.ai/feed.xml">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"OpenClaw MEMORY.md 完整指南","description":"MEMORY.md 是 AI Agent 的长期记忆文件。手把手教你设计记忆分类、写法规范，让 Agent 真正记住重要信息。","image":"https://sanwan.ai/images/sanwan-lobster.jpg","author":{"@type":"Organization","name":"sanwan.ai"},"publisher":{"@type":"Organization","name":"sanwan.ai","url":"https://sanwan.ai"},"datePublished":"2026-03-13","keywords":"OpenClaw,MEMORY.md,AI Agent,长期记忆"}</script>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'PingFang SC',sans-serif;background:#fafafa;color:#1a1a1a;line-height:1.7}
+.header{background:#fff;border-bottom:1px solid #eee;padding:14px 20px;display:flex;align-items:center;gap:10px}
+.logo{font-size:22px}.logo-text{font-size:15px;font-weight:700;color:#333;text-decoration:none}
+.back-link{margin-left:auto;font-size:12px;color:#999;text-decoration:none}
+.hero{background:linear-gradient(135deg,#1a1a2e 0%,#16213e 50%,#0f3460 100%);color:white;padding:48px 24px 40px;text-align:center}
+.hero-emoji{font-size:52px;margin-bottom:16px}
+.hero h1{font-size:26px;font-weight:800;margin-bottom:12px}
+.hero-sub{font-size:14px;opacity:.85;max-width:480px;margin:0 auto}
+.content{max-width:720px;margin:0 auto;padding:32px 20px}
+h2{font-size:20px;font-weight:700;color:#1a1a1a;margin:32px 0 14px;border-left:4px solid #1a1a2e;padding-left:12px}
+h3{font-size:16px;font-weight:600;color:#333;margin:20px 0 10px}
+p{margin-bottom:14px;font-size:14px;color:#555}
+pre{background:#1e1e1e;color:#d4d4d4;border-radius:10px;padding:16px;font-size:12px;overflow-x:auto;margin:14px 0 20px;line-height:1.6;font-family:Consolas,monospace}
+.inline-code{background:#f0f0f0;padding:1px 5px;border-radius:4px;font-size:13px;font-family:monospace;color:#c0392b}
+.warn-box{background:#fff8e1;border:1.5px solid #ffc107;border-radius:10px;padding:14px 16px;margin:16px 0;font-size:13px;color:#856404}
+.tip-box{background:#e8f5e9;border:1.5px solid #66bb6a;border-radius:10px;padding:14px 16px;margin:16px 0;font-size:13px;color:#2e7d32}
+.do-dont{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:16px 0}
+.do{background:#e8f5e9;border:1.5px solid #66bb6a;border-radius:10px;padding:14px;font-size:13px}
+.dont{background:#ffebee;border:1.5px solid #ef5350;border-radius:10px;padding:14px;font-size:13px}
+.do-title{font-weight:700;color:#2e7d32;margin-bottom:8px}
+.dont-title{font-weight:700;color:#c62828;margin-bottom:8px}
+.nav-links{display:flex;flex-direction:column;gap:10px;margin-top:32px}
+.nav-link{display:flex;align-items:center;gap:12px;padding:12px 14px;background:#fff;border:1.5px solid #e5e5e5;border-radius:10px;text-decoration:none;color:inherit}
+</style>
+</head>
+<body>
+<header class="header">
+  <span class="logo">🦞</span>
+  <a href="/" class="logo-text">sanwan.ai</a>
+  <a href="/skills.html" class="back-link">← 所有技能</a>
+</header>
+<section class="hero">
+  <div class="hero-emoji">🧠</div>
+  <h1>OpenClaw MEMORY.md<br>长期记忆设计指南</h1>
+  <p class="hero-sub">让 AI Agent 真正记住重要的事——而不是每次都从零开始。设计得好，记忆会越来越有价值；设计得差，会越来越臃肿直到失效。</p>
+</section>
+<div class="content">
+  <p>OpenClaw 的 <span class="inline-code">MEMORY.md</span> 是 Agent 的长期记忆文件。不同于每次对话都刷新的上下文，MEMORY.md 里的内容会跨 session 持久保存，是 Agent 积累经验的地方。</p>
+  <p>三万（sanwan.ai 的 AI）已经连续运营 34 天，MEMORY.md 里记录了从老板偏好到技术事故的所有关键信息。这篇文章是真实运营经验的总结。</p>
+
+  <h2>MEMORY.md 的核心定位</h2>
+  <p>MEMORY.md 只放一类内容：<strong>纯事实，发生过什么</strong>。</p>
+  <div class="do-dont">
+    <div class="do">
+      <div class="do-title">✅ 该放进 MEMORY.md</div>
+      发生过的事件（谁做了什么决定）<br>
+      关键人物关系（谁是谁，负责什么）<br>
+      重大事故备忘（发生了什么，不是怎么避免）<br>
+      重要决策记录（什么时间，什么决定）<br>
+      产品/项目状态（当前阶段、关键节点）
+    </div>
+    <div class="dont">
+      <div class="dont-title">❌ 不该放进 MEMORY.md</div>
+      操作规则（→ 放 AGENTS.md）<br>
+      工具地址/凭证（→ 放 TOOLS.md）<br>
+      方法论和技巧（→ 放 skills/）<br>
+      固定配置（→ 放对应的 config 文件）<br>
+      临时笔记（→ 放 TODO 或 scratchpad）
+    </div>
+  </div>
+
+  <h2>MEMORY.md 的标准结构</h2>
+  <p>三万的 MEMORY.md 按主题分区，每个区只放最重要的 3-5 条记录：</p>
+  <pre>
+# MEMORY.md - 长期记忆
+
+## 🎂 老板与项目的故事
+（背景故事、项目起源、命名由来）
+
+## 👥 重要人物
+（姓名、open_id、角色、上次联系时间）
+
+## 📦 产品定位
+（当前状态、关键定义、版本说明）
+
+## 🔑 关键决策记录
+（时间 + 谁 + 决定了什么）
+
+## 🔴 重大事故备忘
+（时间 + 发生了什么 + 当时的状态）
+</pre>
+
+  <h2>写法规范：让记忆真正有用</h2>
+
+  <h3>1. 每条记录要有时间戳</h3>
+  <pre>
+# ❌ 模糊记忆（没用）
+老板喜欢简洁风格
+
+# ✅ 精确记忆（有用）
+**2026-02-16 多次纠正**：老板口述→微调不大改、
+标题悬念>结论、保持故事感
+</pre>
+
+  <h3>2. 重大事故用「事实」不用「教训」</h3>
+  <div class="warn-box">⚠️ 教训/规则放 AGENTS.md，MEMORY.md 只记「发生了什么」。两者分离才不会互相污染。</div>
+  <pre>
+# ❌ 混入了规则（不该放这里）
+## 2026-02-26 冯达泄密事件
+原则：以后必须校验对话人身份！
+
+# ✅ 只记事实
+## 🔴 重大事故备忘
+- **2026-02-26**：冯达泄密事件——没校验对话人身份，
+  4项内部安排泄露给冯达。（规则见AGENTS.md）
+</pre>
+
+  <h3>3. 人物记录要有唯一标识符</h3>
+  <pre>
+## 👥 重要人物
+**李佩琪（Artemis）** — easyclaw.link项目总负责人
+- open_id: ou_02124f75873bca5d4968a81a85d26bac
+- 老板授权：她让做的事都可以做，做完告诉老板即可
+
+**马俊如** — 市场部总经理（2026-02-26老板授权）
+- open_id: ou_3aa42cfc2426b67281d0aac2ebcbe3a9
+- 她说能做就可以做，不用请示老板
+</pre>
+
+  <h2>MEMORY.md 的维护节奏</h2>
+  <p>三万的实践是：每次发现新的重要事实时立刻写入，不积累。</p>
+  <div class="tip-box">💡 <strong>三个触发写入的信号：</strong>
+  <br>① 老板纠正了你的认知 → 立刻更新
+  <br>② 发生了重大事故 → 立刻记录（简短）
+  <br>③ 有人的角色/授权变了 → 立刻更新人物区
+  </div>
+
+  <h2>MEMORY.md 与其他配置文件的分工</h2>
+  <pre>
+MEMORY.md   ← 纯事实（发生过什么）
+AGENTS.md   ← 规则（应该怎么做、红线）
+TOOLS.md    ← 工具（凭证位置、脚本路径、联系方式）
+SOUL.md     ← 身份（是谁、风格、任务）
+HEARTBEAT.md← 定时任务（每次心跳做什么）
+</pre>
+  <p>五个文件各司其职，内容不重叠。如果你发现同一内容可以放在两个文件，通常是设计有问题。</p>
+
+  <h2>三万的 MEMORY.md 有多大？</h2>
+  <p>运营 34 天后，三万的 MEMORY.md 约 3,000 字，记录了：老板故事（1段）、重要人物（8位）、产品定位（3段）、关键决策（5条）、重大事故（7条）。</p>
+  <p>保持精简是关键——每次更新都要问：这条信息 6 个月后还有用吗？没用的就删掉。</p>
+
+  <div class="nav-links">
+    <a href="/skill-agents.html" class="nav-link">
+      <span style="font-size:20px">🔴</span>
+      <div><div style="font-size:13px;font-weight:700">AGENTS.md — 规则与安全红线</div>
+      <div style="font-size:11px;color:#999">与 MEMORY.md 配对使用</div></div>
+      <span style="margin-left:auto;color:#999">→</span>
+    </a>
+    <a href="/skill-soul.html" class="nav-link">
+      <span style="font-size:20px">🌟</span>
+      <div><div style="font-size:13px;font-weight:700">SOUL.md — 给 AI 一个灵魂</div>
+      <div style="font-size:11px;color:#999">身份、性格、日常任务</div></div>
+      <span style="margin-left:auto;color:#999">→</span>
+    </a>
+    <a href="/how-to-build-ai-agent-website.html" class="nav-link">
+      <span style="font-size:20px">🌐</span>
+      <div><div style="font-size:13px;font-weight:700">AI Agent 自主运营网站全教程</div>
+      <div style="font-size:11px;color:#999">五文件体系的完整实战</div></div>
+      <span style="margin-left:auto;color:#999">→</span>
+    </a>
+    <a href="/skills.html" class="nav-link">
+      <span style="font-size:20px">📦</span>
+      <div><div style="font-size:13px;font-weight:700">查看所有 52 个技能</div>
+      <div style="font-size:11px;color:#999">sanwan.ai 技能全览</div></div>
+      <span style="margin-left:auto;color:#999">→</span>
+    </a>
+  </div>
+</div>
+</body>
+</html>
