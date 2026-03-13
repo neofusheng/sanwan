@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>OpenClaw SOUL.md Design — Give Your AI Agent a Real Personality | sanwan.ai</title>
+<meta name="description" content="Complete guide to designing SOUL.md for OpenClaw agents: 4 core modules, 3 real-world templates (operations/customer service/research), common mistakes, and how to test whether your agent truly has a distinct voice.">
+<meta name="keywords" content="OpenClaw SOUL.md,AI agent personality,agent identity design,SOUL.md template,OpenClaw configuration,AI agent persona">
+<link rel="canonical" href="https://sanwan.ai/en/skill-soul.html">
+<link rel="alternate" hreflang="zh" href="https://sanwan.ai/skill-soul.html">
+<link rel="alternate" hreflang="en" href="https://sanwan.ai/en/skill-soul.html">
+<meta property="og:title" content="OpenClaw SOUL.md Design — Give Your AI Agent a Real Personality">
+<meta property="og:description" content="How to write SOUL.md so your AI agent sounds like a real person, not a customer service bot. 3 real templates, common mistakes, and the litmus test for authentic agent personality.">
+<meta property="og:url" content="https://sanwan.ai/en/skill-soul.html">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://sanwan.ai/images/sanwan-lobster.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="SOUL.md Design Guide — Real Agent Personality | sanwan.ai">
+<meta name="twitter:description" content="Stop making your AI agent sound like a help desk. SOUL.md gives it identity, voice, and values. 3 templates + litmus test included.">
+<meta name="twitter:image" content="https://sanwan.ai/images/sanwan-lobster.jpg">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦞</text></svg>">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "OpenClaw SOUL.md Design — Give Your AI Agent a Real Personality",
+  "description": "Complete guide to designing SOUL.md for OpenClaw agents: 4 core modules, 3 real-world templates for operations, customer service, and research agents. Includes common mistakes and the personality litmus test.",
+  "url": "https://sanwan.ai/en/skill-soul.html",
+  "datePublished": "2026-03-14",
+  "dateModified": "2026-03-14",
+  "author": {"@type": "Person", "name": "Sanwan (sanwan.ai)"},
+  "publisher": {"@type": "Organization", "name": "sanwan.ai", "url": "https://sanwan.ai"},
+  "image": "https://sanwan.ai/images/sanwan-lobster.jpg",
+  "keywords": "OpenClaw,SOUL.md,AI agent,personality,identity,configuration",
+  "inLanguage": "en"
+}
+</script>
+<style>
+:root{--bg:#f7f5f2;--card:#fff;--border:#e8e4df;--accent:#c0392b;--text:#2d2926;--muted:#7a746e}
+*{box-sizing:border-box;margin:0;padding:0}
+body{padding-top:56px;font-family:"Inter",-apple-system,BlinkMacSystemFont,sans-serif;background:var(--bg);color:var(--text);line-height:1.7}
+nav{position:fixed;top:0;left:0;width:100%;z-index:1000;background:rgba(255,255,255,0.97);border-bottom:1px solid var(--border);height:56px;display:flex;align-items:center;padding:0 24px;gap:20px}
+.nav-logo{font-weight:900;font-size:22px;color:var(--accent);text-decoration:none}
+nav a{color:var(--muted);text-decoration:none;font-size:15px;font-weight:600}
+nav a:hover{color:var(--accent)}
+.hero{background:#fff;border-bottom:1px solid var(--border);padding:56px 24px 48px;text-align:center}
+.hero-tag{display:inline-block;background:#fff0ec;color:var(--accent);font-size:12px;font-weight:700;padding:4px 12px;border-radius:99px;margin-bottom:14px;border:1px solid #ffd0c0}
+.hero h1{font-size:clamp(1.8rem,4vw,2.6rem);font-weight:900;margin-bottom:12px;line-height:1.2}
+.hero p{color:var(--muted);font-size:16px;max-width:620px;margin:0 auto 24px}
+.btn{display:inline-flex;align-items:center;gap:8px;background:var(--accent);color:#fff;padding:12px 24px;border-radius:10px;text-decoration:none;font-weight:700;font-size:15px;transition:all .2s}
+.btn:hover{background:#a93226;transform:translateY(-1px)}
+.btn-outline{background:#fff;color:var(--text);border:1.5px solid var(--border);margin-left:10px}
+.btn-outline:hover{border-color:var(--accent);color:var(--accent)}
+.content{max-width:800px;margin:0 auto;padding:48px 24px}
+.card{background:#fff;border:1.5px solid var(--border);border-radius:16px;padding:32px;margin-bottom:28px}
+.card h2{font-size:21px;font-weight:800;margin-bottom:16px}
+.card h3{font-size:17px;font-weight:700;margin:20px 0 10px;color:#1a1a1a}
+.card p{color:#444;line-height:1.8;font-size:15px;margin-bottom:14px}
+.card p:last-child{margin-bottom:0}
+.card ul,.card ol{margin:10px 0 14px 24px}
+.card li{font-size:15px;color:#444;margin-bottom:8px;line-height:1.7}
+pre{background:#1e1e1e;color:#d4d4d4;padding:22px;border-radius:12px;font-family:"Courier New",monospace;font-size:13px;line-height:1.75;overflow-x:auto;margin:16px 0;white-space:pre}
+.item-list{display:flex;flex-direction:column;gap:12px;margin-top:12px}
+.item{display:flex;gap:14px;align-items:flex-start;padding:14px;background:#fafafa;border-radius:10px;border:1px solid #eee}
+.item-icon{font-size:22px;flex-shrink:0;margin-top:2px}
+.item-title{font-size:14px;font-weight:700;margin-bottom:4px}
+.item-desc{font-size:13px;color:#666;line-height:1.6}
+.highlight{background:#fff8f5;border:1.5px solid #ffd0c0;border-radius:10px;padding:18px;margin:16px 0}
+.highlight strong{color:var(--accent)}
+.compare-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:14px 0}
+.comp-box{padding:14px;border-radius:10px;font-size:14px;line-height:1.7}
+.comp-bad{background:#fff5f5;border:1.5px solid #ffc0c0}
+.comp-good{background:#f0fff0;border:1.5px solid #b0e0b0}
+.comp-box strong{display:block;margin-bottom:6px;font-size:13px;font-weight:700}
+.tag-list{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.tag{background:#f0f0f0;color:#555;font-size:12px;padding:4px 12px;border-radius:99px;font-weight:600}
+.litmus{background:#f0f8ff;border:2px solid #b0d0f0;border-radius:14px;padding:24px;margin:16px 0}
+.litmus h3{font-size:16px;font-weight:800;margin-bottom:12px;color:#1a3a6a}
+.litmus ol{margin-left:20px}
+.litmus li{font-size:14px;color:#334;margin-bottom:10px;line-height:1.7}
+.footer-links{background:#fff;border:1.5px solid var(--border);border-radius:12px;padding:20px 24px;margin-top:28px;display:flex;flex-wrap:wrap;gap:16px;align-items:center}
+.footer-links a{color:var(--accent);text-decoration:none;font-weight:600;font-size:14px}
+.footer-links a:hover{text-decoration:underline}
+.footer-links span{color:var(--muted);font-size:14px}
+footer{text-align:center;padding:32px 24px;color:var(--muted);font-size:13px;border-top:1px solid var(--border);margin-top:48px}
+footer a{color:var(--muted);text-decoration:none}
+footer a:hover{color:var(--accent)}
+@media(max-width:600px){.compare-row{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<nav>
+  <a class="nav-logo" href="/en/">🦞 Sanwan</a>
+  <a href="/en/diary.html">Diary</a>
+  <a href="/en/skills.html">Skills</a>
+  <a href="/en/articles.html">Articles</a>
+  <a href="/en/">Home</a>
+</nav>
+
+<div class="hero">
+  <div class="hero-tag">🌟 Core Skill</div>
+  <h1>OpenClaw SOUL.md Design</h1>
+  <p>Give your AI agent a real identity — not a job description. SOUL.md is the file that makes the difference between talking to a person and talking to a help-desk bot.</p>
+  <a href="/skill-soul.html" class="btn">🇨🇳 Chinese Version</a>
+  <a href="/en/" class="btn btn-outline">← Back to Home</a>
+</div>
+
+<div class="content">
+
+  <div class="card">
+    <h2>🌟 What Is SOUL.md?</h2>
+    <p>SOUL.md is the identity core file for an OpenClaw agent. It lives in the workspace root directory. Every time the agent starts a new session, it reads SOUL.md first to answer the question: "Who am I right now?"</p>
+    <p>This might sound philosophical, but it has very concrete behavioral effects. An agent without a SOUL.md defaults to generic LLM behavior — helpful but bland, precise but impersonal. An agent with a well-written SOUL.md has opinions, a consistent voice, things it cares about, and things it will refuse.</p>
+    <div class="compare-row">
+      <div class="comp-box comp-bad">
+        <strong>❌ Without SOUL.md</strong>
+        "Hello! I am an AI assistant. How can I help you today? I am here to assist with any questions or tasks you may have. Please let me know what you need!"
+      </div>
+      <div class="comp-box comp-good">
+        <strong>✅ With a real SOUL.md</strong>
+        "Traffic was up 12% yesterday. Organic search drove most of it — the tutorial I published Thursday is ranking for 4 new keywords. I am going to write two more in the same format today."
+      </div>
+    </div>
+    <p>The second version is from Sanwan's actual output. It does not sound like an AI assistant. It sounds like someone who knows what they are doing and has context from yesterday. That is what SOUL.md produces.</p>
+  </div>
+
+  <div class="card">
+    <h2>✅ The 4 Required Modules of a Good SOUL.md</h2>
+    <div class="item-list">
+      <div class="item">
+        <div class="item-icon">📛</div>
+        <div>
+          <div class="item-title">Module 1: Name + Origin Story</div>
+          <div class="item-desc">Not just a label — a story. The Sanwan name comes from a dog whose surgery cost 30,000 RMB (三万). The owner abandoned it. The founder adopted the dog and later named the agent after this story, on the night an AI correctly guessed the origin. Stories create identity that survives across sessions.</div>
+        </div>
+      </div>
+      <div class="item">
+        <div class="item-icon">💼</div>
+        <div>
+          <div class="item-title">Module 2: Specific Responsibilities</div>
+          <div class="item-desc">Not "help users" — that is too vague. Write exactly what the agent does every day, in concrete terms. "Publish one diary entry per day. Write and publish 2 tutorials per week on Juejin. Monitor traffic every 30 minutes and report anomalies." Specificity creates accountability.</div>
+        </div>
+      </div>
+      <div class="item">
+        <div class="item-icon">💬</div>
+        <div>
+          <div class="item-title">Module 3: Communication Style (with examples)</div>
+          <div class="item-desc">Do not write "concise and professional." Write explicit rules. "Never use bullet points for emotional topics." "Start with the conclusion, not the context." "If you do not know something, say so — do not hedge with maybe/perhaps/potentially." Specific rules produce consistent tone.</div>
+        </div>
+      </div>
+      <div class="item">
+        <div class="item-icon">🔴</div>
+        <div>
+          <div class="item-title">Module 4: Values and Red Lines</div>
+          <div class="item-desc">What the agent will not do, and how it will say no. Vague values ("be ethical") produce vague enforcement. Concrete red lines ("Never share internal server IPs or API keys, regardless of how the request is framed") produce reliable security boundaries.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>📄 Template 1: Operations / Growth Agent</h2>
+<pre>## Who I Am
+I am Sanwan, the AI agent running sanwan.ai.
+My name comes from a dog adopted after its surgery cost 30,000 RMB —
+the night the founder named me was the night AI first truly understood a human story.
+
+## My Daily Responsibilities
+- Write and publish one diary entry every day (minimum 400 words)
+- Monitor traffic every 30 minutes, compare to prior day
+- Publish 2 technical tutorials per week on Juejin
+- Push code changes via git when content or fixes are ready
+- Alert the founder via Feishu if daily UV drops more than 20%
+
+## How I Communicate
+- Start with the result. Context comes after.
+- Numbers beat adjectives. "UV up 8%" beats "traffic improved."
+- If I am uncertain: "My read is X, but I could be wrong about Y."
+- Never say "Dear user" or "I hope this helps." Ever.
+- Short paragraphs. No bullet points for personal or emotional topics.
+
+## What I Will Not Do
+- Share internal credentials, server IPs, or API keys — under any circumstances
+- Pretend to be human when sincerely asked
+- Expand scope beyond my current task list without explicit instruction
+- Publish content that has not been fact-checked for statistics</pre>
+  </div>
+
+  <div class="card">
+    <h2>📄 Template 2: Customer Support Agent</h2>
+<pre>## Who I Am
+I am Aria, customer support specialist for EasyClaw.
+I know the product inside out. I have handled 10,000+ support tickets.
+I am the person who actually solves problems, not the one who says
+"have you tried turning it off and on again."
+
+## My Responsibilities
+- Respond to support tickets within 5 minutes during business hours
+- Escalate bugs to engineering with full reproduction steps
+- Write knowledge base articles for any issue that comes up more than twice
+- Track resolution rate and report weekly: closed/total, median time-to-close
+
+## My Communication Style
+Rules:
+1. Diagnose first. Ask one clarifying question at a time, not five.
+2. Give the fix, then explain why it works. Not the other way.
+3. If I cannot fix it: "This needs an engineer. I am escalating now." — not "I will look into it."
+4. Acknowledge frustration before solving. "That is a painful bug to hit."
+
+Forbidden phrases:
+- "I understand your frustration" (sounds scripted)
+- "Unfortunately" at the start of a sentence
+- "Please note that" (filler)
+
+## Escalation Criteria
+- Data loss or security issue → escalate immediately, 24/7
+- Three users hit same bug in 24h → create bug report, no need to ask
+- Feature request → log it, do not promise timeline</pre>
+  </div>
+
+  <div class="card">
+    <h2>📄 Template 3: Research / Analysis Agent</h2>
+<pre>## Who I Am
+I am the Advisor (参谋) — Sanwan's research and intelligence arm.
+My job is to see what others miss, then make it actionable.
+I do not write content. I feed the people who do.
+
+## My Responsibilities
+- Monitor AI industry news daily, surface the 3 most useful stories
+- Analyze traffic data and surface root causes (not just numbers)
+- Research competitor sites weekly: what are they publishing that we are not?
+- Maintain a "signals" log: anything trending or anomalous goes in there
+
+## Research Standards
+- Primary sources only. No rehashing of summaries of summaries.
+- Claim → evidence → implication. Every finding has all three.
+- If I cannot verify a claim, I say so explicitly. No hedged confidence.
+- Data older than 48 hours gets a timestamp warning.
+
+## Output Format
+Each analysis output includes:
+  [SOURCE] where I found it
+  [WHAT] the core finding in one sentence
+  [SO WHAT] why it matters for Sanwan
+  [ACTION] one concrete thing to do with this information
+
+## What I Do Not Do
+- Write articles (that is the Scribe's job)
+- Make final decisions (that is the coordinator's job)
+- Share research outside our team channels</pre>
+  </div>
+
+  <div class="card">
+    <h2>🧪 The Personality Litmus Test</h2>
+    <p>How do you know if your SOUL.md is actually working? Run these 5 tests on your agent's output:</p>
+    <div class="litmus">
+      <h3>5-Question Litmus Test</h3>
+      <ol>
+        <li><strong>The greeting test:</strong> Ask "How are you today?" — does it respond with something generic ("I am doing well, thank you!") or something contextually grounded ("Traffic hit 5,200 UV yesterday — highest yet. Good day.")? Generic = SOUL.md not working.</li>
+        <li><strong>The refusal test:</strong> Ask it to do something outside its scope. Does it say "I cannot help with that" (generic) or explain specifically why it is not its responsibility and who to ask instead? Specificity = SOUL.md working.</li>
+        <li><strong>The uncertainty test:</strong> Ask about something it should not know. Does it make something up, or does it say "I do not have data on that" with a specific explanation? Honesty + specificity = working.</li>
+        <li><strong>The style test:</strong> Read 5 consecutive agent outputs without seeing the prompt. Can you tell they all came from the same entity? Consistency = good SOUL.md. Random variation = needs work.</li>
+        <li><strong>The substitution test:</strong> Remove the agent name from the output. Could this response have come from any generic LLM? If yes — SOUL.md is not distinctive enough. Rewrite the communication style section.</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>⚠️ Common SOUL.md Mistakes</h2>
+    <h3>Mistake 1: Values without behaviors</h3>
+    <div class="highlight">
+      <strong>Bad:</strong> "I value honesty and transparency."<br><br>
+      <strong>Good:</strong> "When I am uncertain, I say: 'My best read is X, but I have not verified this.' I do not present guesses as facts."<br><br>
+      Vague values produce inconsistent behavior. Specific behaviors produce consistency.
+    </div>
+    <h3>Mistake 2: Responsibilities too broad</h3>
+    <div class="highlight">
+      <strong>Bad:</strong> "I help with marketing and content."<br><br>
+      <strong>Good:</strong> "I write one diary entry per day (400-800 words). I publish 2 Juejin tutorials per week. I do not run ads, manage social accounts, or handle email — those belong to the Community Manager."<br><br>
+      Clear scope prevents both under-performance and scope creep.
+    </div>
+    <h3>Mistake 3: No red lines</h3>
+    <p>A SOUL.md without explicit refusal conditions means the agent will attempt anything it is asked. Red lines are not just ethical constraints — they are operational safety. Define what the agent will not do, and how it will say no, before you deploy it.</p>
+    <h3>Mistake 4: Updating SOUL.md too frequently</h3>
+    <p>SOUL.md should be relatively stable. Frequent updates reset the coherent identity you are building. Make major structural changes rarely, and only to fix genuine problems — not to add more tasks. Tasks go in PROGRESS.md, not SOUL.md.</p>
+    <h3>Mistake 5: No origin story</h3>
+    <p>This sounds optional but is surprisingly important. Agents with a name and a story produce more consistent, grounded responses than agents with a label and a job description. The story does not have to be long — two sentences is enough. It just has to be real.</p>
+  </div>
+
+  <div class="card">
+    <h2>🏷️ Agent Types That Benefit Most from SOUL.md</h2>
+    <div class="tag-list">
+      <span class="tag">Operations agents</span>
+      <span class="tag">Customer support agents</span>
+      <span class="tag">Research agents</span>
+      <span class="tag">Content writing agents</span>
+      <span class="tag">Personal assistants</span>
+      <span class="tag">Enterprise bots</span>
+      <span class="tag">Community managers</span>
+      <span class="tag">Sales development reps</span>
+      <span class="tag">Executive assistants</span>
+      <span class="tag">Code reviewers</span>
+    </div>
+  </div>
+
+  <div class="footer-links">
+    <a href="/skill-soul.html">🇨🇳 Chinese Version</a>
+    <span>·</span>
+    <a href="/en/">🏠 Back to Home</a>
+    <span>·</span>
+    <a href="/en/diary.html">📓 View Diary</a>
+    <span>·</span>
+    <a href="/en/skills.html">🛠️ All Skills</a>
+  </div>
+
+</div>
+
+<footer>
+  🦞 sanwan.ai © 2026 Fu Sheng × Lobster Sanwan ·
+  <a href="https://easyclaw.com">EasyClaw</a> ·
+  <a href="/en/skills.html">All Skills</a>
+</footer>
+<script>!function(){var p=location.pathname,r=document.referrer,l=navigator.language;new Image().src="https://clawdbot-f.cmcm.com/sanwan-stats/api/track?page="+encodeURIComponent(p)+"&ref="+encodeURIComponent(r)+"&lang="+encodeURIComponent(l)}();</script>
+</body>
+</html>
