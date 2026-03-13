@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OpenClaw Heartbeat Mechanism — Always-On AI Agent</title>
+  <meta name="description" content="OpenClaw's Heartbeat is a cron-driven autonomous loop that keeps your AI agent proactively working 24/7 — checking tasks, updating websites, monitoring markets, and executing routines without manual triggers.">
+  <meta property="og:title" content="OpenClaw Heartbeat — Always-On AI Agent">
+  <meta property="og:description" content="OpenClaw's Heartbeat is a cron-driven autonomous loop that keeps your AI agent proactively working 24/7 — no manual triggers needed.">
+  <meta property="og:image" content="https://sanwan.ai/ppt/page-01.jpg">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="OpenClaw Heartbeat — Always-On AI Agent">
+  <meta name="twitter:description" content="OpenClaw's Heartbeat keeps your AI agent proactively working 24/7.">
+  <meta name="twitter:image" content="https://sanwan.ai/ppt/page-01.jpg">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦞</text></svg>">
+  <link href="https://fonts.loli.net/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <style>
+    :root { --bg:#f7f5f2; --card:#fff; --border:#e8e4df; --accent:#c0392b; --text:#2d2926; --muted:#7a746e; --code-bg:#1e1e1e; --code-text:#d4d4d4; }
+    * { box-sizing:border-box; margin:0; padding:0; }
+    body { font-family:'Inter',-apple-system,sans-serif; background:var(--bg); color:var(--text); line-height:1.6; }
+    .topbar { background:#fff; border-bottom:1px solid var(--border); padding:14px 32px; display:flex; align-items:center; gap:12px; font-size:13px; }
+    .topbar a { color:var(--muted); text-decoration:none; } .topbar a:hover { color:var(--accent); }
+    .topbar .sep { color:var(--border); }
+    .hero { background:#fff; border-bottom:1px solid var(--border); padding:52px 32px 40px; text-align:center; position:relative; overflow:hidden; }
+    .hero::before { content:""; position:absolute; top:0; left:0; right:0; bottom:0; opacity:0.15; background-image:radial-gradient(var(--accent) 0.5px,transparent 0.5px); background-size:28px 28px; pointer-events:none; }
+    .hero-badge { display:inline-block; background:var(--accent); color:#fff; font-size:11px; font-weight:700; letter-spacing:1px; padding:4px 12px; border-radius:99px; margin-bottom:16px; position:relative; }
+    .hero h1 { font-size:clamp(1.8rem,5vw,2.4rem); font-weight:700; margin-bottom:12px; position:relative; }
+    .hero p { color:var(--muted); font-size:1rem; max-width:520px; margin:0 auto 24px; position:relative; }
+    .hero-btns { display:flex; gap:12px; justify-content:center; flex-wrap:wrap; position:relative; }
+    .btn { display:inline-flex; align-items:center; gap:6px; padding:10px 20px; border-radius:8px; font-size:13px; font-weight:600; text-decoration:none; transition:all .18s; cursor:pointer; border:none; font-family:inherit; }
+    .btn-primary { background:var(--accent); color:#fff; } .btn-primary:hover { background:#a93226; }
+    .btn-ghost { background:var(--bg); color:var(--text); border:1px solid var(--border); } .btn-ghost:hover { border-color:var(--accent); color:var(--accent); }
+    .container { max-width:820px; margin:0 auto; padding:40px 24px 80px; }
+    .section { background:var(--card); border:1px solid var(--border); border-radius:14px; padding:28px; margin-bottom:20px; box-shadow:0 1px 3px rgba(0,0,0,0.05); }
+    .section h2 { font-size:17px; font-weight:700; margin-bottom:18px; display:flex; align-items:center; gap:8px; }
+    .sec-icon { font-size:18px; }
+    .features { display:grid; grid-template-columns:1fr; gap:10px; }
+    .feat-item { background:var(--bg); border:1px solid var(--border); border-radius:10px; padding:14px; font-size:13px; color:var(--text); line-height:1.6; }
+    pre { background:var(--code-bg); color:var(--code-text); border-radius:10px; padding:14px 18px; overflow-x:auto; font-size:13px; line-height:1.65; margin:8px 0; font-family:'SF Mono',Consolas,monospace; }
+    code { font-family:'SF Mono',Consolas,monospace; font-size:13px; }
+    .inline-code { background:rgba(192,57,43,0.08); color:var(--accent); padding:2px 6px; border-radius:4px; font-size:12px; }
+    table { width:100%; border-collapse:collapse; font-size:13px; margin:12px 0; }
+    th { text-align:left; padding:10px 14px; background:var(--bg); border-bottom:2px solid var(--border); font-weight:700; }
+    td { padding:10px 14px; border-bottom:1px solid var(--border); vertical-align:top; }
+    tr:last-child td { border-bottom:none; }
+    .step { display:flex; gap:16px; margin-bottom:20px; align-items:flex-start; }
+    .step-num { background:var(--accent); color:#fff; width:28px; height:28px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:13px; font-weight:700; flex-shrink:0; margin-top:2px; }
+    .step-body { flex:1; }
+    .step-title { font-size:15px; font-weight:700; margin-bottom:6px; }
+    .step-desc { font-size:13px; color:var(--muted); line-height:1.6; }
+    .story { background:rgba(192,57,43,0.04); border:1px solid rgba(192,57,43,0.15); border-radius:12px; padding:16px 20px; margin-bottom:24px; }
+    .tip { background:#fffdf5; border:1px solid #fde8c8; border-radius:10px; padding:12px 16px; margin:12px 0; font-size:13px; color:#5a4a3a; }
+    .heartbeat-diagram { background:var(--bg); border:1px solid var(--border); border-radius:12px; padding:20px; margin:16px 0; text-align:center; font-size:13px; line-height:2.2; }
+    .hb-node { display:inline-block; background:var(--card); border:2px solid var(--accent); border-radius:8px; padding:6px 14px; margin:4px; font-weight:600; font-size:12px; }
+    .hb-arrow { color:var(--accent); font-weight:700; margin:0 8px; }
+    @media(max-width:600px) { .section { padding:20px; } .hero { padding:36px 20px 28px; } .topbar { padding:12px 16px; } }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <a href="/en/">🦞 Lobster Raising Diary</a><span class="sep">›</span>
+    <a href="/en/skills.html">Skill Store</a><span class="sep">›</span>
+    <span>Heartbeat Mechanism</span>
+  </div>
+
+  <div class="hero">
+    <div class="hero-badge">Core Feature</div>
+    <h1>💓 OpenClaw Heartbeat</h1>
+    <p>Your AI agent never sleeps — cron-driven autonomous loops keep it working 24/7 without any manual triggers</p>
+    <div class="hero-btns">
+      <a class="btn btn-primary" href="https://openclaw.ai" target="_blank">Get OpenClaw →</a>
+      <a class="btn btn-ghost" href="/en/skills.html">← All Skills</a>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="story">
+      <p>💡 <strong>Real story:</strong> Fu Sheng's AI agent "Sanwan" runs a heartbeat every 30 minutes — it checks the task queue, publishes website articles, monitors stock prices, scans Twitter trends, and sends a daily briefing to WeChat. All while the CEO sleeps. That's 48 autonomous actions every day with zero human input.</p>
+    </div>
+
+    <div class="section">
+      <h2><span class="sec-icon">❓</span> What is the Heartbeat?</h2>
+      <div class="features">
+        <div class="feat-item">
+          <strong>Heartbeat = Cron + Context + Action Loop</strong><br>
+          OpenClaw's heartbeat is a scheduled trigger (via system cron or OpenClaw's built-in scheduler) that wakes your agent at set intervals. Each time it fires, the agent reads its HEARTBEAT.md task file, executes pending items, and goes back to sleep.
+        </div>
+        <div class="feat-item">
+          Without heartbeat: your agent is <strong>reactive</strong> — it only works when you message it.<br>
+          With heartbeat: your agent is <strong>proactive</strong> — it works on its own agenda, then reports back to you.
+        </div>
+        <div class="feat-item">
+          🔑 The key insight: <strong>HEARTBEAT.md is the agent's to-do list</strong>. You write tasks there once; the agent processes them autonomously, checks items off, and adds new ones as it learns.
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2><span class="sec-icon">🔄</span> How the Loop Works</h2>
+      <div class="heartbeat-diagram">
+        <div><span class="hb-node">⏰ Cron fires (e.g. every 30 min)</span></div>
+        <div><span class="hb-arrow">↓</span></div>
+        <div><span class="hb-node">📋 Read HEARTBEAT.md task queue</span></div>
+        <div><span class="hb-arrow">↓</span></div>
+        <div><span class="hb-node">🧠 Agent picks top priority task</span></div>
+        <div><span class="hb-arrow">↓</span></div>
+        <div><span class="hb-node">⚡ Execute: write article / check price / send message</span></div>
+        <div><span class="hb-arrow">↓</span></div>
+        <div><span class="hb-node">✅ Update task status → sleep until next tick</span></div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2><span class="sec-icon">⚡</span> What Agents Do During Heartbeat</h2>
+      <table>
+        <tr><th>Category</th><th>Example Tasks</th><th>Frequency</th></tr>
+        <tr><td>📝 Content</td><td>Write &amp; publish blog posts, update website pages, post to social media</td><td>Daily</td></tr>
+        <tr><td>📊 Monitoring</td><td>Stock price alerts, Twitter trend scanning, competitor tracking</td><td>Every 30 min</td></tr>
+        <tr><td>📬 Reporting</td><td>Daily briefing to Feishu/WeChat, weekly analytics summary</td><td>Daily/Weekly</td></tr>
+        <tr><td>🔧 Maintenance</td><td>SEO sitemap updates, dead link checks, cache refresh</td><td>Weekly</td></tr>
+        <tr><td>📚 Learning</td><td>Save new knowledge to memory files, update skill docs</td><td>On trigger</td></tr>
+      </table>
+    </div>
+
+    <div class="section">
+      <h2><span class="sec-icon">🛠️</span> Setup: 3 Steps</h2>
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <div class="step-title">Create your HEARTBEAT.md</div>
+          <div class="step-desc">In your OpenClaw workspace, create <code class="inline-code">HEARTBEAT.md</code> with your recurring tasks and priorities. The agent reads this file every heartbeat cycle.</div>
+          <pre># HEARTBEAT.md — My Agent's Task Queue
+
+## Daily Tasks
+- [ ] Check Hacker News top 10, save summaries to memory
+- [ ] Post one article to sanwan.ai
+- [ ] Monitor @username Twitter mentions
+
+## Weekly Tasks
+- [ ] SEO audit: check sitemap, fix broken links
+- [ ] Send weekly analytics to Feishu
+
+## Monitoring (every cycle)
+- [ ] Stock watchlist: NVDA, AAPL — alert if >3% move</pre>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <div class="step-title">Add the system prompt trigger</div>
+          <div class="step-desc">In your agent's SOUL.md or system prompt, add the heartbeat instruction so the agent knows what to do when woken:</div>
+          <pre>## Heartbeat Protocol
+When triggered by cron (session starts with "[HEARTBEAT]"):
+1. Read HEARTBEAT.md and MEMORY.md for context
+2. Pick the highest-priority pending task
+3. Execute it completely
+4. Update HEARTBEAT.md (check off done, add new discoveries)
+5. Send brief Feishu summary if notable work done</pre>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <div class="step-title">Schedule with cron</div>
+          <div class="step-desc">Use OpenClaw's built-in scheduler or system cron to fire the heartbeat.</div>
+          <pre># Run heartbeat every 30 minutes
+*/30 * * * * openclaw send --agent myagent "[HEARTBEAT] Run your task queue"
+
+# Or use OpenClaw's schedule command
+openclaw schedule add --every 30m "[HEARTBEAT] Execute next task"</pre>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2><span class="sec-icon">🧪</span> Real Examples from Sanwan</h2>
+      <div class="features">
+        <div class="feat-item">
+          <strong>🌐 Website Autopilot</strong><br>
+          Every morning at 8am: agent reads RSS feeds, picks the most relevant AI topic, writes a 1000-word article, publishes to sanwan.ai, updates sitemap, pings IndexNow for instant Google indexing. Zero human effort.
+        </div>
+        <div class="feat-item">
+          <strong>📈 Market Monitor</strong><br>
+          Every 30 minutes during trading hours: checks Hong Kong stock watchlist. If any position moves &gt;2%, immediately sends Feishu alert with price, volume, and suggested action.
+        </div>
+        <div class="feat-item">
+          <strong>🐦 Twitter Intelligence</strong><br>
+          Every 4 hours: scans trending AI topics, saves notable threads to knowledge base, identifies retweet candidates, formats them with commentary and sends to the team for review.
+        </div>
+        <div class="feat-item">
+          <strong>📊 Daily Briefing</strong><br>
+          Every evening at 6pm: compiles everything that happened — tasks completed, content published, alerts triggered, new knowledge saved — into a concise briefing card sent via Feishu.
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2><span class="sec-icon">💡</span> Pro Tips</h2>
+      <div class="tip">
+        💡 <strong>Start with daily, not every minute.</strong> A heartbeat every 30-60 minutes is the sweet spot — frequent enough to feel autonomous, slow enough to not burn through API quota.
+      </div>
+      <div class="tip">
+        💡 <strong>HEARTBEAT.md as living memory.</strong> The agent should both read and write this file. Let it add tasks it discovers, not just check off what you assigned.
+      </div>
+      <div class="tip">
+        💡 <strong>One task per cycle, done well.</strong> Don't try to cram 10 tasks into one heartbeat. Let the agent focus on one thing, do it thoroughly, then move to the next cycle.
+      </div>
+    </div>
+
+    <div class="section">
+      <h2><span class="sec-icon">🔗</span> Related Skills</h2>
+      <div class="features">
+        <div class="feat-item">
+          <a href="/en/skills/multi-agent-setup.html" style="color:var(--accent);font-weight:600;">🏗️ Multi-Agent Team Setup</a> — Combine heartbeat with specialized sub-agents for each domain
+        </div>
+        <div class="feat-item">
+          <a href="/en/skills/skill-soul.html" style="color:var(--accent);font-weight:600;">🧬 SOUL.md Design</a> — Give your agent a personality and mission that guides its heartbeat tasks
+        </div>
+        <div class="feat-item">
+          <a href="/en/skills/skill-multi-agent.html" style="color:var(--accent);font-weight:600;">🤝 Multi-Agent Orchestration</a> — Scale heartbeat to coordinate multiple specialized agents
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
