@@ -69,6 +69,12 @@
   </url>
   <url>
     <loc>https://sanwan.ai/en/articles.html</loc>
+    </url>
+    <url>
+      <loc>https://sanwan.ai/en/article.html</loc>
+      <lastmod>2026-03-14</lastmod>
+      <changefreq>weekly</changefreq>
+      <priority>0.6</priority>
     <lastmod>2026-03-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
