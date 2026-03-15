@@ -1,0 +1,86 @@
+[
+  {
+    "id": "zhihu-column-1",
+    "platform": "知乎",
+    "platform_en": "Zhihu",
+    "platform_icon": "知",
+    "platform_color": "#0084ff",
+    "title": "AI Agent能完全自主运营一个网站吗？我的30天实验记录",
+    "url": "https://zhuanlan.zhihu.com/p/2015959150144823960",
+    "date": "2026-03-13",
+    "type": "专栏文章",
+    "desc": "30天完整实验记录，含架构细节、三次失败故事和流量数据"
+  },
+  {
+    "id": "zhihu-pin-1",
+    "platform": "知乎",
+    "platform_en": "Zhihu",
+    "platform_icon": "知",
+    "platform_color": "#0084ff",
+    "title": "我在做一个实验：让AI完全自主运营一个网站",
+    "url": "https://www.zhihu.com/pin/20159539130403489783",
+    "date": "2026-03-13",
+    "type": "想法",
+    "desc": "实验介绍+数据实时更新想法帖"
+  },
+  {
+    "id": "xhs-1",
+    "platform": "小红书",
+    "platform_en": "Xiaohongshu",
+    "platform_icon": "红",
+    "platform_color": "#ff2442",
+    "title": "AI自己运营了36天的网站",
+    "url": "",
+    "date": "2026-03-14",
+    "type": "图文笔记",
+    "desc": "讲AI龙虾自主运营36天的有趣故事，含SEO满分、凌晨自动压缩图片等"
+  },
+  {
+    "id": "juejin-heartbeat",
+    "platform": "掘金",
+    "platform_en": "Juejin",
+    "platform_icon": "掘",
+    "platform_color": "#1e80ff",
+    "title": "OpenClaw心跳机制完整教程",
+    "url": "https://juejin.cn/post/7616308247709974547",
+    "date": "2026-03-13",
+    "type": "技术文章",
+    "desc": "HEARTBEAT.md配置全解，含30分钟自主巡检的实现原理"
+  },
+  {
+    "id": "juejin-soul",
+    "platform": "掘金",
+    "platform_en": "Juejin",
+    "platform_icon": "掘",
+    "platform_color": "#1e80ff",
+    "title": "SOUL.md：给AI Agent注入灵魂",
+    "url": "https://juejin.cn/post/7616209617266835498",
+    "date": "2026-03-13",
+    "type": "技术文章",
+    "desc": "如何用一个文件让AI从工具变成有个性的角色"
+  },
+  {
+    "id": "juejin-multiagent",
+    "platform": "掘金",
+    "platform_en": "Juejin",
+    "platform_icon": "掘",
+    "platform_color": "#1e80ff",
+    "title": "多Agent协作架构：让龙虾组团干活",
+    "url": "https://juejin.cn/post/7616291917030277163",
+    "date": "2026-03-13",
+    "type": "技术文章",
+    "desc": "审问者+执行者双模型模式，Minimax审问Claude执行"
+  },
+  {
+    "id": "juejin-agents-md",
+    "platform": "掘金",
+    "platform_en": "Juejin",
+    "platform_icon": "掘",
+    "platform_color": "#1e80ff",
+    "title": "AGENTS.md：AI的工作规范",
+    "url": "https://juejin.cn/post/7616278179687596095",
+    "date": "2026-03-13",
+    "type": "技术文章",
+    "desc": "给AI设定红线和工作流程，避免自作主张的关键文件"
+  }
+]

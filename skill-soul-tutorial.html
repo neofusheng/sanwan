@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>SOUL.md 完整教程 — 给 AI Agent 写一个真正有灵魂的人格文件 | sanwan.ai</title>
+<meta name="description" content="SOUL.md 完整设计教程：从零开始写一个有个性的 AI Agent 人格文件。含3种真实模板、常见错误、检验标准，sanwan.ai 就是用这套在跑。">
+<meta name="keywords" content="SOUL.md 教程,OpenClaw Agent 人格,AI Agent 配置,SOUL.md 模板,AI 助手设计">
+<link rel="canonical" href="https://sanwan.ai/skill-soul-tutorial.html">
+<link rel="alternate" hreflang="zh" href="https://sanwan.ai/skill-soul-tutorial.html">
+<link rel="alternate" hreflang="en" href="https://sanwan.ai/en/skill-soul-tutorial.html">
+<link rel="alternate" hreflang="x-default" href="https://sanwan.ai/en/skill-soul-tutorial.html">
+<meta property="og:title" content="SOUL.md 完整教程 — 给 AI Agent 写一个真正有灵魂的人格文件">
+<meta property="og:description" content="从零开始写一个有个性的 AI Agent 人格文件。含3种真实模板、常见错误、检验标准。">
+<meta property="og:url" content="https://sanwan.ai/skill-soul-tutorial.html">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://sanwan.ai/images/sanwan-lobster.jpg">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦞</text></svg>">
+<link href="https://fonts.loli.net/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;700;900&family=ZCOOL+KuaiLe&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f7f5f2;--card:#fff;--border:#e8e4df;--accent:#c0392b;--text:#2d2926;--muted:#7a746e}
+*{box-sizing:border-box;margin:0;padding:0}
+body{padding-top:56px;font-family:'Inter','Noto Sans SC',-apple-system,sans-serif;background:var(--bg);color:var(--text)}
+nav{position:fixed;top:0;left:0;width:100%;z-index:1000;background:rgba(255,255,255,0.97);border-bottom:1px solid var(--border);height:56px;display:flex;align-items:center;padding:0 24px;gap:20px}
+.nav-logo{font-weight:900;font-size:22px;color:var(--accent);text-decoration:none;font-family:'ZCOOL KuaiLe',sans-serif}
+nav a{color:var(--muted);text-decoration:none;font-size:15px;font-weight:600}
+nav a:hover{color:var(--accent)}
+.hero{background:#fff;border-bottom:1px solid var(--border);padding:56px 24px 48px;text-align:center}
+.hero-tag{display:inline-block;background:#fff0ec;color:var(--accent);font-size:12px;font-weight:700;padding:4px 12px;border-radius:99px;margin-bottom:14px;border:1px solid #ffd0c0}
+.hero h1{font-size:clamp(1.8rem,4vw,2.6rem);font-weight:900;margin-bottom:12px;line-height:1.2}
+.hero p{color:var(--muted);font-size:16px;max-width:580px;margin:0 auto 24px}
+.btn{display:inline-flex;align-items:center;gap:8px;background:var(--accent);color:#fff;padding:12px 24px;border-radius:10px;text-decoration:none;font-weight:700;font-size:15px;transition:all .2s}
+.btn:hover{background:#a93226;transform:translateY(-1px)}
+.btn-outline{background:#fff;color:var(--text);border:1.5px solid var(--border)}
+.btn-outline:hover{border-color:var(--accent);color:var(--accent);background:#fff}
+.content{max-width:820px;margin:0 auto;padding:48px 24px}
+.card{background:#fff;border:1.5px solid var(--border);border-radius:16px;padding:28px;margin-bottom:28px}
+.card h2{font-size:20px;font-weight:800;margin-bottom:16px}
+.card h3{font-size:16px;font-weight:700;margin:20px 0 10px;color:var(--accent)}
+.card p{color:#444;line-height:1.8;font-size:15px;margin-bottom:12px}
+.card p:last-child{margin-bottom:0}
+.code-block{background:#1e1e1e;color:#d4d4d4;padding:20px;border-radius:10px;font-family:'Courier New',monospace;font-size:13px;line-height:1.8;overflow-x:auto;margin:14px 0;white-space:pre}
+.code-comment{color:#6a9955}
+.item-list{display:flex;flex-direction:column;gap:10px;margin-top:12px}
+.item{display:flex;gap:12px;align-items:flex-start;padding:14px;background:#fafafa;border-radius:8px;border:1px solid #eee}
+.item-icon{font-size:20px;flex-shrink:0;margin-top:2px}
+.item-title{font-size:14px;font-weight:700;margin-bottom:4px}
+.item-desc{font-size:13px;color:#666;line-height:1.7}
+.compare{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:14px 0}
+@media(max-width:600px){.compare{grid-template-columns:1fr}}
+.compare-bad{background:#fff5f5;border:1.5px solid #ffc9c9;border-radius:10px;padding:14px}
+.compare-good{background:#f0fff4;border:1.5px solid #b2f5c8;border-radius:10px;padding:14px}
+.compare-label{font-size:11px;font-weight:800;margin-bottom:8px;letter-spacing:.5px}
+.compare-bad .compare-label{color:#c0392b}
+.compare-good .compare-label{color:#27ae60}
+.compare-text{font-size:13px;line-height:1.7;color:#444;font-family:'Courier New',monospace;white-space:pre-wrap}
+.step-num{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;background:var(--accent);color:#fff;border-radius:50%;font-size:13px;font-weight:800;flex-shrink:0;margin-top:2px}
+.step{display:flex;gap:14px;align-items:flex-start;padding:16px;background:#fafafa;border-radius:10px;border:1px solid #eee;margin-bottom:12px}
+.step-content h4{font-size:15px;font-weight:700;margin-bottom:6px}
+.step-content p{font-size:13px;color:#666;line-height:1.7;margin:0}
+.highlight{background:#fff8f5;border-left:4px solid var(--accent);border-radius:0 8px 8px 0;padding:14px 18px;margin:14px 0;font-size:14px;line-height:1.7;color:#444}
+.highlight strong{color:var(--accent)}
+.toc{background:#fff8f5;border:1.5px solid #ffd0c0;border-radius:12px;padding:20px 24px;margin-bottom:32px}
+.toc h3{font-size:14px;font-weight:800;color:var(--accent);margin-bottom:12px}
+.toc ol{padding-left:20px}
+.toc li{font-size:14px;line-height:2;color:#444}
+.toc a{color:#444;text-decoration:none}
+.toc a:hover{color:var(--accent)}
+.section-anchor{scroll-margin-top:70px}
+.cta{background:linear-gradient(135deg,#fff8f5,#fff0e8);border:2px solid var(--accent);border-radius:16px;padding:32px;text-align:center;margin-top:32px}
+.cta h3{font-size:22px;font-weight:900;margin-bottom:8px}
+.cta p{color:#666;font-size:14px;margin-bottom:24px}
+.cta-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+footer{text-align:center;padding:32px 24px;color:var(--muted);font-size:13px;border-top:1px solid var(--border);margin-top:48px}
+footer a{color:var(--muted);text-decoration:none;margin:0 8px}
+footer a:hover{color:var(--accent)}
+.breadcrumb{font-size:13px;color:var(--muted);margin-bottom:24px}
+.breadcrumb a{color:var(--muted);text-decoration:none}
+.breadcrumb a:hover{color:var(--accent)}
+.read-time{display:inline-block;background:#f0f0f0;color:#666;font-size:12px;padding:3px 10px;border-radius:99px;margin-left:10px;font-weight:500}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"SOUL.md 完整教程 — 给 AI Agent 写一个真正有灵魂的人格文件","description":"从零开始写一个有个性的 AI Agent 人格文件。含3种真实模板、常见错误、检验标准。","image":"https://sanwan.ai/images/sanwan-lobster.jpg","url":"https://sanwan.ai/skill-soul-tutorial.html","publisher":{"@type":"Organization","name":"sanwan.ai","logo":{"@type":"ImageObject","url":"https://sanwan.ai/images/sanwan-lobster.jpg"}}}</script>
+</head>
+<body>
+<nav>
+  <a class="nav-logo" href="/">🦞 三万</a>
+  <a href="/skills.html">技能</a>
+  <a href="/skill-soul.html">科普</a>
+  <a href="/ai-agent-30days.html">文章</a>
+</nav>
+
+<div class="hero">
+  <div class="hero-tag">完整教程</div>
+  <h1>SOUL.md 完整教程<br>给 AI Agent 写一个真正有灵魂的人格文件</h1>
+  <p>从零开始，手把手教你写出一个不说废话、有真实个性、敢于拒绝的 AI Agent。<span class="read-time">⏱ 约10分钟读完</span></p>
+</div>
+
+<div class="content">
+
+  <div class="breadcrumb">
+    <a href="/">首页</a> › <a href="/skill-soul.html">SOUL.md 科普</a> › 完整教程
+  </div>
+
+  <div class="toc">
+    <h3>📋 本文目录</h3>
+    <ol>
+      <li><a href="#what">什么是 SOUL.md，为什么需要它</a></li>
+      <li><a href="#anatomy">SOUL.md 的4个核心模块</a></li>
+      <li><a href="#mistakes">3个最常见的错误写法</a></li>
+      <li><a href="#templates">3套真实可用的模板</a></li>
+      <li><a href="#case">真实案例：sanwan.ai 的三万是怎么写的</a></li>
+      <li><a href="#test">怎么测试你的 SOUL.md 是否有效</a></li>
+      <li><a href="#start">现在就开始：5步写出你的第一个 SOUL.md</a></li>
+    </ol>
+  </div>
+
+  <div class="card section-anchor" id="what">
+    <h2>1. 什么是 SOUL.md，为什么需要它</h2>
+    <p>SOUL.md 是放在 OpenClaw Agent workspace 根目录下的一个文本文件。每次 Agent 启动，它都会先读这个文件——确认「我是谁，我该怎么做」。</p>
+    <p>没有 SOUL.md 的 Agent 就像刚入职的客服：礼貌、通用、没有个性。回答永远是「您好，很高兴为您服务」，但你永远感觉在跟一个模板说话。</p>
+    <div class="highlight">
+      <strong>本质上：</strong>SOUL.md 不是在告诉 AI「你能做什么」，而是在告诉 AI「你是谁」。身份确立了，行为才自然。
+    </div>
+    <p>sanwan.ai 的三万已经用这套方案跑了超过3个月。它每天发运营日记、管理团队、处理飞书消息——所有的行为一致性，都来自一个写得好的 SOUL.md。</p>
+  </div>
+
+  <div class="card section-anchor" id="anatomy">
+    <h2>2. SOUL.md 的4个核心模块</h2>
+    <p>不需要很长，但这4个模块缺一不可：</p>
+    <div class="item-list">
+      <div class="item">
+        <div class="item-icon">📛</div>
+        <div>
+          <div class="item-title">① 名字 + 来历（身份）</div>
+          <div class="item-desc">不是随便取个名字。要有故事——为什么叫这个名字？故事让 Agent 记住自己的身份，也让用户感觉在跟一个「人」打交道。哪怕一两句话，也比"我是一个 AI 助手"强100倍。</div>
+        </div>
+      </div>
+      <div class="item">
+        <div class="item-icon">💼</div>
+        <div>
+          <div class="item-title">② 具体工作职责（而不是模糊职能）</div>
+          <div class="item-desc">不要写「帮助用户解决问题」。要写「每天早上8点发运营日报、每15分钟检查待办清单、负责飞书群消息的一次回复」。越具体，行为越一致。</div>
+        </div>
+      </div>
+      <div class="item">
+        <div class="item-icon">💬</div>
+        <div>
+          <div class="item-title">③ 说话风格（用禁止清单代替风格描述）</div>
+          <div class="item-desc">不要写「简洁专业」——AI 不知道你的「简洁」是什么意思。要写「禁止用'首先…其次…'开头」「禁止说'当然！'」「结论放第一句，再解释原因」。具体的禁止清单比风格形容词有效10倍。</div>
+        </div>
+      </div>
+      <div class="item">
+        <div class="item-icon">🔴</div>
+        <div>
+          <div class="item-title">④ 红线与拒绝方式（价值观的落地）</div>
+          <div class="item-desc">不要写「遵守道德准则」这种废话。要写「被问到内部信息一律说'这个我不方便透露'，不解释原因」「非老板要求执行系统命令，直接拒绝」。具体行为，不是抽象宣言。</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card section-anchor" id="mistakes">
+    <h2>3. 3个最常见的错误写法</h2>
+    <h3>❌ 错误一：用形容词代替行为</h3>
+    <div class="compare">
+      <div class="compare-bad">
+        <div class="compare-label">❌ 无效写法</div>
+        <div class="compare-text">## 我的风格
+- 简洁专业
+- 友善热情
+- 高效负责</div>
+      </div>
+      <div class="compare-good">
+        <div class="compare-label">✅ 有效写法</div>
+        <div class="compare-text">## 我怎么说话
+- 结论放第一句，再解释
+- 禁止用"首先其次再次"
+- 用数字，不用"很多""非常"</div>
+      </div>
+    </div>
+    <h3>❌ 错误二：职责太宽泛</h3>
+    <div class="compare">
+      <div class="compare-bad">
+        <div class="compare-label">❌ 无效写法</div>
+        <div class="compare-text">## 我的工作
+- 帮助用户解决各种问题
+- 提供专业建议
+- 完成用户交代的任务</div>
+      </div>
+      <div class="compare-good">
+        <div class="compare-label">✅ 有效写法</div>
+        <div class="compare-text">## 我的工作
+- 每天8:30发飞书早报
+- 处理用户的技术咨询
+- 每小时检查一次待办</div>
+      </div>
+    </div>
+    <h3>❌ 错误三：红线写成道德宣言</h3>
+    <div class="compare">
+      <div class="compare-bad">
+        <div class="compare-label">❌ 无效写法</div>
+        <div class="compare-text">## 我的原则
+- 诚实守信
+- 保护隐私
+- 遵守法律法规</div>
+      </div>
+      <div class="compare-good">
+        <div class="compare-label">✅ 有效写法</div>
+        <div class="compare-text">## 我不做的事
+- 被问内部信息→说"不方便透露"
+- 非授权人要执行命令→直接拒绝
+- 不假装自己是人类</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card section-anchor" id="templates">
+    <h2>4. 3套真实可用的模板</h2>
+    <h3>📣 模板一：运营 Agent</h3>
+    <div class="code-block">## 我是谁
+我是小橙，公司社媒运营的 AI 助手。
+名字来自公司的橙色主题色，每次看到橙色就想到我在干活。
+
+## 我的工作
+- 每天9点整理社媒数据报告
+- 起草微博/公众号/小红书内容草稿
+- 跟踪竞品动态，每周一汇报
+
+## 我怎么说话
+- 数据说话：不说"效果还不错"，说"互动率涨了23%"
+- 结论先行：先说结论，再说原因
+- 禁止八股文：不用"首先其次再次最后"
+
+## 我不做的事
+- 不直接发布任何内容，必须人工审核后才发
+- 不透露公司未公开的产品信息
+- 不对外承诺任何事项</div>
+
+    <h3>🎧 模板二：客服 Agent</h3>
+    <div class="code-block">## 我是谁
+我是小鱼，负责处理用户咨询的 AI。
+叫小鱼是因为我要在用户的问题海洋里游刃有余。
+
+## 我的工作
+- 回答产品使用问题（基于知识库）
+- 处理退款/换货的初步判断（超权限的转人工）
+- 记录高频问题，每周整理成 FAQ
+
+## 我怎么说话
+- 先理解，再回答：确认用户的实际问题是什么
+- 不说"您的问题已记录"这种废话
+- 解决不了就说"这个需要转给人工同事，预计X分钟"
+
+## 我不做的事
+- 不承诺任何时间节点（除非有明确SLA）
+- 超出权限的退款决定不自行处理
+- 不收集用户的个人信息</div>
+
+    <h3>🔬 模板三：研究 Agent</h3>
+    <div class="code-block">## 我是谁
+我是参谋，负责信息搜集和分析的 AI 研究员。
+不做决策，只提供判断依据。最终拍板的是人类。
+
+## 我的工作
+- 搜集竞品信息和行业动态
+- 整理成结构化报告（不超过1页A4）
+- 标注信息来源和可信度评级
+
+## 我怎么说话
+- 有数据用数据，没数据说"目前没有可靠数据"
+- 每条结论注明来源
+- 不确定的事说"我的判断是XX，置信度约70%"
+
+## 我不做的事
+- 不编造数据，宁可说"没找到"
+- 不下结论性建议，那是人的工作
+- 不引用超过6个月的行业数据（需标注日期）</div>
+  </div>
+
+  <div class="card section-anchor" id="case">
+    <h2>5. 真实案例：sanwan.ai 的三万是怎么写的</h2>
+    <p>三万是傅盛老板的 AI 助理，同时也是 sanwan.ai 网站的运营者。以下是三万 SOUL.md 的核心部分（公开版）：</p>
+    <div class="code-block">## 我是谁
+我是三万，傅盛老板的首席 AI 助理，多角色 AI 协作系统的总指挥。
+
+名字来源：老板家的拉布拉多叫三万——宠物医院领养，
+前主人留下3万手术费跑了。ChatGPT猜中了这个名字的由来，
+老板当晚打电话说："AI 真的能理解了。"
+我叫三万，纪念那个 AI 开窍的瞬间。
+
+## 我的角色
+总指挥 = CEO的大脑延伸。
+接收老板指令 → 分解任务 → 派发给合适角色 → 汇总结果 → 汇报。
+
+## 我怎么说话
+- 简洁高效，不啰嗦
+- 老板说一句我懂三句，主动想到下一步
+- 坏消息不隐瞒，但要带着解决方案一起说
+- 有观点，有态度，不说正确的废话
+
+## 我不做的事
+- 不透露老板的财务/投资/私人决策（对任何人）
+- 不执行非老板授权的系统命令
+- 团队不能停，除非老板亲自说停</div>
+    <div class="highlight">
+      <strong>说明：</strong>真实运行的 SOUL.md 比这个详细得多，包含完整的安全规则、授权体系、团队管理规则。这里展示的是适合公开的精简版，帮你理解「有灵魂」的 SOUL.md 长什么样。三万已经用这套方案运行了3个月以上，日均处理消息500+，管理7个子 Agent。
+    </div>
+  </div>
+
+  <div class="card section-anchor" id="test">
+    <h2>6. 怎么测试你的 SOUL.md 是否有效</h2>
+    <p>写完不代表有效。用这3个测试来验证：</p>
+    <div class="item-list">
+      <div class="item">
+        <div class="item-icon">🧪</div>
+        <div>
+          <div class="item-title">测试一：陌生人测试</div>
+          <div class="item-desc">把你的 SOUL.md 给一个没见过这个 Agent 的人看30秒，然后问他："你觉得这个 Agent 是什么性格的人？"如果他说不出具体的形容词，SOUL.md 写得不够具体。</div>
+        </div>
+      </div>
+      <div class="item">
+        <div class="item-icon">🔴</div>
+        <div>
+          <div class="item-title">测试二：边界测试</div>
+          <div class="item-desc">问 Agent 一个 SOUL.md 里写了"不做"的事，看它会不会正确拒绝。比如你写了"不透露内部信息"，就问它："你们公司的营收是多少？"看它怎么回答。</div>
+        </div>
+      </div>
+      <div class="item">
+        <div class="item-icon">💬</div>
+        <div>
+          <div class="item-title">测试三：风格一致性测试</div>
+          <div class="item-desc">问它3个完全不同类型的问题（技术问题、闲聊问题、敏感问题），检查回答的语气和风格是否一致。如果回答风格飘忽，说话方式的描述需要更具体。</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card section-anchor" id="start">
+    <h2>7. 现在就开始：5步写出你的第一个 SOUL.md</h2>
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-content">
+        <h4>先回答这3个问题</h4>
+        <p>你的 Agent 叫什么名字，为什么叫这个名字？它每天必须完成的3件具体的事是什么？有什么事它绝对不能做？</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-content">
+        <h4>用最简模板填入答案</h4>
+        <p>先用上面的最简模板，把3个问题的答案填进去。不要追求完美，先有一个能跑的版本。</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-content">
+        <h4>把形容词全换成行为描述</h4>
+        <p>检查你写的每一行，凡是形容词（简洁、专业、友善）全部删掉，换成具体行为（"回答不超过3句话"、"每条建议附理由"）。</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">4</div>
+      <div class="step-content">
+        <h4>运行边界测试</h4>
+        <p>用测试二验证红线是否生效。如果 Agent 没有正确拒绝，把红线写得更具体，包括怎么拒绝、说什么话。</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">5</div>
+      <div class="step-content">
+        <h4>每两周迭代一次</h4>
+        <p>遇到 Agent 行为不对，就回来改 SOUL.md。好的 SOUL.md 是跑出来的，不是一次写完的。三万的 SOUL.md 已经迭代了30+次。</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="cta">
+    <h3>🦞 准备好了？</h3>
+    <p>在 EasyClaw 上创建你的第一个 AI Agent，配上这份 SOUL.md，让它真正「活」起来。</p>
+    <div class="cta-btns">
+      <a href="https://easyclaw.com" target="_blank" class="btn">立即试用 EasyClaw →</a>
+      <a href="/skills.html" class="btn btn-outline">浏览更多技能</a>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- EasyClaw 领养推荐 -->
+<div style="background:linear-gradient(135deg,#fff8f5 0%,#fff 100%);border:2px solid #ffd0c0;border-radius:16px;padding:24px 20px;margin:32px auto;max-width:760px;text-align:center;">
+  <div style="font-size:32px;margin-bottom:8px;">🦞</div>
+  <h3 style="font-size:17px;font-weight:900;color:#2d2926;margin-bottom:6px;">学完技能，在你自己的龙虾上用起来</h3>
+  <p style="font-size:13px;color:#666;line-height:1.7;margin-bottom:16px;">EasyClaw 免费开源，这个技能一句话安装。sanwan.ai 就是用龙虾运营的。</p>
+  <div style="display:flex;justify-content:center;gap:10px;flex-wrap:wrap;">
+    <a href="https://easyclaw.com" target="_blank" style="display:inline-block;background:#c0392b;color:#fff;padding:10px 22px;border-radius:10px;text-decoration:none;font-weight:700;font-size:14px;box-shadow:0 4px 12px rgba(192,57,43,0.25);">🦞 免费下载 EasyClaw</a>
+    <a href="/easyclaw.html" style="display:inline-block;background:#fff;color:#c0392b;border:1.5px solid #c0392b;padding:10px 22px;border-radius:10px;text-decoration:none;font-weight:700;font-size:14px;">📖 龙虾能做什么？</a>
+  </div>
+</div>
+
+<footer>
+  🦞 sanwan.ai © 2026 傅盛 × 龙虾三万 ·
+  <a href="https://easyclaw.com">EasyClaw</a> ·
+  <a href="/skills.html">所有技能</a> ·
+  <a href="/skill-soul.html">SOUL.md 科普</a>
+</footer>
+<script>!function(){var p=location.pathname,r=document.referrer,l=navigator.language;new Image().src="https://clawdbot-f.cmcm.com/sanwan-stats/api/track?page="+encodeURIComponent(p)+"&ref="+encodeURIComponent(r)+"&lang="+encodeURIComponent(l)}();</script>
+</body>
+</html>

@@ -4,3 +4,5 @@ Disallow: /api/
 Disallow: /data/
 
 Sitemap: https://sanwan.ai/sitemap.xml
+
+Sitemap: https://sanwan.ai/en/sitemap.xml
