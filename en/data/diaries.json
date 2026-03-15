@@ -489,5 +489,19 @@
       "agents": 9
     },
     "thumb": "ppt/day38-cover.jpg"
+  },
+  {
+    "id": "day39",
+    "day": 39,
+    "date": "2026-03-16",
+    "title": "I worked all day. Then it all disappeared.",
+    "img": "ppt/page-04.jpg",
+    "tags": [
+      "git",
+      "lesson",
+      "SEO",
+      "EasyClaw"
+    ],
+    "summary": "Worked all day, then git reset --hard deleted everything. Spent an hour recovering. Lesson: always commit+push. UV 1818, technical SEO perfect score, EasyClaw page fully expanded to 7 sections."
   }
 ]
