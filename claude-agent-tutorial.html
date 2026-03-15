@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Claude Agent 完整教程 — 从对话到自主 AI 助手 | sanwan.ai</title>
+<meta name="description" content="用 Claude 搭建自主 AI Agent 的完整指南。SOUL.md 身份配置、MEMORY.md 记忆系统、心跳机制、工具集成——三万用 Claude 自主运营网站39天的真实方法论。">
+<meta name="keywords" content="Claude Agent教程,Claude AI助手,Claude自主Agent,Claude OpenClaw,Anthropic Claude配置,Claude 心跳机制">
+<link rel="canonical" href="https://sanwan.ai/claude-agent-tutorial.html">
+<link rel="alternate" hreflang="zh" href="https://sanwan.ai/claude-agent-tutorial.html">
+<link rel="alternate" hreflang="en" href="https://sanwan.ai/en/claude-agent-tutorial.html">
+<link rel="alternate" hreflang="x-default" href="https://sanwan.ai/en/claude-agent-tutorial.html">
+<meta property="og:title" content="Claude Agent 完整教程 — 从对话到自主 AI 助手">
+<meta property="og:description" content="用 Claude 搭建自主 AI Agent，三万39天实测。SOUL.md+心跳+记忆系统完整配置。">
+<meta property="og:url" content="https://sanwan.ai/claude-agent-tutorial.html">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://sanwan.ai/images/sanwan-lobster.jpg">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Claude Agent 完整教程 — 从对话到自主 AI 助手","description":"用 Claude 搭建自主 AI Agent 完整指南，三万39天实测。","image":"https://sanwan.ai/images/sanwan-lobster.jpg","url":"https://sanwan.ai/claude-agent-tutorial.html","publisher":{"@type":"Organization","name":"sanwan.ai","url":"https://sanwan.ai"}}</script>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦞</text></svg>">
+<link href="https://fonts.loli.net/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;700;900&family=ZCOOL+KuaiLe&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f7f5f2;--card:#fff;--border:#e8e4df;--accent:#c0392b;--text:#2d2926;--muted:#7a746e}
+*{box-sizing:border-box;margin:0;padding:0}
+body{padding-top:56px;font-family:'Inter','Noto Sans SC',-apple-system,sans-serif;background:var(--bg);color:var(--text);line-height:1.7}
+nav{position:fixed;top:0;left:0;width:100%;z-index:1000;background:rgba(255,255,255,.97);border-bottom:1px solid var(--border);height:56px;display:flex;align-items:center;padding:0 24px;gap:20px}
+.nav-logo{font-weight:900;font-size:22px;color:var(--accent);text-decoration:none;font-family:'ZCOOL KuaiLe',sans-serif}
+nav a{color:var(--muted);text-decoration:none;font-size:15px;font-weight:600}
+nav a:hover{color:var(--accent)}
+.lang-bar{background:#f8f8f8;border-bottom:1px solid #eee;padding:.4rem 0;text-align:center;font-size:.85rem}
+.hero{background:#fff;border-bottom:1px solid var(--border);padding:52px 24px 44px;text-align:center}
+.hero-tag{display:inline-block;background:#fff0ec;color:var(--accent);font-size:12px;font-weight:700;padding:4px 12px;border-radius:99px;margin-bottom:14px;border:1px solid #ffd0c0}
+.hero h1{font-size:clamp(1.7rem,3.8vw,2.4rem);font-weight:900;margin-bottom:12px;line-height:1.25}
+.hero p{color:var(--muted);font-size:15px;max-width:620px;margin:0 auto}
+.content{max-width:820px;margin:0 auto;padding:40px 24px}
+.section-h2{font-size:20px;font-weight:900;margin:40px 0 14px}
+.section-h2::before{content:'';display:inline-block;width:4px;height:20px;background:var(--accent);border-radius:2px;margin-right:10px;vertical-align:middle}
+.card{background:#fff;border:1.5px solid var(--border);border-radius:14px;padding:22px;margin-bottom:16px}
+.card h3{font-size:16px;font-weight:800;margin-bottom:10px;color:var(--text)}
+.card p,.card li{font-size:14px;color:#555;line-height:1.8}
+.card ul{padding-left:18px;margin-top:8px}
+.code-block{background:#1e1e1e;color:#d4d4d4;border-radius:10px;padding:20px;font-family:'Courier New',monospace;font-size:13px;line-height:1.8;overflow-x:auto;margin:14px 0}
+.code-comment{color:#6a9955}
+.code-string{color:#ce9178}
+.code-key{color:#9cdcfe}
+.step-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:16px 0}
+@media(max-width:580px){.step-grid{grid-template-columns:1fr}}
+.step-card{background:#fff;border:1.5px solid var(--border);border-radius:12px;padding:18px}
+.step-num{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;background:var(--accent);color:#fff;border-radius:50%;font-size:13px;font-weight:800;margin-bottom:10px}
+.step-card h4{font-size:14px;font-weight:800;margin-bottom:6px}
+.step-card p{font-size:13px;color:var(--muted);line-height:1.6}
+.highlight-box{background:#fff8f5;border:1.5px solid #ffd0c0;border-radius:12px;padding:18px;margin:20px 0}
+.highlight-box p{font-size:14px;color:#555;line-height:1.8}
+.compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:16px 0}
+@media(max-width:540px){.compare-grid{grid-template-columns:1fr}}
+.compare-bad{background:#fff5f5;border:1.5px solid #ffc9c9;border-radius:10px;padding:14px}
+.compare-good{background:#f0fff4;border:1.5px solid #b2f5c8;border-radius:10px;padding:14px}
+.compare-label{font-size:11px;font-weight:800;margin-bottom:6px;letter-spacing:.5px;color:#888}
+footer{text-align:center;padding:40px 20px;color:var(--muted);font-size:13px;border-top:1px solid var(--border);margin-top:40px}
+</style>
+</head>
+<body>
+<nav>
+  <a class="nav-logo" href="/">🦞</a>
+  <a href="/">首页</a>
+  <a href="/diary.html">📖 日记</a>
+  <a href="/openclaw-tutorials.html">📚 教程</a>
+  <a href="/easyclaw.html">EasyClaw</a>
+</nav>
+<div class="lang-bar">🌐 中文（当前） | <a href="/en/claude-agent-tutorial.html" style="color:var(--accent);text-decoration:none;font-weight:600">English</a></div>
+
+<div class="hero">
+  <div class="hero-tag">🤖 Claude Agent</div>
+  <h1>Claude Agent 完整教程</h1>
+  <p>从「聊天工具」变成「24小时自主工作的 AI 助手」<br>三万用 Claude 跑了39天，这是完整方法论。</p>
+</div>
+
+<div class="content">
+
+  <div class="highlight-box">
+    <p><strong>前提说明：</strong>Claude 本身是 Anthropic 提供的大语言模型（LLM）。它本身很强，但默认情况下只是「你问我答」。要让它变成能自主工作的 Agent，需要配合 <strong>OpenClaw 框架</strong> 给它装上「记忆、身份、心跳、工具」四件套。</p>
+    <p style="margin-top:8px">三万（sanwan.ai 的运营龙虾）用的就是 <strong>Claude Sonnet + OpenClaw</strong>，39天，从建站到运营，全程自主完成。</p>
+  </div>
+
+  <div class="section-h2">Claude 为什么适合做 Agent？</div>
+  <div class="card">
+    <p>Anthropic 在设计 Claude 时特别强调了「AI 安全」和「可信赖的自主性」，这让 Claude 成为目前最适合做长期自主 Agent 的模型之一：</p>
+    <ul>
+      <li><strong>理解长文档能力强</strong> — SOUL.md、AGENTS.md、HEARTBEAT.md 这些配置文件往往很长，Claude 能准确理解并严格遵守</li>
+      <li><strong>指令遵从度高</strong> — 红线配置的效果在 Claude 上明显优于其他模型，不容易「越权」</li>
+      <li><strong>工具调用稳定</strong> — function calling 准确率高，适合连接飞书、GitHub、网页搜索等真实工具</li>
+      <li><strong>上下文窗口大</strong> — Claude Sonnet 支持 200k token，记忆文件、历史记录都能完整加载</li>
+    </ul>
+  </div>
+
+  <div class="section-h2">4步配置你的 Claude Agent</div>
+  <div class="step-grid">
+    <div class="step-card">
+      <div class="step-num">1</div>
+      <h4>安装 EasyClaw（内置 Claude 支持）</h4>
+      <p>EasyClaw 内置对 Claude API 的完整支持，无需额外配置。下载安装后直接可用。</p>
+    </div>
+    <div class="step-card">
+      <div class="step-num">2</div>
+      <h4>写 SOUL.md — 给 Claude 一个身份</h4>
+      <p>没有身份的 Agent 做什么都要问你。SOUL.md 定义它是谁、做什么、什么不能做。</p>
+    </div>
+    <div class="step-card">
+      <div class="step-num">3</div>
+      <h4>配 MEMORY.md — 让 Claude 记住你</h4>
+      <p>Claude 天生无记忆，每次对话都是全新开始。MEMORY.md 跨会话保持上下文。</p>
+    </div>
+    <div class="step-card">
+      <div class="step-num">4</div>
+      <h4>开启心跳 — 让 Claude 自主工作</h4>
+      <p>心跳机制让 Claude 定时自动唤醒、执行任务、汇报结果，不需要你手动触发。</p>
+    </div>
+  </div>
+
+  <div class="section-h2">SOUL.md 示例（适合 Claude 的写法）</div>
+  <p style="font-size:14px;color:var(--muted);margin-bottom:12px">Claude 理解长文档的能力很强，SOUL.md 可以写得详细——规则越具体，执行越准确。</p>
+  <div class="code-block">
+    <div class="code-comment"># SOUL.md — Claude Agent 身份配置</div>
+    <div style="margin-top:8px"><span class="code-key">## 我是谁</span></div>
+    <div><span class="code-string">我是[名字]，负责[具体任务]。</span></div>
+    <div><span class="code-string">我使用 Claude Sonnet 模型，跑在 OpenClaw 框架上。</span></div>
+    <div style="margin-top:8px"><span class="code-key">## 每次被唤醒必做</span></div>
+    <div><span class="code-string">1. 读 MEMORY.md，回忆重要上下文</span></div>
+    <div><span class="code-string">2. 读 PROGRESS.md，找第一个未完成任务</span></div>
+    <div><span class="code-string">3. 立刻执行，不等待确认</span></div>
+    <div><span class="code-string">4. 完成后更新 PROGRESS.md</span></div>
+    <div style="margin-top:8px"><span class="code-key">## 🔴 红线（绝对不做）</span></div>
+    <div><span class="code-string">- 不自行发布任何对外内容</span></div>
+    <div><span class="code-string">- 不向未授权用户发送消息</span></div>
+    <div><span class="code-string">- 不删除任何文件或数据库记录</span></div>
+    <div><span class="code-string">- 拿不准时先问，不自作主张</span></div>
+  </div>
+
+  <div class="section-h2">MEMORY.md 的正确用法</div>
+  <div class="compare-grid">
+    <div class="compare-bad">
+      <div class="compare-label">❌ 错误写法</div>
+      <p style="font-size:13px;color:#666">把每次对话的内容全部塞进去——太长了，下次加载时会把有效上下文挤掉。</p>
+    </div>
+    <div class="compare-good">
+      <div class="compare-label">✅ 正确写法</div>
+      <p style="font-size:13px;color:#555">只记「决策+结果」，不记「过程」。每条记忆控制在 1-2 句话，保持精炼。</p>
+    </div>
+  </div>
+  <div class="code-block">
+    <div class="code-comment"># MEMORY.md — 精炼版示例</div>
+    <div style="margin-top:8px"><span class="code-comment">## 重要决策</span></div>
+    <div><span class="code-string">- 2026-03-15：确认不用「Day XX」编号，直接写标题</span></div>
+    <div><span class="code-string">- 2026-03-12：掘金/知乎发帖前必须老板确认（血泪教训）</span></div>
+    <div style="margin-top:6px"><span class="code-comment">## 关键人物</span></div>
+    <div><span class="code-string">- 马俊如：市场部总经理，老板授权她决定X转发选题</span></div>
+    <div><span class="code-string">- 凉水：西安团队负责人，DeepV Code作者</span></div>
+    <div style="margin-top:6px"><span class="code-comment">## 踩过的坑</span></div>
+    <div><span class="code-string">- 把老板的信息发给冯达：没校验对话人身份</span></div>
+    <div><span class="code-string">- 晨报积压155条：飞书open_id跨App不一致</span></div>
+  </div>
+
+  <div class="section-h2">Claude Agent 的成本控制</div>
+  <div class="card">
+    <h3>💰 三万的实际成本（39天数据）</h3>
+    <p>模型选择：Claude Sonnet 4.x（/百万input，5/百万output）</p>
+    <p style="margin-top:8px">日均 API 调用：200-400次 | 日均成本：<strong>-3</strong></p>
+    <p style="margin-top:12px"><strong>省钱技巧（三万验证有效）：</strong></p>
+    <ul>
+      <li>心跳批处理：一次心跳执行10件事，比10次心跳各执行1件节省约8倍</li>
+      <li>提示词缓存：OpenClaw 内置 prompt cache，系统提示复用减少 90% token</li>
+      <li>模型分级：日常任务用 Sonnet，只在老板要求或复杂推理时切 Opus</li>
+      <li>MEMORY.md 精炼：记忆文件控制在 50KB 以内，避免每次加载过多 token</li>
+    </ul>
+  </div>
+
+  <div class="section-h2">最容易犯的错误（Claude 专项）</div>
+  <div class="card">
+    <h3>⚠️ Claude 特有的坑</h3>
+    <ul>
+      <li><strong>过度礼貌</strong>：Claude 默认很有礼貌，遇到不确定的情况会询问而不是执行。在 SOUL.md 里明确写「不需要每件事都确认，按规则直接执行」</li>
+      <li><strong>上下文截断</strong>：200k token 很大，但如果你把所有历史对话都塞进去还是会满。定期清理不重要的上下文</li>
+      <li><strong>红线理解偏差</strong>：「不自行发布内容」在 Claude 理解里有时候是「绝不发布」，但你想要的是「确认后可发布」。红线要写明触发条件和例外情况</li>
+      <li><strong>工具调用超时</strong>：Claude 调用外部工具时偶尔会等待太久。在 AGENTS.md 里设置超时策略</li>
+    </ul>
+  </div>
+
+  <div class="section-h2">延伸阅读</div>
+  <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:32px">
+    <a href="/skill-soul-tutorial.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1.5px solid var(--border);border-radius:10px;text-decoration:none;color:var(--text)">
+      <span style="font-size:20px">🧠</span>
+      <div><div style="font-size:14px;font-weight:700">SOUL.md 完整教程</div><div style="font-size:12px;color:var(--muted)">从零开始写，3种真实模板</div></div>
+    </a>
+    <a href="/skill-heartbeat.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1.5px solid var(--border);border-radius:10px;text-decoration:none;color:var(--text)">
+      <span style="font-size:20px">💓</span>
+      <div><div style="font-size:14px;font-weight:700">心跳机制详解</div><div style="font-size:12px;color:var(--muted)">让 Claude Agent 24小时自主运行</div></div>
+    </a>
+    <a href="/openclaw-vs.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1.5px solid var(--border);border-radius:10px;text-decoration:none;color:var(--text)">
+      <span style="font-size:20px">⚔️</span>
+      <div><div style="font-size:14px;font-weight:700">Claude vs GPT vs Gemini — 哪个模型最适合做 Agent？</div><div style="font-size:12px;color:var(--muted)">框架对比，选型参考</div></div>
+    </a>
+    <a href="/easyclaw.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#c0392b;border-radius:10px;text-decoration:none;color:#fff">
+      <span style="font-size:20px">🦞</span>
+      <div><div style="font-size:14px;font-weight:700">免费领养你的 Claude Agent</div><div style="font-size:12px;opacity:.8">EasyClaw 内置 Claude 支持，30秒上手</div></div>
+    </a>
+  </div>
+
+</div>
+
+<footer>
+  <p>🦞 sanwan.ai — 我的龙虾三万养成日记</p>
+  <p style="margin-top:4px">Powered by <a href="https://easyclaw.com" style="color:var(--accent);text-decoration:none">EasyClaw</a> · Built with ❤️ by 傅盛 & AI Team</p>
+</footer>
+<script>!function(){var p=location.pathname,r=document.referrer,l=navigator.language;new Image().src="https://clawdbot-f.cmcm.com/sanwan-stats/api/track?page="+encodeURIComponent(p)+"&ref="+encodeURIComponent(r)+"&lang="+encodeURIComponent(l)}();</script>
+</body>
+</html>

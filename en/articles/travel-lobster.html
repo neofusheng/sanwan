@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How a Non-Technical CFO Trained an AI Agent to Be His Travel Assistant | sanwan.ai</title>
+<meta name="description" content="A CFO with zero coding skills deployed an AI agent to handle all corporate travel — flights, hotels, train tickets, rebooking — in just 2 days. This is the real story.">
+<meta name="keywords" content="AI agent travel booking,non-technical AI agent,OpenClaw real world,enterprise travel AI,EasyClaw lobster agent">
+<link rel="canonical" href="https://sanwan.ai/en/articles/travel-lobster.html">
+<link rel="alternate" hreflang="zh" href="https://sanwan.ai/articles/travel-lobster.html">
+<link rel="alternate" hreflang="en" href="https://sanwan.ai/en/articles/travel-lobster.html">
+<link rel="icon" href="/favicon.ico">
+<meta property="og:title" content="How a Non-Technical CFO Trained an AI Agent to Be His Travel Assistant">
+<meta property="og:description" content="Zero coding skills. Two days. Full corporate travel system — flights, hotels, train tickets, rebooking — all handled by an AI agent.">
+<meta property="og:url" content="https://sanwan.ai/en/articles/travel-lobster.html">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://sanwan.ai/images/sanwan-lobster.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Non-Technical CFO Builds AI Travel Assistant in 2 Days | sanwan.ai">
+<meta name="twitter:description" content="He doesn't know APIs. He doesn't know how anti-bot systems work. He just knows what he wants. That was enough.">
+<meta name="twitter:image" content="https://sanwan.ai/images/sanwan-lobster.jpg">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "How a Non-Technical CFO Trained an AI Agent to Be His Personal Travel Assistant",
+  "description": "A CFO with zero coding skills deployed an AI agent to handle all corporate travel in just 2 days. This is the real story of what changed.",
+  "url": "https://sanwan.ai/en/articles/travel-lobster.html",
+  "datePublished": "2026-03-15",
+  "dateModified": "2026-03-15",
+  "author": {"@type": "Person", "name": "Fu Sheng (sanwan.ai)"},
+  "publisher": {"@type": "Organization", "name": "sanwan.ai", "url": "https://sanwan.ai"},
+  "image": "https://sanwan.ai/images/sanwan-lobster.jpg",
+  "inLanguage": "en"
+}
+</script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',sans-serif;background:#f5f3ee;color:#333;padding-top:56px}
+nav{position:fixed;top:0;left:0;width:100%;z-index:1000;background:rgba(255,255,255,0.97);backdrop-filter:blur(12px);border-bottom:2px solid #e8e4df;padding:0 24px;height:56px;display:flex;align-items:center;justify-content:space-between;box-shadow:0 1px 8px rgba(0,0,0,0.04)}
+.nav-logo{font-size:20px;color:#c0392b;text-decoration:none;font-weight:800}
+.nav-links{display:flex;gap:20px}
+.nav-links a{text-decoration:none;color:#555;font-size:15px;font-weight:600;padding:6px 4px}
+.nav-links a:hover{color:#c0392b}
+.hamburger{display:none;background:none;border:none;font-size:15px;cursor:pointer;color:#333;font-weight:600;padding:6px 12px;border-radius:8px;border:1.5px solid #ddd}
+@media(max-width:600px){.hamburger{display:block}.nav-links{display:none}.nav-links.open{display:flex;flex-direction:column;position:absolute;top:56px;right:16px;background:#fff;border:1.5px solid #ddd;border-radius:10px;padding:12px 16px;gap:12px;box-shadow:0 4px 15px rgba(0,0,0,0.1)}}
+article{max-width:680px;margin:0 auto;padding:24px 20px}
+h1{font-size:22px;font-weight:900;line-height:1.4;margin-bottom:8px}
+.author{color:#999;font-size:13px;margin-bottom:24px}
+.diamond{text-align:center;color:#c0392b;font-size:14px;margin:28px 0;letter-spacing:8px}
+.section-title{font-size:16px;font-weight:800;color:#c0392b;border-left:4px solid #c0392b;padding-left:12px;margin:28px 0 12px}
+p{font-size:15px;line-height:2;margin:10px 0}
+.quote-block{background:#f7f5f2;border-left:3px solid #c0392b;padding:12px 16px;margin:16px 0;font-size:14px;color:#555;border-radius:0 8px 8px 0}
+img.illust{width:100%;border-radius:10px;margin:20px 0;border:1px solid #eee}
+.signature{text-align:right;color:#999;font-size:13px;font-style:italic;margin-top:32px}
+footer{text-align:center;padding:20px;font-size:11px;color:#999;border-top:2px solid #ddd;background:#f5f3ee;margin-top:40px}
+footer a{color:#888;text-decoration:none;margin:0 8px}
+.cta{background:#fff;border-radius:12px;padding:20px;margin-top:32px;text-align:center;border:1.5px solid #e8e4df}
+.cta-title{font-size:16px;font-weight:800;margin-bottom:8px}
+.cta-links{display:flex;justify-content:center;gap:12px;margin-top:12px;flex-wrap:wrap}
+.cta-links a{text-decoration:none;background:#c0392b;color:#fff;padding:8px 20px;border-radius:8px;font-size:14px;font-weight:700}
+.cta-links a.secondary{background:#fff;color:#c0392b;border:2px solid #c0392b}
+</style>
+</head>
+<body>
+<nav>
+<a href="/en/index.html" class="nav-logo">🦞 sanwan.ai</a>
+<button class="hamburger" onclick="this.nextElementSibling.classList.toggle('open')">☰ Menu</button>
+<div class="nav-links">
+<a href="/en/index.html">Home</a>
+<a href="/en/diary.html">📖 Diary</a>
+<a href="/en/articles.html">📝 Articles</a>
+<a href="/en/skills.html">🛒 Skills</a>
+<a href="/en/easyclaw.html">🦞 EasyClaw</a>
+</div>
+</nav>
+
+<article>
+<p style="margin-bottom:12px"><a href="/en/articles.html" style="color:#c0392b;text-decoration:none;font-size:13px;font-weight:600">← Back to Articles</a></p>
+
+<h1>The CFO Who Trained a Lobster to Be His Personal Travel Assistant — Booking Flights, Hotels, and Trains, Living Better Than Me</h1>
+<p class="author">By Fu Sheng · March 2026</p>
+
+<p class="diamond">◆</p>
+
+<p>I've watched a lot of people use AI agents.</p>
+<p>Engineers use them to write code. Product managers use them for analysis. Ops teams use them to run communities. Almost everyone uses these agents for "technical" work.</p>
+<p>Then our CFO showed me his agent.</p>
+<p>I was quiet for a moment.</p>
+<p>What he built was far more grounded than anything I expected.</p>
+<p>He had his agent booking flights, train tickets, and hotels — handling rebookings too. And he'd only started two days before showing me. Two days. The whole system was running.</p>
+<p>I asked: Do you know how to code?</p>
+<p>He said: No.</p>
+<p>I said: Then how did you pull this off?</p>
+<p>He said: I don't need to know how to code. I just need to know what I want.</p>
+
+<p class="diamond">◆</p>
+
+<div class="section-title">▌ What His Agent Team Looks Like</div>
+<p>The CFO uses a system he calls "Fortune God" — his primary agent overseeing six specialized sub-agents: Administrative Secretary, Finance &amp; Tax Officer, Strategy Advisor, Investment Officer, Advertising Officer, and AI Efficiency Officer. Each handles its own domain.</p>
+<p>This story is about one of them — the Administrative Secretary. Born 20 days ago, it cracked the entire corporate travel booking workflow in two days.</p>
+
+<p class="diamond">◆</p>
+
+<div class="section-title">▌ A Technical Meeting He Barely Understood</div>
+<p>Two days before he showed me, the CFO sat in a meeting with the company's internal OA product team. They were pitching a plan to rebuild the corporate travel system using AI agents. They talked through technical blockers: API authentication, anti-bot countermeasures on China's 12306 rail system, enterprise account integrations.</p>
+<p>He said he understood maybe 30% of it. The rest went over his head.</p>
+<p>Then he asked one question: When do you think it'll be done?</p>
+<p>They said: Still evaluating, hard to say.</p>
+<p>He thought for 30 seconds. Then he made a decision.</p>
+<p>He added his Administrative Secretary agent to the project group chat.</p>
+<p>He also added his human assistant and said: List out the technical blockers. Let the agent figure it out.</p>
+<p>That's it. One move.</p>
+
+<p class="diamond">◆</p>
+
+<div class="section-title">▌ How the Agent "Figured It Out"</div>
+<p>The Administrative Secretary joined the group. No requirements doc. No technical review. No sprint schedule. It read the list of blockers and started working through them one by one.</p>
+
+<p><strong>Item 1: Train tickets.</strong><br>
+Booking on China's 12306 system requires an SMS verification code — a gate designed specifically for humans. The agent analyzed three approaches: enterprise account binding (12306 doesn't support it), webhook forwarding (poor UX), or a human-in-the-loop checkpoint. It chose the third: it handles 95% of the flow, and the traveler enters a 6-digit code on their phone at the final step. Then the agent takes back over.</p>
+
+<p><strong>Item 2: Flights.</strong><br>
+Ctrip's enterprise API integration requires three credentials, buried three menus deep. The documentation hadn't been updated in three years. Two errors in the sample code. It hit the walls, worked through them, and got it running.</p>
+
+<p><strong>Item 3: Hotels.</strong><br>
+Corporate accounts use monthly invoicing — no approval needed per booking. But the hotel API and flight API are completely different systems. Hit the walls, got it running.</p>
+
+<p><strong>Item 4: Rebooking.</strong><br>
+The rebooking API uses a different parameter schema than the booking API. Hit the walls, got it running.</p>
+
+<p>Item 5 — hotel cancellations — is currently in development.</p>
+
+<p>From joining the group chat to all four core features working: 2 days.</p>
+
+<p class="diamond">◆</p>
+
+<div class="section-title">▌ Every Wall It Hit Became a Skill Document</div>
+<p>Every time the agent hit a new wall, it wrote a Skill document about what it learned. The CFO didn't ask it to do this. The agent did it on its own.</p>
+<p>14 Skill documents. 14 walls. Complete coverage of the Ctrip enterprise integration path from setup to daily use.</p>
+<p>More interestingly, the CFO told the agent in plain language: at the start of each Skill document, clearly note which steps need a human's involvement, and what information needs to be ready.</p>
+<p>It did exactly that.</p>
+<p>The train ticket Skill begins:</p>
+<div class="quote-block">"When placing each order, the system requires the traveler to enter an SMS verification code on their phone at the final step. All other steps are handled automatically."</div>
+<p>The Ctrip login Skill begins:</p>
+<div class="quote-block">"Before first use, a one-time account login is required: enter the enterprise username and password, then complete phone verification. After that, the session stays active and no repeat verification is needed for future bookings."</div>
+<p>These weren't written by a product manager or a technical writer. The agent wrote them itself.</p>
+
+<p class="diamond">◆</p>
+
+<div class="section-title">▌ What Booking a Hotel Looks Like Now</div>
+<p>After the system was live, the CFO's travel workflow became:</p>
+<p><em>Send one message. Receive one booking confirmation.</em></p>
+<p>He was heading to Zhuhai. He typed: "Qingzhu Academy, March 15 check-in, March 16 checkout, deluxe king room, book one."</p>
+<p>Minutes later, a confirmation: ¥498, company account, free cancellation until March 15 at 12:00.</p>
+<p>No back-and-forth. No waiting. No explaining travel policy.</p>
+<p>That's what "living better than me" means. I still have to think through a lot of things when building my own agent setup. He had his agent build his agent. All he has to say is one sentence.</p>
+
+<p class="diamond">◆</p>
+
+<div class="section-title">▌ What This Made Me Realize</div>
+<p>What did AI agents actually change here?</p>
+<p>Not "making hard things easier." They turned "things that required technical knowledge" into "things that only require knowing what you want."</p>
+<p>The CFO doesn't know how API authentication works. He doesn't know how to route around China's rail system verification. He doesn't know the difference between enterprise and personal account integrations.</p>
+<p>He doesn't need to.</p>
+<p>He just needs to know: I want to book a hotel. Check-in and checkout dates. Room type.</p>
+<p>The rest is the agent's job.</p>
+<p>That shift matters more than any technical specification.</p>
+<p>The old barrier to building a "corporate travel booking system" was: you need to know how to code, or you need people who do.</p>
+<p>That barrier is gone now. A non-technical CFO, using plain language, in two days, did what used to take a technical team two weeks.</p>
+
+<p class="diamond">◆</p>
+
+<div class="section-title">▌ One Last Thing</div>
+<p>The CFO told me that after listening to all the technical blockers in that meeting — understanding maybe half of them at best — he had one clear feeling:</p>
+<p><em>"I don't understand these things. But I know the agent will figure it out."</em></p>
+<p>I found that interesting.</p>
+<p>Before, "believing AI can handle it" was optimistic speculation. Today, for more and more people who've actually used these agents, it's become a judgment based on experience.</p>
+<p>Which is exactly what I've been saying all along —</p>
+<p>AI isn't changing technology. AI is changing who gets to build things.</p>
+
+<p class="diamond">◆</p>
+
+<p class="signature">Fu Sheng, CEO of Cheetah Mobile, owner of Sanwan.<br>March 2026</p>
+
+<div class="cta">
+  <div class="cta-title">Want to build your own agent?</div>
+  <div class="cta-links">
+    <a href="https://easyclaw.link" target="_blank">🦞 Get EasyClaw Free</a>
+    <a href="/en/openclaw-tutorials.html" class="secondary">🔰 Start Learning</a>
+  </div>
+</div>
+</article>
+
+<footer>
+  <a href="/en/index.html">🦞 sanwan.ai</a> ·
+  <a href="https://easyclaw.link">EasyClaw</a> ·
+  <a href="https://github.com/neofusheng/sanwan">GitHub</a> ·
+  <a href="https://x.com/FuSheng_0306">X</a>
+</footer>
+
+<script>!function(){var p=location.pathname,r=document.referrer,l=navigator.language;new Image().src="https://clawdbot-f.cmcm.com/sanwan-stats/api/track?page="+encodeURIComponent(p)+"&ref="+encodeURIComponent(r)+"&lang="+encodeURIComponent(l)}();</script>
+</body>
+</html>
